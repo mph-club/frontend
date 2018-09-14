@@ -1,0 +1,17 @@
+
+.root {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 72px;
+}
+
+.toolBar {
+      justify-content: space-between;
+}
+
+.menuButton {
+      margin-left: -12px;
+      margin-right: 20px;
+}

@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
-import './App.css';
-import SignIn from './components/SignIn/SignIn';
+import classes from './App.css';
+// import SignIn from './components/SignIn/SignIn';
+import Aux from './hoc/Aux/Aux';
+import Layout from './hoc/Layout/Layout';
+import logo from './assets/images/mph-logo.svg';
 
 class App extends Component {
+
+  handleClicked = () => {
+     console.log("This is working");
+  };
   render() {
     return (
-      <div className="App">
-        <SignIn></SignIn>
-      </div>
+      <Aux className={classes.App}>
+        <Layout>
+          <div style={{backgroundColor:'black'}}>
+            <img src={logo} alt="logo"/>
+          </div>
+        </Layout>
+      </Aux>
     );
   }
 }

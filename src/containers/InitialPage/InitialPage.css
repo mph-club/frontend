@@ -63,14 +63,6 @@
     margin-top: 8px;
 }
 
-.NativeTextField:focus {
-    border-color: black;
-    transition: all 0.2s ease-in 0s;
-    outline: none !important;
-    outline-style: none !important;
-    outline-color: none !important;
-}
-
 .DateContainer {
     flex-grow: 1;
 }

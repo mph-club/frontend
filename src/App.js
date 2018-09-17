@@ -5,16 +5,12 @@ import Layout from './hoc/Layout/Layout';
 import InitialPage from './containers/InitialPage/InitialPage';
 
 class App extends Component {
-
-  handleClicked = () => {
-    console.log("This is working");
-  };
   render() {
     return (
       <Aux className={classes.App}>
-        <Layout>
-          <InitialPage />
-        </Layout>
+          <Layout>
+            <InitialPage />
+          </Layout>
       </Aux>
     );
   }

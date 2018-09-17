@@ -1,7 +1,4 @@
-import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
-
-export const StyledPrimaryButton = styled(Button)`
+.styledPrimaryButton {
     background-color: #000000 !important;
     border-radius: 8px !important;
     border: 0 !important;
@@ -12,11 +9,9 @@ export const StyledPrimaryButton = styled(Button)`
     text-transform: none !important;
     font-size: 1rem !important;
     transition: all 0.2s ease-out 0s;
-    &:hover {
-        box-shadow: 0 3px 10px rgba(0,0,0,.4);
-        transition: all 0.2s ease-in 0s;
-    }
-`
+}
 
-       
-
+.styledPrimaryButton:hover {
+    box-shadow: 0 3px 10px rgba(0,0,0,.4);
+    transition: all 0.2s ease-in 0s;
+}

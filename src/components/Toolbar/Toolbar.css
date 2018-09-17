@@ -1,4 +1,3 @@
-
 .root {
       position: fixed;
       top: 0;
@@ -7,8 +6,13 @@
       height: 72px;
 }
 
+.appBar {
+      box-shadow: none !important;
+}
+
 .toolBar {
       justify-content: space-between;
+      background-color: black;
 }
 
 .menuButton {

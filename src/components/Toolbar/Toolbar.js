@@ -9,7 +9,7 @@ import classes from './Toolbar.css';
 const ButtonAppBar = () => {
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className = {classes.appBar}>
         <Toolbar className={classes.toolBar}>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
 import { StyledButton, } from '../../components/UI/Buttons/styles';
 import {
     StyledGrid,
@@ -9,14 +7,14 @@ import {
     StyledLeftLayout,
     StyledTitle,
     StyledTitleSpan,
-    StyledForm,
-    StyledInputLabel,
+    StyledDateForm,
+    StyledFormContainer,
+    StyledTextField,
     StyledDateContainer,
     StyledDateContainerItemOne,
     StyledDateContainerItemTwo,
-    StyledButtoContainer,
-    StyledNativeTextField,
-    StyledNativeSelect
+    StyledButtonContainer,
+    StyledNativeTextField
 } from './styles';
 
 
@@ -31,60 +29,53 @@ class InitialPage extends Component {
                             <div>
                                 <StyledTitle>Search and <StyledTitleSpan>rent</StyledTitleSpan> thousands of high end vehicles in all of Florida.</StyledTitle>
                             </div>
-                            <StyledForm>
-                                <StyledNativeTextField
-                                    fullWidth
-                                    placeholder="Enter a city, airport, or address in FL"
-                                    label="Where"
-                                    id="bootstrap-input"
-                                    InputProps={{
-                                        disableUnderline: true
-                                    }}
-                                    InputLabelProps={{
-                                        shrink: true
-                                    }}
-                                />
-
+                            <StyledFormContainer>
+                                <form>
+                                    <StyledNativeTextField
+                                        fullWidth
+                                        placeholder="Enter a city, airport, or address in FL"
+                                        label="Where"
+                                        id="bootstrap-input"
+                                        InputProps={{
+                                            disableUnderline: true
+                                        }}
+                                        InputLabelProps={{
+                                            shrink: true
+                                        }}
+                                    />
+                                </form>
                                 <StyledDateContainer>
                                     <StyledDateContainerItemOne>
-                                        <FormControl fullWidth>
-                                            <StyledInputLabel shrink htmlFor="from-label-placeholder">
-                                                From
-                                        </StyledInputLabel>
-                                            <StyledNativeSelect
-                                                input={<Input name="age" id="from-label-placeholder" />}
-                                                displayEmpty
-                                                name="from"
-                                            >
-                                                <option value="">mm/dd/yy</option>
-                                                <option value={10}>Ten</option>
-                                                <option value={20}>Twenty</option>
-                                                <option value={30}>Thirty</option>
-                                            </StyledNativeSelect>
-                                        </FormControl>
+                                        <StyledDateForm noValidate fullWidth>
+                                            <StyledTextField
+                                                id="fromTextField"
+                                                label="From"
+                                                type="date"
+                                                defaultValue="2017-05-24"
+                                                InputLabelProps={{
+                                                    shrink: true,
+                                                }}
+                                            />
+                                        </StyledDateForm>
                                     </StyledDateContainerItemOne>
                                     <StyledDateContainerItemTwo>
-                                        <FormControl fullWidth>
-                                            <StyledInputLabel shrink htmlFor="until-label-placeholder">
-                                                Until
-                                        </StyledInputLabel>
-                                            <StyledNativeSelect
-                                                input={<Input name="age" id="until-label-placeholder" />}
-                                                displayEmpty
-                                                name="until"
-                                            >
-                                                <option value="">mm/dd/yy</option>
-                                                <option value={10}>Ten</option>
-                                                <option value={20}>Twenty</option>
-                                                <option value={30}>Thirty</option>
-                                            </StyledNativeSelect>
-                                        </FormControl>
+                                        <StyledDateForm noValidate fullWidth>
+                                            <StyledTextField
+                                                id="untilTextField"
+                                                label="Until"
+                                                type="date"
+                                                defaultValue="2017-05-24"
+                                                InputLabelProps={{
+                                                    shrink: true,
+                                                }}
+                                            />
+                                        </StyledDateForm>
                                     </StyledDateContainerItemTwo>
                                 </StyledDateContainer>
-                                <StyledButtoContainer>
+                                <StyledButtonContainer>
                                     <StyledButton>Search</StyledButton>
-                                </StyledButtoContainer>
-                            </StyledForm>
+                                </StyledButtonContainer>
+                            </StyledFormContainer>
                         </StyledLeftLayout>
                     </Grid>
                     <StyledGrid item xs={12} sm={12} md={6}>

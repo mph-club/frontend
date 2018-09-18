@@ -2,9 +2,9 @@ import React from 'react';
 
 import NavigationItems from '../NavigationItems/NavigationItems'
 import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
 import {StyledAppBar,
         StyledToolBar,
-        StyledIconButton,
         StyledContainer
       } from './styles';
 
@@ -13,9 +13,9 @@ const ButtonAppBar = () => {
     <StyledContainer>
       <StyledAppBar position="static">
         <StyledToolBar>
-          <StyledIconButton color="inherit" aria-label="Menu">
+          <IconButton color="inherit" aria-label="Menu">
             <MenuIcon/>
-          </StyledIconButton>
+          </IconButton>
           <NavigationItems/>
         </StyledToolBar>
       </StyledAppBar>

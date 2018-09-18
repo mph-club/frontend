@@ -8,10 +8,21 @@ export const StyledGrid = styled(Grid)`
     display: inline-flex !important;
 `
 
+export const StyledDateForm = styled.form`
+    display: flex;
+    flexWrap: wrap;
+`
+
+export const StyledTextField = styled(TextField)`
+    margin-left: auto,
+    margin-right: auto,
+    width: 200px,
+`
+
 export const StyledNativeTextField = styled(TextField)`
     margin-bottom: 1rem !important;
     label {
-        color: ${props => props.error ? "red": "#000000 !important"};
+        color: ${props => props.error ? "red" : "#000000 !important"};
         font-weight: 600;
     },
     input {
@@ -88,7 +99,7 @@ export const StyledTitleSpan = styled.span`
     color: #31DA62;
 `
 
-export const StyledForm = styled.form`
+export const StyledFormContainer = styled.div`
     padding-left: 2rem;
     padding-right: 2rem;
     max-width: 512px;
@@ -107,7 +118,7 @@ export const StyledDateContainerItemTwo = styled.div`
     padding-left: 1rem;
 `
 
-export const StyledButtoContainer = styled.div`
+export const StyledButtonContainer = styled.div`
     margin-top: 2rem;
     float: right;
 `

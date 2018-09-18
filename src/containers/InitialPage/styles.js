@@ -8,14 +8,6 @@ export const StyledGrid = styled(Grid)`
     display: inline-flex !important;
 `
 
-export const StyledTextField = styled(TextField)`
-    margin-bottom: 1rem !important;
-    label {
-        color: #000000;
-        font-weight: 600;
-    }
-`
-
 export const StyledNativeTextField = styled(TextField)`
     margin-bottom: 1rem !important;
     label {

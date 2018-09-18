@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
-import { StyledPrimaryButton, } from '../../components/Buttons/styles';
+import { StyledButton, } from '../../components/UI/Buttons/styles';
 import { StyledGrid, 
          StyledContainer, 
          StyledLeftLayout, 
@@ -45,13 +44,13 @@ const InitialPage = () => {
                         <StyledDateContainer>
                             <StyledDateContainerItemOne>
                                 <FormControl fullWidth>
-                                    <StyledInputLabel shrink htmlFor="age-label-placeholder">
+                                    <StyledInputLabel shrink htmlFor="from-label-placeholder">
                                         From
                                     </StyledInputLabel>
                                     <StyledNativeSelect
-                                        input={<Input name="age" id="age-label-placeholder"/>}
+                                        input={<Input name="age" id="from-label-placeholder"/>}
                                         displayEmpty
-                                        name="age"
+                                        name="from"
                                     >
                                         <option value="">mm/dd/yy</option>
                                         <option value={10}>Ten</option>
@@ -62,13 +61,13 @@ const InitialPage = () => {
                             </StyledDateContainerItemOne>
                             <StyledDateContainerItemTwo>
                                 <FormControl fullWidth>
-                                    <StyledInputLabel shrink htmlFor="age-label-placeholder">
+                                    <StyledInputLabel shrink htmlFor="until-label-placeholder">
                                         Until
                                     </StyledInputLabel>
                                     <StyledNativeSelect
-                                        input={<Input name="age" id="age-label-placeholder" />}
+                                        input={<Input name="age" id="until-label-placeholder" />}
                                         displayEmpty
-                                        name="age"
+                                        name="until"
                                     >
                                         <option value="">mm/dd/yy</option>
                                         <option value={10}>Ten</option>
@@ -79,7 +78,7 @@ const InitialPage = () => {
                             </StyledDateContainerItemTwo>
                         </StyledDateContainer>
                         <StyledButtoContainer>
-                            <StyledPrimaryButton>Search</StyledPrimaryButton>
+                            <StyledButton>Search</StyledButton>
                         </StyledButtoContainer>
                     </StyledForm>
                 </StyledLeftLayout>
@@ -91,11 +90,6 @@ const InitialPage = () => {
             </Grid>
         </React.Fragment>
     );
-};
-
-
-InitialPage.propTypes = {
-  classes: PropTypes.object.isRequired,
 };
 
 export default InitialPage;

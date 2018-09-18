@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 export const StyledIconButton = styled(IconButton)`
     margin-left: -12px;
     margin-top: 12px;
-
 `
 
 export const StyledForm = styled.form`

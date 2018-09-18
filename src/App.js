@@ -10,10 +10,6 @@ import Login from './containers/Login/Login';
 import SignUp from './containers/SignUp/SignUp';
 
 class App extends Component {
-  
-  componentDidMount() {
-    console.log('esta rendering este component')
-  }
 
   render() {
     return (
@@ -22,8 +18,8 @@ class App extends Component {
         <StyledMain>
           <Route path="/" component={InitialPage} />
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={SignUp} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/signup" exact component={SignUp} />
           </Switch>
         </StyledMain>
       </Aux>

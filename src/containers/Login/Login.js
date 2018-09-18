@@ -17,13 +17,6 @@ import {
 } from './styles';
 
 class Login extends Component {
-    state = {
-        open: true,
-    };
-
-    handleOpen = () => {
-        this.setState({ open: true });
-    };
 
     handleClose = () => {
         this.props.history.replace('/');
@@ -36,7 +29,7 @@ class Login extends Component {
                 <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
-                    open={this.state.open}
+                    open
                     disableAutoFocus
                     disableBackdropClick
                 >

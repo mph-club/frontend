@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import ClearIcon from '@material-ui/icons/Clear';
-import StyledPrimaryButton from '../../components/UI/Buttons/PrimaryButton';
+import StyledPrimaryButton from '../../components/UI/Buttons/PrimaryButton/PrimaryButton';
 
 import {
     StyledDiv,

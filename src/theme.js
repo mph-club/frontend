@@ -21,10 +21,10 @@ export const theme = createMuiTheme({
       },
 });
 
-export const green = '#31DA62';
-export const blue = '#077DF8';
+const green = '#31DA62';
+const blue = '#077DF8';
 
-export const palette = {
+const palette = {
   green,
   blue
 }

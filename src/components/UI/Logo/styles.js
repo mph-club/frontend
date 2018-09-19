@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import Typography from '@material-ui/core/Typography';
 
 export const StyledDiv = styled.div`
     background-color: black;
     height: 100%;
-    width: 86px;
     box-sizing: border-box;
 `
 
-export const StyledImg = styled.img`
+export const StyledTitle = styled(Typography)`
     heigth: 100%;
+    color: #fff !important;
 `

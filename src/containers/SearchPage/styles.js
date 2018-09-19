@@ -6,6 +6,6 @@ export const StyledHeader = styled.header`
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${bgImage});
     background-size: cover;
     background-position: bottom;
-    height: 80vh;
+    height: 70vh;
     background-attachment: fixed;
 `

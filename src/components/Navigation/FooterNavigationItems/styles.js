@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 
 export const StyledUl = styled.ul`
@@ -9,8 +8,4 @@ export const StyledUl = styled.ul`
     flex-flow: column;
     align-items: center;
     height: 100%;
-
-    @media (min-width: 500px) {
-        flex-flow: row;
-    }
 `

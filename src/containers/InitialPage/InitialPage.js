@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { StyledButton, } from '../../components/UI/Buttons/styles';
+import { StyledButton, } from '../../components/UI/Buttons/PrimaryButton/styles';
 import {
     StyledGrid,
     StyledContainer,

@@ -6,22 +6,29 @@ export const theme = createMuiTheme({
             main: '#000000',
           },
         secondary: {
-            // light: will be calculated from palette.primary.main,
-            main: '#ff4400',
-            // dark: will be calculated from palette.primary.main,
-            // contrastText: will be calculated to contrast with palette.primary.main
-          },
+          
+          main: '#077DF8',
+          // dark: will be calculated from palette.primary.main,
+          // contrastText: will be calculated to contrast with palette.primary.main
+        },
         error: {
-            // light: will be calculated from palette.primary.main,
-            main: '#ff4400',
-            // dark: will be calculated from palette.primary.main,
-            // contrastText: will be calculated to contrast with palette.primary.main
-          },
+          // light: will be calculated from palette.primary.main,
+          main: '#ff4400',
+          // dark: will be calculated from palette.primary.main,
+          // contrastText: will be calculated to contrast with palette.primary.main
+        },
         type: 'light'
       },
 });
-const space = [0, 1, 2]
 
-export const CustomTheme = (
-  space
-)
+export const green = '#31DA62';
+export const blue = '#077DF8';
+
+export const palette = {
+  green,
+  blue
+}
+
+export const CustomTheme = {
+  palette
+}

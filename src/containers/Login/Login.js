@@ -13,8 +13,12 @@ import {
     StyledDiv,
     StyledIconButton,
     StyledForm,
-    StyledDivider
+    StyledDivider,
+    StyledFooter,
+    StyledDividerLayout,
+    StyledFooterButtonLayout
 } from './styles';
+import {CustomTheme} from '../../theme';
 
 const Login = (props) => {
         return (
@@ -51,21 +55,25 @@ const Login = (props) => {
                                     autoComplete="current-password"
                                 />
                             </FormControl>
-                            <StyledPrimaryButton
-                                type="submit"
-                                fullWidth
-                                variant="raised"
-                                color="primary"
-                            >
-                                Log in
-                            </StyledPrimaryButton>
-                            <div>
-                                <StyledDivider
-                                    variant="body2">or
-                                </StyledDivider>
-                            </div>
-                            <Typography variant="body1">Don't have an account? <NavLink to="/signup">Sign up</NavLink>
-                            </Typography>
+                            <StyledFooter>
+                                <StyledFooterButtonLayout>
+                                    <StyledPrimaryButton
+                                        type="submit"
+                                        fullWidth
+                                        variant="raised"
+                                        color="primary"
+                                    >
+                                        Log in
+                                    </StyledPrimaryButton>
+                                </StyledFooterButtonLayout>
+                                <StyledDividerLayout>
+                                    <StyledDivider
+                                        variant="body2">or
+                                    </StyledDivider>
+                                </StyledDividerLayout>
+                                <Typography align="center" variant="body1">Don't have an account? <NavLink to="/signup" style={{color: CustomTheme.palette.blue}}>Sign up</NavLink>
+                                </Typography>
+                            </StyledFooter>
                         </StyledForm>
                     </StyledDiv>
                 </Modal>

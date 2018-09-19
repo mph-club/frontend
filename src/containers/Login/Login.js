@@ -18,7 +18,7 @@ import {
     StyledDividerLayout,
     StyledFooterButtonLayout
 } from './styles';
-import { theme } from '../../theme';
+import {CustomTheme} from '../../theme';
 
 class Login extends Component {
 
@@ -78,7 +78,7 @@ class Login extends Component {
                                         variant="body2">or
                                     </StyledDivider>
                                 </StyledDividerLayout>
-                                <Typography align="center" variant="body1">Don't have an account? <NavLink to="/signup">Sign up</NavLink>
+                                <Typography align="center" variant="body1">Don't have an account? <NavLink to="/signup" style={{color: CustomTheme.palette.blue}}>Sign up</NavLink>
                                 </Typography>
                             </StyledFooter>
                         </StyledForm>

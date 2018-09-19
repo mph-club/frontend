@@ -46,7 +46,7 @@ class App extends Component {
             openSignUp={this.state.openSignUp}
             closeSignUp={this.closeSignup} />
           <Switch>
-            <Route path="/searchPage" exact component={SearchPage} />
+            <Route path="/search-page" exact component={SearchPage} />
             <Route path="/" exact component={InitialPage} />
           </Switch>
         </StyledMain>

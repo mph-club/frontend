@@ -6,17 +6,17 @@ export const theme = createMuiTheme({
             main: '#000000',
           },
         secondary: {
-            // light: will be calculated from palette.primary.main,
-            main: '#ff4400',
-            // dark: will be calculated from palette.primary.main,
-            // contrastText: will be calculated to contrast with palette.primary.main
-          },
+          // light: will be calculated from palette.primary.main,
+          main: '#ff4400',
+          // dark: will be calculated from palette.primary.main,
+          // contrastText: will be calculated to contrast with palette.primary.main
+        },
         error: {
-            // light: will be calculated from palette.primary.main,
-            main: '#ff4400',
-            // dark: will be calculated from palette.primary.main,
-            // contrastText: will be calculated to contrast with palette.primary.main
-          },
+          // light: will be calculated from palette.primary.main,
+          main: '#ff4400',
+          // dark: will be calculated from palette.primary.main,
+          // contrastText: will be calculated to contrast with palette.primary.main
+        },
         type: 'light'
       },
 });

@@ -15,12 +15,13 @@ export const StyledForm = styled.form`
 `
 
 export const StyledDiv = styled.div`
+    height: 468px;
     position: fixed;
     padding: 16px;
     width: 70%;
     border-radius: 8px;
     left: 15%;
-    top: 30%;
+    top: 10%;
     background-color: #ffffff;
     &:focus {
         outline: none;
@@ -51,4 +52,18 @@ export const StyledDivider = styled(Typography)`
     &:after {
         margin: 0 -55% 0 .5em;
     }
+`
+
+export const StyledFooter = styled.div`
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+`
+export const StyledFooterButtonLayout = styled.div`
+    align-self: flex-end;
+    margin-bottom: 2.5rem;
+`
+
+export const StyledDividerLayout = styled.div`
+    margin-bottom: 2rem;
 `

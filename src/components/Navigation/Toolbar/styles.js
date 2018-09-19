@@ -21,3 +21,9 @@ export const StyledContainer = styled.div`
     width: 100%;
     height: 72px;
 `
+
+export const StyledNav = styled.nav`
+    @media (max-width: 499px) {
+        display: none;
+    }
+`

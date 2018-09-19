@@ -71,7 +71,7 @@ export const StyledContainer = styled.div`
     background-size: cover;
     background-position: center;
     
-    @media (max-width: 768px) {
+    @media (max-width: 960px) {
         display: none;
     }
 `

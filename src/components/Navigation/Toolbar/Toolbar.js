@@ -1,26 +1,32 @@
 import React from 'react';
 
-import NavigationItems from '../NavigationItems/NavigationItems'
-import MenuIcon from '@material-ui/icons/Menu';
-import IconButton from '@material-ui/core/IconButton';
-import {StyledAppBar,
-        StyledToolBar,
-        StyledContainer
-      } from './styles';
+import Button from '@material-ui/core/Button';
+// import NavigationItems from '../NavigationItems/NavigationItems'
+import Logo from '../../UI/Logo/Logo';
+import {
+  StyledAppBar,
+  StyledToolBar,
+  StyledContainer,
+  StyledNav
+} from './styles';
 
-const ButtonAppBar = () => {
+const ToolBar = (props) => {
   return (
     <StyledContainer>
       <StyledAppBar position="static">
         <StyledToolBar>
-          <IconButton color="inherit" aria-label="Menu">
-            <MenuIcon/>
-          </IconButton>
-          <NavigationItems/>
+          <div>
+            <Logo />
+          </div>
+          <StyledNav>
+            {/* <NavigationItems /> */}
+            <Button color="inherit" onClick={props.loginClicked}>Login</Button>
+            <Button color="inherit" onClick={props.signupClicked}>Sign Up</Button>
+          </StyledNav>
         </StyledToolBar>
       </StyledAppBar>
     </StyledContainer>
   );
 }
 
-export default ButtonAppBar;
+export default ToolBar;

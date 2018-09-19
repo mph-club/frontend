@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import Typography from '@material-ui/core/Typography';
@@ -16,20 +16,13 @@ import {
     StyledDivider
 } from './styles';
 
-class Login extends Component {
-
-    handleClose = () => {
-        this.props.history.replace('/');
-    };
-
-    render() {
-
+const Login = (props) => {
         return (
             <div>
                 <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
-                    open
+                    open = {props.openLogin}
                     disableAutoFocus
                     disableBackdropClick
                 >
@@ -37,7 +30,7 @@ class Login extends Component {
                         <StyledIconButton
                             color="inherit"
                             aria-label="Clear"
-                            onClick={this.handleClose}
+                            onClick={props.handleCloseLogin}
                         >
                             <ClearIcon />
                         </StyledIconButton>
@@ -78,7 +71,6 @@ class Login extends Component {
                 </Modal>
             </div>
         );
-    }
 }
 
 export default Login

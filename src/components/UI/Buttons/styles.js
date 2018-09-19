@@ -18,3 +18,4 @@ export const StyledButton = styled(Button)`
         transition: all 0.2s ease-in 0s;
     }
 `
+

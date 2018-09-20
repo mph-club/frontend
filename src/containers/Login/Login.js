@@ -71,7 +71,7 @@ const Login = (props) => {
                                         variant="body2">or
                                     </StyledDivider>
                                 </StyledDividerLayout>
-                                <Typography align="center" variant="body1">Don't have an account? <NavLink to="/signup" style={{color: CustomTheme.palette.blue}}>Sign up</NavLink>
+                                <Typography align="center" variant="body1">Don't have an account? <NavLink to="/signup">Sign up</NavLink>
                                 </Typography>
                             </StyledFooter>
                         </StyledForm>

@@ -23,10 +23,12 @@ export const theme = createMuiTheme({
 
 const green = '#31DA62';
 const blue = '#077DF8';
+const white = '#ffffff';
 
 const palette = {
   green,
-  blue
+  blue,
+  white
 }
 
 export const CustomTheme = {

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import GridList from '@material-ui/core/GridList';
+import {space} from '../../theme';
 
 // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS
 export const StyledGridList = styled(GridList)`
@@ -10,6 +11,7 @@ export const StyledGridList = styled(GridList)`
 
 export const StyledSection = styled.section`
     margin-top: 50px;
+    margin-left: ${space[4]};
 `
 
 export const StyledTitle = styled.h2`

@@ -9,6 +9,7 @@ import CarsCollection from '../CarsCollection/CarsCollection';
 import ListVehicleBanner from './ListVehicleBanner/ListVehicleBanner';
 import Footer from '../../components/UI/Footer/Footer';
 import Aux from '../../hoc/Aux/Aux';
+import SearchBar from '../SearchPage/SearchBar/SearchBar';
 
 class SearchPage extends Component {
     render() {
@@ -18,6 +19,7 @@ class SearchPage extends Component {
                     <StyledContainer>
                         <StyledTitle variant="title">Search and rent thousands of vehicles in all of Florida</StyledTitle>
                     </StyledContainer>
+                    <SearchBar />
                 </StyledHeader>
                 <CarsCollection title="Sedans" />
                 <CarsCollection title="SUV's" />

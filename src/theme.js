@@ -19,6 +19,22 @@ export const theme = createMuiTheme({
         },
         type: 'light'
       },
+
+      typography: {
+        // Use the system font instead of the default Roboto font.
+        fontFamily: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+        ].join(','),
+      },
 });
 
 const green = '#31DA62';

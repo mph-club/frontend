@@ -20,6 +20,7 @@ export const StyledContainer = styled.div`
     left: 0;
     width: 100%;
     height: 72px;
+    z-index: 100000;
 `
 
 export const StyledNav = styled.nav`

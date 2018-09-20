@@ -13,7 +13,10 @@ import {
     StyledDiv,
     StyledIconButton,
     StyledForm,
-    StyledDivider
+    StyledDivider,
+    StyledFooter,
+    StyledFooterButtonLayout,
+    StyledDividerLayout
 } from './styles';
 
 const SignUp = (props) => {
@@ -70,21 +73,25 @@ const SignUp = (props) => {
                                     id="phoneNumber"
                                 />
                             </FormControl>
-                            <StyledPrimaryButton
-                                type="submit"
-                                fullWidth
-                                variant="raised"
-                                color="primary"
-                            >
-                                Sign Up
-                            </StyledPrimaryButton>
-                            <div>
-                                <StyledDivider
-                                    variant="body2">or
-                                </StyledDivider>
-                            </div>
-                            <Typography variant="body1">Already have an account? <NavLink to="/login">Log in</NavLink>
-                            </Typography>
+                            <StyledFooter>
+                                <StyledFooterButtonLayout>
+                                    <StyledPrimaryButton
+                                        type="submit"
+                                        fullWidth
+                                        variant="raised"
+                                        color="primary"
+                                    >
+                                        Sign Up
+                                    </StyledPrimaryButton>
+                                </StyledFooterButtonLayout>
+                                <StyledDividerLayout>
+                                    <StyledDivider
+                                        variant="body2">or
+                                    </StyledDivider>
+                                </StyledDividerLayout>
+                                <Typography variant="body1">Already have an account? <NavLink to="/login">Log in</NavLink>
+                                </Typography>
+                            </StyledFooter>
                         </StyledForm>
                     </StyledDiv>
                 </Modal>

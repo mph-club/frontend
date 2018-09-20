@@ -20,6 +20,10 @@ import {
 
 class InitialPage extends Component {
 
+    handleSearch = () => {
+        this.props.history.push('/search-page')
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -73,7 +77,7 @@ class InitialPage extends Component {
                                     </StyledDateContainerItemTwo>
                                 </StyledDateContainer>
                                 <StyledButtonContainer>
-                                    <StyledButton>Search</StyledButton>
+                                    <StyledButton onClick={this.handleSearch} >Search</StyledButton>
                                 </StyledButtonContainer>
                             </StyledFormContainer>
                         </StyledLeftLayout>

@@ -5,6 +5,7 @@ export const StyledDiv = styled.div`
     background-color: black;
     height: 100%;
     box-sizing: border-box;
+    cursor: pointer;
 `
 
 export const StyledTitle = styled(Typography)`

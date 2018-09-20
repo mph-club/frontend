@@ -76,3 +76,14 @@ export const StyledFooterItemTwo = styled.div`
     flex-direction: column;
     margin-top: 4px;
 `
+export const StyleA = styled.a`
+    img {
+        &:hover {
+            text-decoration: none;
+            border: 0;
+            color: #fff !important;
+            -webkit-transition: color 0.2s;
+            transition: color 0.2s;
+        }
+    }
+`

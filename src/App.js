@@ -37,7 +37,10 @@ class App extends Component {
   render() {
     return (
       <Aux className="App">
-        <Toolbar loginClicked={this.handleLogin} signupClicked={this.handleSignUp}></Toolbar>
+        <Toolbar
+          loginClicked={this.handleLogin}
+          signupClicked={this.handleSignUp}>
+        </Toolbar>
         <StyledMain>
           <Login
             openLogin={this.state.openLogin}

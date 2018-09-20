@@ -6,30 +6,6 @@ export const StyledIconButton = styled(IconButton)`
     margin-left: -12px;
     margin-top: 12px;
 `
-export const StyledForm = styled.form`
-    width: '90%'; // Fix IE11 issue.
-    margin-top: 8px;
-    margin-left: 5%;
-    margin-right: 5%;
-`
-
-export const StyledDiv = styled.div`
-    position: fixed;
-    padding: 16px;
-    width: 70%;
-    border-radius: 8px;
-    left: 15%;
-    top: 30%;
-    background-color: #ffffff;
-    &:focus {
-        outline: none;
-    }
-
-    @media (min-width: 600px) {
-        width: 500px;
-        left: calc(50% - 250px);
-    }
-`
 
 export const StyledDivider = styled(Typography)`
     width: 100%;
@@ -50,4 +26,44 @@ export const StyledDivider = styled(Typography)`
     &:after {
         margin: 0 -55% 0 .5em;
     }
+`
+
+export const StyledForm = styled.form`
+    width: '90%'; // Fix IE11 issue.
+    margin-top: 8px;
+    margin-left: 5%;
+    margin-right: 5%;
+`
+
+export const StyledDiv = styled.div`
+    height: 558px;
+    position: fixed;
+    padding: 16px;
+    width: 70%;
+    border-radius: 8px;
+    left: 15%;
+    top: 10%;
+    background-color: #ffffff;
+    &:focus {
+        outline: none;
+    }
+
+    @media (min-width: 600px) {
+        width: 500px;
+        left: calc(50% - 250px);
+    }
+`
+
+export const StyledFooter = styled.div`
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+`
+export const StyledFooterButtonLayout = styled.div`
+    align-self: flex-end;
+    margin-bottom: 2.5rem;
+`
+
+export const StyledDividerLayout = styled.div`
+    margin-bottom: 2rem;
 `

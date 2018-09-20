@@ -2,11 +2,13 @@ import styled from 'styled-components';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
+import { CustomTheme } from '../../../theme';
 
 export const StyledCard = styled(Card)`
   && {
     box-shadow: none;
     max-width: 429px;
+    margin-right: ${CustomTheme.space[4]};
   }
 `
 

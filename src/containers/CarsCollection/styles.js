@@ -3,7 +3,9 @@ import GridList from '@material-ui/core/GridList';
 
 // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS
 export const StyledGridList = styled(GridList)`
-    flex-wrap: nowrap !important;
+    && {
+        flex-wrap: nowrap;
+    }
 `
 
 export const StyledSection = styled.section`

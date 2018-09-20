@@ -14,7 +14,7 @@ const CarsCollection = (props) => {
         <StyledSection>
             <StyledTitle>{props.title}</StyledTitle>
             <StyledDivContainer>
-                <StyledGridList>
+                <StyledGridList spacing={4}>
                     {tileData.map(tile => (
                         <CarCard key={tile.id} image={tile.img} title={tile.title} price={tile.price}/>
                     ))}

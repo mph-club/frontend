@@ -18,7 +18,6 @@ import {
     StyledDividerLayout,
     StyledFooterButtonLayout
 } from './styles';
-import {CustomTheme} from '../../theme';
 
 const Login = (props) => {
         return (

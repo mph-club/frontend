@@ -6,8 +6,7 @@ import FooterNavigationItems from '../../Navigation/FooterNavigationItems/Footer
 import fbIcon from '../../../assets/icons/fb.svg';
 import instagramIcon from '../../../assets/icons/instagram.svg';
 import twitterIcon from '../../../assets/icons/twitter.svg';
-import theme, { CustomTheme } from '../../../theme';
-import Logo from '../Logo/Logo';
+import { CustomTheme } from '../../../theme';
 import {
     StyledFooter,
     StyledDiv,
@@ -42,9 +41,9 @@ const Footer = () => {
                                 Follow us
                             </Typography>
                             <StyledSocialUl>
-                                <li><StyleA href="#"><img src={fbIcon}></img></StyleA></li>
-                                <li><StyleA href="#"><img src={instagramIcon}></img></StyleA></li>
-                                <li><StyleA href="#"><img src={twitterIcon}></img></StyleA></li>
+                                <li><StyleA href="#"><img src={fbIcon} alt="Facebook"></img></StyleA></li>
+                                <li><StyleA href="#"><img src={instagramIcon} alt="Instagram"></img></StyleA></li>
+                                <li><StyleA href="#"><img src={twitterIcon} alt="twitter"></img></StyleA></li>
                             </StyledSocialUl>
                         </StyledDivTwo>
                     </StyledDiv>

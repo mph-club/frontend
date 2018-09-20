@@ -40,11 +40,21 @@ export const theme = createMuiTheme({
 const green = '#31DA62';
 const blue = '#077DF8';
 const white = '#ffffff';
+const grey01 = '#777777';
+const grey02 = '#999999';
+const grey03 = '#CCCCCC';
+const grey04 = '#DDDDDD';
+const grey05 = '#FAFAFA';
 
 const palette = {
   green,
   blue,
-  white
+  white,
+  grey01,
+  grey02,
+  grey03,
+  grey04,
+  grey05
 }
 
 //Space 0 (0px), 1 (4px), 2 (8px), 3 (16px), 4 (32px) , 5 (64px), 6 (128px), 7 (256px)

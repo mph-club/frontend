@@ -1,6 +1,7 @@
 import React from 'react';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import GridListTile from '@material-ui/core/GridListTile';
+import Typography from '@material-ui/core/Typography';
 import {
 	StyledCard,
 	StyledCardMedia,
@@ -9,7 +10,8 @@ import {
 	StyledPrice,
 	StyledPriceLayout,
 	StyledDollarSign,
-	StyledPerDay
+	StyledPerDay,
+	StyledGradeRoundedIcon
 } from './styles';
 
 const CarCard = (props) => {
@@ -28,7 +30,21 @@ const CarCard = (props) => {
 						<StyledDollarSign>$</StyledDollarSign><StyledPrice>{props.price}</StyledPrice><StyledPerDay>/per day</StyledPerDay>
 					</StyledPriceLayout>
 					<div>
-						<div>4 trips</div>
+						<div>
+							<div>4 trips</div>
+						</div>
+						<div>
+							<StyledGradeRoundedIcon />
+							<StyledGradeRoundedIcon />
+							<StyledGradeRoundedIcon />
+							<StyledGradeRoundedIcon />
+							<StyledGradeRoundedIcon />
+						</div>
+						<div>
+							<Typography variant="body1">
+								8 mi
+							</Typography>
+						</div>
 					</div>
 				</StyledCardActions>
 			</StyledCard>

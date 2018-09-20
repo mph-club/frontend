@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
+import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
 import { CustomTheme } from '../../../theme';
+
 
 export const StyledCard = styled(Card)`
   && {
@@ -16,6 +18,8 @@ export const StyledCardMedia = styled(CardMedia)`
   && {
     height: 266px;
     width: 429px;
+    border: solid 1px #ccd0d2;
+    border-radius: 8px;
   }
 `
 
@@ -23,6 +27,7 @@ export const StyledCardActions = styled(CardActions)`
   && {
     padding: 0;
     justify-content: space-between;
+    margin-top: ${CustomTheme.space[3]};
   }
 `
 
@@ -57,6 +62,10 @@ export const StyledPerDay = styled.div`
     align-self: flex-end;
     margin-bottom: 4px;
   }
+`
+
+export const StyledGradeRoundedIcon = styled(GradeRoundedIcon)`
+	color: #077DF8;
 `
 
        

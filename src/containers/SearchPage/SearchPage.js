@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
-import { StyledHeader } from './styles';
+import {
+    StyledHeader,
+    StyledTitle,
+    StyledContainer
+} from './styles';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import ListVehicleBanner from './ListVehicleBanner/ListVehicleBanner';
 import Footer from '../../components/UI/Footer/Footer';
@@ -10,7 +14,11 @@ class SearchPage extends Component {
     render() {
         return (
             <Aux>
-                <StyledHeader />
+                <StyledHeader>
+                    <StyledContainer>
+                        <StyledTitle variant="title">Search and rent thousands of vehicles in all of Florida</StyledTitle>
+                    </StyledContainer>
+                </StyledHeader>
                 <CarsCollection title="Sedans" />
                 <CarsCollection title="SUV's" />
                 <CarsCollection title="Exotics" />

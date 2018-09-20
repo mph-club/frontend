@@ -3,9 +3,9 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import FooterNavigationItems from '../../Navigation/FooterNavigationItems/FooterNavigationItems';
 import Logo from '../Logo/Logo';
-import fbIcon from '../../../assets/icons/fb.svg';
-import instagramIcon from '../../../assets/icons/instagram.svg';
-import twitterIcon from '../../../assets/icons/twitter.svg';
+// import fbIcon from '../../../assets/icons/fb.svg';
+// import instagramIcon from '../../../assets/icons/instagram.svg';
+// import twitterIcon from '../../../assets/icons/twitter.svg';
 
 import {
     StyledFooter,
@@ -31,10 +31,10 @@ const Footer = () => {
                 <Grid item xs={12} sm={6}>
                     <StyledDiv>
                         <StyledHeadLine variant="headline">Follow Us</StyledHeadLine>
-                        <StyledUl class="social-links">
-                            <li><a href="www.facebook.com"><img src={fbIcon}></img></a></li>
+                        <StyledUl>
+                            {/* <li><a href="#"><img src={fbIcon}></img></a></li>
                             <li><a href="#"><img src={instagramIcon}></img></a></li>
-                            <li><a href="#"><img src={twitterIcon}></img></a></li>
+                            <li><a href="#"><img src={twitterIcon}></img></a></li> */}
                         </StyledUl>
                     </StyledDiv>
                 </Grid>

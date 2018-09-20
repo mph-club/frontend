@@ -36,7 +36,7 @@ export const StyledForm = styled.form`
 `
 
 export const StyledDiv = styled.div`
-    height: 558px;
+    height: 574px;
     position: fixed;
     padding: 16px;
     width: 70%;

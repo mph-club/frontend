@@ -18,7 +18,6 @@ export const StyledCardMedia = styled(CardMedia)`
   && {
     height: 266px;
     width: 429px;
-    border: solid 1px #ccd0d2;
     border-radius: 8px;
   }
 `

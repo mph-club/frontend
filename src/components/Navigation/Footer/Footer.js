@@ -22,7 +22,7 @@ import {
 const Footer = () => {
     return (
         <StyledFooter>
-            <Grid container spacing={16}>
+            <Grid container spacing={24}>
                 <Grid item xs={12} sm={6}>
                     <StyledFooterItemOne>
                         <StyledHeadLine variant="headline">mph club</StyledHeadLine>

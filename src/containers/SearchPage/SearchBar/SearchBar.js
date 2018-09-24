@@ -1,24 +1,24 @@
 import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
+
 import {
     StyledContainer,
-    StyledPaper
+    StyleButton,
+    StyledPaper,
+    StyledGrid
 } from './styles';
 
 const SearchBar = () => {
     return (
         <StyledContainer>
-            {/* <Grid container spacing={24}>
-                <Grid item xs={12}>
-                    <StyledPaper>xs=6</StyledPaper>
-                </Grid>
-                <Grid item xs={6}>
-                    <StyledPaper>xs</StyledPaper>
-                </Grid>
-            </Grid> */}
+            <Grid container spacing={24}>
+                <StyledGrid item xs={12}>
+                    <StyledPaper></StyledPaper>
+                    <StyleButton>Search</StyleButton>
+                </StyledGrid>
+            </Grid>
         </StyledContainer>
-
     );
 }
 

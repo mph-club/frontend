@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
-import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
+
 import { CustomTheme } from '../../../theme';
 
 
@@ -64,9 +64,7 @@ export const StyledPerDay = styled.div`
   }
 `
 
-export const StyledGradeRoundedIcon = styled(GradeRoundedIcon)`
-	color: #077DF8;
-`
+
 
        
 

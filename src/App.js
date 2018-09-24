@@ -6,9 +6,10 @@ import Aux from './hoc/Aux/Aux';
 import Toolbar from './components/Navigation/Toolbar/Toolbar';
 import InitialPage from './containers/InitialPage/InitialPage';
 import { StyledMain } from './AppStyles';
-import Login from './containers/Login/Login';
-import SignUp from './containers/SignUp/SignUp';
+import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
 import SearchPage from './containers/SearchPage/SearchPage';
+import DetailPage from './containers/DetailPage/DetailPage';
 
 class App extends Component {
 
@@ -51,6 +52,7 @@ class App extends Component {
           <Switch>
             <Route path="/search-page" exact component={SearchPage} />
             <Route path="/" exact component={InitialPage} />
+            <Route path="/car-details" exact component={DetailPage}/>
           </Switch>
         </StyledMain>
       </Aux>

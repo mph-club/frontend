@@ -2,6 +2,7 @@ import React from 'react';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import GridListTile from '@material-ui/core/GridListTile';
 import Typography from '@material-ui/core/Typography';
+import RateStars from '../../../components/RateStars/RateStars';
 import {
 	StyledCard,
 	StyledCardMedia,
@@ -10,15 +11,16 @@ import {
 	StyledPrice,
 	StyledPriceLayout,
 	StyledDollarSign,
-	StyledPerDay,
-	StyledGradeRoundedIcon
+	StyledPerDay
 } from './styles';
 
 const CarCard = (props) => {
+
+
 	return (
 		<GridListTile key={props.key}>
 			<StyledCard>
-				<CardActionArea>
+				<CardActionArea onClick={() => props.handleCard()}>
 					<StyledTitle>{props.title}</StyledTitle>
 					<StyledCardMedia
 						image={props.image}
@@ -31,14 +33,10 @@ const CarCard = (props) => {
 					</StyledPriceLayout>
 					<div>
 						<div>
-							<div>4 trips</div>
+							<p>4 trips</p>
 						</div>
 						<div>
-							<StyledGradeRoundedIcon />
-							<StyledGradeRoundedIcon />
-							<StyledGradeRoundedIcon />
-							<StyledGradeRoundedIcon />
-							<StyledGradeRoundedIcon />
+							<RateStars rate={props.rate}/>
 						</div>
 						<div>
 							<Typography variant="body1">

@@ -17,7 +17,6 @@ class CarsCollection extends Component {
 
     handleCard = (cardId) => {
         this.setState({ cardIdSelected: cardId});
-        console.log(this.props);
         this.props.history.push('/car-details');
     }
 

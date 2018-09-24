@@ -1,16 +1,15 @@
 import React from 'react';
 
 import avatar from '../../../assets/images/avatar.png'
-import Aux from '../../../hoc/Aux/Aux';
 import RateStars from '../../RateStars/RateStars';
 import {
     StyledAvatar,
     StyledUl
 } from '../OwnedBy/styles';
 
-const OwnedBy = () => {
+const OwnedBy = (props) => {
     return (
-        <Aux>
+        <div onClick={props.onwerClicked}>
             <h4>Owned By</h4>
             <StyledUl>
                 <li>
@@ -29,8 +28,7 @@ const OwnedBy = () => {
                         src={avatar}></StyledAvatar>
                 </li>
             </StyledUl>
-
-        </Aux>
+        </div>
     );
 }
 

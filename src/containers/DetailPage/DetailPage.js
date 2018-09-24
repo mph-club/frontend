@@ -61,6 +61,10 @@ class DetailPage extends Component {
         this.setState({ activeStep });
     };
 
+    goToOwnerDetails = () => {
+        this.props.history.push('/user-details');
+    }
+
     render() {
         const { theme } = this.props;
 
@@ -112,7 +116,7 @@ class DetailPage extends Component {
 
                         </div>
                         <Divider />
-                        <OwnedBy />
+                        <OwnedBy onwerClicked = {this.goToOwnerDetails}/>
                         <Divider />
                         <Guidelines />
                         <Divider />

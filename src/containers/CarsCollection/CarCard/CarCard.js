@@ -2,6 +2,7 @@ import React from 'react';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import GridListTile from '@material-ui/core/GridListTile';
 import Typography from '@material-ui/core/Typography';
+import { CustomTheme } from '../../../theme';
 import {
 	StyledCard,
 	StyledCardMedia,
@@ -41,7 +42,7 @@ const CarCard = (props) => {
 							<StyledGradeRoundedIcon />
 						</div>
 						<div>
-							<Typography variant="body1">
+							<Typography variant="body1" style={{color: `${CustomTheme.palette.grey02}`}}>
 								8 mi
 							</Typography>
 						</div>

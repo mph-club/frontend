@@ -8,6 +8,7 @@ import {
 } from './styles';
 import CarCard from '../CarsCollection/CarCard/CarCard';
 import tileData from './tileData';
+import { Typography } from '@material-ui/core';
 
 class CarsCollection extends Component {
 
@@ -23,7 +24,7 @@ class CarsCollection extends Component {
     render() {
         return (
             <StyledSection>
-                <StyledTitle>{this.props.title}</StyledTitle>
+                <StyledTitle variant="display1" color="primary">{this.props.title}</StyledTitle>
                 <StyledDivContainer>
                     <StyledGridList spacing={4}>
                         {tileData.map(tile => (

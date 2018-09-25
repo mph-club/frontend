@@ -7,9 +7,9 @@ const RateStars = (props) => {
 
 		for (let i = 0; i < 5; i++) {
 			if (i < props.rate) {
-				start.push(<StyledGradeRoundedIcon key={i}/>)
+				start.push(<StyledGradeRoundedIcon fontSize="small" key={i}/>)
 			} else {
-				start.push(<StyleOutlineStarIcon key={i}/>)
+				start.push(<StyleOutlineStarIcon fontSize="small" key={i}/>)
 			}
         }
         

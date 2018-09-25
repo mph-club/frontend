@@ -7,17 +7,21 @@ import {
     StyledP,
     StyledButtonLayout,
     StyledSecondaryButton,
+    StyledDivTwo
 } from './styles';
+import { Typography } from '@material-ui/core';
 
 class ListVehicleBanner extends Component {
     render() {
         return (
             <StyledDiv>
-                <StyledTitle variant="headline"><StyleSpan>Maximize</StyleSpan> the return on your vehicle investment</StyledTitle>
-                <StyledP>Earn over $10,000 a year by renting out your vehicle to our select trusted clientele.</StyledP>
-                <StyledButtonLayout>
-                    <StyledSecondaryButton>List your vehicle</StyledSecondaryButton>
-                </StyledButtonLayout>
+                <StyledDivTwo>
+                    <StyledTitle variant="headline"><StyleSpan>Maximize</StyleSpan> the return on your vehicle investment</StyledTitle>
+                    <StyledP variant="body2">Earn over $10,000 a year by renting out your vehicle to our select trusted clientele.</StyledP>
+                    <StyledButtonLayout>
+                        <StyledSecondaryButton>List your vehicle</StyledSecondaryButton>
+                    </StyledButtonLayout>
+                </StyledDivTwo>
             </StyledDiv>
         );
     }

@@ -34,7 +34,7 @@ const CarCard = (props) => {
 					</StyledPriceLayout>
 					<div>
 						<div>
-							<p>4 trips</p>
+							<Typography variant="body2">4 trips</Typography>
 						</div>
 						<div>
 							<RateStars rate={props.rate}/>

@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import { CustomTheme } from '../../../theme';
 import Typography from '@material-ui/core/Typography';
 import SecondaryButton from '../../../components/UI/Buttons/SecondayButton/SecondaryButton';
 
+import CustomTheme, { palette } from '../../../theme';
+
 export const StyledTitle = styled(Typography)`
     text-align: center;
+    max-width: 544px;
 `
 
 export const StyledSecondaryButton = styled(SecondaryButton)`
@@ -12,19 +14,29 @@ export const StyledSecondaryButton = styled(SecondaryButton)`
     margin-right: auto;
 `
 
+export const StyledP = styled(Typography)`
+    text-align: center;
+    max-width: 480px;
+`
+
 export const StyledDiv = styled.div`
-    width: 100%;
-    margin: 64px auto;
-    display: flex;
-    flex-direction: column;
+    && {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        display: flex;
+        justify-content: center;
+    }
+`
+
+export const StyledDivTwo = styled.div`
+    && {
+        display: flex;
+        flex-direction: column;
+    }
 `
 
 export const StyleSpan = styled.span`
-    color: ${CustomTheme.palette.green}
-`
-
-export const StyledP = styled.p`
-    text-align: center;
+    color: ${palette.green}
 `
 
 export const StyledButtonLayout = styled.div`

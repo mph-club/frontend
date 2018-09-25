@@ -34,6 +34,30 @@ export const theme = createMuiTheme({
           '"Segoe UI Emoji"',
           '"Segoe UI Symbol"',
         ].join(','),
+        display2: {
+          fontWeight: 600,
+          fontSize: "3rem" //48px
+        },
+        display1: {
+          fontWeight: 600,
+          fontSize: "2.25rem" //36px
+        },
+        headline: {
+          fontWeight: 600,
+          fontSize: "1.5rem", //24px
+        },
+        title: {
+          fontWeight: 600,
+          fontSize: "1.25rem", //20px
+        },
+        body2: {
+          fontWeight: 400,
+          fontSize: "1rem", //16px
+        },
+        body1: {
+          fontWeight: 400,
+          fontSize: ".875rem", //14px
+        }
       },
 });
 
@@ -46,7 +70,7 @@ const grey03 = '#CCCCCC';
 const grey04 = '#DDDDDD';
 const grey05 = '#FAFAFA';
 
-const palette = {
+export const palette = {
   green,
   blue,
   white,

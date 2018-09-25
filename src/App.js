@@ -11,6 +11,7 @@ import SignUp from './components/SignUp/SignUp';
 import SearchPage from './containers/SearchPage/SearchPage';
 import DetailPage from './containers/DetailPage/DetailPage';
 import UserDetails from './components/UserDetails/UserDetails';
+import Checkout from './components/Checkout/Checkout';
 
 class App extends Component {
 
@@ -55,6 +56,7 @@ class App extends Component {
             <Route path="/" exact component={InitialPage} />
             <Route path="/car-details" exact component={DetailPage}/>
             <Route path="/user-details" exact component={UserDetails}/>
+            <Route path="/checkout" exact component={Checkout}/>
           </Switch>
         </StyledMain>
       </Aux>

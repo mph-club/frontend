@@ -9,7 +9,6 @@ import {
     StyledSecondaryButton,
     StyledDivTwo
 } from './styles';
-import { Typography } from '@material-ui/core';
 
 class ListVehicleBanner extends Component {
     render() {

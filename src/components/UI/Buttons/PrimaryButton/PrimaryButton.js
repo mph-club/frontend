@@ -3,7 +3,7 @@ import {StyledButton} from './styles';
 
 const StyledPrimaryButton = (props) => {
     return (
-        <StyledButton>
+        <StyledButton {...props}>
             {props.children}
         </StyledButton>
     );

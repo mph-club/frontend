@@ -22,12 +22,15 @@ import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
 import Guidelines from '../../components/DetailPageComponents/Guidelines/Guidelines';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
+import ReportListing from '../../components/ReportListing/ReportListing';
+
 
 
 class DetailPage extends Component {
     state = {
         activeStep: 0,
-        readMore: false
+        readMore: false,
+        reportListing: false
     };
 
     expandedText = () => {
@@ -63,6 +66,12 @@ class DetailPage extends Component {
 
     goToOwnerDetails = () => {
         this.props.history.push('/user-details');
+    }
+
+    openFormToReportListing = () => {
+        this.setState({
+            reportListing: true
+        })
     }
 
     render() {
@@ -110,23 +119,23 @@ class DetailPage extends Component {
                         </div>
                         <Divider />
                         <div>
-
-
                             <RenterReviews />
-
                         </div>
                         <Divider />
-                        <OwnedBy onwerClicked = {this.goToOwnerDetails}/>
+                        <OwnedBy onwerClicked={this.goToOwnerDetails} />
                         <Divider />
                         <Guidelines />
                         <Divider />
                     </Grid>
                     <Grid item xs>
-                        <SummaryTrip />
+                        <SummaryTrip
+                            reportListingClicked={this.openFormToReportListing}
+                            checkout={this.goToCheckout} />
                     </Grid>
                 </StyledGridContainer>
                 <CarsCollection title="You might also like" />
                 <Footer />
+                <ReportListing openForm={this.state.reportListing} />
             </Aux >
         );
     }

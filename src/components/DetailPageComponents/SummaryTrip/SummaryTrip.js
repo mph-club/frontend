@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
     StyledDateForm,
@@ -9,7 +10,9 @@ import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import Divider from '@material-ui/core/Divider';
 import Aux from '../../../hoc/Aux/Aux';
 
-const SummaryTrip = () => {
+const SummaryTrip = (props) => {
+
+    const MyLink = props => <Link to="/checkout" {...props} />
 
     return (
         <Aux>
@@ -17,7 +20,7 @@ const SummaryTrip = () => {
                 <h4>TRIP DATES</h4>
                 <StyledDateForm noValidate fullWidth>
                     <StyledTextField
-                        id="fromTextField"
+                        id="startTextField"
                         label="Start Date"
                         type="date"
                         defaultValue="2017-05-24"
@@ -29,7 +32,7 @@ const SummaryTrip = () => {
                 <Divider />
                 <StyledDateForm noValidate fullWidth>
                     <StyledTextField
-                        id="fromTextField"
+                        id="endTextField"
                         label="Trip End"
                         type="date"
                         defaultValue="2017-05-24"
@@ -46,10 +49,10 @@ const SummaryTrip = () => {
                 <h5>200 mi</h5>
                 <p>$0.45 fee for each additional mile</p>
                 <div>
-                    <PrimaryButton>Continue $382/per day</PrimaryButton>
+                    <PrimaryButton component={MyLink}>Continue $382/per day</PrimaryButton>
                 </div>
             </StyledContainer>
-            <a href=''>Report this listing</a>
+            <button onClick={props.reportListingClicked}>Report this listing</button>
         </Aux>
     );
 };

@@ -8,7 +8,6 @@ import {
 } from './styles';
 import CarCard from '../CarsCollection/CarCard/CarCard';
 import tileData from './tileData';
-import { Typography } from '@material-ui/core';
 
 class CarsCollection extends Component {
 

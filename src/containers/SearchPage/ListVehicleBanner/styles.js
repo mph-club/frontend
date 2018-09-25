@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import SecondaryButton from '../../../components/UI/Buttons/SecondayButton/SecondaryButton';
 
-import CustomTheme, { palette } from '../../../theme';
+import { palette } from '../../../theme';
 
 export const StyledTitle = styled(Typography)`
     text-align: center;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import Typography from '@material-ui/core/Typography';
+import theme, { palette } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
 import Aux from '../../hoc/Aux/Aux';
@@ -16,7 +17,9 @@ import RenterReviews from '../../components/DetailPageComponents/RenterReviews/R
 import {
     StyledImageContainer,
     StyledImg,
-    StyledGridContainer
+    StyledGridContainer,
+    StyledTitleLayout,
+    StyledRateLayout
 } from './styles';
 import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
 import Guidelines from '../../components/DetailPageComponents/Guidelines/Guidelines';
@@ -93,12 +96,19 @@ class DetailPage extends Component {
                 </StyledImageContainer>
                 <StyledGridContainer>
                     <Grid item xs>
-                        <Typography variant="title" component="h2">Porsche Panamera</Typography>
-                        <Typography variant="title" component="h2">2016</Typography>
-                        <div>
-                            <div>4 trips</div>
-                        </div>
-                        <RateStars rate='4' />
+                        <StyledTitleLayout>
+                            <Typography variant="display1" color="primary" component="h2">Porsche Panamera</Typography>
+                            <Typography variant="display1" color="primary" component="h2">2016</Typography>
+                            <StyledRateLayout>
+                                <div>4 trips</div>
+                                <div><RateStars rate='4' /></div>
+                                <div>
+                                    <Typography variant="body1" style={{color: `${palette.grey02}`}}>
+                                        8 mi
+                                    </Typography>
+                                </div>
+                            </StyledRateLayout>
+                        </StyledTitleLayout>
                         <Divider />
                         <div style={{ display: 'flex' }}>
                             <CarAttribute />

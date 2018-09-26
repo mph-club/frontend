@@ -12,11 +12,12 @@ import SearchPage from './containers/SearchPage/SearchPage';
 import DetailPage from './containers/DetailPage/DetailPage';
 import UserDetails from './components/UserDetails/UserDetails';
 import Checkout from './components/Checkout/Checkout';
+import Dashboard from './containers/Dashboard/Dashboard';
 
 class App extends Component {
 
   state = {
-    auth: false,
+    auth: true,
     openLogin: false,
     openSignUp: false
   }
@@ -25,16 +26,24 @@ class App extends Component {
     this.setState({ openLogin: true })
   }
 
-  closeLogin = () => {
+  closeLogin = (signUp) => {
     this.setState({ openLogin: false })
+
+    if (signUp) {
+      this.setState({ openSignUp: true })
+    }
   }
 
   handleSignUp = () => {
     this.setState({ openSignUp: true })
   }
 
-  closeSignup = () => {
+  closeSignup = (login) => {
     this.setState({ openSignUp: false })
+
+    if (login) {
+      this.setState({ openLogin: true })
+    }
   }
 
   render() {
@@ -42,21 +51,26 @@ class App extends Component {
       <Aux className="App">
         <Toolbar
           loginClicked={this.handleLogin}
-          signupClicked={this.handleSignUp}>
+          signupClicked={this.handleSignUp}
+          auth = {this.state.auth}
+          userName='Juan Luis'>
         </Toolbar>
         <StyledMain>
           <Login
             openLogin={this.state.openLogin}
-            handleCloseLogin={this.closeLogin} />
+            handleCloseLogin={() => this.closeLogin(false)}
+            openSignUp={() => this.closeLogin(true)} />
           <SignUp
             openSignUp={this.state.openSignUp}
-            closeSignUp={this.closeSignup} />
+            closeSignUp={() => this.closeSignup(false)}
+            openLogin={() => this.closeSignup(true)} />
           <Switch>
             <Route path="/search-page" exact component={SearchPage} />
-            <Route path="/" exact component={InitialPage} />
-            <Route path="/car-details" exact component={DetailPage}/>
-            <Route path="/user-details" exact component={UserDetails}/>
-            <Route path="/checkout" exact component={Checkout}/>
+            <Route path="/car-details" exact component={DetailPage} />
+            <Route path="/user-details" exact component={UserDetails} />
+            <Route path="/checkout" exact component={Checkout} />
+            <Route path="/dashboard" exact component={Dashboard}/>
+            <Route path="/" component={InitialPage} />
           </Switch>
         </StyledMain>
       </Aux>

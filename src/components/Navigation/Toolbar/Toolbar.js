@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Button from '@material-ui/core/Button';
 import Logo from '../../UI/Logo/Logo';
+import Aux from '../../../hoc/Aux/Aux';
+import UserEntry from '../UserEntry/UserEntry';
 import {
   StyledAppBar,
   StyledToolBar,
@@ -9,29 +11,32 @@ import {
   StyledNav
 } from './styles';
 
-class ToolBar extends Component {
+const ToolBar = (props) => {
 
-  logoClickedHandler = () => {
-    console.log(this.props);
-    // this.props.history.replace('/')
+  let buttons = null
+  if (props.auth) {
+    buttons = <UserEntry userName={props.userName}/>
+  } else {
+    buttons = <Aux>
+      <Button color="inherit" onClick={props.loginClicked}>Login</Button>
+      <Button color="inherit" onClick={props.signupClicked}>Sign Up</Button>
+    </Aux>
   }
-  render() {
-    return (
-      <StyledContainer>
-        <StyledAppBar position="static">
-          <StyledToolBar>
-            <div>
-              <Logo clicked={this.logoClickedHandler} />
-            </div>
-            <StyledNav>
-              <Button color="inherit" onClick={this.props.loginClicked}>Login</Button>
-              <Button color="inherit" onClick={this.props.signupClicked}>Sign Up</Button>
-            </StyledNav>
-          </StyledToolBar>
-        </StyledAppBar>
-      </StyledContainer>
-    );
-  }
+
+  return (
+    <StyledContainer>
+      <StyledAppBar position="static">
+        <StyledToolBar>
+          <div>
+            <Logo />
+          </div>
+          <StyledNav>
+            {buttons}
+          </StyledNav>
+        </StyledToolBar>
+      </StyledAppBar>
+    </StyledContainer>
+  );
 }
 
 export default ToolBar;

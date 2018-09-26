@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
@@ -23,8 +22,8 @@ const SignUp = (props) => {
         return (
             <div>
                 <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
+                    aria-labelledby="sign-up-modal"
+                    aria-describedby="This is the sign up form"
                     open={props.openSignUp}
                     disableAutoFocus
                     disableBackdropClick
@@ -89,7 +88,7 @@ const SignUp = (props) => {
                                         variant="body2">or
                                     </StyledDivider>
                                 </StyledDividerLayout>
-                                <Typography variant="body1">Already have an account? <NavLink to="/login">Log in</NavLink>
+                                <Typography variant="body1">Already have an account? <button onClick={props.openLogin}>Log in</button>
                                 </Typography>
                             </StyledFooter>
                         </StyledForm>

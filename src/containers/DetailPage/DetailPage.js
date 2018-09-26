@@ -9,7 +9,6 @@ import Aux from '../../hoc/Aux/Aux';
 import { tutorialSteps } from '../CarsCollection/tileData';
 import RateStars from '../../components/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
-import CarAttribute from '../../components/CarAttribute/CarAttribute';
 import CarFeature from '../../components/CarFeature/CarFeature';
 import Footer from '../../components/Navigation/Footer/Footer';
 import ReadMore from '../../components/ReadMore/ReadMore';
@@ -19,7 +18,14 @@ import {
     StyledImg,
     StyledGridContainer,
     StyledTitleLayout,
-    StyledRateLayout
+    StyledRateLayout,
+    StyledDescriptionIconsLayout,
+    StyledIcons,
+    StyledCaption,
+    StyledDescriptionLayout,
+    StyledCarFeatureWrapper,
+    StyledCarFeatureContainer,
+    StyledRenterReviewsWrapper
 } from './styles';
 import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
 import Guidelines from '../../components/DetailPageComponents/Guidelines/Guidelines';
@@ -27,6 +33,9 @@ import CarsCollection from '../CarsCollection/CarsCollection';
 import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
 import ReportListing from '../../components/ReportListing/ReportListing';
 import SeatIcon from '../../components/Icons/SeatIcon';
+import DoorIcon from '../../components/Icons/DoorIcon';
+import GasIcon from '../../components/Icons/GasIcon';
+import GPSIcon from '../../components/Icons/GPSIcon';
 
 
 
@@ -34,7 +43,20 @@ class DetailPage extends Component {
     state = {
         activeStep: 0,
         readMore: false,
-        reportListing: false
+        reportListing: false,
+        features: [
+            {
+                label: 'Manual',
+                image: 'svg'
+            }, {
+                label: 'Bluetooth',
+                image: 'svg'
+            },
+            {
+                label: 'Sunroof',
+                image: 'svg'
+            }
+        ]
     };
 
     expandedText = () => {
@@ -112,24 +134,52 @@ class DetailPage extends Component {
                                 </StyledRateLayout>
                             </StyledTitleLayout>
                             <Divider />
-                            <div style={{ display: 'flex'}}>
-                                <SeatIcon style={{ fontSize: 64 }}/>    
-                            </div>
-                            <p>Description</p>
-                            <div>
-                                <ReadMore >{'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}</ReadMore>
-                            </div>
+                            <StyledDescriptionIconsLayout>
+                                <StyledIcons>
+                                    <SeatIcon style={{ fontSize: 64 }} />
+                                    <Typography variant="body2" component="p">2 Seats</Typography>
+                                </StyledIcons>
+                                <StyledIcons>
+                                    <DoorIcon style={{ fontSize: 64 }} />
+                                    <Typography variant="body2" component="p">2 Door</Typography>
+                                </StyledIcons>
+                                <StyledIcons>
+                                    <GasIcon style={{ fontSize: 64 }} />
+                                    <Typography variant="body2" component="p">13 MPG</Typography>
+                                </StyledIcons>
+                                <div>
+                                    <GPSIcon style={{ fontSize: 64 }} />
+                                    <Typography variant="body2" component="p">2 Seats</Typography>
+                                </div>
+                            </StyledDescriptionIconsLayout>
+                            <StyledDescriptionLayout>
+                                <StyledCaption variant="body2" component="p">Description</StyledCaption>
+                                <div>
+                                    <Typography variant="body2" component="p">
+                                        <ReadMore>
+                                            {'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
+                                        </ReadMore>
+                                    </Typography>
+                                </div>
+                            </StyledDescriptionLayout>
                             <Divider />
-                            <div>
-                                <CarFeature />
-                                <CarFeature />
-                                <CarFeature />
-                                <CarFeature />
-                            </div>
+                            <StyledCarFeatureContainer>
+                                <StyledCaption variant="body2" component="p">Features</StyledCaption>
+                                    {this.state.features.map((feature, index) => {
+                                        return (
+                                            <StyledCarFeatureWrapper>
+                                                <CarFeature
+                                                key={index}
+                                                label={feature.label}
+                                                image={feature.image} />
+                                            </StyledCarFeatureWrapper>
+                                        );
+                                    })}
+                            </StyledCarFeatureContainer>
                             <Divider />
-                            <div>
+                            <StyledRenterReviewsWrapper>
                                 <RenterReviews />
-                            </div>
+                            </StyledRenterReviewsWrapper>
                             <Divider />
                             <OwnedBy onwerClicked={this.goToOwnerDetails} />
                             <Divider />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Truncate from 'react-truncate';
+import { StyledReadMore } from './styles';
 
 class ReadMore extends Component {
     constructor(...args) {
@@ -49,14 +50,14 @@ class ReadMore extends Component {
                 <Truncate
                     lines={!expanded && lines}
                     ellipsis={(
-                        <span>...<button onClick={this.toggleLines}>{more}</button></span>
+                        <span>...<StyledReadMore onClick={this.toggleLines}>{more}</StyledReadMore></span>
                     )}
                     onTruncate={this.handleTruncate}
                 >
                     {children}
                 </Truncate>
                 {!truncated && expanded && (
-                    <span> <button onClick={this.toggleLines}>{less}</button></span>
+                    <span> <StyledReadMore onClick={this.toggleLines}>{less}</StyledReadMore></span>
                 )}
             </div>
         );

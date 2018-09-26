@@ -19,6 +19,7 @@ export const StyledGridContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
 `
+
 export const StyledImg = styled.img`
     height: auto;
     width: 100%;

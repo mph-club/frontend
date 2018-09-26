@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import Typography from '@material-ui/core/Typography';
+import theme, { palette } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
 import Aux from '../../hoc/Aux/Aux';
@@ -16,13 +17,16 @@ import RenterReviews from '../../components/DetailPageComponents/RenterReviews/R
 import {
     StyledImageContainer,
     StyledImg,
-    StyledGridContainer
+    StyledGridContainer,
+    StyledTitleLayout,
+    StyledRateLayout
 } from './styles';
 import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
 import Guidelines from '../../components/DetailPageComponents/Guidelines/Guidelines';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
 import ReportListing from '../../components/ReportListing/ReportListing';
+import SeatIcon from '../../components/Icons/SeatIcon';
 
 
 
@@ -92,45 +96,51 @@ class DetailPage extends Component {
                     </SwipeableViews>
                 </StyledImageContainer>
                 <StyledGridContainer>
-                    <Grid item xs>
-                        <Typography variant="title" component="h2">Porsche Panamera</Typography>
-                        <Typography variant="title" component="h2">2016</Typography>
-                        <div>
-                            <div>4 trips</div>
-                        </div>
-                        <RateStars rate='4' />
-                        <Divider />
-                        <div style={{ display: 'flex' }}>
-                            <CarAttribute />
-                            <CarAttribute />
-                            <CarAttribute />
-                            <CarAttribute />
-                        </div>
-                        <p>Description</p>
-                        <div>
-                            <ReadMore >{'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}</ReadMore>
-                        </div>
-                        <Divider />
-                        <div>
-                            <CarFeature />
-                            <CarFeature />
-                            <CarFeature />
-                            <CarFeature />
-                        </div>
-                        <Divider />
-                        <div>
-                            <RenterReviews />
-                        </div>
-                        <Divider />
-                        <OwnedBy onwerClicked={this.goToOwnerDetails} />
-                        <Divider />
-                        <Guidelines />
-                        <Divider />
-                    </Grid>
-                    <Grid item xs>
-                        <SummaryTrip
-                            reportListingClicked={this.openFormToReportListing}
-                            checkout={this.goToCheckout} />
+                    <Grid container spacing={40}>
+                        <Grid item xs>
+                            <StyledTitleLayout>
+                                <Typography variant="display1" color="primary" component="h2">Porsche Panamera</Typography>
+                                <Typography variant="display1" color="primary" component="h2">2016</Typography>
+                                <StyledRateLayout>
+                                    <div>4 trips</div>
+                                    <div><RateStars rate='4' /></div>
+                                    <div>
+                                        <Typography variant="body1" style={{ color: `${palette.grey02}` }}>
+                                            8 mi
+                                        </Typography>
+                                    </div>
+                                </StyledRateLayout>
+                            </StyledTitleLayout>
+                            <Divider />
+                            <div style={{ display: 'flex'}}>
+                                <SeatIcon style={{ fontSize: 64 }}/>    
+                            </div>
+                            <p>Description</p>
+                            <div>
+                                <ReadMore >{'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}</ReadMore>
+                            </div>
+                            <Divider />
+                            <div>
+                                <CarFeature />
+                                <CarFeature />
+                                <CarFeature />
+                                <CarFeature />
+                            </div>
+                            <Divider />
+                            <div>
+                                <RenterReviews />
+                            </div>
+                            <Divider />
+                            <OwnedBy onwerClicked={this.goToOwnerDetails} />
+                            <Divider />
+                            <Guidelines />
+                            <Divider />
+                        </Grid>
+                        <Grid item xs>
+                            <SummaryTrip
+                                reportListingClicked={this.openFormToReportListing}
+                                checkout={this.goToCheckout} />
+                        </Grid>
                     </Grid>
                 </StyledGridContainer>
                 <CarsCollection title="You might also like" />

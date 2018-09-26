@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
-import theme, { space } from '../../theme';
+import { space } from '../../theme';
 
 export const StyledPaper = styled(Paper)`
     padding: 16px;

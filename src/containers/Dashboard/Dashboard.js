@@ -5,9 +5,11 @@ import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
 import TripCard from '../../components/DashboardComponents/TripCard/TripCard';
 import Aux from '../../hoc/Aux/Aux';
+import Badge from '@material-ui/core/Badge';
 import {
     StyledAppBar,
-    StyledListContainer
+    StyledListContainer,
+    StyledBadge
 } from './styles';
 
 
@@ -37,10 +39,6 @@ class Dashboard extends Component {
                     <TripCard />
                     <TripCard />
                     <TripCard />
-                    <TripCard />
-                    <TripCard />
-                    <TripCard />
-                    <TripCard />
                 </Aux>
                 break;
             default:
@@ -59,8 +57,8 @@ class Dashboard extends Component {
                         centered
                     >
                         <Tab label="Trips" />
-                        <Tab label="Activity" />
-                        <Tab label="History" />
+                        <Tab label={this.props.activityItems > 0 ? <StyledBadge color="secondary" badgeContent={this.props.activityItems}> Activity</StyledBadge> : "Activity"} />
+                        <Tab label={this.props.historyItems > 0 ? <StyledBadge color="secondary" badgeContent={this.props.historyItems}> Activity</StyledBadge> : "History"} />
                     </Tabs>
                 </StyledAppBar>
                 <Divider />

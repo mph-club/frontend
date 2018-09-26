@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 import AppBar from '@material-ui/core/AppBar';
+import Badge from '@material-ui/core/Badge';
+
+export const StyledBadge = styled(Badge)`
+    padding: 0 16px;
+`
 
 export const StyledAppBar = styled(AppBar)`
     && {

@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import Typography from '@material-ui/core/Typography';
-import theme, { palette } from '../../theme';
+import  { palette } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
 import Aux from '../../hoc/Aux/Aux';
 import { tutorialSteps } from '../CarsCollection/tileData';
 import RateStars from '../../components/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
-import CarAttribute from '../../components/CarAttribute/CarAttribute';
 import CarFeature from '../../components/CarFeature/CarFeature';
 import Footer from '../../components/Navigation/Footer/Footer';
 import ReadMore from '../../components/ReadMore/ReadMore';

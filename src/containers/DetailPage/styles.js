@@ -1,11 +1,21 @@
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
-import { space } from '../../theme';
+import theme, { space, palette } from '../../theme';
+import { Typography } from '@material-ui/core';
 
 export const StyledPaper = styled(Paper)`
     padding: 16px;
     text-align: center;
     color: #323232;
+`
+
+export const StyledCaption = styled(Typography)`
+    && {
+        text-transform: uppercase;
+        color: ${palette.grey01};
+        font-weight: 600;
+        margin-bottom: ${space[3]};
+    }
 `
 
 export const StyledGridContainer = styled.div`
@@ -40,4 +50,32 @@ export const StyledTitleLayout = styled.div`
 
 export const StyledRateLayout = styled.div`
     padding-top: ${space[2]};
+`
+
+export const StyledDescriptionIconsLayout = styled.div`
+    display: flex;
+    padding-top: ${space[4]};
+    padding-bottom: ${space[4]};
+`
+
+export const StyledDescriptionLayout = styled.div`
+    padding-bottom: ${space[4]};
+`
+
+export const StyledIcons = styled.div`
+    margin-right: ${space[3]};
+`
+
+export const StyledCarFeatureWrapper = styled.div`
+    margin-top: ${space[3]};
+`
+
+export const StyledCarFeatureContainer = styled.div`
+    padding-top: ${space[4]};
+    padding-bottom: ${space[4]};
+`
+
+export const StyledRenterReviewsWrapper = styled.div`
+    padding-top: ${space[4]};
+    padding-bottom: ${space[4]};
 `

@@ -1,12 +1,21 @@
 import React from 'react';
-import MusicNote from '@material-ui/icons/MusicNote'
+import AutomaticIcon from '../Icons/AutomaticIcon';
 
-const CarFeature = () => {
+import { StyledCarFeatureWrapper } from './styles';
+import { Typography } from '@material-ui/core';
+
+const CarFeature = (props) => {
     return (
-        <div style={{display:'flex'}}>
-            <MusicNote />
-            <label>GPS</label>
-        </div>
+        <StyledCarFeatureWrapper>
+            <div>
+                <AutomaticIcon style={{ fontSize: 32 }} />
+            </div>
+            <div>
+                <Typography variatn="body2" component="p">
+                    {props.label}
+                </Typography>
+            </div>
+        </StyledCarFeatureWrapper>
     );
 }
 

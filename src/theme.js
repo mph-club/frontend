@@ -63,6 +63,7 @@ export const theme = createMuiTheme({
 
 
 //Color
+const black = '#000000';
 const green = '#31DA62';
 const blue = '#077DF8';
 const white = '#ffffff';
@@ -73,6 +74,7 @@ const grey04 = '#DDDDDD';
 const grey05 = '#FAFAFA';
 
 export const palette = {
+  black,
   green,
   blue,
   white,

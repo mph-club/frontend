@@ -36,7 +36,8 @@ import {
     StyledCarFeatureWrapper,
     StyledCarFeatureContainer,
     StyledRenterReviewsWrapper,
-    StyledOwnedByWrapper
+    StyledOwnedByWrapper,
+    StyledGuideLinesWrapper
 } from './styles';
 
 
@@ -187,7 +188,9 @@ class DetailPage extends Component {
                                 <OwnedBy onwerClicked={this.goToOwnerDetails} />
                             </StyledOwnedByWrapper>
                             <Divider />
-                            <Guidelines />
+                            <StyledGuideLinesWrapper>
+                                <Guidelines />
+                            </StyledGuideLinesWrapper>
                             <Divider />
                         </Grid>
                         <Grid item xs>

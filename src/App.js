@@ -5,7 +5,6 @@ import './App.css';
 import Aux from './hoc/Aux/Aux';
 import Toolbar from './components/Navigation/Toolbar/Toolbar';
 import InitialPage from './containers/InitialPage/InitialPage';
-import { StyledMain } from './AppStyles';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import SearchPage from './containers/SearchPage/SearchPage';
@@ -14,6 +13,7 @@ import UserDetails from './components/UserDetails/UserDetails';
 import Checkout from './components/Checkout/Checkout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import TripDetailsPage from './containers/TripDetailsPage/TripDetailsPage';
+import Footer from './components/Navigation/Footer/Footer';
 
 class App extends Component {
 
@@ -56,7 +56,7 @@ class App extends Component {
           auth = {this.state.auth}
           userName='Juan Luis'>
         </Toolbar>
-        <StyledMain>
+        <main>
           <Login
             openLogin={this.state.openLogin}
             handleCloseLogin={() => this.closeLogin(false)}
@@ -74,7 +74,8 @@ class App extends Component {
             <Route path="/trip-details-page" exact component={TripDetailsPage}/>
             <Route path="/" component={InitialPage} />
           </Switch>
-        </StyledMain>
+        </main>
+        <Footer />
       </Aux>
     );
   }

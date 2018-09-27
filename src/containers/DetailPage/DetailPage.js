@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import Typography from '@material-ui/core/Typography';
-import  { palette } from '../../theme';
+import { palette } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
 import Aux from '../../hoc/Aux/Aux';
@@ -10,7 +10,6 @@ import { tutorialSteps } from '../CarsCollection/tileData';
 import RateStars from '../../components/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
 import CarFeature from '../../components/CarFeature/CarFeature';
-import Footer from '../../components/Navigation/Footer/Footer';
 import ReadMore from '../../components/ReadMore/ReadMore';
 import RenterReviews from '../../components/DetailPageComponents/RenterReviews/RenterReview';
 import {
@@ -154,27 +153,25 @@ class DetailPage extends Component {
                             </StyledDescriptionIconsLayout>
                             <StyledDescriptionLayout>
                                 <StyledCaption variant="body2" component="p">Description</StyledCaption>
-                                <div>
-                                    <Typography variant="body2" component="p">
-                                        <ReadMore>
-                                            {'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
-                                        </ReadMore>
-                                    </Typography>
-                                </div>
+                                <Typography variant="body2" component="div">
+                                    <ReadMore>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </ReadMore>
+                                </Typography>
                             </StyledDescriptionLayout>
                             <Divider />
                             <StyledCarFeatureContainer>
                                 <StyledCaption variant="body2" component="p">Features</StyledCaption>
-                                    {this.state.features.map((feature, index) => {
-                                        return (
-                                            <StyledCarFeatureWrapper>
-                                                <CarFeature
+                                {this.state.features.map((feature, index) => {
+                                    return (
+                                        <StyledCarFeatureWrapper>
+                                            <CarFeature
                                                 key={index}
                                                 label={feature.label}
                                                 image={feature.image} />
-                                            </StyledCarFeatureWrapper>
-                                        );
-                                    })}
+                                        </StyledCarFeatureWrapper>
+                                    );
+                                })}
                             </StyledCarFeatureContainer>
                             <Divider />
                             <StyledRenterReviewsWrapper>
@@ -194,7 +191,6 @@ class DetailPage extends Component {
                     </Grid>
                 </StyledGridContainer>
                 <CarsCollection title="You might also like" />
-                <Footer />
                 <ReportListing openForm={this.state.reportListing} />
             </Aux >
         );

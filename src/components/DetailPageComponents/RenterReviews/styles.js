@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import theme, { palette, space } from '../../../theme';
+import { palette, space } from '../../../theme';
 
 export const StyledAvatar = styled(Avatar)`
    && {

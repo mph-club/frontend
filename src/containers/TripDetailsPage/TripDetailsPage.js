@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import Aux from '../../hoc/Aux/Aux';
 import RateStars from '../../components/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
-import Footer from '../../components/Navigation/Footer/Footer';
 import {
     StyledImageContainer,
     StyledImg,
@@ -149,7 +148,6 @@ class TripDetailsPage extends Component {
                         </Grid>
                     </Grid>
                 </StyledGridContainer>
-                <Footer />
                 <ReportListing openForm={this.state.reportListing} />
             </Aux >
         );

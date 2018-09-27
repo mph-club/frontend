@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
-import theme, { space, palette } from '../../theme';
+import { space, palette } from '../../theme';
 import { Typography } from '@material-ui/core';
 
 export const StyledPaper = styled(Paper)`
@@ -42,6 +42,7 @@ export const StyledImageContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
     max-width: 960px;
+    margin-top: 64px;
 `
 
 export const StyledTitleLayout = styled.div`

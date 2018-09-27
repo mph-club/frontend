@@ -68,7 +68,6 @@ class Dashboard extends Component {
                 <StyledListContainer>
                     {content}
                 </StyledListContainer>
-
             </div>
         );
     }

@@ -7,7 +7,6 @@ import {
 } from './styles';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import ListVehicleBanner from './ListVehicleBanner/ListVehicleBanner';
-import Footer from '../../components/Navigation/Footer/Footer';
 import Aux from '../../hoc/Aux/Aux';
 import SearchBar from '../SearchPage/SearchBar/SearchBar';
 import ReduceSearchBar from './SearchBar/ReducedSearchBar/ReducedSearchBar';
@@ -27,7 +26,6 @@ class SearchPage extends Component {
                 <CarsCollection title="SUV's" />
                 <CarsCollection title="Exotics" />
                 <ListVehicleBanner />
-                <Footer />
             </Aux>
         );
     }

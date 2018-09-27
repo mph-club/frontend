@@ -25,4 +25,5 @@ export const StyledHeader = styled.header`
     height: 64vh;
     background-position: center;
     background-repeat: no-repeat;
+    margin-top: 64px;
 `

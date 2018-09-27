@@ -1,42 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Logo from '../../UI/Logo/Logo';
 import Aux from '../../../hoc/Aux/Aux';
 import UserEntry from '../UserEntry/UserEntry';
+import {withRouter} from 'react-router-dom';
 import {
   StyledAppBar,
   StyledToolBar,
-  StyledContainer,
   StyledNav
 } from './styles';
 
-const ToolBar = (props) => {
+class ToolBar extends Component {
 
-  let buttons = null
-  if (props.auth) {
-    buttons = <UserEntry userName={props.userName}/>
-  } else {
-    buttons = <Aux>
-      <Button color="inherit" onClick={props.loginClicked}>Login</Button>
-      <Button color="inherit" onClick={props.signupClicked}>Sign Up</Button>
-    </Aux>
+  logoClicked = () => {
+      this.props.history.replace('/search-page')
   }
 
-  return (
-    <StyledContainer>
-      <StyledAppBar position="static">
-        <StyledToolBar>
-          <div>
-            <Logo />
-          </div>
-          <StyledNav>
-            {buttons}
-          </StyledNav>
-        </StyledToolBar>
-      </StyledAppBar>
-    </StyledContainer>
-  );
+  render() {
+    let buttons = null
+    if (this.props.auth) {
+      buttons = <UserEntry userName={this.props.userName} />
+    } else {
+      buttons = <Aux>
+        <Button color="inherit" onClick={this.props.loginClicked}>Login</Button>
+        <Button color="inherit" onClick={this.props.signupClicked}>Sign Up</Button>
+      </Aux>
+    }
+
+    return (
+        <StyledAppBar position="fixed">
+          <StyledToolBar>
+            <div>
+              <Logo clicked={this.logoClicked} />
+            </div>
+            <StyledNav>
+              {buttons}
+            </StyledNav>
+          </StyledToolBar>
+        </StyledAppBar>
+    );
+  }
 }
 
-export default ToolBar;
+export default withRouter(ToolBar);

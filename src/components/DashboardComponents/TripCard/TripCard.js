@@ -11,7 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 const TripCard = (props) => {
     return (
-        <StyledCard>
+        <StyledCard onClick={props.clicked}>
             <CardContent>
                 <StyledNoticeContainer>
                     <StyleNotice component="h3">Pending your approval</StyleNotice>

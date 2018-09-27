@@ -13,6 +13,7 @@ import DetailPage from './containers/DetailPage/DetailPage';
 import UserDetails from './components/UserDetails/UserDetails';
 import Checkout from './components/Checkout/Checkout';
 import Dashboard from './containers/Dashboard/Dashboard';
+import TripDetailsPage from './containers/TripDetailsPage/TripDetailsPage';
 
 class App extends Component {
 
@@ -70,6 +71,7 @@ class App extends Component {
             <Route path="/user-details" exact component={UserDetails} />
             <Route path="/checkout" exact component={Checkout} />
             <Route path="/dashboard" exact component={Dashboard}/>
+            <Route path="/trip-details-page" exact component={TripDetailsPage}/>
             <Route path="/" component={InitialPage} />
           </Switch>
         </StyledMain>

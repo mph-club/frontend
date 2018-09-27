@@ -5,7 +5,6 @@ import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
 import TripCard from '../../components/DashboardComponents/TripCard/TripCard';
 import Aux from '../../hoc/Aux/Aux';
-import Badge from '@material-ui/core/Badge';
 import {
     StyledAppBar,
     StyledListContainer,
@@ -19,9 +18,13 @@ class Dashboard extends Component {
         value: 0,
     };
 
-    handleChange = (event, value) => {
+    handleChange = (_, value) => {
         this.setState({ value });
     };
+
+    handleCardClick = () => {
+        this.props.history.push('/trip-details-page')
+    }
 
     render() {
 
@@ -31,14 +34,14 @@ class Dashboard extends Component {
         switch (value) {
             case 0:
                 content = <Aux>
-                    <TripCard />
-                    <TripCard />
-                    <TripCard />
-                    <TripCard />
-                    <TripCard />
-                    <TripCard />
-                    <TripCard />
-                    <TripCard />
+                    <TripCard clicked={this.handleCardClick}/>
+                    <TripCard clicked={this.handleCardClick}/>
+                    <TripCard clicked={this.handleCardClick}/>
+                    <TripCard clicked={this.handleCardClick}/>
+                    <TripCard clicked={this.handleCardClick}/>
+                    <TripCard clicked={this.handleCardClick}/>
+                    <TripCard clicked={this.handleCardClick}/>
+                    <TripCard clicked={this.handleCardClick}/>
                 </Aux>
                 break;
             default:

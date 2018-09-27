@@ -2,26 +2,35 @@ import React from 'react';
 
 import avatar from '../../../assets/images/avatar.png'
 import RateStars from '../../RateStars/RateStars';
+import Title from '../../../components/UI/CustomTypography/Title/Title';
+import { Typography } from '@material-ui/core';
+
+
 import {
     StyledAvatar,
-    StyledUl
+    StyledUl,
+    StyledNameWrapper,
+    StyledLIRresponseTimeWrapper
 } from '../OwnedBy/styles';
+import { typography } from '../../../theme';
 
 const OwnedBy = (props) => {
     return (
         <div onClick={props.onwerClicked}>
-            <h4>Owned By</h4>
+            <Title variant="body2" component="h4"> Owned By</Title>
             <StyledUl>
                 <li>
-                    <h5>Mike L.</h5>
-                    <RateStars rate='4' />
-                    <h6>Response Rate</h6>
-                    <h6>90%</h6>
+                    <StyledNameWrapper>
+                        <Typography variant="headline" component="h5">Mike L.</Typography>
+                        <RateStars rate='4' />
+                    </StyledNameWrapper>
+                    <Typography variant="body1" component="h6" style={{fontWeight: 600}}>Response Rate</Typography>
+                    <Typography variant="body2" component="h6">90%</Typography>
                 </li>
-                <li>
-                    <h6>Response Time</h6>
-                    <h6>3 min</h6>
-                </li>
+                <StyledLIRresponseTimeWrapper>
+                    <Typography variant="body1" component="h6" style={{fontWeight: 600}}>Response Time</Typography>
+                    <Typography variant="body2" component="h6">3 min</Typography>
+                </StyledLIRresponseTimeWrapper>
                 <li>
                     <StyledAvatar
                         alt="Steve Jobs"

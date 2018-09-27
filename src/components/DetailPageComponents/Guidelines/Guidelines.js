@@ -1,15 +1,18 @@
 import React from 'react';
 import Aux from '../../../hoc/Aux/Aux';
+import Title from '../../UI/CustomTypography/Title/Title';
+
+import { StyledUl } from './styles';
 
 const Guidelines = () => (
 
     <Aux>
-        <h4>GUIDELINES</h4>
-        <ul>
+        <Title variant="body2" component="h4">GUIDELINES</Title>
+        <StyledUl>
             <li>A deposit will be required</li>
             <li>A minimun of 1 day is required to rent this car</li>
             <li>No smoking</li>
-        </ul>
+        </StyledUl>
     </Aux>
 
 );

@@ -8,7 +8,8 @@ import Aux from '../../hoc/Aux/Aux';
 import {
     StyledAppBar,
     StyledListContainer,
-    StyledBadge
+    StyledBadge,
+    StyledContainer
 } from './styles';
 
 
@@ -50,7 +51,7 @@ class Dashboard extends Component {
         }
 
         return (
-            <div>
+            <StyledContainer>
                 <StyledAppBar position="fixed">
                     <Tabs
                         value={this.state.value}
@@ -68,7 +69,7 @@ class Dashboard extends Component {
                 <StyledListContainer>
                     {content}
                 </StyledListContainer>
-            </div>
+            </StyledContainer>
         );
     }
 }

@@ -12,7 +12,6 @@ import {
     StyledNameWrapper,
     StyledLIRresponseTimeWrapper
 } from '../OwnedBy/styles';
-import { typography } from '../../../theme';
 
 const OwnedBy = (props) => {
     return (

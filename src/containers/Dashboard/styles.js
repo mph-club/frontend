@@ -17,3 +17,7 @@ export const StyledAppBar = styled(AppBar)`
 export const StyledListContainer = styled.div`
     margin-top: 128px;
 `
+
+export const StyledContainer = styled.div`
+    min-height: 100%;
+`

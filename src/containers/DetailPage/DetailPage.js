@@ -38,6 +38,7 @@ import {
     StyledOwnedByWrapper,
     StyledGuideLinesWrapper
 } from './styles';
+import Footer from '../../components/Navigation/Footer/Footer';
 
 
 
@@ -199,6 +200,7 @@ class DetailPage extends Component {
                 </StyledGridContainer>
                 <CarsCollection title="You might also like" />
                 <ReportListing openForm={this.state.reportListing} />
+                <Footer/>
             </Aux >
         );
     }

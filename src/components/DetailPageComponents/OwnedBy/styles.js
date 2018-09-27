@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
-import theme, { space } from '../../../theme';
+import { space } from '../../../theme';
 
 export const StyledAvatar = styled(Avatar)`
     && {

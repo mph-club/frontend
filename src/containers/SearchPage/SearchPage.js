@@ -10,6 +10,7 @@ import ListVehicleBanner from './ListVehicleBanner/ListVehicleBanner';
 import Aux from '../../hoc/Aux/Aux';
 import SearchBar from '../SearchPage/SearchBar/SearchBar';
 import ReduceSearchBar from './SearchBar/ReducedSearchBar/ReducedSearchBar';
+import Footer from '../../components/Navigation/Footer/Footer';
 
 class SearchPage extends Component {
     render() {
@@ -26,6 +27,7 @@ class SearchPage extends Component {
                 <CarsCollection title="SUV's" />
                 <CarsCollection title="Exotics" />
                 <ListVehicleBanner />
+                <Footer/>
             </Aux>
         );
     }

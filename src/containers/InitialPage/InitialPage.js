@@ -16,6 +16,7 @@ import {
     StyledButtonContainer,
     StyledNativeTextField
 } from './styles';
+import Footer from '../../components/Navigation/Footer/Footer';
 
 
 class InitialPage extends Component {
@@ -87,6 +88,7 @@ class InitialPage extends Component {
                         </StyledContainer>
                     </StyledGrid>
                 </Grid>
+                <Footer/>
             </React.Fragment>
         );
     }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme, { space, palette } from '../../../theme';
+import  { space, palette } from '../../../theme';
 
 export const StyledUlWrapper = styled.div`
   margin-top: ${space[3]};

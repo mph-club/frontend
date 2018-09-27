@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import Aux from './hoc/Aux/Aux';
 import Toolbar from './components/Navigation/Toolbar/Toolbar';
 import InitialPage from './containers/InitialPage/InitialPage';
 import Login from './components/Login/Login';
@@ -13,7 +12,7 @@ import UserDetails from './components/UserDetails/UserDetails';
 import Checkout from './components/Checkout/Checkout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import TripDetailsPage from './containers/TripDetailsPage/TripDetailsPage';
-import Footer from './components/Navigation/Footer/Footer';
+import Aux from './hoc/Aux/Aux';
 
 class App extends Component {
 
@@ -49,11 +48,11 @@ class App extends Component {
 
   render() {
     return (
-      <Aux className="App">
+      <Aux>
         <Toolbar
           loginClicked={this.handleLogin}
           signupClicked={this.handleSignUp}
-          auth = {this.state.auth}
+          auth={this.state.auth}
           userName='Juan Luis'>
         </Toolbar>
         <main>
@@ -70,12 +69,11 @@ class App extends Component {
             <Route path="/car-details" exact component={DetailPage} />
             <Route path="/user-details" exact component={UserDetails} />
             <Route path="/checkout" exact component={Checkout} />
-            <Route path="/dashboard" exact component={Dashboard}/>
-            <Route path="/trip-details-page" exact component={TripDetailsPage}/>
+            <Route path="/dashboard" exact component={Dashboard} />
+            <Route path="/trip-details-page" exact component={TripDetailsPage} />
             <Route path="/" component={InitialPage} />
           </Switch>
         </main>
-        <Footer />
       </Aux>
     );
   }

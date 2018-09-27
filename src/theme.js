@@ -57,10 +57,13 @@ export const theme = createMuiTheme({
         body1: {
           fontWeight: 400,
           fontSize: ".875rem", //14px
-        }
+        },
       },
 });
 
+
+//Color
+const black = '#000000';
 const green = '#31DA62';
 const blue = '#077DF8';
 const white = '#ffffff';
@@ -71,6 +74,7 @@ const grey04 = '#DDDDDD';
 const grey05 = '#FAFAFA';
 
 export const palette = {
+  black,
   green,
   blue,
   white,

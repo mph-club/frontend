@@ -80,3 +80,13 @@ export const StyledRenterReviewsWrapper = styled.div`
     padding-top: ${space[4]};
     padding-bottom: ${space[4]};
 `
+
+export const StyledOwnedByWrapper = styled.div`
+    padding-top: ${space[4]};
+    padding-bottom: ${space[4]};
+`
+
+export const StyledGuideLinesWrapper = styled.div`
+    padding-top: ${space[4]};
+    padding-bottom: ${space[4]};
+`

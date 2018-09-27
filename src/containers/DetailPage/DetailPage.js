@@ -12,6 +12,16 @@ import Divider from '@material-ui/core/Divider';
 import CarFeature from '../../components/CarFeature/CarFeature';
 import ReadMore from '../../components/ReadMore/ReadMore';
 import RenterReviews from '../../components/DetailPageComponents/RenterReviews/RenterReview';
+import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
+import Guidelines from '../../components/DetailPageComponents/Guidelines/Guidelines';
+import CarsCollection from '../CarsCollection/CarsCollection';
+import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
+import ReportListing from '../../components/ReportListing/ReportListing';
+import SeatIcon from '../../components/Icons/SeatIcon';
+import DoorIcon from '../../components/Icons/DoorIcon';
+import GasIcon from '../../components/Icons/GasIcon';
+import GPSIcon from '../../components/Icons/GPSIcon';
+
 import {
     StyledImageContainer,
     StyledImg,
@@ -24,17 +34,10 @@ import {
     StyledDescriptionLayout,
     StyledCarFeatureWrapper,
     StyledCarFeatureContainer,
-    StyledRenterReviewsWrapper
+    StyledRenterReviewsWrapper,
+    StyledOwnedByWrapper,
+    StyledGuideLinesWrapper
 } from './styles';
-import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
-import Guidelines from '../../components/DetailPageComponents/Guidelines/Guidelines';
-import CarsCollection from '../CarsCollection/CarsCollection';
-import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
-import ReportListing from '../../components/ReportListing/ReportListing';
-import SeatIcon from '../../components/Icons/SeatIcon';
-import DoorIcon from '../../components/Icons/DoorIcon';
-import GasIcon from '../../components/Icons/GasIcon';
-import GPSIcon from '../../components/Icons/GPSIcon';
 
 
 
@@ -178,9 +181,13 @@ class DetailPage extends Component {
                                 <RenterReviews />
                             </StyledRenterReviewsWrapper>
                             <Divider />
-                            <OwnedBy onwerClicked={this.goToOwnerDetails} />
+                            <StyledOwnedByWrapper>
+                                <OwnedBy onwerClicked={this.goToOwnerDetails} />
+                            </StyledOwnedByWrapper>
                             <Divider />
-                            <Guidelines />
+                            <StyledGuideLinesWrapper>
+                                <Guidelines />
+                            </StyledGuideLinesWrapper>
                             <Divider />
                         </Grid>
                         <Grid item xs>

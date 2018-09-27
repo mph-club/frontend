@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Truncate from 'react-truncate';
+
 import { StyledReadMore } from './styles';
 
 class ReadMore extends Component {

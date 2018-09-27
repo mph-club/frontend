@@ -4,6 +4,7 @@ import avatar from '../../../assets/images/avatar.png'
 import Aux from '../../../hoc/Aux/Aux';
 import ReadMore from '../../ReadMore/ReadMore';
 import RateStars from '../../RateStars/RateStars';
+import TextButton from '../../UI/Buttons/TextButton/TextButton';
 import { Typography } from '@material-ui/core';
 import { palette } from '../../../theme';
 
@@ -12,9 +13,9 @@ import {
     StyledContainer,
     StyledCaption,
     StyledAvatarWrapper,
-    StyledRentalReviewsReadMore,
     StyledRentalReviewsReadMoreWrapper,
-    StyledReadMoreWrapper
+    StyledReadMoreWrapper,
+    StyledTextButtonWrapper
 } from './styles';
 
 const RenterReviews = () => {
@@ -41,9 +42,11 @@ const RenterReviews = () => {
                 </Typography>
             </StyledReadMoreWrapper>
             <StyledRentalReviewsReadMoreWrapper>
-                <StyledRentalReviewsReadMore>
-                    Read all 18 reviews
-                </StyledRentalReviewsReadMore>
+                <StyledTextButtonWrapper>
+                    <TextButton>
+                        Read all 18 reviews
+                    </TextButton>
+                </StyledTextButtonWrapper>
                 <div>
                     <RateStars />
                 </div>

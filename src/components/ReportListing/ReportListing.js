@@ -10,6 +10,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import FormLabel from '@material-ui/core/FormLabel';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import PrimaryButton from '../UI/Buttons/PrimaryButton/PrimaryButton';
 
 import {
     StyledIconButton,
@@ -24,7 +26,6 @@ class ReportListing extends Component {
     };
 
     handleChange = event => {
-
         this.setState({ value: event.target.value });
     };
 
@@ -41,46 +42,54 @@ class ReportListing extends Component {
                         display: 'flex',
                         justifyContent: 'flex-end'
                     }}>
-                        <StyledIconButton>
+                        <StyledIconButton onClick={this.props.closeForm}>
                             <ClearIcon />
                         </StyledIconButton>
                     </div>
                     <DialogTitle id="reportListingDialog">Report this listing</DialogTitle>
                     <DialogContent>
-                        <FormControl style={{width: '100%'}}>
+                        <FormControl style={{ width: '100%' }}>
                             <RadioGroup
                                 aria-label="Reasons"
                                 name="reportListing-reasons"
                                 value={this.state.value}
                             >
                                 <StyledRowContainer>
-                                    <FormLabel style={{alignSelf: 'center'}}>Inappropriate or offensive content.</FormLabel>
-                                    <FormControlLabel value="inappriate" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "inappriate" ? true : false}/>
+                                    <FormLabel style={{ alignSelf: 'center' }}>Inappropriate or offensive content.</FormLabel>
+                                    <FormControlLabel value="inappriate" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "inappriate" ? true : false} />
                                 </StyledRowContainer>
                                 <Divider />
                                 <StyledRowContainer>
-                                    <FormLabel style={{alignSelf: 'center'}}>Misleading/suspicious information.</FormLabel>
-                                    <FormControlLabel value="suspicious" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "suspicious" ? true : false}/>
+                                    <FormLabel style={{ alignSelf: 'center' }}>Misleading/suspicious information.</FormLabel>
+                                    <FormControlLabel value="suspicious" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "suspicious" ? true : false} />
                                 </StyledRowContainer>
                                 <Divider />
                                 <StyledRowContainer>
-                                    <FormLabel style={{alignSelf: 'center'}}>Spam</FormLabel>
-                                    <FormControlLabel value="spam" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "spam" ? true : false}/>
+                                    <FormLabel style={{ alignSelf: 'center' }}>Spam</FormLabel>
+                                    <FormControlLabel value="spam" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "spam" ? true : false} />
                                 </StyledRowContainer>
                                 <Divider />
                                 <StyledRowContainer>
-                                    <FormLabel style={{alignSelf: 'center'}}>Other</FormLabel>
-                                    <FormControlLabel value="other" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "other" ? true : false}/>
+                                    <FormLabel style={{ alignSelf: 'center' }}>Other</FormLabel>
+                                    <FormControlLabel value="other" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "other" ? true : false} />
                                 </StyledRowContainer>
-                                <Typography>What's the reason</Typography>
                             </RadioGroup>
+                            <Typography>What's the reason</Typography>
+                            <OutlinedInput multiline={true} rowsMax="12" labelWidth={10}></OutlinedInput>
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'flex-end',
+                                margin: '12px 12px 12px'
+                            }}>
+                                <PrimaryButton type="submit">Submit</PrimaryButton>
+                            </div>
+
                         </FormControl>
                     </DialogContent>
                 </Dialog>
             </div>
         );
     }
-
 }
 
 export default ReportListing

@@ -1,33 +1,86 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import ClearIcon from '@material-ui/icons/Clear';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import FormControl from '@material-ui/core/FormControl';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+import FormLabel from '@material-ui/core/FormLabel';
 
 import {
-    StyledIconButton
+    StyledIconButton,
+    StyledRowContainer
 } from './styles';
 
-const ReportListing = (props) => {
 
+class ReportListing extends Component {
+
+    state = {
+        value: null
+    };
+
+    handleChange = event => {
+
+        this.setState({ value: event.target.value });
+    };
+
+    render() {
         return (
             <div>
-            <StyledIconButton>
-                <ClearIcon/>
-            </StyledIconButton>
                 <Dialog
-                    open={props.openForm}
-                    onClose={props.closeForm}
+                    open={this.props.openForm}
+                    onClose={this.props.closeForm}
                     scroll={'body'}
                     aria-labelledby="scroll-dialog-reportListing"
                 >
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'flex-end'
+                    }}>
+                        <StyledIconButton>
+                            <ClearIcon />
+                        </StyledIconButton>
+                    </div>
                     <DialogTitle id="reportListingDialog">Report this listing</DialogTitle>
                     <DialogContent>
-                        
+                        <FormControl style={{width: '100%'}}>
+                            <RadioGroup
+                                aria-label="Reasons"
+                                name="reportListing-reasons"
+                                value={this.state.value}
+                            >
+                                <StyledRowContainer>
+                                    <FormLabel style={{alignSelf: 'center'}}>Inappropriate or offensive content.</FormLabel>
+                                    <FormControlLabel value="inappriate" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "inappriate" ? true : false}/>
+                                </StyledRowContainer>
+                                <Divider />
+                                <StyledRowContainer>
+                                    <FormLabel style={{alignSelf: 'center'}}>Misleading/suspicious information.</FormLabel>
+                                    <FormControlLabel value="suspicious" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "suspicious" ? true : false}/>
+                                </StyledRowContainer>
+                                <Divider />
+                                <StyledRowContainer>
+                                    <FormLabel style={{alignSelf: 'center'}}>Spam</FormLabel>
+                                    <FormControlLabel value="spam" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "spam" ? true : false}/>
+                                </StyledRowContainer>
+                                <Divider />
+                                <StyledRowContainer>
+                                    <FormLabel style={{alignSelf: 'center'}}>Other</FormLabel>
+                                    <FormControlLabel value="other" control={<Radio />} onChange={this.handleChange} checked={this.state.value === "other" ? true : false}/>
+                                </StyledRowContainer>
+                                <Typography>What's the reason</Typography>
+                            </RadioGroup>
+                        </FormControl>
                     </DialogContent>
                 </Dialog>
             </div>
         );
+    }
+
 }
 
 export default ReportListing

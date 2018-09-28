@@ -3,7 +3,7 @@ import { StyledSelectTextField } from './styles';
 
 const SelectTextField = (props) => {
     return (
-        <StyledSelectTextField {...props} />
+        <StyledSelectTextField {...props}/>
     );
 };
 

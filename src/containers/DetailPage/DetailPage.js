@@ -115,8 +115,8 @@ class DetailPage extends Component {
                         onChangeIndex={this.handleStepChange}
                         enableMouseEvents
                     >
-                        {tutorialSteps.map(step => (
-                            <StyledImg key={step.label} src={step.imgPath} alt={step.label} />
+                        {tutorialSteps.map((step, index) => (
+                            <StyledImg key={index} src={step.imgPath} alt={step.label} />
                         ))}
                     </SwipeableViews>
                 </StyledImageContainer>
@@ -168,9 +168,8 @@ class DetailPage extends Component {
                                 <StyledCaption variant="body2" component="p">Features</StyledCaption>
                                 {this.state.features.map((feature, index) => {
                                     return (
-                                        <StyledCarFeatureWrapper>
+                                        <StyledCarFeatureWrapper key={index}>
                                             <CarFeature
-                                                key={index}
                                                 label={feature.label}
                                                 image={feature.image} />
                                         </StyledCarFeatureWrapper>

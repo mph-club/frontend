@@ -115,8 +115,8 @@ class DetailPage extends Component {
                         onChangeIndex={this.handleStepChange}
                         enableMouseEvents
                     >
-                        {tutorialSteps.map(step => (
-                            <StyledImg key={step.label} src={step.imgPath} alt={step.label} />
+                        {tutorialSteps.map((step, index) => (
+                            <StyledImg key={index} src={step.imgPath} alt={step.label} />
                         ))}
                     </SwipeableViews>
                 </StyledImageContainer>

@@ -28,6 +28,11 @@ export const StyledGridContainer = styled.div`
     margin-top: ${space[4]};
     margin-left: auto;
     margin-right: auto;
+
+    @media (max-width: 959px) {
+        padding-left: 12px;
+        padding-right: 12px;
+    } 
 `
 
 export const StyledImg = styled.img`

@@ -23,6 +23,7 @@ export const StyledFooter = styled.footer`
     background-color: #000000;
     height: auto;
     padding: 1.5rem;
+    margin-top: 12px
 ` 
 
 export const StyledDiv = styled.div`

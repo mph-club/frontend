@@ -1,20 +1,39 @@
 import styled from 'styled-components';
+import { space } from '../../theme';
 
 export const StyledContainer = styled.div`
 
 `
+// export const StyledGridContainer = styled.div`
+//     width: 100%;
+//     display: flex;
+//     flex-wrap: wrap;
+//     box-sizing: border-box;
+//     padding-left: 0;
+//     padding-right: 0;
+//     margin: 32px auto;
+
+//     @media (min-width: 768px) {
+//         width: 80%;
+//     }
+// `
+
 export const StyledGridContainer = styled.div`
-    width: 100%;
+    max-width: 960px;
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
     padding-left: 0;
     padding-right: 0;
-    margin: 32px auto;
+    margin-top: ${space[6]};
+    margin-bottom: ${space[6]};
+    margin-left: auto;
+    margin-right: auto;
 
-    @media (min-width: 768px) {
-        width: 80%;
-    }
+    @media (max-width: 959px) {
+        padding-left: 12px;
+        padding-right: 12px;
+    } 
 `
 
 export const StyledLeftFirstContainer = styled.div`

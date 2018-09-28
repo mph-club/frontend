@@ -42,7 +42,11 @@ export const StyledImageContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
     max-width: 960px;
-    margin-top: 64px;
+    margin-top: 56px;
+
+    @media (min-width: 768px) {
+        margin-top: 64px;
+    }
 `
 
 export const StyledTitleLayout = styled.div`

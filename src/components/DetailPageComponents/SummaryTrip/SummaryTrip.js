@@ -31,7 +31,7 @@ const SummaryTrip = (props) => {
                     >
                         TRIP DATES
                     </Title>
-                    <form noValidate fullWidth>
+                    <form noValidate>
                         <SelectTextField
                             fullWidth
                             id="startTextField"
@@ -44,8 +44,6 @@ const SummaryTrip = (props) => {
                                 shrink: true,
                             }}
                         />
-                    </form>
-                    <form noValidate fullWidth>
                         <SelectTextField
                             fullWidth
                             id="endTextField"

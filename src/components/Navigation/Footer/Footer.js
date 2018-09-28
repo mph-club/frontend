@@ -41,9 +41,9 @@ const Footer = () => {
                                 Follow us
                             </Typography>
                             <StyledSocialUl>
-                                <li><StyleA href="#"><img src={fbIcon} alt="Facebook"></img></StyleA></li>
-                                <li><StyleA href="#"><img src={instagramIcon} alt="Instagram"></img></StyleA></li>
-                                <li><StyleA href="#"><img src={twitterIcon} alt="twitter"></img></StyleA></li>
+                                <li><StyleA href="https://www.facebook.com/mphclub"><img src={fbIcon} alt="Facebook"></img></StyleA></li>
+                                <li><StyleA href="https://www.instagram.com/mphclub"><img src={instagramIcon} alt="Instagram"></img></StyleA></li>
+                                <li><StyleA href="https://twitter.com/mphclub"><img src={twitterIcon} alt="twitter"></img></StyleA></li>
                             </StyledSocialUl>
                         </StyledDivTwo>
                     </StyledDiv>

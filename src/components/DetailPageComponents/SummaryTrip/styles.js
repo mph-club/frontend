@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
-import theme, { space, palette } from '../../../theme';
+import { space, palette } from '../../../theme';
 
 export const StyledContainer = styled.div`
     && {

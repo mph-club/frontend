@@ -31,7 +31,7 @@ const SummaryTrip = (props) => {
                     >
                         TRIP DATES
                     </Title>
-                    <form noValidate fullWidth>
+                    <form noValidate>
                         <SelectTextField
                             fullWidth
                             id="startTextField"
@@ -44,8 +44,6 @@ const SummaryTrip = (props) => {
                                 shrink: true,
                             }}
                         />
-                    </form>
-                    <form noValidate fullWidth>
                         <SelectTextField
                             fullWidth
                             id="endTextField"
@@ -57,31 +55,7 @@ const SummaryTrip = (props) => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            style={{marginBottom: '32px'}}
                         />
-                        <Divider />
-                        <StyledPickUpReturnWrapper>
-                            <StyledTitleWrapper>
-                                <Title component="h4">PICKP UP AND RETURN</Title>
-                            </StyledTitleWrapper>
-                            <StyledLocationWrapper>
-                                <Typography variant="title" component="h5">Miami, FL</Typography>
-                            </StyledLocationWrapper>
-                            <Typography variant="body1" component="p" style={{ color: `${palette.grey02}` }}>Exact address is provided after booking is confirmed</Typography>
-                        </StyledPickUpReturnWrapper>
-                        <Divider />
-                        <StyledMilesIncludedWrapper>
-                            <StyledMilesIncludedTitleWrapper>
-                                <Title component="h4">MILES INCLUDED</Title>
-                            </StyledMilesIncludedTitleWrapper>
-                            <StyledMilesTitleWrapper>
-                                <Typography variant="title" component="h5">200 mi</Typography>
-                            </StyledMilesTitleWrapper>
-                            <Typography component="p" style={{ color: `${palette.grey02}` }}>$0.45 fee for each additional mile</Typography>
-                        </StyledMilesIncludedWrapper>
-                        <div>
-                            <PrimaryButton component={MyLink}>Continue $382/per day</PrimaryButton>
-                        </div>
                     </form>
                 </div>
                 <Divider />

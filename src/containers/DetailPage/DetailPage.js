@@ -103,6 +103,12 @@ class DetailPage extends Component {
         })
     }
 
+    closeFormReportListing = () => {
+        this.setState({
+            reportListing: false
+        })
+    }
+
     render() {
         const { theme } = this.props;
 
@@ -198,8 +204,10 @@ class DetailPage extends Component {
                     </Grid>
                 </StyledGridContainer>
                 <CarsCollection title="You might also like" />
-                <ReportListing openForm={this.state.reportListing} />
-                <Footer/>
+                <ReportListing
+                    openForm={this.state.reportListing}
+                    closeForm={this.closeFormReportListing} />
+                <Footer />
             </Aux >
         );
     }

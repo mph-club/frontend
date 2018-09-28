@@ -8,5 +8,15 @@ export const StyledContainer = styled.div`
         border-radius: 8px;
         padding: 4px 16px;
         border-color: ${palette.grey01};
+        margin-right: ${space[4]};
+        margin-left: ${space[4]};
+    }
+`
+
+export const StyledReportThisListingWrapper = styled.div`
+    && {
+        display: flex;
+        justify-content: center;
+        margin-top: ${space[4]};
     }
 `

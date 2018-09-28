@@ -168,9 +168,8 @@ class DetailPage extends Component {
                                 <StyledCaption variant="body2" component="p">Features</StyledCaption>
                                 {this.state.features.map((feature, index) => {
                                     return (
-                                        <StyledCarFeatureWrapper>
+                                        <StyledCarFeatureWrapper key={index}>
                                             <CarFeature
-                                                key={index}
                                                 label={feature.label}
                                                 image={feature.image} />
                                         </StyledCarFeatureWrapper>

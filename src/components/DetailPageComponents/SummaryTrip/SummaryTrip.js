@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PrimayPriceButton from '../../UI/Buttons/PrimaryPriceButton/PrimaryPriceButton';
+import TextButton from '../../../components/UI/Buttons/TextButton/TextButton';
 import Aux from '../../../hoc/Aux/Aux';
 import Title from '../../UI/CustomTypography/Title/Title';
 import { Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import { palette, space } from '../../../theme';
 import SelectTextField from '../../UI/FormElements/SelectTextField/SelectTextField';
+import FlagOutlineIcon from '@material-ui/icons/FlagOutlined';
 
 import {
-    StyledContainer
+    StyledContainer,
+    StyledReportThisListingWrapper
 } from './styles';
 
 const SummaryTrip = (props) => {
@@ -95,8 +98,7 @@ const SummaryTrip = (props) => {
                         $0.45 fee for each additional mile
                     </Typography>
                 </div>
-                <div>
-                    {/* <PrimayPriceButton component={MyLink}>Continue $382/per day</PrimayPriceButton> */}
+                <div style={{ textAlign: 'center'}}>
                     <PrimayPriceButton 
                         component={MyLink} 
                         text="Continue"
@@ -107,7 +109,12 @@ const SummaryTrip = (props) => {
                     />
                 </div>
             </StyledContainer>
-            <button onClick={props.reportListingClicked}>Report this listing</button>
+            <StyledReportThisListingWrapper>
+                <TextButton onClick={props.reportListingClicked}>    
+                    Report this listing
+                </TextButton>
+                <FlagOutlineIcon onClick={props.reportListingClicked} style={{ color: `${palette.blue}`, cursor: 'pointer'}} />
+            </StyledReportThisListingWrapper>
         </Aux>
     );
 };

@@ -1,24 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import {
-    StyledTextField,
-    StyledContainer,
-    StyledPickUpReturnWrapper,
-    StyledTitleWrapper,
-    StyledLocationWrapper,
-    StyledMilesIncludedWrapper,
-    StyledMilesIncludedTitleWrapper,
-    StyledMilesTitleWrapper,
-    StyledFormWrapper,
-    StyledTitleTripDatesWrapper
-} from './styles';
-import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
+import PrimayPriceButton from '../../UI/Buttons/PrimaryPriceButton/PrimaryPriceButton';
 import Aux from '../../../hoc/Aux/Aux';
 import Title from '../../UI/CustomTypography/Title/Title';
 import { Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
-import { palette } from '../../../theme';
+import { palette, space } from '../../../theme';
+import SelectTextField from '../../UI/FormElements/SelectTextField/SelectTextField';
+
+import {
+    StyledContainer
+} from './styles';
 
 const SummaryTrip = (props) => {
 
@@ -27,12 +19,17 @@ const SummaryTrip = (props) => {
     return (
         <Aux>
             <StyledContainer>
-                <StyledFormWrapper>
-                    <StyledTitleTripDatesWrapper>
-                        <Title component="h4">TRIP DATES</Title>
-                    </StyledTitleTripDatesWrapper>
+                <div style={{marginBottom: `${space[4]}`}}>
+                    <Title component="h4" 
+                           style={{ 
+                               marginTop: `${space[3]}`, 
+                               marginBottom: `${space[3]}`
+                            }}
+                    >
+                        TRIP DATES
+                    </Title>
                     <form noValidate fullWidth>
-                        <StyledTextField
+                        <SelectTextField
                             fullWidth
                             id="startTextField"
                             label="Start date"
@@ -46,7 +43,7 @@ const SummaryTrip = (props) => {
                         />
                     </form>
                     <form noValidate fullWidth>
-                        <StyledTextField
+                        <SelectTextField
                             fullWidth
                             id="endTextField"
                             label="End date"
@@ -59,29 +56,55 @@ const SummaryTrip = (props) => {
                             }}
                         />
                     </form>
-                </StyledFormWrapper>
+                </div>
                 <Divider />
-                <StyledPickUpReturnWrapper>
-                    <StyledTitleWrapper>
-                        <Title component="h4">PICKP UP AND RETURN</Title>
-                    </StyledTitleWrapper>
-                    <StyledLocationWrapper>
-                        <Typography variant="title" component="h5">Miami, FL</Typography>
-                    </StyledLocationWrapper>
-                    <Typography variant="body1" component="p" style={{ color: `${palette.grey02}` }}>Exact address is provided after booking is confirmed</Typography>
-                </StyledPickUpReturnWrapper>
+                <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}`}}>
+                    <Title component="h4" 
+                           style={{ marginBottom: `${space[3]}`}}>PICKP UP AND RETURN</Title>
+                    <Typography 
+                        variant="title" 
+                        component="h5" 
+                        style={{ marginBottom: `${space[2]}`}}
+                    >
+                        Miami, FL
+                    </Typography>
+                    <Typography 
+                        variant="body1" 
+                        component="p" 
+                        style={{ color: `${palette.grey02}` }}
+                    >
+                        Exact address is provided after booking is confirmed
+                    </Typography>
+                </div>
                 <Divider />
-                <StyledMilesIncludedWrapper>
-                    <StyledMilesIncludedTitleWrapper>
-                        <Title component="h4">MILES INCLUDED</Title>
-                    </StyledMilesIncludedTitleWrapper>
-                    <StyledMilesTitleWrapper>
-                        <Typography variant="title" component="h5">200 mi</Typography>
-                    </StyledMilesTitleWrapper>
-                    <Typography component="p" style={{ color: `${palette.grey02}` }}>$0.45 fee for each additional mile</Typography>
-                </StyledMilesIncludedWrapper>
+                <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}`}}>
+                    <Title component="h4" style={{ marginBottom: `${space[3]}` }}>MILES INCLUDED</Title>
+                    <Typography 
+                        variant="title" 
+                        component="h5" 
+                        style={{ 
+                            marginBottom: `${space[2]}`
+                        }}
+                    >
+                        200 mi
+                    </Typography>
+                    <Typography 
+                        component="p" 
+                        style={{ color: `${palette.grey02}` }}
+                    >
+                        $0.45 fee for each additional mile
+                    </Typography>
+                </div>
                 <div>
-                    <PrimaryButton component={MyLink}>Continue $382/per day</PrimaryButton>
+                    {/* <PrimayPriceButton component={MyLink}>Continue $382/per day</PrimayPriceButton> */}
+                    <PrimayPriceButton 
+                        component={MyLink} 
+                        text="Continue"
+                        dollar="$" 
+                        price="329"
+                        perday="/per day"
+                        style={{ marginBottom: `${space[4]}`}}
+                    />
                 </div>
             </StyledContainer>
             <button onClick={props.reportListingClicked}>Report this listing</button>

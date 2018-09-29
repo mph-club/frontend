@@ -40,7 +40,7 @@ export const StyledLeftFirstContainer = styled.div`
     width: 100%;
     height: auto;
     justify-content: space-between;
-    margin: 16px 0;
+    margin-top: 16px;
     display: flex;
 `
 

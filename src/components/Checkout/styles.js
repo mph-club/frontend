@@ -44,7 +44,7 @@ export const StyledStepsContainer = styled.div`
 `
 
 export const StyledRightContainer = styled.div`
-    border: 1px solid;
+    border: 1px solid ${palette.grey04};
     border-radius: 10px;
     background-color: #fafafa;
 `

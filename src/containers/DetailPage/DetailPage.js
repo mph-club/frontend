@@ -16,7 +16,7 @@ import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
 import Guidelines from '../../components/DetailPageComponents/Guidelines/Guidelines';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
-import ReportListing from '../../components/ReportListing/ReportListing';
+import ReportListing from '../../components/DetailPageComponents/ReportListing/ReportListing';
 import SeatIcon from '../../components/Icons/SeatIcon';
 import DoorIcon from '../../components/Icons/DoorIcon';
 import GasIcon from '../../components/Icons/GasIcon';
@@ -136,9 +136,7 @@ class DetailPage extends Component {
                                     <div>4 trips</div>
                                     <div><RateStars rate='4' /></div>
                                     <div>
-                                        <Typography variant="body1" style={{ color: `${palette.grey02}` }}>
-                                            8 mi
-                                        </Typography>
+                                        <Typography variant="body1" style={{ color: `${palette.grey02}` }}> 8 mi</Typography>
                                     </div>
                                 </StyledRateLayout>
                             </StyledTitleLayout>

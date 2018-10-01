@@ -13,6 +13,7 @@ import Checkout from './components/Checkout/Checkout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import TripDetailsPage from './containers/TripDetailsPage/TripDetailsPage';
 import Aux from './hoc/Aux/Aux';
+import HostDashboard from './containers/HostDashboard/HostDashboard';
 
 class App extends Component {
 
@@ -65,13 +66,14 @@ class App extends Component {
             closeSignUp={() => this.closeSignup(false)}
             openLogin={() => this.closeSignup(true)} />
           <Switch>
-            <Route path="/search-page" exact component={SearchPage} />
-            <Route path="/car-details" exact component={DetailPage} />
-            <Route path="/user-details" exact component={UserDetails} />
-            <Route path="/checkout" exact component={Checkout} />
-            <Route path="/dashboard" exact component={Dashboard} />
-            <Route path="/trip-details-page" exact component={TripDetailsPage} />
-            <Route path="/" component={InitialPage} />
+            <Route exact path="/" component={InitialPage} />
+            <Route exact path="/search-page" component={SearchPage} />
+            <Route exact path="/car-details" component={DetailPage} />
+            <Route exact path="/user-details" component={UserDetails} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/host-dashboard" component={HostDashboard} />
+            <Route exact path="/trip-details-page" component={TripDetailsPage} />
           </Switch>
         </main>
       </Aux>

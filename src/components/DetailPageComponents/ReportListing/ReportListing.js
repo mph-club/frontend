@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import FormLabel from '@material-ui/core/FormLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import PrimaryButton from '../UI/Buttons/PrimaryButton/PrimaryButton';
+import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 
 import {
     StyledIconButton,
@@ -81,9 +81,8 @@ class ReportListing extends Component {
                                 justifyContent: 'flex-end',
                                 margin: '12px 12px 12px'
                             }}>
-                                <PrimaryButton type="submit">Submit</PrimaryButton>
+                            <PrimaryButton>Submit</PrimaryButton>
                             </div>
-
                         </FormControl>
                     </DialogContent>
                 </Dialog>

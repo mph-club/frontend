@@ -18,7 +18,7 @@ import {
     StyledMiddleContainer
 } from './styles';
 import SummaryTripForHost from '../../components/SummaryTripForHost/SummaryTripForHost';
-import ReportListing from '../../components/ReportListing/ReportListing';
+import ReportListing from '../../components/DetailPageComponents/ReportListing/ReportListing';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Badge from '@material-ui/core/Badge';

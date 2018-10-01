@@ -23,7 +23,6 @@ import {
     StyledButtonWrapper,
     StyledLink
 } from './styles';
-import { FormHelperText } from '@material-ui/core';
 
 const Checkout = () => {
     return (

@@ -16,7 +16,7 @@ export const StyledAppBar = styled(AppBar)`
 
     @media(max-width: 600px) {
         && {
-            margin-top: 50px;
+            margin-top: 56px;
         }
     }
 `

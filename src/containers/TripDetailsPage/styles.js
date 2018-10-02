@@ -29,9 +29,12 @@ export const StyledImg = styled.img`
 
 export const StyledImageContainer = styled.div`
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 64px auto;
     max-width: 960px;
+
+    @media(max-width: 600px) {
+        margin: 56px auto;
+    }
 `
 
 export const StyledTitleLayout = styled.div`

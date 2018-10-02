@@ -26,4 +26,10 @@ export const StyledHeader = styled.header`
     background-position: center;
     background-repeat: no-repeat;
     margin-top: 64px;
+
+    @media(max-width: 600px) {
+        && {
+            margin-top: 56px;
+        }
+    }
 `

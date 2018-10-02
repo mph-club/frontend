@@ -119,6 +119,6 @@ export const StyledDateContainerItemTwo = styled.div`
 `
 
 export const StyledButtonContainer = styled.div`
-    margin-top: 2rem;
+    margin: 2rem 0;
     float: right;
 `

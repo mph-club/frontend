@@ -1,62 +1,98 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import ClearIcon from '@material-ui/icons/Clear';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
+import LettersCounter from '../../UI/LettersCounter/LettersCounter';
 
 import {
     StyledIconButton,
-    StyledDivider
+    StyledDivider,
+    StyledPhoneContainer,
+    StyledOutlineInput
 } from './styles';
 import Typography from '@material-ui/core/Typography';
 
 
-const GetHelpForm = (props) => {
+class GetHelpForm extends Component {
 
-    return (
-        <div>
-            <Dialog
-                open={props.openForm}
-                onClose={props.closeForm}
-                scroll={'body'}
-                aria-labelledby="scroll-dialog-getHelp"
-            >
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'flex-end'
-                }}>
-                    <StyledIconButton onClick={props.closeForm}>
-                        <ClearIcon />
-                    </StyledIconButton>
-                </div>
-                <DialogTitle id="getHelpDialog">Report this listing</DialogTitle>
-                <DialogContent>
-                    <FormControl style={{ width: '100%' }}>
-                        <FormLabel>We'll respond back within 24 hours.</FormLabel>
-                        <OutlinedInput multiline={true} rowsMax="12" labelWidth={10}></OutlinedInput>
-                        <StyledDivider
-                            variant="body2">or
-                        </StyledDivider>
-                        <div>
-                            <Typography>If you need immidate assistance, give us a call</Typography>
-                            <a href="tel:+1-800-454-4369">1-800-454-4369</a>
-                        </div>
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'flex-end',
-                            margin: '12px 12px 12px'
-                        }}>
-                            <PrimaryButton>Submit</PrimaryButton>
-                        </div>
-                    </FormControl>
-                </DialogContent>
-            </Dialog>
-        </div>
-    );
-}
+    state = {
+        length: 0
+    }
 
-export default GetHelpForm
+    handleChange = (event) => {
+        this.setState({
+            length: event.target.value.length
+        })
+    }
+
+    render() {
+
+        const inputProps = {
+            maxlength: '400'
+        }
+
+        return (
+            <div>
+                <Dialog
+                    open={this.props.openForm}
+                    onClose={this.props.closeForm}
+                    fullScreen={this.props.fullScreen}
+                    scroll={'body'}
+                    aria-labelledby="scroll-dialog-getHelp"
+                >
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'flex-end'
+                    }}>
+                        <StyledIconButton onClick={this.props.closeForm}>
+                            <ClearIcon />
+                        </StyledIconButton>
+                    </div>
+                    <DialogTitle id="getHelpDialog">How can we help?</DialogTitle>
+                    <DialogContent>
+                        <FormControl style={{ width: '100%' }}>
+                            <FormLabel>We'll respond back within 24 hours.</FormLabel>
+                            <StyledOutlineInput
+                                multiline={true}
+                                rows="14"
+                                labelWidth={10}
+                                onChange={this.handleChange}
+                                inputProps={
+                                    inputProps
+                                }
+                            ></StyledOutlineInput>
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'flex-end',
+                                margin: '-56px 12px 32px'
+                            }} >
+                                <LettersCounter length={this.state.length} />
+                            </div>
+                            <StyledDivider
+                                variant="body2">or
+                            </StyledDivider>
+                            <StyledPhoneContainer>
+                                <Typography>If you need immidate assistance, give us a call</Typography>
+                                <a href="tel:+1-800-454-4369">1-800-454-4369</a>
+                            </StyledPhoneContainer>
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'flex-end',
+                                margin: '12px 12px 12px'
+                            }}>
+                                <PrimaryButton>Submit</PrimaryButton>
+                            </div>
+                        </FormControl>
+                    </DialogContent>
+                </Dialog>
+            </div>
+        );
+    }
+};
+
+export default withMobileDialog()(GetHelpForm)

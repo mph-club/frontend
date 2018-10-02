@@ -20,7 +20,5 @@ export const StyledToolBar = styled(Toolbar)`
 `
 
 export const StyledNav = styled.nav`
-    @media (max-width: 499px) {
-        display: none;
-    }
+    display: flex;
 `

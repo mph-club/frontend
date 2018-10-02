@@ -13,6 +13,12 @@ export const StyledAppBar = styled(AppBar)`
         margin-top: 64px;
         z-index: 1000;
     }
+
+    @media(max-width: 600px) {
+        && {
+            margin-top: 50px;
+        }
+    }
 `
 
 export const StyledListContainer = styled.div`

@@ -43,7 +43,7 @@ const GetHelpForm = (props) => {
                         </StyledDivider>
                         <div>
                             <Typography>If you need immidate assistance, give us a call</Typography>
-                            <Typography>1-800-454-4369</Typography>
+                            <a href="tel:+1-800-454-4369">1-800-454-4369</a>
                         </div>
                         <div style={{
                             display: 'flex',

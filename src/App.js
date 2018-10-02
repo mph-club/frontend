@@ -14,6 +14,7 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import TripDetailsPage from './containers/TripDetailsPage/TripDetailsPage';
 import Aux from './hoc/Aux/Aux';
 import HostDashboard from './containers/HostDashboard/HostDashboard';
+import DeclineForm from './components/SummaryTripForHost/DeclineForm/DeclineForm';
 
 class App extends Component {
 
@@ -74,6 +75,7 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/host-dashboard" component={HostDashboard} />
             <Route exact path="/trip-details-page" component={TripDetailsPage} />
+            <Route exact path="/decline-trip" component={DeclineForm} />
           </Switch>
         </main>
       </Aux>

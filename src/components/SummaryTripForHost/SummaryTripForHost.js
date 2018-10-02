@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import {
     StyledDateForm,
@@ -76,7 +76,7 @@ class SummaryTripForHost extends Component {
                         </StyledDivider>
                     </StyledDividerLayout>
                     <div>
-                        <SecondaryButton>Decline trip request</SecondaryButton>
+                        <SecondaryButton component={Link} to="decline-trip">Decline trip request</SecondaryButton>
                     </div>
                 </StyledContainer>
                 <button onClick={this.handleGetHelpClicked}>Get help</button>

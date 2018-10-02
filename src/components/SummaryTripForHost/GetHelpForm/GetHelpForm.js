@@ -33,7 +33,7 @@ class GetHelpForm extends Component {
     render() {
 
         const inputProps = {
-            maxlength: '400'
+            maxLength: '400'
         }
 
         return (

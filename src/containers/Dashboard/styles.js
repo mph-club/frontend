@@ -10,21 +10,24 @@ export const StyledBadge = styled(Badge)`
 export const StyledAppBar = styled(AppBar)`
     && {
         background-color: #fff;
-        margin-top: 64px;
+        padding-top: 96px;
         z-index: 1000;
-    }
+        box-shadow: 0px 1px 0px 0px rgba(204, 204, 204, 1);
 
-    @media(max-width: 600px) {
+        @media(max-width: 600px) {
         && {
             margin-top: 56px;
-        }
+        }   
     }
 `
 
 export const StyledListContainer = styled.div`
-    margin-top: 128px;
+    margin-top: 192px;
 `
 
 export const StyledContainer = styled.div`
     min-height: 100%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
 `

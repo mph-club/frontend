@@ -10,7 +10,8 @@ export const StyledNoticeContainer = styled.div`
 export const StyleNotice = styled(Typography)`
     && {
         color: ${props => props.color};
+        padding: 0 16px;
+        font-weight: 600;
     }
-    padding: 0 16px;
 `
 

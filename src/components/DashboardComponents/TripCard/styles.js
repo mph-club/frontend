@@ -25,7 +25,7 @@ export const StyleNotice = styled(Typography)`
 export const StyledImageDiv = styled.div`
     position: relative;
     width: 200px;
-    height: 140px;
+    height: 74px;
     overflow: hidden;
     border-radius: 8px;
 
@@ -39,6 +39,11 @@ export const StyledImageDiv = styled.div`
             -ms-transform: translate(-50%,-50%);
                 transform: translate(-50%,-50%);
     }
+
+    @media (min-width: 768px) {
+        height: 140px;
+    }
+
 `
 
 export const StyledNoticeContainer = styled.div`

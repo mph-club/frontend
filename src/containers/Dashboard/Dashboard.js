@@ -35,14 +35,12 @@ class Dashboard extends Component {
         switch (value) {
             case 0:
                 content = <Aux>
-                    <TripCard clicked={this.handleCardClick}/>
-                    <TripCard clicked={this.handleCardClick}/>
-                    <TripCard clicked={this.handleCardClick}/>
-                    <TripCard clicked={this.handleCardClick}/>
-                    <TripCard clicked={this.handleCardClick}/>
-                    <TripCard clicked={this.handleCardClick}/>
-                    <TripCard clicked={this.handleCardClick}/>
-                    <TripCard clicked={this.handleCardClick}/>
+                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
+                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
+                    <TripCard clicked={this.handleCardClick} status='pendingListing'/>
+                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
+                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
+                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
                 </Aux>
                 break;
             default:

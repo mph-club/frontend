@@ -2,25 +2,45 @@ import React from 'react';
 import {
     StyledCard,
     StyledExtContainer,
-    StyleNotice,
-    StyledNoticeContainer,
     StyleImage
 } from './styles';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
+import Notice from '../Notice/Notice';
+import Aux from '../../../hoc/Aux/Aux';
+import { palette } from '../../../theme';
 
 const TripCard = (props) => {
+
+    let notice = null
+
+    switch (props.status) {
+        case 'pendingTrip':
+            notice = <Aux>
+                <Notice
+                    color={palette.green} 
+                    label='Pending your approval'/>
+            </Aux>
+            break;
+        case 'pendingListing':
+            notice = <Aux>
+                <Notice
+                    color={palette.black} 
+                    label='Pending approval'/>
+            </Aux>
+            break;
+        default: break;
+    }
+
     return (
         <StyledCard onClick={props.clicked}>
             <CardContent>
-                <StyledNoticeContainer>
-                    <StyleNotice component="h3">Pending your approval</StyleNotice>
-                </StyledNoticeContainer>
+                {notice}
                 <StyledExtContainer>
                     <div>
                         <Typography color="primary" component="h2">Jim's trip request</Typography>
                         <Typography color="primary" component="h3">Maserati Granturismo Convertible 2016</Typography>
-                        <div style={{display: 'flex'}}>
+                        <div style={{ display: 'flex' }}>
                             <div>
                                 <Typography color="primary" component="h5">Start date</Typography>
                                 <Typography color="primary" component="h2">Tuesday, Jul 6, 2018</Typography>

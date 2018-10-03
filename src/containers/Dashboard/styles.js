@@ -12,12 +12,12 @@ export const StyledAppBar = styled(AppBar)`
         background-color: #fff;
         margin-top: 64px;
         z-index: 1000;
-    }
+        box-shadow: 0px 1px 0px 0px rgba(204, 204, 204, 1);
 
-    @media(max-width: 600px) {
+        @media(max-width: 600px) {
         && {
             margin-top: 56px;
-        }
+        }   
     }
 `
 

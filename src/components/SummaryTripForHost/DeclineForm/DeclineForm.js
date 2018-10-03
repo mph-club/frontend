@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import LettersCounter from '../../UI/LettersCounter/LettersCounter';
+import { StyledSecondaryButton } from '../../../containers/SearchPage/ListVehicleBanner/styles';
 
 class DeclineForm extends Component {
 
@@ -100,9 +101,10 @@ class DeclineForm extends Component {
                     <div style={{
                         display: 'flex',
                         justifyContent: 'flex-end',
-                        margin: '12px 12px 12px'
+                        margin: '12px'
                     }}>
-                        <PrimaryButton>Submit</PrimaryButton>
+                        <StyledSecondaryButton style={{marginRight: '12px'}}>Decline booking</StyledSecondaryButton>
+                        <PrimaryButton>Keep this trip</PrimaryButton>
                     </div>
                 </FormControl>
             </StyledContainer>

@@ -13,7 +13,7 @@ export const StyledRowContainer = styled.div`
 
 export const StyledContainer = styled.div`
     display: block;
-    justifyContent: center;
+    justify-content: center;
     margin: 96px auto;
     max-width: 500px;
 

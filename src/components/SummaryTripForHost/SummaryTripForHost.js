@@ -76,7 +76,7 @@ class SummaryTripForHost extends Component {
                         </StyledDivider>
                     </StyledDividerLayout>
                     <div>
-                        <SecondaryButton component={Link} to="decline-trip">Decline trip request</SecondaryButton>
+                        <SecondaryButton component={Link} to="/decline-trip">Decline trip request</SecondaryButton>
                     </div>
                 </StyledContainer>
                 <button onClick={this.handleGetHelpClicked}>Get help</button>

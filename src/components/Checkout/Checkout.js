@@ -1,5 +1,4 @@
 import React from 'react';
-import Aux from '../../hoc/Aux/Aux';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -26,7 +25,7 @@ import {
 
 const Checkout = () => {
     return (
-        <Aux>
+        <React.Fragment>
             <StyledGridContainer>
                 <Grid container spacing={40}>
                     <Grid item xs={12}>
@@ -145,7 +144,7 @@ const Checkout = () => {
                 </Grid>
             </StyledGridContainer>
             <Footer />
-        </Aux>
+        </React.Fragment>
     );
 }
 

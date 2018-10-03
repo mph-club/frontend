@@ -12,7 +12,6 @@ import UserDetails from './components/UserDetails/UserDetails';
 import Checkout from './components/Checkout/Checkout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import TripDetailsPage from './containers/TripDetailsPage/TripDetailsPage';
-import Aux from './hoc/Aux/Aux';
 import HostDashboard from './containers/HostDashboard/HostDashboard';
 import DeclineForm from './components/SummaryTripForHost/DeclineForm/DeclineForm';
 
@@ -50,7 +49,7 @@ class App extends Component {
 
   render() {
     return (
-      <Aux>
+      <React.Fragment>
         <Toolbar
           loginClicked={this.handleLogin}
           signupClicked={this.handleSignUp}
@@ -78,7 +77,7 @@ class App extends Component {
             <Route exact path="/decline-trip" component={DeclineForm} />
           </Switch>
         </main>
-      </Aux>
+      </React.Fragment>
     );
   }
 }

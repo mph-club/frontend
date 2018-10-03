@@ -1,5 +1,4 @@
 import React from 'react';
-import Aux from '../../../hoc/Aux/Aux';
 import Title from '../../UI/CustomTypography/Title/Title';
 
 import { StyledUl, 
@@ -7,7 +6,7 @@ import { StyledUl,
 
 const Guidelines = () => (
 
-    <Aux>
+    <React.Fragment>
         <Title variant="body2" component="h4">GUIDELINES</Title>
         <StyledUlWrapper>
             <StyledUl>
@@ -16,7 +15,7 @@ const Guidelines = () => (
                 <li><div>No smoking</div></li>
             </StyledUl>
         </StyledUlWrapper>
-    </Aux>
+    </React.Fragment>
 
 );
 

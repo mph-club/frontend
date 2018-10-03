@@ -4,7 +4,6 @@ import Typography from '@material-ui/core/Typography';
 import { palette } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
-import Aux from '../../hoc/Aux/Aux';
 import RateStars from '../../components/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
 import {
@@ -49,7 +48,7 @@ class TripDetailsPage extends Component {
 
     render() {
         return (
-            <Aux>
+            <React.Fragment>
                 <StyledImageContainer>
                     <StyledImg src="https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/ainXQzexQZeXQ4g9jM7-gg.1440x700.jpg" alt="asdas" />
                 </StyledImageContainer>
@@ -151,8 +150,7 @@ class TripDetailsPage extends Component {
                 </StyledGridContainer>
                 <ReportListing openForm={this.state.reportListing} />
                 <Footer />
-            </Aux >
-
+            </React.Fragment >
         );
     }
 }

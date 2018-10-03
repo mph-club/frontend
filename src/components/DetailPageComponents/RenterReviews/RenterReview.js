@@ -1,7 +1,6 @@
 import React from 'react';
 
 import avatar from '../../../assets/images/avatar.png'
-import Aux from '../../../hoc/Aux/Aux';
 import ReadMore from '../../ReadMore/ReadMore';
 import RateStars from '../../RateStars/RateStars';
 import TextButton from '../../UI/Buttons/TextButton/TextButton';
@@ -20,7 +19,7 @@ import {
 
 const RenterReviews = () => {
     return (
-        <Aux>
+        <React.Fragment>
             <StyledCaption variant="body2" component="p">Renter Reviews</StyledCaption>
             <StyledContainer>
                 <StyledAvatarWrapper>
@@ -51,7 +50,7 @@ const RenterReviews = () => {
                     <RateStars />
                 </div>
             </StyledRentalReviewsReadMoreWrapper>
-        </Aux>
+        </React.Fragment>
     );
 }
 

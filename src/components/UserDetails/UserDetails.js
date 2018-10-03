@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Aux from '../../hoc/Aux/Aux';
 import CarsCollection from '../../containers/CarsCollection/CarsCollection';
 import UserSummary from './UserSummary/UserSummary';
 import Divider from '@material-ui/core/Divider';
@@ -9,7 +8,7 @@ import { StyledRenterReviewsContainer } from './styles';
 
 const UserDetails = () => {
     return (
-        <Aux>
+        <React.Fragment>
             <UserSummary />
             <Divider />
             <StyledRenterReviewsContainer>
@@ -17,7 +16,7 @@ const UserDetails = () => {
             </StyledRenterReviewsContainer>
             <Divider />
             <CarsCollection title="Mike's Cars"/>
-        </Aux>
+        </React.Fragment>
     );
 }
 

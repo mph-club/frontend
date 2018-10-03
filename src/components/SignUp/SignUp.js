@@ -20,7 +20,6 @@ import {
 
 const SignUp = (props) => {
         return (
-            <div>
                 <Modal
                     aria-labelledby="sign-up-modal"
                     aria-describedby="This is the sign up form"
@@ -94,7 +93,6 @@ const SignUp = (props) => {
                         </StyledForm>
                     </StyledDiv>
                 </Modal>
-            </div>
         );
 }
 

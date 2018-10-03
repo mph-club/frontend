@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import Aux from '../../../hoc/Aux/Aux';
 import Button from '@material-ui/core/Button';
 import { StyledIcon } from './styles';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -34,7 +32,7 @@ class UserEntry extends Component {
         const DashboardLink = props => <Link to="/dashboard" {...props} />
 
         return (
-            <Aux>
+            <React.Fragment>
                 <Button
                     variant="contained"
                     color="primary"
@@ -70,7 +68,7 @@ class UserEntry extends Component {
                         </Grow>
                     )}
                 </Popper>
-            </Aux>
+            </React.Fragment>
         );
     }
 }

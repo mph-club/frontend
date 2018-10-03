@@ -1,27 +1,26 @@
 import styled from 'styled-components';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { palette } from '../../../theme';
+import { palette, space } from '../../../theme';
 
 export const StyledCard = styled(Card)`
-    width: 90%;
-    margin: 16px auto;
+    && {
+        width: 90%;
+        margin: 16px auto;
+        box-shadow: 0px 4px 12px 0px rgba(22, 23, 26, 0.15);
 
-    @media (min-width: 768px) {
-        width: 80%
-    } 
+        @media (min-width: 768px) {
+            width: 80%
+        } 
+    }
 `
 export const StyleNotice = styled(Typography)`
     && {
         color: ${palette.green};
+        padding: 0 16px;
+        font-weight: 600;
     }
-    padding: 0 16px;
 `
-// export const StyleImage = styled.img`
-//     float: rigth;
-//     height: 80px;
-//     width: 120px;
-// `
 
 export const StyledImageDiv = styled.div`
     position: relative;
@@ -51,4 +50,13 @@ export const StyledNoticeContainer = styled.div`
 export const StyledExtContainer = styled.div`
     display: flex;
     justify-content: space-between;
+`
+
+export const StyledSlantedDivider = styled.div`
+    width: 2px;
+    height: 37px;
+    background-color: #ccd0d2;
+    transform: rotate(16deg);
+    margin-right: ${space[3]};
+    margin-left: ${space[3]};
 `

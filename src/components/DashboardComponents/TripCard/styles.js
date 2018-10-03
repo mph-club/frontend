@@ -5,7 +5,7 @@ import { space } from '../../../theme';
 export const StyledCard = styled(Card)`
     && {
         width: 90%;
-        margin: 16px auto;
+        margin: ${space[4]} auto;
         box-shadow: 0px 4px 12px 0px rgba(22, 23, 26, 0.15);
 
         @media (min-width: 768px) {
@@ -50,4 +50,13 @@ export const StyledSlantedDivider = styled.div`
     transform: rotate(16deg);
     margin-right: ${space[3]};
     margin-left: ${space[3]};
+`
+
+export const StyledDateWrapper = styled.div`
+    && {
+        display: flex;
+        justify-content: space-between;
+        margin-top: ${space[3]};
+        margin-bottom: ${space[3]};
+    }
 `

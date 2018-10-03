@@ -7,7 +7,8 @@ import {
     StyledCard,
     StyledExtContainer,
     StyledImageDiv,
-    StyledSlantedDivider
+    StyledSlantedDivider,
+    StyledDateWrapper
 } from './styles';
 import Notice from '../Notice/Notice';
 import Aux from '../../../hoc/Aux/Aux';
@@ -42,19 +43,19 @@ const TripCard = (props) => {
                     <div>
                         <Typography variant="title" color="primary" component="h2">Jim's trip request</Typography>
                         <Typography variant="body2" color="primary" component="h3">Maserati Granturismo Convertible 2016</Typography>
-                        <div style={{display: 'flex', alignItems: 'center', marginTop: `${space[3]}`, marginBottom: `${space[3]}`}}>
+                        <StyledDateWrapper>
                             <div>
                                 <Typography variant="body1" color="primary" component="h5" style={{ color: `${palette.grey02}`, fontWeight: 600, marginBottom: `${space[1]}` }}>Start date</Typography>
-                                <Typography variant="title" color="primary" component="h2">Tuesday, Jul 6, 2018</Typography>
+                                <Typography variant="title" color="primary" component="h2">Tue, Jul 6, 2018</Typography>
                                 <Typography variant="body2" color="primary" component="h2" style={{ fontWeight: 600 }}>10 AM</Typography>
                             </div>
                             <StyledSlantedDivider />
                             <div>
                                 <Typography variant="body1" color="primary" component="h5" style={{ color: `${palette.grey02}`, fontWeight: 600, marginBottom: `${space[1]}` }}>End date</Typography>
-                                <Typography variant="title" color="primary" component="h2">Friday, Jul 9, 2018</Typography>
+                                <Typography variant="title" color="primary" component="h2">Fri, Jul 9, 2018</Typography>
                                 <Typography variant="body2" color="primary" component="h2" style={{ fontWeight: 600 }}>12 PM</Typography>
                             </div>
-                        </div>
+                        </StyledDateWrapper>
                     </div>
                     <StyledImageDiv>
                         <img src="https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/rH3L9hymTruCcALiNHs_Mw.1440x700.jpg" alt="label" />

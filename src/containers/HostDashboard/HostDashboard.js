@@ -35,12 +35,13 @@ class HostDashboard extends Component {
         switch (value) {
             case 0:
                 content = <Aux>
-                    <TripCard clicked={this.handleCardClick}/>
-                    <TripCard clicked={this.handleCardClick}/>
+                    <TripCard clicked={this.handleCardClick} status='pendingListing'/>
+                    <TripCard clicked={this.handleCardClick} status='pendingListing'/>
+                    <TripCard clicked={this.handleCardClick} status='pendingListing'/>
                 </Aux>
                 break;
             default:
-                content = <TripCard />
+                content = <TripCard clicked={this.handleCardClick} status='pendingListing'/>
                 break;
         }
 

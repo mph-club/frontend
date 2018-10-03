@@ -1,24 +1,43 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
-import theme, { space, palette } from '../../../theme';
+import { space, palette } from '../../../theme';
 
 import {
     StyledCard,
     StyledExtContainer,
-    StyleNotice,
-    StyledNoticeContainer,
     StyledImageDiv,
     StyledSlantedDivider
 } from './styles';
+import Notice from '../Notice/Notice';
+import Aux from '../../../hoc/Aux/Aux';
 
 const TripCard = (props) => {
+
+    let notice = null
+
+    switch (props.status) {
+        case 'pendingTrip':
+            notice = <Aux>
+                <Notice
+                    color={palette.green}
+                    label='Pending your approval'/>
+            </Aux>
+            break;
+        case 'pendingListing':
+            notice = <Aux>
+                <Notice
+                    color={palette.black} 
+                    label='Pending approval'/>
+            </Aux>
+            break;
+        default: break;
+    }
+
     return (
         <StyledCard onClick={props.clicked}>
             <CardContent>
-                <StyledNoticeContainer style={{ marginBottom: `${space[3]}` }}>
-                    <StyleNotice variant="body1" component="h3">Pending your approval</StyleNotice>
-                </StyledNoticeContainer>
+                {notice}
                 <StyledExtContainer>
                     <div>
                         <Typography variant="title" color="primary" component="h2">Jim's trip request</Typography>

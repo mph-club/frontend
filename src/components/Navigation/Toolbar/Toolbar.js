@@ -22,7 +22,6 @@ class ToolBar extends Component {
     if (this.props.auth) {
 
       if (this.props.location.pathname === '/dashboard') {
-        console.log(this.props.location.pathname)
         buttons = <Button color="inherit" component={Link} to="/host-dashboard">Host</Button>
       }
       buttons = <Aux>

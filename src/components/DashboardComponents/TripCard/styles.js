@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
-import { palette, space } from '../../../theme';
+import { space } from '../../../theme';
 
 export const StyledCard = styled(Card)`
     && {
@@ -12,13 +11,6 @@ export const StyledCard = styled(Card)`
         @media (min-width: 768px) {
             width: 80%
         } 
-    }
-`
-export const StyleNotice = styled(Typography)`
-    && {
-        color: ${palette.green};
-        padding: 0 16px;
-        font-weight: 600;
     }
 `
 
@@ -44,12 +36,6 @@ export const StyledImageDiv = styled.div`
         height: 140px;
     }
 
-`
-
-export const StyledNoticeContainer = styled.div`
-    border: 2px solid ${palette.green};
-    display: inline-block;
-    border-radius: 14px; 
 `
 
 export const StyledExtContainer = styled.div`

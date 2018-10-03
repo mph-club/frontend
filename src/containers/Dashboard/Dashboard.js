@@ -37,8 +37,6 @@ class Dashboard extends Component {
                 content = <Aux>
                     <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
                     <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
-                    <TripCard clicked={this.handleCardClick} status='pendingListing'/>
-                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
                     <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
                     <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
                 </Aux>

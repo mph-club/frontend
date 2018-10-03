@@ -20,7 +20,7 @@ const TripCard = (props) => {
         case 'pendingTrip':
             notice = <Aux>
                 <Notice
-                    color={palette.green} 
+                    color={palette.green}
                     label='Pending your approval'/>
             </Aux>
             break;

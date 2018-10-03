@@ -8,7 +8,7 @@ export const StyledCard = styled(Card)`
     margin: 16px auto;
 
     @media (min-width: 768px) {
-        width: 60%
+        width: 80%
     } 
 `
 export const StyleNotice = styled(Typography)`
@@ -17,10 +17,29 @@ export const StyleNotice = styled(Typography)`
     }
     padding: 0 16px;
 `
-export const StyleImage = styled.img`
-    float: rigth;
-    height: 80px;
-    width: 120px;
+// export const StyleImage = styled.img`
+//     float: rigth;
+//     height: 80px;
+//     width: 120px;
+// `
+
+export const StyledImageDiv = styled.div`
+    position: relative;
+    width: 200px;
+    height: 140px;
+    overflow: hidden;
+    border-radius: 8px;
+
+    img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: 100%;
+        width: auto;
+        -webkit-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+    }
 `
 
 export const StyledNoticeContainer = styled.div`

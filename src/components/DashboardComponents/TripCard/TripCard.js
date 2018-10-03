@@ -4,7 +4,7 @@ import {
     StyledExtContainer,
     StyleNotice,
     StyledNoticeContainer,
-    StyleImage
+    StyledImageDiv
 } from './styles';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
@@ -33,7 +33,9 @@ const TripCard = (props) => {
                             </div>
                         </div>
                     </div>
-                    <StyleImage src="https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/rH3L9hymTruCcALiNHs_Mw.1440x700.jpg" alt="label" />
+                    <StyledImageDiv>
+                        <img src="https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/rH3L9hymTruCcALiNHs_Mw.1440x700.jpg" alt="label" />
+                    </StyledImageDiv>
                 </StyledExtContainer>
                 <Typography color="primary" component="p">You have 8 hours to respond to this booking.</Typography>
             </CardContent>

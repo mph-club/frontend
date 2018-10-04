@@ -66,4 +66,6 @@ const TripCard = (props) => {
     );
 }
 
+
+
 export default TripCard

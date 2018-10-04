@@ -39,8 +39,13 @@ export const StyledImageDiv = styled.div`
 `
 
 export const StyledExtContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
+    && {
+        display: flex;
+        
+        @media (min-width: 768px) {
+            justify-content: space-between;
+        }
+    }
 `
 
 export const StyledSlantedDivider = styled.div`
@@ -55,8 +60,13 @@ export const StyledSlantedDivider = styled.div`
 export const StyledDateWrapper = styled.div`
     && {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
         margin-top: ${space[3]};
         margin-bottom: ${space[3]};
+        align-self: flex-end;
+
+        @media (min-width: 768px) {
+
+        }
     }
 `

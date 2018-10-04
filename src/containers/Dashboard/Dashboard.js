@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
 import TripCard from '../../components/DashboardComponents/TripCard/TripCard';
+
 import {
     StyledAppBar,
     StyledListContainer,
     StyledBadge,
-    StyledContainer
+    StyledContainer,
+    StyledTabs
 } from './styles';
 
 

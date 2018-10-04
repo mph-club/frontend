@@ -14,6 +14,7 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import TripDetailsPage from './containers/TripDetailsPage/TripDetailsPage';
 import HostDashboard from './containers/HostDashboard/HostDashboard';
 import DeclineForm from './components/SummaryTripForHost/DeclineForm/DeclineForm';
+import ListingDetailsPage from './components/ListingDetailsPage/ListingDetailsPage';
 
 class App extends Component {
 
@@ -75,6 +76,7 @@ class App extends Component {
             <Route exact path="/host-dashboard" component={HostDashboard} />
             <Route exact path="/trip-details-page" component={TripDetailsPage} />
             <Route exact path="/decline-trip" component={DeclineForm} />
+            <Route exact path="/listing-pending" component={ListingDetailsPage} />
           </Switch>
         </main>
       </React.Fragment>

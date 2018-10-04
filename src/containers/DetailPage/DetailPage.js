@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import Typography from '@material-ui/core/Typography';
-import { palette } from '../../theme';
+import { palette, space } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
 import { tutorialSteps } from '../CarsCollection/tileData';
@@ -205,7 +205,9 @@ class DetailPage extends Component {
                         </Grid>
                     </Grid>
                 </StyledGridContainer>
-                <CarsCollection title="You might also like" />
+                <div style={{marginBottom:space[4]}}>
+                    <CarsCollection title="You might also like" />
+                </div>
                 <ReportListing
                     openForm={this.state.reportListing}
                     closeForm={this.closeFormReportListing} />

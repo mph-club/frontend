@@ -23,7 +23,7 @@ class HostDashboard extends Component {
     };
 
     handleCardClick = () => {
-        this.props.history.push('/trip-details-page')
+        this.props.history.push('/listing-pending')
     }
 
     render() {

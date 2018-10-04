@@ -11,7 +11,7 @@ export const StyledTextButton = styled.button`
         white-space: nowrap;
         font-size: 1rem;
         font-weight: 600;
-        color: ${palette.blue};
+        color: ${props => props.color ? props.color : palette.blue};
     }
 `
 

@@ -8,8 +8,7 @@ import {
     StyledAppBar,
     StyledListContainer,
     StyledBadge,
-    StyledContainer,
-    StyledTabs
+    StyledContainer
 } from './styles';
 
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import { space, palette } from '../../../theme';
+import Notice from '../../UI/Notice/Notice';
 
 import {
     StyledCard,
@@ -10,7 +11,6 @@ import {
     StyledSlantedDivider,
     StyledDateWrapper
 } from './styles';
-import Notice from '../Notice/Notice';
 
 const TripCard = (props) => {
 
@@ -19,7 +19,7 @@ const TripCard = (props) => {
     switch (props.status) {
         case 'pendingTrip':
             notice = <React.Fragment>
-                <Notice
+                <Notice 
                     color={palette.green}
                     label='Pending your approval'/>
             </React.Fragment>

@@ -25,9 +25,7 @@ export const StyledGridContainer = styled.div`
     box-sizing: border-box;
     padding-left: 0;
     padding-right: 0;
-    margin-top: ${space[4]};
-    margin-left: auto;
-    margin-right: auto;
+    margin: ${space[4]} auto;
 
     @media (max-width: 959px) {
         padding-left: 12px;
@@ -62,40 +60,5 @@ export const StyledRateLayout = styled.div`
     padding-top: ${space[2]};
 `
 
-export const StyledDescriptionIconsLayout = styled.div`
-    display: flex;
-    padding-top: ${space[4]};
-    padding-bottom: ${space[4]};
-`
 
-export const StyledDescriptionLayout = styled.div`
-    padding-bottom: ${space[4]};
-`
 
-export const StyledIcons = styled.div`
-    margin-right: ${space[3]};
-`
-
-export const StyledCarFeatureWrapper = styled.div`
-    margin-top: ${space[3]};
-`
-
-export const StyledCarFeatureContainer = styled.div`
-    padding-top: ${space[4]};
-    padding-bottom: ${space[4]};
-`
-
-export const StyledRenterReviewsWrapper = styled.div`
-    padding-top: ${space[4]};
-    padding-bottom: ${space[4]};
-`
-
-export const StyledOwnedByWrapper = styled.div`
-    padding-top: ${space[4]};
-    padding-bottom: ${space[4]};
-`
-
-export const StyledGuideLinesWrapper = styled.div`
-    padding-top: ${space[4]};
-    padding-bottom: ${space[4]};
-`

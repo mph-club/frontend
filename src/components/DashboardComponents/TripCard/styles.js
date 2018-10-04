@@ -41,10 +41,7 @@ export const StyledImageDiv = styled.div`
 export const StyledExtContainer = styled.div`
     && {
         display: flex;
-        
-        @media (min-width: 768px) {
-            justify-content: space-between;
-        }
+        justify-content: space-between;
     }
 `
 

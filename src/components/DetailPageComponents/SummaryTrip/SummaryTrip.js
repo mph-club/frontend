@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PrimayPriceButton from '../../UI/Buttons/PrimaryPriceButton/PrimaryPriceButton';
 import TextButton from '../../../components/UI/Buttons/TextButton/TextButton';
-import Aux from '../../../hoc/Aux/Aux';
 import Title from '../../UI/CustomTypography/Title/Title';
 import { Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
@@ -20,7 +19,7 @@ const SummaryTrip = (props) => {
     const MyLink = props => <Link to="/checkout" {...props} />
 
     return (
-        <Aux>
+        <React.Fragment>
             <StyledContainer>
                 <div style={{marginBottom: `${space[4]}`}}>
                     <Title component="h4" 
@@ -113,7 +112,7 @@ const SummaryTrip = (props) => {
                 </TextButton>
                 <FlagOutlineIcon onClick={props.reportListingClicked} style={{ color: `${palette.blue}`, cursor: 'pointer'}} />
             </StyledReportThisListingWrapper>
-        </Aux>
+        </React.Fragment>
     );
 };
 

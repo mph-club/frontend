@@ -1,16 +1,13 @@
 import React from 'react';
-
 import avatar from '../../../assets/images/avatar.png';
 import RateStars from '../../RateStars/RateStars';
 import {
     StyledAvatar,
     StyledUserContainer
 } from './styles';
-import Aux from '../../../hoc/Aux/Aux';
 
 const UserSummary = () => {
     return (
-        <Aux>
             <StyledUserContainer>
                 <div>
                     <StyledAvatar
@@ -31,9 +28,6 @@ const UserSummary = () => {
                     </ul>
                 </div>
             </StyledUserContainer>
-
-            
-        </Aux>
     );
 }
 

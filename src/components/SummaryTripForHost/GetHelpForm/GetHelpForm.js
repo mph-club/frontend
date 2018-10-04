@@ -37,7 +37,7 @@ class GetHelpForm extends Component {
         }
 
         return (
-            <div>
+            <React.Fragment>
                 <Dialog
                     open={this.props.openForm}
                     onClose={this.props.closeForm}
@@ -90,7 +90,7 @@ class GetHelpForm extends Component {
                         </FormControl>
                     </DialogContent>
                 </Dialog>
-            </div>
+            </React.Fragment>
         );
     }
 };

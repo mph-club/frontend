@@ -11,7 +11,6 @@ import {
 } from './styles';
 import PrimaryButton from '../../components/UI/Buttons/PrimaryButton/PrimaryButton';
 import SecondaryButton from '../../components/UI/Buttons/SecondayButton/SecondaryButton';
-import Aux from '../../hoc/Aux/Aux';
 import GetHelpForm from './GetHelpForm/GetHelpForm';
 
 class SummaryTripForHost extends Component {
@@ -31,7 +30,7 @@ class SummaryTripForHost extends Component {
     render() {
 
         return (
-            <Aux>
+            <React.Fragment>
                 <StyledContainer>
                     <h4>TRIP DATES</h4>
                     <div style={{ display: 'flex' }}>
@@ -83,7 +82,7 @@ class SummaryTripForHost extends Component {
                 <GetHelpForm
                     openForm={this.state.open}
                     closeForm={this.handleCloseGetHelp} />
-            </Aux>
+            </React.Fragment>
         );
     }
 

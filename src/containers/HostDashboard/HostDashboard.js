@@ -4,7 +4,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
 import TripCard from '../../components/DashboardComponents/TripCard/TripCard';
-import Aux from '../../hoc/Aux/Aux';
 import {
     StyledAppBar,
     StyledListContainer,
@@ -34,11 +33,11 @@ class HostDashboard extends Component {
 
         switch (value) {
             case 0:
-                content = <Aux>
+                content = <React.Fragment>
                     <TripCard clicked={this.handleCardClick} status='pendingListing'/>
                     <TripCard clicked={this.handleCardClick} status='pendingListing'/>
                     <TripCard clicked={this.handleCardClick} status='pendingListing'/>
-                </Aux>
+                </React.Fragment>
                 break;
             default:
                 content = <TripCard clicked={this.handleCardClick} status='pendingListing'/>

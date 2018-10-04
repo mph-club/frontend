@@ -11,7 +11,6 @@ import {
     StyledDateWrapper
 } from './styles';
 import Notice from '../Notice/Notice';
-import Aux from '../../../hoc/Aux/Aux';
 
 const TripCard = (props) => {
 
@@ -19,18 +18,18 @@ const TripCard = (props) => {
 
     switch (props.status) {
         case 'pendingTrip':
-            notice = <Aux>
+            notice = <React.Fragment>
                 <Notice
                     color={palette.green}
                     label='Pending your approval'/>
-            </Aux>
+            </React.Fragment>
             break;
         case 'pendingListing':
-            notice = <Aux>
+            notice = <React.Fragment>
                 <Notice
                     color={palette.black} 
                     label='Pending approval'/>
-            </Aux>
+            </React.Fragment>
             break;
         default: break;
     }

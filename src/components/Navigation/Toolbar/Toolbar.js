@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Logo from '../../UI/Logo/Logo';
-import Aux from '../../../hoc/Aux/Aux';
 import UserEntry from '../UserEntry/UserEntry';
 import { withRouter, Link } from 'react-router-dom';
 import {
@@ -24,15 +23,15 @@ class ToolBar extends Component {
       if (this.props.location.pathname === '/dashboard') {
         buttons = <Button color="inherit" component={Link} to="/host-dashboard">Host</Button>
       }
-      buttons = <Aux>
+      buttons = <React.Fragment>
         {buttons}
-        <UserEntry userName={this.props.userName} />
-      </Aux>
+        <UserEntry userName={this.props.userName}/>
+      </React.Fragment>
     } else {
-      buttons = <Aux>
+      buttons = <React.Fragment>
         <Button color="inherit" onClick={this.props.loginClicked}>Login</Button>
         <Button color="inherit" onClick={this.props.signupClicked}>Sign Up</Button>
-      </Aux>
+      </React.Fragment>
     }
 
     return (

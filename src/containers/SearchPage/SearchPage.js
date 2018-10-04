@@ -7,7 +7,6 @@ import {
 } from './styles';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import ListVehicleBanner from './ListVehicleBanner/ListVehicleBanner';
-import Aux from '../../hoc/Aux/Aux';
 import SearchBar from '../SearchPage/SearchBar/SearchBar';
 import ReduceSearchBar from './SearchBar/ReducedSearchBar/ReducedSearchBar';
 import Footer from '../../components/Navigation/Footer/Footer';
@@ -15,7 +14,7 @@ import Footer from '../../components/Navigation/Footer/Footer';
 class SearchPage extends Component {
     render() {
         return (
-            <Aux>
+            <React.Fragment>
                 <StyledHeader>
                     <StyledContainer>
                         <StyledTitle variant="title">Search and rent thousands of vehicles in all of Florida</StyledTitle>
@@ -28,7 +27,7 @@ class SearchPage extends Component {
                 <CarsCollection title="Exotics" />
                 <ListVehicleBanner />
                 <Footer/>
-            </Aux>
+            </React.Fragment>
         );
     }
 }

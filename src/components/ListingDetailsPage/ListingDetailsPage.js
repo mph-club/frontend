@@ -4,19 +4,17 @@ import Typography from '@material-ui/core/Typography';
 import { palette } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
-import RateStars from '../RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
+import Footer from '../Navigation/Footer/Footer';
+import SummaryApprovalStatus from './SummaryApprovalStatus/SummaryApprovalStatus';
+import StepComponent from '../UI/StepComponent/StepComponent';
 
 import {
     StyledImageContainer,
     StyledImg,
     StyledGridContainer,
-    StyledTitleLayout,
-    StyledRateLayout
+    StyledTitleLayout
 } from './styles';
-import Footer from '../Navigation/Footer/Footer';
-import SummaryApprovalStatus from './SummaryApprovalStatus/SummaryApprovalStatus';
-import StepComponent from '../UI/StepComponent/StepComponent';
 
 
 

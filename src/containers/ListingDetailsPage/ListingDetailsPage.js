@@ -15,7 +15,7 @@ import {
 import Footer from '../../components/Navigation/Footer/Footer';
 import SummaryApprovalStatus from '../../components/ListingDetailsPageComponents/SummaryApprovalStatus/SummaryApprovalStatus';
 import StepComponent from '../../components/UI/StepComponent/StepComponent';
-import Notice from '../../components/DashboardComponents/Notice/Notice';
+import Notice from '../../components/UI/Notice/Notice';
 import PricingSetupDialog from '../../components/ListingDetailsPageComponents/PricingSetupDialog/PricingSetupDialog';
 
 class ListingDetailsPage extends Component {

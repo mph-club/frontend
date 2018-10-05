@@ -12,7 +12,6 @@ import CarFeature from '../../components/DetailPageComponents/CarFeature/CarFeat
 import ReadMore from '../../components/ReadMore/ReadMore';
 import RenterReviews from '../../components/DetailPageComponents/RenterReviews/RenterReview';
 import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
-import Guidelines from '../../components/DetailPageComponents/Guidelines/Guidelines';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
 import ReportListing from '../../components/DetailPageComponents/ReportListing/ReportListing';
@@ -20,6 +19,7 @@ import SeatIcon from '../../components/Icons/SeatIcon';
 import DoorIcon from '../../components/Icons/DoorIcon';
 import GasIcon from '../../components/Icons/GasIcon';
 import GPSIcon from '../../components/Icons/GPSIcon';
+import UnorderedList from '../../components/UI/Lists/UnorderedList';
 
 import {
     StyledImageContainer,
@@ -189,7 +189,12 @@ class DetailPage extends Component {
                             </StyledOwnedByWrapper>
                             <Divider />
                             <StyledGuideLinesWrapper>
-                                <Guidelines />
+                                <UnorderedList
+                                    title="Guidelines"
+                                    itemOne="A desposit will be required"
+                                    itemTwo="A minimum of 1 day is required to rent this car"
+                                    itemThree="No smoking"
+                                />
                             </StyledGuideLinesWrapper>
                             <Divider />
                         </Grid>

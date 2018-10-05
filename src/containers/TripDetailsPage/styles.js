@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import { space } from '../../theme';
+import Grid from '@material-ui/core/Grid';
 
 export const StyledPaper = styled(Paper)`
     padding: 16px;
@@ -8,16 +9,33 @@ export const StyledPaper = styled(Paper)`
     color: #323232;
 `
 
+export const StyledGridContainerTwo = styled(Grid)`
+    && {
+        @media(max-width: 768px) {
+           flex-direction: column; 
+        }
+    }
+`
+
 export const StyledGridContainer = styled.div`
-    max-width: 960px;
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0;
-    margin-top: ${space[4]};
-    margin-left: auto;
-    margin-right: auto;
+    && {
+        max-width: 960px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        box-sizing: border-box;
+        padding-left: ${space[3]};
+        padding-right: ${space[3]};
+        margin-top: ${space[4]};
+        margin-bottom: ${space[6]};
+        margin-left: auto;
+        margin-right: auto;
+
+        @media (min-width: 768px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    } 
 `
 
 export const StyledImg = styled.img`
@@ -25,6 +43,13 @@ export const StyledImg = styled.img`
     width: 100%;
     justify-content: center;
     overflow: hidden;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    @media(min-width: 768px) {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
 `
 
 export const StyledImageContainer = styled.div`
@@ -38,7 +63,13 @@ export const StyledImageContainer = styled.div`
 `
 
 export const StyledTitleLayout = styled.div`
+    padding-left: ${space[3]};
     padding-bottom: ${space[4]};
+    margin-top: -${space[4]};
+
+    @media(min-width: 768px) {
+        padding-left: 0px;
+    }
 `
 
 export const StyledRateLayout = styled.div`
@@ -46,12 +77,21 @@ export const StyledRateLayout = styled.div`
 `
 
 export const StyledAvatar = styled.img`
-    width: 120px !important;
-    height: 120px !important;
-    margin-right: 32px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    margin-top: -80px;
+    && {
+        max-width: 64px;
+        max-height: 64px;
+        margin-top: -96px;
+        margin-right: 16px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+
+        @media(min-width: 768px) {
+            max-width: 120px;
+            max-height: 120px;
+            margin-top: -131px;
+            margin-right: 32px;  
+        }
+    }
 `
 
 export const StyledMiddleContainer = styled.div`

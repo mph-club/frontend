@@ -8,7 +8,7 @@ export const StyledButton = styled(Button)`
         border-radius: 8px;
         border: 0;
         color: white;
-        padding: 8px 24px;
+        padding: ${props=> props.large ? '16px 24px' : '8px 24px' };
         min-width: 112px;
         min-height: 40px;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;

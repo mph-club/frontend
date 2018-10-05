@@ -8,17 +8,15 @@ import FormLabel from '@material-ui/core/FormLabel';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import LettersCounter from '../../UI/LettersCounter/LettersCounter';
+import SecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
 
 import {
     StyledIconButton,
-    StyledDivider,
-    StyledPhoneContainer,
     StyledOutlineInput
 } from './styles';
-import Typography from '@material-ui/core/Typography';
 
 
-class GetHelpForm extends Component {
+class EditDetailsDialog extends Component {
 
     state = {
         length: 0
@@ -43,7 +41,7 @@ class GetHelpForm extends Component {
                     onClose={this.props.closeForm}
                     fullScreen={this.props.fullScreen}
                     scroll={'body'}
-                    aria-labelledby="scroll-dialog-getHelp"
+                    aria-labelledby="scroll-dialog-editDetails"
                 >
                     <div style={{
                         display: 'flex',
@@ -53,10 +51,10 @@ class GetHelpForm extends Component {
                             <ClearIcon />
                         </StyledIconButton>
                     </div>
-                    <DialogTitle id="getHelpDialog">How can we help?</DialogTitle>
+                    <DialogTitle id="getHelpDialog">Details</DialogTitle>
                     <DialogContent>
                         <FormControl style={{ width: '100%' }}>
-                            <FormLabel>We'll respond back within 24 hours.</FormLabel>
+                            <FormLabel>This description will help guests make a decision on booking your car</FormLabel>
                             <StyledOutlineInput
                                 multiline={true}
                                 rows="14"
@@ -73,19 +71,13 @@ class GetHelpForm extends Component {
                             }} >
                                 <LettersCounter length={this.state.length} />
                             </div>
-                            <StyledDivider
-                                variant="body2">or
-                            </StyledDivider>
-                            <StyledPhoneContainer>
-                                <Typography>If you need immidate assistance, give us a call</Typography>
-                                <a href="tel:+1-800-454-4369">1-800-454-4369</a>
-                            </StyledPhoneContainer>
                             <div style={{
                                 display: 'flex',
                                 justifyContent: 'flex-end',
-                                margin: '12px 12px 12px'
+                                margin: '32px 12px 32px'
                             }}>
-                                <PrimaryButton>Submit</PrimaryButton>
+                                <PrimaryButton>Save</PrimaryButton>
+                                <SecondaryButton style={{marginLeft: '12px'}}>Cancel</SecondaryButton>
                             </div>
                         </FormControl>
                     </DialogContent>
@@ -95,4 +87,4 @@ class GetHelpForm extends Component {
     }
 };
 
-export default withMobileDialog()(GetHelpForm)
+export default withMobileDialog()(EditDetailsDialog)

@@ -17,11 +17,13 @@ import SummaryApprovalStatus from '../../components/ListingDetailsPageComponents
 import StepComponent from '../../components/UI/StepComponent/StepComponent';
 import Notice from '../../components/UI/Notice/Notice';
 import PricingSetupDialog from '../../components/ListingDetailsPageComponents/PricingSetupDialog/PricingSetupDialog';
+import EditDetailsDialog from '../../components/ListingDetailsPageComponents/EditDetailsDialog/EditDetailsDialog';
 
 class ListingDetailsPage extends Component {
 
     state = {
-        priceSetup: false
+        priceSetup: false,
+        editDetails: false
     }
 
     handleOpenPriceSetup = () => {
@@ -30,6 +32,14 @@ class ListingDetailsPage extends Component {
 
     handleClosePriceSetup = () => {
         this.setState({ priceSetup: false });
+    }
+
+    handleOpenEditDetails = () => {
+        this.setState({ editDetails: true });
+    }
+
+    handleCloseEditDetails = () => {
+        this.setState({ editDetails: false });
     }
 
     goToUploadPictures = () => {
@@ -71,6 +81,7 @@ class ListingDetailsPage extends Component {
                                 label='Details'
                                 buttonLabel='Change'
                                 color={palette.green}
+                                clicked={this.handleOpenEditDetails}
                             />
                             <Divider />
                             <StepComponent
@@ -112,6 +123,10 @@ class ListingDetailsPage extends Component {
                 <PricingSetupDialog
                     openForm={this.state.priceSetup}
                     closeForm={this.handleClosePriceSetup} />
+                <EditDetailsDialog
+                    openForm={this.state.editDetails}
+                    closeForm={this.handleCloseEditDetails} />
+                />
                 <Footer />
             </React.Fragment >
         );

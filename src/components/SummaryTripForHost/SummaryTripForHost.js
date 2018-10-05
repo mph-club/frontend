@@ -6,7 +6,6 @@ import TripDates from './TripDates/TripDates';
 import PrimaryButton from '../../components/UI/Buttons/PrimaryButton/PrimaryButton';
 import SecondaryButton from '../../components/UI/Buttons/SecondayButton/SecondaryButton';
 import TextButton from '../../components/UI/Buttons/TextButton/TextButton';
-import GetHelpForm from './GetHelpForm/GetHelpForm';
 import { Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
@@ -18,6 +17,7 @@ import {
     StyledNoticeWrapper,
     StyledReportThisListingWrapper
 } from './styles';
+import GetHelpDialog from './GetHelpDialog/GetHelpDialog';
 
 class SummaryTripForHost extends Component {
 
@@ -131,7 +131,7 @@ class SummaryTripForHost extends Component {
                         }} 
                     />
                 </StyledReportThisListingWrapper>
-                <GetHelpForm
+                <GetHelpDialog
                     openForm={this.state.open}
                     closeForm={this.handleCloseGetHelp} />
             </React.Fragment>

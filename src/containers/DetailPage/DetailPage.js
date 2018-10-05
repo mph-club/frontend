@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import { tutorialSteps } from '../CarsCollection/tileData';
 import RateStars from '../../components/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
-import CarFeature from '../../components/CarFeature/CarFeature';
+import CarFeature from '../../components/DetailPageComponents/CarFeature/CarFeature';
 import ReadMore from '../../components/ReadMore/ReadMore';
 import RenterReviews from '../../components/DetailPageComponents/RenterReviews/RenterReview';
 import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';

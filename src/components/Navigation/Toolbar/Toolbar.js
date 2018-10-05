@@ -22,6 +22,8 @@ class ToolBar extends Component {
 
       if (this.props.location.pathname === '/dashboard') {
         buttons = <Button color="inherit" component={Link} to="/host-dashboard">Host</Button>
+      } else if (this.props.location.pathname === '/host-dashboard') {
+        buttons = <Button color="inherit" component={Link} to="/dashboard">Dashboard</Button>
       }
       buttons = <React.Fragment>
         {buttons}

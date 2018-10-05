@@ -11,7 +11,11 @@ const StepComponent = (props) => {
                     <Typography variant="title" component="p" style={{ fontWeight: 400 }}>{props.label}</Typography>
                 </div>
                 <div>
-                    <TextButton color={props.color}>{props.buttonLabel}</TextButton>
+                    <TextButton
+                        color={props.color}
+                        onClick={props.clicked}
+                    >{props.buttonLabel}
+                    </TextButton>
                 </div>
             </StyledStepsContainer>
         </React.Fragment>

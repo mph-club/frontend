@@ -4,28 +4,37 @@ import Typography from '@material-ui/core/Typography';
 import { palette } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
-import RateStars from '../RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
 
 import {
     StyledImageContainer,
     StyledImg,
     StyledGridContainer,
-    StyledTitleLayout,
-    StyledRateLayout
+    StyledTitleLayout
 } from './styles';
-import Footer from '../Navigation/Footer/Footer';
-import SummaryApprovalStatus from './SummaryApprovalStatus/SummaryApprovalStatus';
-import StepComponent from '../UI/StepComponent/StepComponent';
-
-
+import Footer from '../../components/Navigation/Footer/Footer';
+import SummaryApprovalStatus from '../../components/ListingDetailsPageComponents/SummaryApprovalStatus/SummaryApprovalStatus';
+import StepComponent from '../../components/UI/StepComponent/StepComponent';
+import Notice from '../../components/DashboardComponents/Notice/Notice';
+import PricingSetupDialog from '../../components/ListingDetailsPageComponents/PricingSetupDialog/PricingSetupDialog';
 
 class ListingDetailsPage extends Component {
 
-    goToOwnerDetails = () => {
-        this.props.history.push('/user-details');
+    state = {
+        priceSetup: false
     }
 
+    handleOpenPriceSetup = () => {
+        this.setState({ priceSetup: true });
+    }
+
+    handleClosePriceSetup = () => {
+        this.setState({ priceSetup: false });
+    }
+
+    goToUploadPictures = () => {
+        this.props.history.push('/upload-pictures');
+    }
 
     render() {
         return (
@@ -35,6 +44,9 @@ class ListingDetailsPage extends Component {
                 </StyledImageContainer>
                 <StyledGridContainer>
                     <StyledTitleLayout>
+                        <Notice
+                            color={palette.black}
+                            label='Pending Approval' />
                         <Typography variant="display1" color="primary" component="h2">Porsche Panamera</Typography>
                         <Typography variant="display1" color="primary" component="h2">2016</Typography>
                     </StyledTitleLayout>
@@ -45,12 +57,14 @@ class ListingDetailsPage extends Component {
                                 label='Pricing'
                                 buttonLabel='Change'
                                 color={palette.green}
+                                clicked={this.handleOpenPriceSetup}
                             />
                             <Divider />
                             <StepComponent
                                 label='Photos'
                                 buttonLabel='Add'
                                 color={palette.green}
+                                clicked={this.goToUploadPictures}
                             />
                             <Divider />
                             <StepComponent
@@ -88,13 +102,16 @@ class ListingDetailsPage extends Component {
                                 buttonLabel='Change'
                                 color={palette.green}
                             />
-                            <Divider style={{marginBottom: '64px'}}/>
+                            <Divider style={{ marginBottom: '64px' }} />
                         </Grid>
                         <Grid item xs>
                             <SummaryApprovalStatus />
                         </Grid>
                     </Grid>
                 </StyledGridContainer>
+                <PricingSetupDialog
+                    openForm={this.state.priceSetup}
+                    closeForm={this.handleClosePriceSetup} />
                 <Footer />
             </React.Fragment >
         );

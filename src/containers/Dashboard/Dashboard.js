@@ -8,8 +8,7 @@ import {
     StyledAppBar,
     StyledListContainer,
     StyledBadge,
-    StyledContainer,
-    StyledTabs
+    StyledContainer
 } from './styles';
 
 
@@ -42,7 +41,7 @@ class Dashboard extends Component {
                 </React.Fragment>
                 break;
             default:
-                content = <TripCard />
+                content = <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
                 break;
         }
 

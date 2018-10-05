@@ -105,7 +105,7 @@ class SummaryTripForHost extends Component {
                         </Typography>
                     </StyledNoticeWrapper>
                     <div style={{ textAlign: 'center' }}>
-                        <PrimaryButton large>Accept Jim's trip request</PrimaryButton>
+                        <PrimaryButton large="true">Accept Jim's trip request</PrimaryButton>
                     </div>
                     <StyledDividerLayout>
                         <StyledDivider
@@ -113,7 +113,7 @@ class SummaryTripForHost extends Component {
                         </StyledDivider>
                     </StyledDividerLayout>
                     <div style={{ textAlign: 'center', marginBottom: `${space[4]}` }}>
-                        <SecondaryButton large component={Link} to="/decline-trip">Decline trip request</SecondaryButton>
+                        <SecondaryButton large="true" component={Link} to="/decline-trip">Decline trip request</SecondaryButton>
                     </div>
                 </StyledContainer>
                 <StyledReportThisListingWrapper>

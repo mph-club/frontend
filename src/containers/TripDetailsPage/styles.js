@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import { space } from '../../theme';
+import Grid from '@material-ui/core/Grid';
 
 export const StyledPaper = styled(Paper)`
     padding: 16px;
@@ -8,17 +9,33 @@ export const StyledPaper = styled(Paper)`
     color: #323232;
 `
 
+export const StyledGridContainerTwo = styled(Grid)`
+    && {
+        @media(max-width: 768px) {
+           flex-direction: column; 
+        }
+    }
+`
+
 export const StyledGridContainer = styled.div`
-    max-width: 960px;
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0;
-    margin-top: ${space[4]};
-    margin-bottom: ${space[6]};
-    margin-left: auto;
-    margin-right: auto;
+    && {
+        max-width: 960px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        box-sizing: border-box;
+        padding-left: ${space[3]};
+        padding-right: ${space[3]};
+        margin-top: ${space[4]};
+        margin-bottom: ${space[6]};
+        margin-left: auto;
+        margin-right: auto;
+
+        @media (min-width: 768px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    } 
 `
 
 export const StyledImg = styled.img`
@@ -46,8 +63,13 @@ export const StyledImageContainer = styled.div`
 `
 
 export const StyledTitleLayout = styled.div`
+    padding-left: ${space[3]};
     padding-bottom: ${space[4]};
     margin-top: -${space[4]};
+
+    @media(min-width: 768px) {
+        padding-left: 0px;
+    }
 `
 
 export const StyledRateLayout = styled.div`

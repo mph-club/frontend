@@ -26,7 +26,8 @@ import {
     StyledRateLayout,
     StyledAvatar,
     StyledExtContainer,
-    StyledMiddleContainer
+    StyledMiddleContainer,
+    StyledGridContainerTwo
 } from './styles';
 
 
@@ -95,7 +96,7 @@ class TripDetailsPage extends Component {
                 </StyledExtContainer>
 
                 <StyledGridContainer>
-                    <Grid container spacing={40}>
+                    <StyledGridContainerTwo container spacing={40}>
                         <Grid item xs>
                             <div style={{ marginBottom: `${space[4]}` }}>
                                 <Title component="h4">Total Earnings</Title>
@@ -152,7 +153,7 @@ class TripDetailsPage extends Component {
                                 reportListingClicked={this.openFormToReportListing}
                                 checkout={this.goToCheckout} />
                         </Grid>
-                    </Grid>
+                    </StyledGridContainerTwo>
                 </StyledGridContainer>
                 <ReportListing openForm={this.state.reportListing} />
                 <Footer />

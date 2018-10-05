@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import ClearIcon from '@material-ui/icons/Clear';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -12,12 +11,16 @@ import FormLabel from '@material-ui/core/FormLabel';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import TextField from '@material-ui/core/TextField';
 
-import {
-    StyledIconButton,
-    StyledRowContainer
-} from './styles';
 import { StyledSecondaryButton } from '../../../containers/SearchPage/ListVehicleBanner/styles';
 import { Typography } from '@material-ui/core';
+
+import {
+    StyledIconButton,
+    StyledRowContainer,
+    StyledFormLabel,
+    StyledDialogTitle
+} from './styles';
+
 
 
 class PricingSetupDialog extends Component {
@@ -27,10 +30,18 @@ class PricingSetupDialog extends Component {
     };
 
     handleChange = event => {
+        if (event.target.value === 'recommended') {
+            this.fixedTxt.focus()
+        } else if (event.target.value === 'fixed') {
+            this.recommendedTxt.focus()
+        }
         this.setState({ value: event.target.value });
     };
 
     render() {
+
+
+
         return (
             <div>
                 <Dialog
@@ -47,7 +58,7 @@ class PricingSetupDialog extends Component {
                             <ClearIcon />
                         </StyledIconButton>
                     </div>
-                    <DialogTitle id="pricingSetupDialog">Choose your price setup</DialogTitle>
+                    <StyledDialogTitle disableTypography id="pricingSetupDialog">Choose your price setup</StyledDialogTitle>
                     <DialogContent>
                         <FormControl style={{ width: '100%' }}>
                             <RadioGroup
@@ -56,7 +67,7 @@ class PricingSetupDialog extends Component {
                                 value={this.state.value}
                             >
                                 <StyledRowContainer>
-                                    <FormLabel style={{ alignSelf: 'center' }}>Recommended pricing.</FormLabel>
+                                    <StyledFormLabel style={{ alignSelf: 'center' }}>Recommended pricing</StyledFormLabel>
                                     <FormControlLabel
                                         value="recommended"
                                         control={<Radio color="primary" />}
@@ -64,12 +75,15 @@ class PricingSetupDialog extends Component {
                                         checked={this.state.value === "recommended" ? true : false} />
                                 </StyledRowContainer>
                                 <div style={{ width: '60%' }}>
-                                    <Typography>We adjust your listing's daily prices automatically to maximize your earnings</Typography>
+                                    <Typography variant="body2" component="p" >We adjust your listing's daily prices automatically to maximize your earnings</Typography>
                                 </div>
                                 <TextField
                                     id="outlined-read-only-input"
                                     defaultValue="$155"
                                     margin="normal"
+                                    autoFocus
+                                    inputRef={(input) => { this.recommendedTxt = input }}
+                                    disabled={this.state.value !== 'recommended'}
                                     InputProps={{
                                         readOnly: true,
                                     }}
@@ -77,7 +91,7 @@ class PricingSetupDialog extends Component {
                                 />
                                 <Divider />
                                 <StyledRowContainer>
-                                    <FormLabel style={{ alignSelf: 'center' }}>Fixed Pricing</FormLabel>
+                                    <StyledFormLabel style={{ alignSelf: 'center' }}>Fixed Pricing</StyledFormLabel>
                                     <FormControlLabel
                                         value="fixed"
                                         control={<Radio color="primary" />}
@@ -85,11 +99,13 @@ class PricingSetupDialog extends Component {
                                         checked={this.state.value === "fixed" ? true : false} />
                                 </StyledRowContainer>
                                 <div style={{ width: '60%' }}>
-                                    <Typography>We adjust your listing's daily prices automatically to maximize your earnings</Typography>
+                                    <Typography variant="body2" component="p">You can set a custom per day price.</Typography>
                                 </div>
                                 <TextField
                                     id="outlined-read-only-input"
+                                    inputRef={(input) => { this.fixedTxt = input }}
                                     defaultValue="$155"
+                                    disabled={this.state.value === 'recommended'}
                                     margin="normal"
                                     variant="outlined"
                                 />

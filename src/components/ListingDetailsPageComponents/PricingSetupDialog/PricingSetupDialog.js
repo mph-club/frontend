@@ -7,9 +7,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
 import Divider from '@material-ui/core/Divider';
-import FormLabel from '@material-ui/core/FormLabel';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import TextField from '@material-ui/core/TextField';
+import { space } from '../../../theme';
 
 import { StyledSecondaryButton } from '../../../containers/SearchPage/ListVehicleBanner/styles';
 import { Typography } from '@material-ui/core';
@@ -89,7 +89,7 @@ class PricingSetupDialog extends Component {
                                     }}
                                     variant="outlined"
                                 />
-                                <Divider />
+                                <Divider style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}`}} />
                                 <StyledRowContainer>
                                     <StyledFormLabel style={{ alignSelf: 'center' }}>Fixed Pricing</StyledFormLabel>
                                     <FormControlLabel
@@ -113,7 +113,8 @@ class PricingSetupDialog extends Component {
                             <div style={{
                                 display: 'flex',
                                 justifyContent: 'flex-end',
-                                margin: '12px 12px 12px'
+                                marginTop: `${space[4]}`,
+                                marginBottom: `${space[4]}`
                             }}>
                                 <PrimaryButton>Save</PrimaryButton>
                                 <StyledSecondaryButton style={{ marginLeft: '12px' }}>Cancel</StyledSecondaryButton>

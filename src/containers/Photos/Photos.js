@@ -9,8 +9,6 @@ import {
     StyledAddButton
 } from './styles';
 import tileData from '../CarsCollection/tileData';
-import CardActions from '@material-ui/core/CardActions';
-import Button from '@material-ui/core/Button';
 import { CardMedia, CardContent } from '@material-ui/core';
 
 class Photos extends Component {

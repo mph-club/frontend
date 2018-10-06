@@ -18,6 +18,7 @@ export const StyledCaption = styled(Typography)`
     }
 `
 
+
 export const StyledGridContainer = styled.div`
     max-width: 960px;
     display: flex;

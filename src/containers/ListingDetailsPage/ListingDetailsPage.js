@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { palette } from '../../theme';
-
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-
-import {
-    StyledImageContainer,
-    StyledImg,
-    StyledGridContainer,
-    StyledTitleLayout
-} from './styles';
 import Footer from '../../components/Navigation/Footer/Footer';
 import SummaryApprovalStatus from '../../components/ListingDetailsPageComponents/SummaryApprovalStatus/SummaryApprovalStatus';
 import StepComponent from '../../components/UI/StepComponent/StepComponent';
 import Notice from '../../components/UI/Notice/Notice';
 import PricingSetupDialog from '../../components/ListingDetailsPageComponents/PricingSetupDialog/PricingSetupDialog';
+
+import {
+    StyledImageContainer,
+    StyledImg,
+    StyledGridContainer,
+    StyledTitleLayout,
+    StyledGridContainerTwo
+} from './styles';
 
 class ListingDetailsPage extends Component {
 
@@ -50,7 +50,7 @@ class ListingDetailsPage extends Component {
                         <Typography variant="display1" color="primary" component="h2">Porsche Panamera</Typography>
                         <Typography variant="display1" color="primary" component="h2">2016</Typography>
                     </StyledTitleLayout>
-                    <Grid container spacing={40}>
+                    <StyledGridContainerTwo container spacing={40}>
                         <Grid item xs>
                             <Divider />
                             <StepComponent
@@ -107,7 +107,7 @@ class ListingDetailsPage extends Component {
                         <Grid item xs>
                             <SummaryApprovalStatus />
                         </Grid>
-                    </Grid>
+                    </StyledGridContainerTwo>
                 </StyledGridContainer>
                 <PricingSetupDialog
                     openForm={this.state.priceSetup}

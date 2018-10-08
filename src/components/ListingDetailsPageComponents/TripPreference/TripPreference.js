@@ -9,6 +9,40 @@ import StyledPrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import StyledSecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
 import { space } from '../../../theme';
 
+const longestValues = [
+    {
+        value: '1',
+        label: '1 day'
+    }, {
+        value: '2',
+        label: '2 days',
+    }, {
+        value: '3',
+        label: '3 days',
+    }, {
+        value: '4',
+        label: '4 days',
+    }
+];
+
+const noticeTimes = [
+    {
+        value: '1',
+        label: '1 hour'
+    }, {
+        value: '2',
+        label: '2 hours',
+    }, {
+        value: '3',
+        label: '3 hours',
+    }, {
+        value: '4',
+        label: '4 hours',
+    }
+];
+
+
+
 class TripPreference extends Component {
 
     state = {
@@ -50,26 +84,50 @@ class TripPreference extends Component {
                             id="outlined-tripPreference-advanceNotice"
                             margin="normal"
                             fullWidth
+                            select
                             variant="outlined"
-                        />
+                            SelectProps={{
+                                native: true
+                            }}
+                        >{noticeTimes.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}</TextField>
                     </div>
                     <div style={{ marginTop: space[4] }}>
                         <Typography variant="body2" color="primary" component="p">Shortest possible trip?</Typography>
                         <TextField
                             id="outlined-tripPreference-duration"
                             fullWidth
+                            select
                             margin="normal"
                             variant="outlined"
-                        />
+                            SelectProps={{
+                                native: true
+                            }}
+                        >{longestValues.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}</TextField>
                     </div>
                     <div style={{ marginTop: space[4] }}>
                         <Typography variant="body2" color="primary" component="p">Longest possible trip?</Typography>
                         <TextField
                             id="outlined-tripPreference-longest"
                             fullWidth
+                            select
                             margin="normal"
                             variant="outlined"
-                        />
+                            SelectProps={{
+                                native: true
+                            }}
+                        >{longestValues.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}</TextField>
                     </div>
                     <StyledButtonsContainer>
                         <StyledPrimaryButton>Save</StyledPrimaryButton>

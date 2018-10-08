@@ -17,6 +17,7 @@ import DeclineForm from './components/SummaryTripForHost/DeclineForm/DeclineForm
 import ListingDetailsPage from './containers/ListingDetailsPage/ListingDetailsPage';
 import Photos from './components/ListingDetailsPageComponents/Photos/Photos';
 import DeliverAndAirport from './components/ListingDetailsPageComponents/DeliverAndAirport/DeliverAndAirport';
+import CarLocation from './components/ListingDetailsPageComponents/CarLocation/CarLocation';
 
 class App extends Component {
 
@@ -81,6 +82,7 @@ class App extends Component {
             <Route exact path="/listing-pending" component={ListingDetailsPage} />
             <Route exact path="/upload-pictures" component={Photos} />
             <Route exact path="/delivery-and-airport" component={DeliverAndAirport} />
+            <Route exact path="/car-location" component={CarLocation} />
           </Switch>
         </main>
       </React.Fragment>

@@ -50,15 +50,27 @@ class Photos extends Component {
         return (
             <React.Fragment>
                 <StyledExternalContainer>
-                    <Typography variant="display1" color="primary" component="h2">Photos</Typography>
-                    <div style={{
-                        margin: '16px 0',
-                        maxWidth: '400px'
-                    }}>
-                        <Typography variant="body1" color="primary" component="p">You can upload up to 5 photos of your car. Please do not use stock photos. Drag and drop to reorder</Typography>
+                    <div 
+                        style={{ 
+                            paddingLeft: `${space[3]}`,
+                            paddingRight: `${space[3]}`
+                        }}>
+                        <Typography variant="display1" color="primary" component="h2">Photos</Typography>
+                        <div style={{
+                            margin: '16px 0',
+                            maxWidth: '400px'
+                        }}>
+                            <Typography variant="body1" color="primary" component="p">
+                                You can upload up to 5 photos of your car. Please do not use stock photos. You can pick which photo you would like as your cover image.
+                            </Typography>
+                        </div>
                     </div>
-
-                    <div style={{ marginTop: '32px' }}>
+                    <div 
+                        style={{ 
+                            marginTop: '32px',
+                            paddingLeft: `${space[3]}`,
+                            paddingRight: `${space[3]}` 
+                        }}>
                         <Grid container spacing={40}>
                             <Grid item sm={6} md={4} lg={3}>
                                 {/* <StyledAddButton onClick={this.handleAddButton}>

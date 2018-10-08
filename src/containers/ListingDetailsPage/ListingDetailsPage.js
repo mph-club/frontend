@@ -50,6 +50,10 @@ class ListingDetailsPage extends Component {
         this.props.history.push('/delivery-and-airport');
     }
 
+    goToCarLocation = () => {
+        this.props.history.push('/car-location')
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -105,6 +109,7 @@ class ListingDetailsPage extends Component {
                                 label='Location'
                                 buttonLabel='Change'
                                 color={palette.green}
+                                clicked={this.goToCarLocation}
                             />
                             <Divider />
                             <StepComponent

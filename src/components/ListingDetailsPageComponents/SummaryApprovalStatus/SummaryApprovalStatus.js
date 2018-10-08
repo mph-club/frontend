@@ -1,20 +1,18 @@
 import React from 'react';
+import DefaultNote from '../../UI/Notes/DefaultNote/DefaultNote';
 
 import {
-    StyledContainer,
-    StyledInternalContainer
+    StyledContainer
 } from './styles';
-import Typography from '@material-ui/core/Typography';
 
 const SummaryApprovalStatus = (props) => {
-
-
+    
     return (
         <React.Fragment>
             <StyledContainer>
-                <StyledInternalContainer>
-                    <Typography>Listing pending approval. Approvals take up to 72 hours</Typography>
-                </StyledInternalContainer>
+                <DefaultNote>
+                    Listing pending approval. Approvals take up to 72 hours
+                </DefaultNote>
             </StyledContainer>
         </React.Fragment>
     );

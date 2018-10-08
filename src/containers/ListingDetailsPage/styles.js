@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import { space, palette } from '../../theme';
 import { Typography } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 
 export const StyledPaper = styled(Paper)`
     padding: 16px;
@@ -15,6 +16,14 @@ export const StyledCaption = styled(Typography)`
         color: ${palette.grey01};
         font-weight: 600;
         margin-bottom: ${space[3]};
+    }
+`
+
+export const StyledGridContainerTwo = styled(Grid)`
+    && {
+        @media(max-width: 768px) {
+           flex-direction: column-reverse; 
+        }
     }
 `
 

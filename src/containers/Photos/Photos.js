@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 import Footer from '../../components/Navigation/Footer/Footer';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import { CardMedia, CardContent } from '@material-ui/core';
+import { palette, space } from '../../theme';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+
 import {
     StyledExternalContainer,
     StyledFooterContainer,
     StyledCard,
     StyledAddButton,
-    StyledIcon
+    StyledIcon,
+    StyledCardAction,
+    StyledCardContent
 } from './styles';
-import IconButton from '@material-ui/core/IconButton';
-
-import CardActions from '@material-ui/core/CardActions';
-import Button from '@material-ui/core/Button';
-import { CardMedia, CardContent } from '@material-ui/core';
-import { palette } from '../../theme';
 
 class Photos extends Component {
 
@@ -59,8 +61,8 @@ class Photos extends Component {
                     <div style={{ marginTop: '32px' }}>
                         <Grid container spacing={40}>
                             <Grid item sm={6} md={4} lg={3}>
-                                <StyledAddButton onClick={this.handleAddButton}>
-                                    <CardContent style={{ backgroundColor: palette.grey04 }}>
+                                {/* <StyledAddButton onClick={this.handleAddButton}>
+                                    <CardContent style={{ backgroundColor: palette.grey05 }}>
                                         <div style={{
                                             marginTop: '20%',
                                             justifyContent: 'center',
@@ -73,6 +75,27 @@ class Photos extends Component {
                                         </div>
 
                                     </CardContent>
+                                </StyledAddButton> */}
+                                <StyledAddButton onClick={this.handleAddButton}>
+                                    <StyledCardContent>
+                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                            <Typography 
+                                                variant="headline" 
+                                                style={{ 
+                                                    color: `${palette.grey02}`
+                                                }}> 
+                                                    Add Photo
+                                            </Typography>
+                                            <IconButton>
+                                                <StyledIcon 
+                                                    fontSize="large"
+                                                    style={{ 
+                                                        color: `${palette.grey02}` 
+                                                    }}
+                                                 />
+                                            </IconButton>
+                                        </div>
+                                    </StyledCardContent>
                                 </StyledAddButton>
                             </Grid>
                             {this.state.imagesList.map((card, index) => (
@@ -81,13 +104,15 @@ class Photos extends Component {
                                         <CardMedia
                                             component="img"
                                             alt="Contemplative Reptile"
-                                            height="140"
                                             image="https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/totR6CBQQ1qkbq81qjCOgg.1440x700.jpg"
                                             title="Contemplative Reptile"
                                         />
-                                        <CardActions>
-                                            <Button size="small" color="primary" onClick={() => this.handleDeletePhoto(index)}>Delete</Button>
-                                        </CardActions>
+                                        <StyledCardAction>
+                                            <Button size="small" style={{ color: `${palette.green}`}} onClick={() => this.handleDeletePhoto(index)}>
+                                                <DeleteOutlineIcon fontSize="small" style={{ marginRight: `${space[1]}`}}/>
+                                                <span>Delete this photo</span>
+                                            </Button>
+                                        </StyledCardAction>
                                     </StyledCard>
                                 </Grid>
                             ))}

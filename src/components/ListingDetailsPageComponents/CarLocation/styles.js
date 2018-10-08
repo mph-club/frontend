@@ -4,7 +4,11 @@ import { space } from '../../../theme';
 export const StyledExternalContainer = styled.div`
     max-width: 500px;
     display: block;
-    margin: 84px auto ${space[4]};
+    margin: 96px ${space[3]} ${space[6]};
+
+    @media (min-width: 768px) {
+        margin: ${space[6]} auto ${space[6]};
+    }
 `
 
 export const StyledContainer = styled.div`

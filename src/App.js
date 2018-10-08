@@ -18,6 +18,7 @@ import ListingDetailsPage from './containers/ListingDetailsPage/ListingDetailsPa
 import Photos from './components/ListingDetailsPageComponents/Photos/Photos';
 import DeliverAndAirport from './components/ListingDetailsPageComponents/DeliverAndAirport/DeliverAndAirport';
 import CarLocation from './components/ListingDetailsPageComponents/CarLocation/CarLocation';
+import TripPreference from './components/ListingDetailsPageComponents/TripPreference/TripPreference';
 
 class App extends Component {
 
@@ -83,6 +84,7 @@ class App extends Component {
             <Route exact path="/upload-pictures" component={Photos} />
             <Route exact path="/delivery-and-airport" component={DeliverAndAirport} />
             <Route exact path="/car-location" component={CarLocation} />
+            <Route exact path="/trip-preference" component={TripPreference} />
           </Switch>
         </main>
       </React.Fragment>

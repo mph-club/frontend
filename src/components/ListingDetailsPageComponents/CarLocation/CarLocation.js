@@ -95,7 +95,6 @@ class CarLocation extends Component {
                             onClick={this.handleCancelButton}>Cancel</StyledSecondaryButton>
                     </StyledButtonsContainer>
                 </StyledExternalContainer>
-
             </React.Fragment>
         );
     }

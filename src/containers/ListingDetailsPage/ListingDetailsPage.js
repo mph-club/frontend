@@ -54,6 +54,10 @@ class ListingDetailsPage extends Component {
         this.props.history.push('/car-location')
     }
 
+    goToTripPreference = () => {
+        this.props.history.push('/trip-preference')
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -116,12 +120,14 @@ class ListingDetailsPage extends Component {
                                 label='Trip history'
                                 buttonLabel='View details'
                                 color={palette.green}
+                                
                             />
                             <Divider />
                             <StepComponent
                                 label='Trip preference'
                                 buttonLabel='Change'
                                 color={palette.green}
+                                clicked={this.goToTripPreference}
                             />
                             <Divider style={{ marginBottom: '64px' }} />
                         </Grid>

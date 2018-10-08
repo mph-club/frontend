@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
     StyledExternalContainer,
-    StyledContainer,
-    StyledTextFieldContainer,
     StyledButtonsContainer
 } from './styles';
 import Typography from '@material-ui/core/Typography';
@@ -11,7 +9,7 @@ import StyledPrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import StyledSecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
 import { space } from '../../../theme';
 
-class CarLocation extends Component {
+class TripPreference extends Component {
 
     state = {
         checkbox: null,
@@ -40,54 +38,39 @@ class CarLocation extends Component {
         return (
             <React.Fragment>
                 <StyledExternalContainer>
-                    <Typography variant="display1" color="primary" component="h2">Where is your car located?</Typography>
+                    <Typography variant="display1" color="primary" component="h2">Trip Preference</Typography>
                     <div style={{
                         margin: '16px 0'
                     }}>
-                        <Typography variant="body1" color="primary" component="p">Only guests who have booked your car will see your exact location</Typography>
+                        <Typography variant="body1" color="primary" component="p">Block trips that don't give you enough advance notice</Typography>
                     </div>
                     <div style={{ marginTop: space[4] }}>
-                        <Typography variant="body2" color="primary" component="p">Street</Typography>
+                        <Typography variant="body2" color="primary" component="p">How much advance notice do you need to confirm this trip request?</Typography>
                         <TextField
-                            id="outlined-carLocation-street"
-                            placeholder="900 Southeast Biscayne Boulevard"
+                            id="outlined-tripPreference-advanceNotice"
                             margin="normal"
                             fullWidth
                             variant="outlined"
                         />
                     </div>
                     <div style={{ marginTop: space[4] }}>
-                        <Typography variant="body2" color="primary" component="p">Apt, suite, etc. (optional)</Typography>
+                        <Typography variant="body2" color="primary" component="p">Shortest possible trip?</Typography>
                         <TextField
-                            id="outlined-carLocation-suite"
-                            placeholder="e.g. Apt 200"
+                            id="outlined-tripPreference-duration"
                             fullWidth
                             margin="normal"
                             variant="outlined"
                         />
                     </div>
-                    <StyledContainer>
-                        <StyledTextFieldContainer>
-                            <Typography variant="body2" color="primary" component="p">City</Typography>
-                            <TextField
-                                id="outlined-carLocation-city"
-                                placeholder="Miami"
-                                margin="normal"
-                                fullWidth
-                                variant="outlined"
-                            />
-                        </StyledTextFieldContainer>
-                        <StyledTextFieldContainer>
-                            <Typography variant="body2" color="primary" component="p">State</Typography>
-                            <TextField
-                                id="outlined-carLocation-state"
-                                placeholder="FL"
-                                margin="normal"
-                                fullWidth
-                                variant="outlined"
-                            />
-                        </StyledTextFieldContainer>
-                    </StyledContainer>
+                    <div style={{ marginTop: space[4] }}>
+                        <Typography variant="body2" color="primary" component="p">Longest possible trip?</Typography>
+                        <TextField
+                            id="outlined-tripPreference-longest"
+                            fullWidth
+                            margin="normal"
+                            variant="outlined"
+                        />
+                    </div>
                     <StyledButtonsContainer>
                         <StyledPrimaryButton>Save</StyledPrimaryButton>
                         <StyledSecondaryButton
@@ -100,4 +83,4 @@ class CarLocation extends Component {
     }
 }
 
-export default CarLocation
+export default TripPreference

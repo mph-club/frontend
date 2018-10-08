@@ -7,7 +7,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
 import Divider from '@material-ui/core/Divider';
-import FormLabel from '@material-ui/core/FormLabel';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import TextField from '@material-ui/core/TextField';
 
@@ -22,25 +21,30 @@ import {
 } from './styles';
 
 
-
 class PricingSetupDialog extends Component {
+    constructor(props) {
+        super(props);
+        // create a ref to store the textInput DOM element
+        this.textInput = React.createRef();
+        this.focusTextInput = this.focusTextInput.bind(this);
+      }
 
     state = {
         value: 'recommended'
     };
 
     handleChange = event => {
-        if (event.target.value === 'recommended') {
-            this.fixedTxt.focus()
-        } else if (event.target.value === 'fixed') {
-            this.recommendedTxt.focus()
-        }
+        this.focusTextInput()
         this.setState({ value: event.target.value });
     };
 
+    focusTextInput() {
+        // Explicitly focus the text input using the raw DOM API
+        // Note: we're accessing "current" to get the DOM node
+        console.log(this.textInput)
+    }
+
     render() {
-
-
 
         return (
             <div>
@@ -82,7 +86,6 @@ class PricingSetupDialog extends Component {
                                     defaultValue="$155"
                                     margin="normal"
                                     autoFocus
-                                    inputRef={(input) => { this.recommendedTxt = input }}
                                     disabled={this.state.value !== 'recommended'}
                                     InputProps={{
                                         readOnly: true,
@@ -103,7 +106,6 @@ class PricingSetupDialog extends Component {
                                 </div>
                                 <TextField
                                     id="outlined-read-only-input"
-                                    inputRef={(input) => { this.fixedTxt = input }}
                                     defaultValue="$155"
                                     disabled={this.state.value === 'recommended'}
                                     margin="normal"

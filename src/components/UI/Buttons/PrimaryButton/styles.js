@@ -18,6 +18,10 @@ export const StyledButton = styled(Button)`
             box-shadow: 0 3px 10px rgba(0,0,0,.4);
             background-color: black;
         }
+        &:disabled{
+            color: white;
+            background-color: #cacaca;
+        }
     }
 `
 

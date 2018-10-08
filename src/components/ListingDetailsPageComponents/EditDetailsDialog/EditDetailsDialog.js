@@ -77,7 +77,9 @@ class EditDetailsDialog extends Component {
                                 margin: '32px 12px 32px'
                             }}>
                                 <PrimaryButton>Save</PrimaryButton>
-                                <SecondaryButton style={{marginLeft: '12px'}}>Cancel</SecondaryButton>
+                                <SecondaryButton
+                                    style={{ marginLeft: '12px' }}
+                                    onClick={this.props.closeForm}>Cancel</SecondaryButton>
                             </div>
                         </FormControl>
                     </DialogContent>

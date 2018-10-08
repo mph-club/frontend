@@ -46,6 +46,10 @@ class ListingDetailsPage extends Component {
         this.props.history.push('/upload-pictures');
     }
 
+    goToDeliveryAndAirport = () => {
+        this.props.history.push('/delivery-and-airport');
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -94,6 +98,7 @@ class ListingDetailsPage extends Component {
                                 label='Delivery & airport'
                                 buttonLabel='Change'
                                 color={palette.green}
+                                clicked={this.goToDeliveryAndAirport}
                             />
                             <Divider />
                             <StepComponent

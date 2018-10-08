@@ -15,7 +15,8 @@ import TripDetailsPage from './containers/TripDetailsPage/TripDetailsPage';
 import HostDashboard from './containers/HostDashboard/HostDashboard';
 import DeclineForm from './components/SummaryTripForHost/DeclineForm/DeclineForm';
 import ListingDetailsPage from './containers/ListingDetailsPage/ListingDetailsPage';
-import Photos from './containers/Photos/Photos';
+import Photos from './components/ListingDetailsPageComponents/Photos/Photos';
+import DeliverAndAirport from './components/ListingDetailsPageComponents/DeliverAndAirport/DeliverAndAirport';
 
 class App extends Component {
 
@@ -79,6 +80,7 @@ class App extends Component {
             <Route exact path="/decline-trip" component={DeclineForm} />
             <Route exact path="/listing-pending" component={ListingDetailsPage} />
             <Route exact path="/upload-pictures" component={Photos} />
+            <Route exact path="/delivery-and-airport" component={DeliverAndAirport} />
           </Switch>
         </main>
       </React.Fragment>

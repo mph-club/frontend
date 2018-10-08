@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space, palette } from '../../theme';
+import { space, palette } from '../../../theme';
 import Card from '@material-ui/core/Card';
 import MoreIcon from '@material-ui/icons/Add';
 

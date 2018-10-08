@@ -12,6 +12,7 @@ export const StyledAppBar = styled(AppBar)`
         background-color: #fff;
         padding-top: 96px;
         z-index: 1000;
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
     }
 
     @media(max-width: 600px) {

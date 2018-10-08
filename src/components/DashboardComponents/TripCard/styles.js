@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import Card from '@material-ui/core/Card';
-import { space } from '../../../theme';
+import { space, palette } from '../../../theme';
 
 export const StyledCard = styled(Card)`
     && {
         width: 90%;
         margin: ${space[4]} auto;
-        box-shadow: 0px 4px 12px 0px rgba(22, 23, 26, 0.15);
+        /* box-shadow: 0px 4px 12px 0px rgba(22, 23, 26, 0.15); */
+        box-shadow: none;
+        border: solid 1px ${palette.grey04}
+        border-radius: 8px;
 
         @media (min-width: 768px) {
             width: 80%

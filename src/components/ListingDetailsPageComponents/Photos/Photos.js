@@ -3,25 +3,22 @@ import Footer from '../../Navigation/Footer/Footer';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
-import { CardMedia } from '@material-ui/core';
+import MoreIcon from '@material-ui/icons/Add';
 import { palette, space } from '../../../theme';
-import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 import {
     StyledExternalContainer,
     StyledFooterContainer,
-    StyledCard,
     StyledAddButton,
-    StyledIcon,
-    StyledCardAction,
     StyledCardContent
 } from './styles';
+import PhotoCard from './PhotoCard/PhotoCard';
 
 class Photos extends Component {
 
     state = {
-        imagesList: []
+        imagesList: [],
+        coverIndex: 0
     }
 
     handleAddButton = () => {
@@ -37,9 +34,13 @@ class Photos extends Component {
         }
     }
 
+    cardClicked = (index) => {
+        this.setState({coverIndex: index})
+    }
+
     handleDeletePhoto = (index) => {
         let array = [...this.state.imagesList]
-            array.splice(index, 1)
+        array.splice(index, 1)
 
         this.setState({
             imagesList: array
@@ -50,8 +51,8 @@ class Photos extends Component {
         return (
             <React.Fragment>
                 <StyledExternalContainer>
-                    <div 
-                        style={{ 
+                    <div
+                        style={{
                             paddingLeft: `${space[3]}`,
                             paddingRight: `${space[3]}`
                         }}>
@@ -65,14 +66,14 @@ class Photos extends Component {
                             </Typography>
                         </div>
                     </div>
-                    <div 
-                        style={{ 
+                    <div
+                        style={{
                             marginTop: '32px',
                             paddingLeft: `${space[3]}`,
-                            paddingRight: `${space[3]}` 
+                            paddingRight: `${space[3]}`
                         }}>
                         <Grid container spacing={40}>
-                            <Grid item sm={6} md={4} lg={3}>
+                            <Grid item sm={6} md={4} lg={3.2}>
                                 {/* <StyledAddButton onClick={this.handleAddButton}>
                                     <CardContent style={{ backgroundColor: palette.grey05 }}>
                                         <div style={{
@@ -91,46 +92,36 @@ class Photos extends Component {
                                 <StyledAddButton onClick={this.handleAddButton}>
                                     <StyledCardContent>
                                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                            <Typography 
-                                                variant="headline" 
-                                                style={{ 
+                                            <Typography
+                                                variant="headline"
+                                                style={{
                                                     color: `${palette.grey02}`
-                                                }}> 
-                                                    Add Photo
+                                                }}>
+                                                Add Photo
                                             </Typography>
                                             <IconButton>
-                                                <StyledIcon 
+                                                <MoreIcon
                                                     fontSize="large"
-                                                    style={{ 
-                                                        color: `${palette.grey02}` 
+                                                    style={{
+                                                        color: `${palette.grey02}`
                                                     }}
-                                                 />
+                                                />
                                             </IconButton>
                                         </div>
                                     </StyledCardContent>
                                 </StyledAddButton>
                             </Grid>
-                            {this.state.imagesList.map((card, index) => (
-                                <Grid item key={index} sm={6} md={4} lg={3}>
-                                    <StyledCard>
-                                        <CardMedia
-                                            component="img"
-                                            alt="Contemplative Reptile"
-                                            image="https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/totR6CBQQ1qkbq81qjCOgg.1440x700.jpg"
-                                            title="Contemplative Reptile"
-                                        />
-                                        <StyledCardAction>
-                                            <Button size="small" style={{ color: `${palette.green}`}} onClick={() => this.handleDeletePhoto(index)}>
-                                                <DeleteOutlineIcon fontSize="small" style={{ marginRight: `${space[1]}`}}/>
-                                                <span>Delete this photo</span>
-                                            </Button>
-                                        </StyledCardAction>
-                                    </StyledCard>
+                            {this.state.imagesList.map((el, index) => (
+                                <Grid item key={index} sm={6} md={4} lg={3.2}>
+                                    <PhotoCard
+                                        cover={this.state.coverIndex === index}
+                                        deleteClicked={() => this.handleDeletePhoto(index)}
+                                        clicked={() => this.cardClicked(index)}
+                                        index={index} />
                                 </Grid>
                             ))}
                         </Grid>
                     </div>
-
                 </StyledExternalContainer>
                 <StyledFooterContainer>
                     <Footer />

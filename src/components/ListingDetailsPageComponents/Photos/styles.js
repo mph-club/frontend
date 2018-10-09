@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { space, palette } from '../../../theme';
 import Card from '@material-ui/core/Card';
-import MoreIcon from '@material-ui/icons/Add';
-import CardActions from '@material-ui/core/CardActions';
 import { CardContent } from '@material-ui/core';
 
 
@@ -18,10 +16,6 @@ export const StyledCardContent = styled(CardContent)`
     border-radius: 4px;
 `
 
-export const StyledIcon = styled(MoreIcon)`
-    
-`
-
 export const StyledCard = styled(Card)`
     && {
         display: flex;
@@ -33,21 +27,6 @@ export const StyledCard = styled(Card)`
             height: auto;
             border-bottom-left-radius: 4px;
             border-bottom-right-radius: 4px;
-        }
-    }
-`
-
-export const StyledCardAction = styled(CardActions)`
-    && {
-        padding: 0px;
-        margin-top: 4px;
-
-        button {
-            margin: 0px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-            padding-right: 7px;
-            padding-left: 0px;
         }
     }
 `

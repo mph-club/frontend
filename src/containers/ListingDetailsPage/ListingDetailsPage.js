@@ -142,7 +142,6 @@ class ListingDetailsPage extends Component {
                 <EditDetailsDialog
                     openForm={this.state.editDetails}
                     closeForm={this.handleCloseEditDetails} />
-                />
                 <Footer />
             </React.Fragment >
         );

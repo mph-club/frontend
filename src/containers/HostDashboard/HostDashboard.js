@@ -28,7 +28,8 @@ class HostDashboard extends Component {
         this.setState({ value });
     };
 
-    handleCardClick = () => {
+    handleCardClick = (status) => {
+        console.log(status)
         this.props.history.push('/listing-pending')
     }
 
@@ -51,9 +52,9 @@ class HostDashboard extends Component {
                 content = this.state.vehiclesList.length === 0 ?
                     noVehicles :
                     <React.Fragment>
-                        <CarCard clicked={this.handleCardClick} status='pendingListing' />
-                        <CarCard clicked={this.handleCardClick} status='unlisted' />
-                        <CarCard clicked={this.handleCardClick} status='approved' />
+                        <CarCard clicked={() => this.handleCardClick('pendingListing')} status='pendingListing' />
+                        <CarCard clicked={() => this.handleCardClick('approved')} status='approved' />
+                        <CarCard clicked={() => this.handleCardClick('approved')} status='approved' />
                     </React.Fragment>
                 break;
             case 1:

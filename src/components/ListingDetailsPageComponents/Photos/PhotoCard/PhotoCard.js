@@ -24,7 +24,7 @@ const PhotoCard = (props) => {
         <StyledCardAction>
             <Button size="small" style={{ color: `${palette.green}` }} onClick={() => props.deleteClicked(props.index)}>
                 <DeleteOutlineIcon fontSize="small" style={{ marginRight: `${space[1]}` }} />
-                <span>Delete this photo</span>
+                <span>Delete photo</span>
             </Button>
         </StyledCardAction>
     </StyledCard>
@@ -43,7 +43,7 @@ const PhotoCard = (props) => {
                 <StyledCardAction>
                     <Button size="small" style={{ color: `${palette.green}` }} onClick={() => props.deleteClicked(props.index)}>
                         <DeleteOutlineIcon fontSize="small" style={{ marginRight: `${space[1]}` }} />
-                        <span>Delete this photo</span>
+                        <span>Delete photo</span>
                     </Button>
                     <StyledSpanContainer>
                         <StyledTypography style={{color: palette.white}} variant="body1">cover photo</StyledTypography>

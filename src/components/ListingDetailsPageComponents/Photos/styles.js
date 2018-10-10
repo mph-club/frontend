@@ -34,7 +34,7 @@ export const StyledCard = styled(Card)`
 export const StyledExternalContainer = styled.div`
     max-width: 960px;
     display: block;
-    margin: 84px auto ${space[4]};
+    margin: 84px auto 250px;
 `
 
 export const StyledFooterContainer = styled.div`

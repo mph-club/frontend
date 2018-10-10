@@ -60,6 +60,10 @@ class Photos extends Component {
         this.setState({openAlert: true})
     }
 
+    handleOk = () => {
+
+    }
+
     render() {
 
         return (
@@ -87,7 +91,7 @@ class Photos extends Component {
                             paddingRight: `${space[3]}`
                         }}>
                         <Grid container spacing={40}>
-                            <Grid item sm={6} md={4} lg={3.2}>
+                            <Grid item sm={6} md={4} lg={3}>
                                 <StyledAddButton onClick={this.handleAddButton}>
                                     <StyledCardContent>
                                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -111,7 +115,7 @@ class Photos extends Component {
                                 </StyledAddButton>
                             </Grid>
                             {this.state.imagesList.map((el, index) => (
-                                <Grid item key={index} sm={6} md={4} lg={3.2}>
+                                <Grid item key={index} sm={6} md={4} lg={3}>
                                     <PhotoCard
                                         cover={this.state.coverIndex === index}
                                         deleteClicked={() => this.confirmDeletePhoto(index)}
@@ -130,7 +134,7 @@ class Photos extends Component {
                     title="Delete photo"
                     text="Are you sure you want to delete this photo?"
                     okTitle="Delete"
-                    handleOk={this.handleDeletePhoto}
+                    handleOk={this.handleOk}
                     openAlert={this.state.openAlert} 
                     handleClose={this.handleCloseAlert}
                     />

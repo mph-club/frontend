@@ -8,14 +8,20 @@ import {
     StyledAppBar,
     StyledListContainer,
     StyledBadge,
-    StyledContainer
+    StyledContainer,
+    StyleNoVehiclesContainer
 } from './styles';
+import { Typography } from '@material-ui/core';
+import { space, palette } from '../../theme';
+import CarCard from '../../components/HostDashboardComponents/CarCard/CarCard';
 
 
 class HostDashboard extends Component {
 
     state = {
         value: 0,
+        vehiclesList: [1],
+        pendingApproval: 4
     };
 
     handleChange = (_, value) => {
@@ -31,16 +37,34 @@ class HostDashboard extends Component {
         const { value } = this.state
         let content = null
 
+        const noVehicles = <StyleNoVehiclesContainer>
+            <Typography variant="display1" color="primary">No listings</Typography>
+            <Typography
+                variant="body1"
+                color="primary"
+                component="p"
+                style={{ marginTop: space[4] }}>Earn over $10,000 a year by renting out your vehicle to our selective luxury clientele.</Typography>
+        </StyleNoVehiclesContainer>
+
         switch (value) {
             case 0:
+                content = this.state.vehiclesList.length === 0 ?
+                    noVehicles :
+                    <React.Fragment>
+                        <CarCard clicked={this.handleCardClick} status='pendingListing' />
+                        <CarCard clicked={this.handleCardClick} status='unlisted' />
+                        <CarCard clicked={this.handleCardClick} status='approved' />
+                    </React.Fragment>
+                break;
+            case 1:
                 content = <React.Fragment>
-                    <TripCard clicked={this.handleCardClick} status='pendingListing'/>
-                    <TripCard clicked={this.handleCardClick} status='pendingListing'/>
-                    <TripCard clicked={this.handleCardClick} status='pendingListing'/>
+                    <TripCard clicked={this.handleCardClick} status='pendingTrip' />
+                    <TripCard clicked={this.handleCardClick} status='pendingTrip' />
+                    <TripCard clicked={this.handleCardClick} status='pendingTrip' />
+                    <TripCard clicked={this.handleCardClick} status='pendingTrip' />
                 </React.Fragment>
                 break;
             default:
-                content = <TripCard clicked={this.handleCardClick} status='pendingListing'/>
                 break;
         }
 
@@ -50,13 +74,14 @@ class HostDashboard extends Component {
                     <Tabs
                         value={this.state.value}
                         onChange={this.handleChange}
-                        indicatorColor="secondary"
-                        textColor="secondary"
+                        style={
+                            { color: palette.green }
+                        }
                         centered
                     >
                         <Tab label="Vehicles" />
-                        <Tab label={this.props.activityItems > 0 ? <StyledBadge color="secondary" badgeContent={this.props.activityItems}> Activity</StyledBadge> : "Activity"} />
-                        <Tab label={this.props.historyItems > 0 ? <StyledBadge color="secondary" badgeContent={this.props.historyItems}>History</StyledBadge> : "History"} />
+                        <Tab label={this.state.pendingApproval > 0 ? <StyledBadge badgeContent={this.state.pendingApproval}> Requests</StyledBadge> : "Requests"} />
+                        <Tab label={this.props.historyItems > 0 ? <StyledBadge badgeContent={this.props.historyItems}>History</StyledBadge> : "History"} />
                     </Tabs>
                 </StyledAppBar>
                 <Divider />

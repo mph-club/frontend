@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { palette, space } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
-import RateStars from '../../components/RateStars/RateStars';
+import RateStars from '../../components/UI/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
 import SummaryTripForHost from '../../components/SummaryTripForHost/SummaryTripForHost';
 import ReportListing from '../../components/DetailPageComponents/ReportListing/ReportListing';

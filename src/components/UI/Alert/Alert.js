@@ -5,15 +5,14 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import StyledPrimaryButton from '../Buttons/PrimaryButton/PrimaryButton';
+import SecondaryButton from '../Buttons/SecondayButton/SecondaryButton';
 
-
-const ConfirmReportDialog = (props) => {
+const Alert = (props) => {
 
   return (
       <Dialog
-        open={props.openConfirmDialog}
-        onClose={props.closeConfirmDialog}
-        aria-labelledby={"dialog-" + props.labelled}
+        open={props.openAlert}
+        onClose={props.handleClose}
       >
         <div style={{ display: 'flex' }}>
           <div>logo</div>
@@ -25,7 +24,8 @@ const ConfirmReportDialog = (props) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <StyledPrimaryButton onClick={this.handleClose} color="primary" autoFocus>Okey</StyledPrimaryButton>
+              <StyledPrimaryButton onClick={this.props.handleOk} color="primary" autoFocus>{props.okTitle}</StyledPrimaryButton>
+              <SecondaryButton onClick={this.props.handleClose}>Cancel</SecondaryButton>
             </DialogActions>
           </div>
         </div>
@@ -33,4 +33,4 @@ const ConfirmReportDialog = (props) => {
   );
 }
 
-export default ConfirmReportDialog;
+export default Alert;

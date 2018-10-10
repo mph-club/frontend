@@ -1,5 +1,5 @@
 import React from 'react';
-import AutomaticIcon from '../../Icons/AutomaticIcon';
+import AutomaticIcon from '../../../assets/icons/AutomaticIcon';
 
 import { StyledCarFeatureWrapper } from './styles';
 import { Typography } from '@material-ui/core';

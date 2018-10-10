@@ -2,7 +2,7 @@ import React from 'react';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import GridListTile from '@material-ui/core/GridListTile';
 import Typography from '@material-ui/core/Typography';
-import RateStars from '../../../components/RateStars/RateStars';
+import RateStars from '../../../components/UI/RateStars/RateStars';
 import { CustomTheme } from '../../../theme';
 import {
 	StyledCard,

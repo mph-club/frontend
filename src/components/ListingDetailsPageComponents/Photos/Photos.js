@@ -13,12 +13,16 @@ import {
     StyledCardContent
 } from './styles';
 import PhotoCard from './PhotoCard/PhotoCard';
+import Alert from '../../UI/Alert/Alert';
+
+let photoIndex = null
 
 class Photos extends Component {
 
     state = {
         imagesList: [],
-        coverIndex: 0
+        coverIndex: 0,
+        openAlert: false
     }
 
     handleAddButton = () => {
@@ -35,19 +39,29 @@ class Photos extends Component {
     }
 
     cardClicked = (index) => {
-        this.setState({coverIndex: index})
+        this.setState({ coverIndex: index })
     }
 
-    handleDeletePhoto = (index) => {
+    handleCloseAlert = () => {
+        this.setState({openAlert: false});
+    }
+
+    handleDeletePhoto = () => {
         let array = [...this.state.imagesList]
-        array.splice(index, 1)
+        array.splice(photoIndex, 1)
 
         this.setState({
             imagesList: array
         })
     }
 
+    confirmDeletePhoto = (index) => {
+        photoIndex = index
+        this.setState({openAlert: true})
+    }
+
     render() {
+
         return (
             <React.Fragment>
                 <StyledExternalContainer>
@@ -74,21 +88,6 @@ class Photos extends Component {
                         }}>
                         <Grid container spacing={40}>
                             <Grid item sm={6} md={4} lg={3.2}>
-                                {/* <StyledAddButton onClick={this.handleAddButton}>
-                                    <CardContent style={{ backgroundColor: palette.grey05 }}>
-                                        <div style={{
-                                            marginTop: '20%',
-                                            justifyContent: 'center',
-                                            display: 'grid'
-                                        }}>
-                                            <Typography variant="body2"> Add Photo</Typography>
-                                            <IconButton>
-                                                <StyledIcon />
-                                            </IconButton>
-                                        </div>
-
-                                    </CardContent>
-                                </StyledAddButton> */}
                                 <StyledAddButton onClick={this.handleAddButton}>
                                     <StyledCardContent>
                                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -115,7 +114,7 @@ class Photos extends Component {
                                 <Grid item key={index} sm={6} md={4} lg={3.2}>
                                     <PhotoCard
                                         cover={this.state.coverIndex === index}
-                                        deleteClicked={() => this.handleDeletePhoto(index)}
+                                        deleteClicked={() => this.confirmDeletePhoto(index)}
                                         clicked={() => this.cardClicked(index)}
                                         index={index} />
                                 </Grid>
@@ -126,6 +125,15 @@ class Photos extends Component {
                 <StyledFooterContainer>
                     <Footer />
                 </StyledFooterContainer>
+                <Alert
+                    id="delete-photo"
+                    title="Delete photo"
+                    text="Are you sure you want to delete this photo?"
+                    okTitle="Delete"
+                    handleOk={this.handleDeletePhoto}
+                    openAlert={this.state.openAlert} 
+                    handleClose={this.handleCloseAlert}
+                    />
             </React.Fragment>
         );
     }

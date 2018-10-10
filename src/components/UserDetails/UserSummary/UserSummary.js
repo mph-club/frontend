@@ -1,6 +1,6 @@
 import React from 'react';
 import avatar from '../../../assets/images/avatar.png';
-import RateStars from '../../RateStars/RateStars';
+import RateStars from '../../UI/RateStars/RateStars';
 import {
     StyledAvatar,
     StyledUserContainer

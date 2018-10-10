@@ -2,7 +2,7 @@ import React from 'react';
 
 import avatar from '../../../assets/images/avatar.png'
 import ReadMore from '../../ReadMore/ReadMore';
-import RateStars from '../../RateStars/RateStars';
+import RateStars from '../../UI/RateStars/RateStars';
 import TextButton from '../../UI/Buttons/TextButton/TextButton';
 import { Typography } from '@material-ui/core';
 import { palette } from '../../../theme';

@@ -75,6 +75,7 @@ const grey02 = '#999999';
 const grey03 = '#CCCCCC';
 const grey04 = '#DDDDDD';
 const grey05 = '#FAFAFA';
+const red = '#ff4400';
 
 export const palette = {
   black,
@@ -85,7 +86,8 @@ export const palette = {
   grey02,
   grey03,
   grey04,
-  grey05
+  grey05,
+  red
 }
 
 //Space 0 (0px), 1 (4px), 2 (8px), 3 (16px), 4 (32px) , 5 (64px), 6 (128px), 7 (256px)

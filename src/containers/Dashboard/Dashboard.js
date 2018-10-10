@@ -34,14 +34,12 @@ class Dashboard extends Component {
         switch (value) {
             case 0:
                 content = <React.Fragment>
-                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
-                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
-                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
-                    <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
+                    <TripCard clicked={this.handleCardClick} status='pendingListing' />
+                    <TripCard clicked={this.handleCardClick} status='pendingListing' />
+                    <TripCard clicked={this.handleCardClick} status='pendingListing' />
                 </React.Fragment>
                 break;
             default:
-                content = <TripCard clicked={this.handleCardClick} status='pendingTrip'/>
                 break;
         }
 
@@ -57,7 +55,7 @@ class Dashboard extends Component {
                     >
                         <Tab label="Trips" />
                         <Tab label={this.props.activityItems > 0 ? <StyledBadge color="secondary" badgeContent={this.props.activityItems}> Activity</StyledBadge> : "Activity"} />
-                        <Tab label={this.props.historyItems > 0 ? <StyledBadge color="secondary" badgeContent={this.props.historyItems}> Activity</StyledBadge> : "History"} />
+                        <Tab label={this.props.historyItems > 0 ? <StyledBadge color="secondary" badgeContent={this.props.historyItems}> History</StyledBadge> : "History"} />
                     </Tabs>
                 </StyledAppBar>
                 <Divider />

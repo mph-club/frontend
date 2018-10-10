@@ -6,7 +6,7 @@ import { palette, space } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
 import { tutorialSteps } from '../CarsCollection/tileData';
-import RateStars from '../../components/RateStars/RateStars';
+import RateStars from '../../components/UI/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
 import CarFeature from '../../components/DetailPageComponents/CarFeature/CarFeature';
 import ReadMore from '../../components/ReadMore/ReadMore';
@@ -15,10 +15,10 @@ import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
 import ReportListing from '../../components/DetailPageComponents/ReportListing/ReportListing';
-import SeatIcon from '../../components/Icons/SeatIcon';
-import DoorIcon from '../../components/Icons/DoorIcon';
-import GasIcon from '../../components/Icons/GasIcon';
-import GPSIcon from '../../components/Icons/GPSIcon';
+import SeatIcon from '../../assets/icons/SeatIcon';
+import DoorIcon from '../../assets/icons/DoorIcon';
+import GasIcon from '../../assets/icons/GasIcon';
+import GPSIcon from '../../assets/icons/GPSIcon';
 import UnorderedList from '../../components/UI/Lists/UnorderedList';
 
 import {

@@ -2,9 +2,26 @@ import styled from 'styled-components';
 
 import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
+import { space, palette } from '../../theme';
 
 export const StyledBadge = styled(Badge)`
     padding: 0 16px;
+
+    span{
+        background-color: ${palette.green};
+        color: #fff;
+    }
+    
+`
+
+export const StyleNoVehiclesContainer = styled.div`
+    margin: ${space[5]} auto;
+    max-width: 400px;
+    justify-content: center;
+
+    @media (max-width: 500px) {
+        margin: ${space[5]} 16px;
+    }
 `
 
 export const StyledAppBar = styled(AppBar)`
@@ -13,12 +30,6 @@ export const StyledAppBar = styled(AppBar)`
         padding-top: 96px;
         z-index: 1000;
         box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-    }
-
-    @media(max-width: 600px) {
-        && {
-            margin-top: 56px;
-        }
     }
 `
 

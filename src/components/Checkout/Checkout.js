@@ -2,13 +2,13 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import RateStars from '../RateStars/RateStars';
+import RateStars from '../UI/RateStars/RateStars';
 import PrimaryButton from '../UI/Buttons/PrimaryButton/PrimaryButton';
 import InfoIcon from '@material-ui/icons/InfoOutlined';
 import Footer from '../Navigation/Footer/Footer';
 import { space, palette } from '../../theme';
 import Title from '../../components/UI/CustomTypography/Title/Title';
-import CheckIcon from '../Icons/CheckIcon';
+import CheckIcon from '../../assets/icons/CheckIcon';
 import TextButton from '../UI/Buttons/TextButton/TextButton';
 
 import {

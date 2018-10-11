@@ -22,7 +22,7 @@ import {
 class ListingDetailsPage extends Component {
 
     state = {
-        status: 'approved',
+        status: 'listed',
         priceSetup: false,
         editDetails: false
     }

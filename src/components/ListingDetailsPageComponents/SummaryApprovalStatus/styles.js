@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { space, palette } from '../../../theme';
+import TextField from '@material-ui/core/TextField';
 
 export const StyledContainer = styled.div`
     && {
@@ -21,8 +22,53 @@ export const StyledContainer = styled.div`
     }
 `
 
+export const StyledBurbble = styled.div`
+    background-color: ${props => props.color};
+    width: 12px;
+    height: 12px;
+    margin-left: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+   
+`
+
+export const StyledSelectContainer = styled.div`
+    display: 'flex';
+    border-radius: 8px !important;
+    border: 1px solid #e1e1e1;
+    margin-top: 8px;
+    border-color: ${props => props.error ? "red" : "#e1e1e1"};
+    &:focus {
+        border-color: ${props => props.error ? "red" : "black"};
+        transition: all 0.2s ease-in 0s;
+        outline: none !important;
+        outline-style: none !important;
+        outline-color: none !important;
+    }
+`
+
+export const StyledSelect = styled(TextField)`
+
+    && {
+        fieldset {
+            border: none;
+            padding-left: 0;
+
+            &:focus{
+                background-color: #fff;
+            }
+        }
+
+        select{
+            padding: 16px 14px 16px 0;
+        }
+    }
+`
+
 export const StyledSpan = styled.span`
-    
+    background-color: ${props => props.color};
+    width: 20px;
+    height: 20px;
 `
 
 export const StyledButtonContainer = styled.div`

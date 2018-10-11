@@ -1,31 +1,32 @@
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import StylePrimaryButton from '../../../components/UI/Buttons/PrimaryButton/PrimaryButton';
-import Grid from '@material-ui/core/Grid';
+import { space } from '../../../theme';
 
 export const StyledPaper = styled(Paper)`
-    width: 80%;
-    margin-right: 16px;
-`
-
-export const StyledGrid = styled(Grid)`
-    display: inline-flex;
-    justify-content: center;
+    width: 100%;
 `
 
 export const StyleButton = styled(StylePrimaryButton)`
-    margin-left: 32px !important;
+    margin-left: 16px !important;
 `
 
+
 export const StyledContainer = styled.div`
-    flex-grow: 1;
-    width: 60%;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
     transform: translateY(24vh);
 
     @media (max-width: 500px) {
         display: none;
     }
+`
+
+export const StyledSlantedDivider = styled.div`
+    width: 2px;
+    height: 50px;
+    background-color: #ccd0d2;
+    margin-right: ${space[3]};
+    margin-left: ${space[3]};
 `

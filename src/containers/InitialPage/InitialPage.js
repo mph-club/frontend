@@ -7,7 +7,6 @@ import {
     StyledLeftLayout,
     StyledTitle,
     StyledTitleSpan,
-    StyledDateForm,
     StyledFormContainer,
     StyledTextField,
     StyledDateContainer,
@@ -48,10 +47,8 @@ class InitialPage extends Component {
                                             shrink: true
                                         }}
                                     />
-                                </form>
                                 <StyledDateContainer>
                                     <StyledDateContainerItemOne>
-                                        <StyledDateForm noValidate fullWidth>
                                             <StyledTextField
                                                 id="fromTextField"
                                                 label="From"
@@ -61,10 +58,8 @@ class InitialPage extends Component {
                                                     shrink: true,
                                                 }}
                                             />
-                                        </StyledDateForm>
                                     </StyledDateContainerItemOne>
                                     <StyledDateContainerItemTwo>
-                                        <StyledDateForm noValidate fullWidth>
                                             <StyledTextField
                                                 id="untilTextField"
                                                 label="Until"
@@ -74,12 +69,12 @@ class InitialPage extends Component {
                                                     shrink: true,
                                                 }}
                                             />
-                                        </StyledDateForm>
                                     </StyledDateContainerItemTwo>
                                 </StyledDateContainer>
                                 <StyledButtonContainer>
                                     <StyledButton onClick={this.handleSearch} >Search</StyledButton>
                                 </StyledButtonContainer>
+                                </form>
                             </StyledFormContainer>
                         </StyledLeftLayout>
                     </Grid>

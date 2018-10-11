@@ -8,15 +8,10 @@ export const StyledGrid = styled(Grid)`
     display: inline-flex !important;
 `
 
-export const StyledDateForm = styled.form`
-    display: flex;
-    flexWrap: wrap;
-`
-
 export const StyledTextField = styled(TextField)`
-    margin-left: auto,
-    margin-right: auto,
-    width: 200px,
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
 `
 
 export const StyledNativeTextField = styled(TextField)`
@@ -24,7 +19,8 @@ export const StyledNativeTextField = styled(TextField)`
     label {
         color: ${props => props.error ? "red" : "#000000 !important"};
         font-weight: 600;
-    },
+    }
+
     input {
         border-radius: 8px !important;
         border: 1px solid #e1e1e1;
@@ -54,9 +50,11 @@ export const StyledNativeSelect = styled(NativeSelect)`
     &:before {
         border-bottom: none !important;
     }
+    
     &:after {
         border-bottom: none !important;
-    },
+    }
+
     select {
         &:focus {
             background: transparent !important;

@@ -17,10 +17,10 @@ const TripCard = (props) => {
     let notice = null
 
     switch (props.status) {
-        case 'pendingTrip':
+        case 'unlisted':
             notice = <React.Fragment>
                 <Notice 
-                    color={palette.green}
+                    color={palette.red}
                     label='Pending your approval'/>
             </React.Fragment>
             break;

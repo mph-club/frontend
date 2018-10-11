@@ -22,6 +22,7 @@ import {
 class ListingDetailsPage extends Component {
 
     state = {
+        status: 'approved',
         priceSetup: false,
         editDetails: false
     }
@@ -132,7 +133,7 @@ class ListingDetailsPage extends Component {
                             <Divider style={{ marginBottom: '64px' }} />
                         </Grid>
                         <Grid item xs>
-                            <SummaryApprovalStatus />
+                            <SummaryApprovalStatus status={this.state.status}/>
                         </Grid>
                     </StyledGridContainerTwo>
                 </StyledGridContainer>

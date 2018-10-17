@@ -3,22 +3,23 @@ import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import Toolbar from './components/Navigation/Toolbar/Toolbar';
-import InitialPage from './containers/InitialPage/InitialPage';
+import InitialPage from './pages/InitialPage/InitialPage';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
-import SearchPage from './containers/SearchPage/SearchPage';
-import DetailPage from './containers/DetailPage/DetailPage';
+import SearchPage from './pages/SearchPage/SearchPage';
+import DetailPage from './pages/DetailPage/DetailPage';
 import UserDetails from './components/UserDetails/UserDetails';
 import Checkout from './components/Checkout/Checkout';
-import Dashboard from './containers/Dashboard/Dashboard';
-import TripDetailsPage from './containers/TripDetailsPage/TripDetailsPage';
-import HostDashboard from './containers/HostDashboard/HostDashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
+import TripDetailsPage from './pages/TripDetailsPage/TripDetailsPage';
+import HostDashboard from './pages/HostDashboard/HostDashboard';
 import DeclineForm from './components/SummaryTripForHost/DeclineForm/DeclineForm';
-import ListingDetailsPage from './containers/ListingDetailsPage/ListingDetailsPage';
+import ListingDetailsPage from './pages/ListingDetailsPage/ListingDetailsPage';
 import Photos from './components/ListingDetailsPageComponents/Photos/Photos';
 import DeliverAndAirport from './components/ListingDetailsPageComponents/DeliverAndAirport/DeliverAndAirport';
 import CarLocation from './components/ListingDetailsPageComponents/CarLocation/CarLocation';
 import TripPreference from './components/ListingDetailsPageComponents/TripPreference/TripPreference';
+import FilterPage from './pages/FilterPage/FilterPage';
 
 class App extends Component {
 
@@ -72,19 +73,20 @@ class App extends Component {
             openLogin={() => this.closeSignup(true)} />
           <Switch>
             <Route exact path="/" component={InitialPage} />
-            <Route exact path="/search-page" component={SearchPage} />
-            <Route exact path="/car-details" component={DetailPage} />
-            <Route exact path="/user-details" component={UserDetails} />
-            <Route exact path="/checkout" component={Checkout} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/host-dashboard" component={HostDashboard} />
-            <Route exact path="/trip-details-page" component={TripDetailsPage} />
-            <Route exact path="/decline-trip" component={DeclineForm} />
-            <Route exact path="/listing-pending" component={ListingDetailsPage} />
-            <Route exact path="/upload-pictures" component={Photos} />
-            <Route exact path="/delivery-and-airport" component={DeliverAndAirport} />
-            <Route exact path="/car-location" component={CarLocation} />
-            <Route exact path="/trip-preference" component={TripPreference} />
+            <Route path="/search-page" component={SearchPage} />
+            <Route path="/car-details" component={DetailPage} />
+            <Route path="/user-details" component={UserDetails} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/host-dashboard" component={HostDashboard} />
+            <Route path="/trip-details-page" component={TripDetailsPage} />
+            <Route path="/decline-trip" component={DeclineForm} />
+            <Route path="/listing-pending" component={ListingDetailsPage} />
+            <Route path="/upload-pictures" component={Photos} />
+            <Route path="/delivery-and-airport" component={DeliverAndAirport} />
+            <Route path="/car-location" component={CarLocation} />
+            <Route path="/trip-preference" component={TripPreference} />
+            <Route path="/filter" component={FilterPage} />
           </Switch>
         </main>
       </React.Fragment>

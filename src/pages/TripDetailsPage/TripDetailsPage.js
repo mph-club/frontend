@@ -80,7 +80,7 @@ class TripDetailsPage extends Component {
                         </StyledTitleLayout>
                         <StyledAvatar
                             alt="Steve Jobs"
-                            src={avatar}></StyledAvatar>
+                            src={avatar}/>
                     </StyledMiddleContainer>
                     <Tabs
                         value={this.state.value}

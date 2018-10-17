@@ -6,7 +6,7 @@ import {
     StyledTitle,
     StyledSection
 } from './styles';
-import CarCard from '../CarsCollection/CarCard/CarCard';
+import CarCard from '../../components/UI/CarCard/CarCard';
 import tileData from './tileData';
 
 class CarsCollection extends Component {

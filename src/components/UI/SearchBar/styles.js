@@ -9,18 +9,7 @@ export const StyledPaper = styled(Paper)`
 
 export const StyleButton = styled(StylePrimaryButton)`
     margin-left: 16px !important;
-`
-
-
-export const StyledContainer = styled.div`
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    transform: translateY(24vh);
-
-    @media (max-width: 500px) {
-        display: none;
-    }
+    height: 50px;
 `
 
 export const StyledSlantedDivider = styled.div`

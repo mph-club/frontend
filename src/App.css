@@ -20,4 +20,6 @@ body {
     sans-serif !important;
   }
   
-  
+  .maxLabel {
+      color: blue;
+  }

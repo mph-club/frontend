@@ -11,7 +11,7 @@ import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import TextField from '@material-ui/core/TextField';
 import { space } from '../../../theme';
 
-import { StyledSecondaryButton } from '../../../containers/SearchPage/ListVehicleBanner/styles';
+import { StyledSecondaryButton } from '../ListVehicleBanner/styles';
 import { Typography } from '@material-ui/core';
 
 import {

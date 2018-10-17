@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import LettersCounter from '../../UI/LettersCounter/LettersCounter';
-import { StyledSecondaryButton } from '../../../containers/SearchPage/ListVehicleBanner/styles';
+import { StyledSecondaryButton } from '../../ListingDetailsPageComponents/ListVehicleBanner/styles';
 
 class DeclineForm extends Component {
 

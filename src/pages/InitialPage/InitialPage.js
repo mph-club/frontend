@@ -21,7 +21,7 @@ import Footer from '../../components/Navigation/Footer/Footer';
 class InitialPage extends Component {
 
     handleSearch = () => {
-        this.props.history.push('/search-page')
+        this.props.history.push('/filter')
     }
 
     render() {

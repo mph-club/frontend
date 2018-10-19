@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import {
-    StyledSearchContainer,
+    StyledHeaderContainer,
     StyledFilterContainer,
     StyledExternalContainer,
-    StyledRightContainer
+    StyledRightContainer,
+    StyledSearchBarContainer,
+    StyledReducedComponents,
+    StyledSlantedDivider,
+    StyledMidComponents,
+    StyledReducedSearchContainer,
+    StyledBackdrop
 } from './styles';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
@@ -19,6 +24,10 @@ import { carTypes, sortOptions, vehicleMakes } from '../../tools/constants';
 import tileData from '../CarsCollection/tileData';
 import GridList from '@material-ui/core/GridList';
 import CarCard from '../../components/UI/CarCard/CarCard';
+import LocationIcon from '@material-ui/icons/LocationCity';
+import FilterIcon from '@material-ui/icons/Filter';
+import Button from '@material-ui/core/Button';
+import ReducedSearchComponents from './ReducedSearchComponents/ReducedSearchComponents';
 
 class FilterPage extends Component {
 
@@ -28,26 +37,79 @@ class FilterPage extends Component {
         value5: {
             min: 30,
             max: 200
-        }
+        },
+        reducedSearchBar: false
     }
 
-    handleChange = (event, value) => {
-        this.setState({ sliderValue: value });
+    handleChange = (event) => {
+        this.setState({ sliderValue: event.target.value });
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
     }
 
+    toggleDrawer = () => {
+
+        const open = this.state.reducedSearchBar
+        this.setState({
+            reducedSearchBar: !open
+        });
+    };
+
+    handleCard = (cardId) => {
+        this.setState({ cardIdSelected: cardId });
+        this.props.history.push('/car-details');
+    }
 
     render() {
+
         return (
             <React.Fragment>
-                <StyledSearchContainer>
-                    <div style={{ width: '900px', height: '70px', margin: '12px auto' }}>
+                <StyledHeaderContainer>
+                    <StyledSearchBarContainer>
                         <SearchBar />
-                    </div>
-                </StyledSearchContainer>
+                    </StyledSearchBarContainer>
+                    <StyledMidComponents>
+                        <Button style={{ display: 'block', width: '100%', height: '60px' }} onClick={this.toggleDrawer}>
+                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                <LocationIcon style={{ marginRight: space[2] }} />
+                                <Typography variant="body2" color="primary" component="h3">Current location</Typography>
+                            </div>
+                            <div style={{ textAlign: 'center', marginBottom: space[1] }}>
+                                <Typography variant="body1" color="primary" component="p">Oct 17, 2018 10:00 am - Oct 20, 2018 10:00 am</Typography>
+                            </div>
+                        </Button>
+                    </StyledMidComponents>
+                    <StyledReducedComponents>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <Button style={{ width: '50%', height: '60px' }} onClick={this.toggleDrawer}>
+                                <LocationIcon style={{ marginRight: space[2] }} />
+                                <Typography variant="body2" color="primary" component="h3">Current location</Typography>
+                            </Button>
+                            <StyledSlantedDivider />
+                            <Button style={{ width: '50%', height: '60px' }} >
+                                <FilterIcon style={{ marginRight: space[2] }} />
+                                <Typography variant="body2" color="primary" component="h3">Filters</Typography>
+                            </Button>
+                        </div>
+                    </StyledReducedComponents>
+
+                    {this.state.reducedSearchBar ?
+                        <React.Fragment>
+                            <StyledReducedSearchContainer>
+                                <ReducedSearchComponents
+
+                                />
+                            </StyledReducedSearchContainer>
+                            <StyledBackdrop
+                                open={this.state.reducedSearchBar}
+                                onClick={this.toggleDrawer} />
+                        </React.Fragment> :
+                        null}
+
+                </StyledHeaderContainer>
+
                 <StyledExternalContainer>
                     <StyledFilterContainer>
                         <div style={{ textAlign: 'center' }}>
@@ -127,17 +189,17 @@ class FilterPage extends Component {
                         </form>
                     </StyledFilterContainer>
                     <StyledRightContainer>
-                                <GridList spacing={3}>
-                                    {tileData.map(tile => (
-                                        <CarCard
-                                            key={tile.id}
-                                            image={tile.img}
-                                            title={tile.title}
-                                            price={tile.price}
-                                            rate={tile.rate}
-                                            handleCard={() => this.handleCard(tile.id)} />
-                                    ))}
-                                </GridList>
+                        <GridList spacing={3}>
+                            {tileData.map(tile => (
+                                <CarCard
+                                    key={tile.id}
+                                    image={tile.img}
+                                    title={tile.title}
+                                    price={tile.price}
+                                    rate={tile.rate}
+                                    handleCard={() => this.handleCard(tile.id)} />
+                            ))}
+                        </GridList>
                     </StyledRightContainer>
                 </StyledExternalContainer>
             </React.Fragment>

@@ -6,9 +6,9 @@ import {
     StyledPaper,
     StyledSlantedDivider
 } from './styles';
-import { space } from '../../../theme';
 import Typography from '@material-ui/core/Typography';
 import { hours } from '../../../tools/constants';
+import { space } from '../../../theme';
 
 class SearchBar extends Component {
 

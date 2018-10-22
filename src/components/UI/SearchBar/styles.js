@@ -4,7 +4,15 @@ import StylePrimaryButton from '../../../components/UI/Buttons/PrimaryButton/Pri
 import { space } from '../../../theme';
 
 export const StyledPaper = styled(Paper)`
-    width: 100%;
+    && {
+        width: 100%;
+        display: flex;
+        padding-top: ${space[2]};
+        padding-bottom: ${space[2]};
+        padding-right: ${space[3]};
+        padding-left: ${space[3]};
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+    }
 `
 
 export const StyleButton = styled(StylePrimaryButton)`

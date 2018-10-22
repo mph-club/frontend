@@ -17,6 +17,10 @@ export const StyledSelectTextField = styled(TextField)`
             color: ${props => props.error ? "#f44336" : "black"};
 
         }
+
+        select:focus {
+            background: transparent;
+        }
     }
 `
 

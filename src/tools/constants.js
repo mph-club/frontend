@@ -30,7 +30,7 @@ export const carTypes = [
 
 export const vehicleMakes = [
     {   
-        value: "",
+        value: "select",
         label: "Select"
     },
     {

@@ -14,12 +14,10 @@ import {
 import Typography from '@material-ui/core/Typography';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
 import Divider from '@material-ui/core/Divider';
-import TextField from '@material-ui/core/TextField';
-import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { space } from '../../theme';
+import { space, palette } from '../../theme';
 import { carTypes, sortOptions, vehicleMakes } from '../../tools/constants';
 import tileData from '../CarsCollection/tileData';
 import GridList from '@material-ui/core/GridList';
@@ -28,6 +26,8 @@ import LocationIcon from '@material-ui/icons/LocationCity';
 import FilterIcon from '@material-ui/icons/Filter';
 import Button from '@material-ui/core/Button';
 import ReducedSearchComponents from './ReducedSearchComponents/ReducedSearchComponents';
+import SelectTextField from '../../components/UI/FormElements/SelectTextField/SelectTextField';
+import RangeSlider from '../../components/UI/FormElements/RangeSlider/RangeSlider';
 
 class FilterPage extends Component {
 
@@ -61,6 +61,7 @@ class FilterPage extends Component {
         this.setState({ cardIdSelected: cardId });
         this.props.history.push('/car-details');
     }
+
 
     render() {
 
@@ -112,14 +113,14 @@ class FilterPage extends Component {
 
                 <StyledExternalContainer>
                     <StyledFilterContainer>
-                        <div style={{ textAlign: 'center' }}>
-                            <Typography>{this.state.results > 100 ? '100+' : this.state.results} results</Typography>
+                        <div style={{ textAlign: 'center', marginBottom: space[3] }}>
+                            <Typography vairant="body1" component="p" style={{ fontWeight: 600 }}>{this.state.results > 100 ? '100+' : this.state.results} results</Typography>
                         </div>
                         <Divider />
                         <form onSubmit={this.handleSubmit}>
                             <div style={{ marginTop: space[4] }}>
-                                <Typography variant="body2" color="primary" component="p">Sort by</Typography>
-                                <TextField
+                                <SelectTextField
+                                    label="Sort by"
                                     id="outlined-filterPage-sortOptions"
                                     fullWidth
                                     select
@@ -127,15 +128,19 @@ class FilterPage extends Component {
                                     SelectProps={{
                                         native: true
                                     }}
-                                >{sortOptions.map(option => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}</TextField>
+                                >
+                                    {sortOptions.map(option => (
+                                        <option key={option.value} value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </SelectTextField>
                             </div>
                             <div style={{ marginTop: space[4] }}>
-                                <Typography variant="body2" color="primary" component="p" style={{ marginBottom: space[3] }}>Price</Typography>
-                                <InputRange
+                                <Typography variant="body1" color="primary" component="p" style={{ marginBottom: space[4], fontWeight: 600 }}>Price</Typography>
+                                <RangeSlider
+                                    color={palette.blue}
+                                    label="Price"
                                     draggableTrack
                                     maxValue={250}
                                     minValue={10}
@@ -144,8 +149,8 @@ class FilterPage extends Component {
                                     value={this.state.value5}
                                 />
                             </div>
-                            <div style={{ marginTop: space[4] }}>
-                                <Typography variant="body2" color="primary" component="p">Delivery</Typography>
+                            <div style={{ marginTop: space[5] }}>
+                                <Typography variant="body1" color="primary" component="p" style={{ marginBottom: space[1], fontWeight: 600 }}>Delivery</Typography>
                                 <FormControlLabel
                                     value="recommended"
                                     control={<Radio color="primary" />}
@@ -154,8 +159,8 @@ class FilterPage extends Component {
                                     label="Get the car delivery directly to you." />
                             </div>
                             <div style={{ marginTop: space[4] }}>
-                                <Typography variant="body2" color="primary" component="p">Vehicle Type</Typography>
-                                <TextField
+                                <SelectTextField
+                                    label="Vehicle type"
                                     id="outlined-filterPage-sortOptions"
                                     fullWidth
                                     select
@@ -163,15 +168,17 @@ class FilterPage extends Component {
                                     SelectProps={{
                                         native: true
                                     }}
-                                >{carTypes.map(option => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}</TextField>
+                                >
+                                    {carTypes.map(option => (
+                                        <option key={option.value} value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </SelectTextField>
                             </div>
                             <div style={{ marginTop: space[4] }}>
-                                <Typography variant="body2" color="primary" component="p">Vehicle Make</Typography>
-                                <TextField
+                                <SelectTextField
+                                    label="Vehicle make"
                                     id="outlined-filterPage-sortOptions"
                                     fullWidth
                                     select
@@ -180,11 +187,13 @@ class FilterPage extends Component {
                                     SelectProps={{
                                         native: true
                                     }}
-                                >{vehicleMakes.map(option => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}</TextField>
+                                >
+                                    {vehicleMakes.map(option => (
+                                        <option key={option.value} value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </SelectTextField>
                             </div>
                         </form>
                     </StyledFilterContainer>

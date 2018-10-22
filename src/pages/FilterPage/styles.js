@@ -1,6 +1,21 @@
 import styled from 'styled-components';
-import { palette } from '../../theme';
 import Backdrop from '@material-ui/core/Backdrop'
+import { space } from '../../theme';
+import InputRange from 'react-input-range';
+
+export const StyledBackdrop = styled(Backdrop)`
+    && {
+        z-index: ${ props => props.open ? 1000 : -1};
+        top: 133px;
+        overflow: hidden;
+    }
+`
+
+export const StyledInputRange = styled(InputRange)`
+    && {
+        background-color: green;
+    }
+`
 
 export const StyledHeaderContainer = styled.div`
     padding-top: 20px;
@@ -11,7 +26,7 @@ export const StyledHeaderContainer = styled.div`
     left: 0;
     width: 100%;
     height: 60px;
-    border-bottom: 1px solid ${palette.grey04};
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
 
     @media (min-width: 900px) {
         top: 30px;
@@ -20,12 +35,13 @@ export const StyledHeaderContainer = styled.div`
 
     @media (min-width: 500px), (max-width: 900px){
         top: 56px;
-        padding-top: 0;
+        padding-top: ${space[3]};
+        padding-bottom: ${space[3]};
     }
 `
 
 export const StyledSearchBarContainer = styled.div`
-    width: 900px;
+    width: 960px;
     height: 70px; 
     margin: 12px auto;
 
@@ -47,22 +63,6 @@ export const StyledReducedComponents = styled.div`
 
     @media (min-width: 500px) {
         display: none;
-    }
-`
-
-// export const StyledBackdrop = styled(Backdrop)`
-//     && {
-//         z-index: ${ props => props.open ? 1000 : -1};
-//         top: 116px;
-//         overflow: hidden;
-//     }
-// `
-
-export const StyledBackdrop = styled(Backdrop)`
-    && {
-        z-index: ${ props => props.open ? 1000 : -1};
-        top: 116px;
-        overflow: hidden;
     }
 `
 
@@ -94,7 +94,7 @@ export const StyledFilterContainer = styled.div`
     height: 700px;
 
     @media (min-width: 900px) {
-        top: 200px;
+        top: 248px;
     }
 
     @media (max-width: 500px) {
@@ -102,26 +102,13 @@ export const StyledFilterContainer = styled.div`
     }
 `
 
-// export const StyledRightContainer = styled.div`
-//     margin-left: 332px;
-//     margin-top: 140px;
-
-//     @media (min-width: 900px) {
-//         margin-top: 200px;
-//     }
-
-//     @media (max-width: 500px) {
-//         margin-left: 0;
-//     }
-// `
-
 export const StyledRightContainer = styled.div`
     margin-left: 332px;
-    padding-top: 140px;
+    padding-top: 170px;
 
 
     @media (min-width: 900px) {
-        margin-top: 20px;
+        margin-top: ${space[5]};
     }
 
     @media (max-width: 500px) {

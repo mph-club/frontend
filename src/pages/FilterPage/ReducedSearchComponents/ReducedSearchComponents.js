@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Divider from '@material-ui/core/Divider';
 import StyledPrimaryButton from '../../../components/UI/Buttons/PrimaryButton/PrimaryButton';
+import { space } from '../../../theme';
 
 import {
     StyledForm
@@ -61,7 +61,7 @@ const ReducedSearchComponents = (props) => {
         <React.Fragment>
             <StyledForm>
                 <div style={{ display: 'block' }}>
-                    <Typography variant="body1" component="p">Where</Typography>
+                    <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Where</Typography>
                     <TextField
                         id="searchPage-search"
                         type="search"
@@ -72,8 +72,8 @@ const ReducedSearchComponents = (props) => {
                         style={{ width: '200px' }}
                     />
                 </div>
-                <div style={{ display: 'block' }}>
-                    <Typography variant="body1" component="p">Pickup</Typography>
+                <div style={{ display: 'block', marginTop: space[3] }}>
+                    <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Pickup</Typography>
                     <div style={{ display: 'flex' }}>
                         <TextField
                             id="searchPage-fromTextField"
@@ -103,8 +103,8 @@ const ReducedSearchComponents = (props) => {
                     </div>
 
                 </div>
-                <div style={{ display: 'block' }}>
-                    <Typography variant="body1" component="p">Return</Typography>
+                <div style={{ display: 'block', marginTop: space[3] }}>
+                    <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Return</Typography>
                     <div style={{ display: 'flex' }}>
                         <TextField
                             id="searchPage-fromTextField"
@@ -133,10 +133,9 @@ const ReducedSearchComponents = (props) => {
                         ))}</TextField>
                     </div>
                 </div>
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ marginTop: space[4] }}>
                     <StyledPrimaryButton type="submit">Search</StyledPrimaryButton>
                 </div>
-                <Divider />
             </StyledForm>
         </React.Fragment>
     );

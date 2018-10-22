@@ -23,7 +23,7 @@ import { space } from '../../theme';
 import { carTypes, sortOptions, vehicleMakes } from '../../tools/constants';
 import tileData from '../CarsCollection/tileData';
 import GridList from '@material-ui/core/GridList';
-import CarCard from '../../components/UI/CarCard/CarCard';
+import CarCardSmall from '../../components/UI/CarCard/CarCardSmall';
 import LocationIcon from '@material-ui/icons/LocationCity';
 import FilterIcon from '@material-ui/icons/Filter';
 import Button from '@material-ui/core/Button';
@@ -191,7 +191,7 @@ class FilterPage extends Component {
                     <StyledRightContainer>
                         <GridList spacing={3}>
                             {tileData.map(tile => (
-                                <CarCard
+                                <CarCardSmall
                                     key={tile.id}
                                     image={tile.img}
                                     title={tile.title}

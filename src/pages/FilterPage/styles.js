@@ -50,6 +50,14 @@ export const StyledReducedComponents = styled.div`
     }
 `
 
+// export const StyledBackdrop = styled(Backdrop)`
+//     && {
+//         z-index: ${ props => props.open ? 1000 : -1};
+//         top: 116px;
+//         overflow: hidden;
+//     }
+// `
+
 export const StyledBackdrop = styled(Backdrop)`
     && {
         z-index: ${ props => props.open ? 1000 : -1};
@@ -94,12 +102,26 @@ export const StyledFilterContainer = styled.div`
     }
 `
 
+// export const StyledRightContainer = styled.div`
+//     margin-left: 332px;
+//     margin-top: 140px;
+
+//     @media (min-width: 900px) {
+//         margin-top: 200px;
+//     }
+
+//     @media (max-width: 500px) {
+//         margin-left: 0;
+//     }
+// `
+
 export const StyledRightContainer = styled.div`
     margin-left: 332px;
-    margin-top: 140px;
+    padding-top: 140px;
+
 
     @media (min-width: 900px) {
-        margin-top: 200px;
+        margin-top: 20px;
     }
 
     @media (max-width: 500px) {

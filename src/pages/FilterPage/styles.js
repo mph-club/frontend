@@ -54,7 +54,6 @@ export const StyledBackdrop = styled(Backdrop)`
     && {
         z-index: ${ props => props.open ? 1000 : -1};
         top: 116px;
-        overflow: hidden;
     }
 `
 

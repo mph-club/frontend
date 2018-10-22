@@ -28,6 +28,7 @@ import LocationIcon from '@material-ui/icons/LocationCity';
 import FilterIcon from '@material-ui/icons/Filter';
 import Button from '@material-ui/core/Button';
 import ReducedSearchComponents from './ReducedSearchComponents/ReducedSearchComponents';
+import Fade from '@material-ui/core/Fade';
 
 class FilterPage extends Component {
 
@@ -97,16 +98,18 @@ class FilterPage extends Component {
 
                     {this.state.reducedSearchBar ?
                         <React.Fragment>
-                            <StyledReducedSearchContainer>
+                            <Fade in={this.state.reducedSearchBar} timeout={{enter: 500, exit: 500}}>
+                                <StyledReducedSearchContainer>
                                 <ReducedSearchComponents
 
                                 />
-                            </StyledReducedSearchContainer>
-                            <StyledBackdrop
-                                open={this.state.reducedSearchBar}
-                                onClick={this.toggleDrawer} />
+                                    </StyledReducedSearchContainer>
+                                </Fade>
+                        <StyledBackdrop
+                            open={this.state.reducedSearchBar}
+                            onClick={this.toggleDrawer} />
                         </React.Fragment> :
-                        null}
+                    null}
 
                 </StyledHeaderContainer>
 

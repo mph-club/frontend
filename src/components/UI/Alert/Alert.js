@@ -30,8 +30,8 @@ const Alert = (props) => {
       <div style={{
         display: 'flex',
         justifyContent: 'center',
-        marginLeft: '12px',
-        marginRight: '12px',
+        marginLeft: '32px',
+        marginRight: '32px',
         marginBottom: '12px'
       }}>
         {logo}
@@ -44,7 +44,7 @@ const Alert = (props) => {
           </DialogContent>
           <DialogActions>
             <StyledPrimaryButton onClick={props.handleOk} color="primary" autoFocus>{props.okTitle}</StyledPrimaryButton>
-            <SecondaryButton onClick={props.handleClose} style={{ marginLeft: space[2] }}>Cancel</SecondaryButton>
+            {props.cancelButton ? <SecondaryButton onClick={props.handleClose} style={{ marginLeft: space[2] }}>Cancel</SecondaryButton> : null}
           </DialogActions>
         </div>
       </div>

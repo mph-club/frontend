@@ -8,14 +8,15 @@ import {
     StyledTitle,
     StyledTitleSpan,
     StyledFormContainer,
-    StyledTextField,
     StyledDateContainer,
     StyledDateContainerItemOne,
     StyledDateContainerItemTwo,
-    StyledButtonContainer,
-    StyledNativeTextField
+    StyledButtonContainer
 } from './styles';
 import Footer from '../../components/Navigation/Footer/Footer';
+import InputTextField from '../../components/UI/FormElements/InputTextField/InputTextField';
+import SelectTextField from '../../components/UI/FormElements/SelectTextField/SelectTextField';
+import { space } from '../../theme';
 
 
 class InitialPage extends Component {
@@ -27,48 +28,46 @@ class InitialPage extends Component {
     render() {
         return (
             <React.Fragment>
-                <Grid container spacing={0} style={{marginTop: '64px'}}>
+                <Grid container spacing={0} style={{marginTop: space[5]}}>
                     <Grid item xs={12} sm={12} md={6}>
                         <StyledLeftLayout>
                             <div>
-                                <StyledTitle>Search and <StyledTitleSpan>rent</StyledTitleSpan> thousands of high end vehicles in all of Florida.</StyledTitle>
+                                <StyledTitle>Search and <StyledTitleSpan>book</StyledTitleSpan> from a variety cars in all of Florida.</StyledTitle>
                             </div>
                             <StyledFormContainer>
                                 <form>
-                                    <StyledNativeTextField
+                                    <InputTextField
                                         fullWidth
+                                        id="outlined-full-width"
                                         placeholder="Enter a city, airport, or address in FL"
                                         label="Where"
-                                        id="bootstrap-input"
-                                        InputProps={{
-                                            disableUnderline: true
-                                        }}
+                                        variant="outlined"
                                         InputLabelProps={{
                                             shrink: true
                                         }}
                                     />
                                 <StyledDateContainer>
                                     <StyledDateContainerItemOne>
-                                            <StyledTextField
-                                                id="fromTextField"
-                                                label="From"
-                                                type="date"
-                                                defaultValue="2017-05-24"
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                            />
+                                        <SelectTextField
+                                            fullWidth
+                                            id="fromTextField"
+                                            label="From"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            variant="outlined"
+                                            margin="normal"
+                                        />
                                     </StyledDateContainerItemOne>
                                     <StyledDateContainerItemTwo>
-                                            <StyledTextField
-                                                id="untilTextField"
-                                                label="Until"
-                                                type="date"
-                                                defaultValue="2017-05-24"
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                            />
+                                        <SelectTextField
+                                            fullWidth
+                                            id="untilTextField"
+                                            label="Until"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            variant="outlined"
+                                            margin="normal"
+                                        />
                                     </StyledDateContainerItemTwo>
                                 </StyledDateContainer>
                                 <StyledButtonContainer>

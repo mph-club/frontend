@@ -87,11 +87,13 @@ export const StyledReducedSearchContainer = styled.div`
 `
 
 export const StyledFilterContainer = styled.div`
-    position: fixed;
-    top: 140px;
-    left: auto;
+    bottom:0;
+    position:fixed;
+    overflow-y:scroll;
+    overflow-x:hidden;
     width: 300px;
-    height: 700px;
+    padding-bottom: ${space[6]};
+    padding-right: ${space[3]};
 
     @media (min-width: 900px) {
         top: 248px;

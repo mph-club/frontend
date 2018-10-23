@@ -24,7 +24,7 @@ const TripCard = (props) => {
                     label='Pending your approval'/>
             </React.Fragment>
             break;
-        case 'pendingListing':
+        case 'tripPending':
             notice = <React.Fragment>
                 <Notice
                     color={palette.black} 

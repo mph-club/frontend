@@ -171,7 +171,7 @@ class Checkout extends Component {
                     openAlert={this.state.requestSent}
                     handleClose={this.handleCloseAlert}
                     handleOk={this.handleCloseAlert}
-                    cancelButton={true} 
+                    cancelButton={false} 
                     logo={<CheckIconOutlined style={{ fontSize: 32, color: palette.green }}/>}
                     okTitle='Okey'
                     text={'Your card is authorized but will no be charged until' + this.state.host.userName + 'confirms the booking'}

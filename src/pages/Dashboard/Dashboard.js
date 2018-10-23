@@ -34,9 +34,7 @@ class Dashboard extends Component {
         switch (value) {
             case 0:
                 content = <React.Fragment>
-                    <TripCard clicked={this.handleCardClick} status='pendingListing' />
-                    <TripCard clicked={this.handleCardClick} status='pendingListing' />
-                    <TripCard clicked={this.handleCardClick} status='pendingListing' />
+                    <TripCard clicked={this.handleCardClick} status='tripPending' />
                 </React.Fragment>
                 break;
             default:

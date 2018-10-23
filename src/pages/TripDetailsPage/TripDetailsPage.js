@@ -10,7 +10,7 @@ import SummaryTripForHost from '../../components/SummaryTripForHost/SummaryTripF
 import ReportListing from '../../components/DetailPageComponents/ReportListing/ReportListing';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Badge from '@material-ui/core/Badge';
+// import Badge from '@material-ui/core/Badge';
 import avatar from '../../assets/images/avatar.png';
 import Footer from '../../components/Navigation/Footer/Footer';
 import Notice from '../../components/UI/Notice/Notice';
@@ -34,6 +34,23 @@ import {
 
 class TripDetailsPage extends Component {
     state = {
+        status: 'tripPending',
+        unreadMessages: 0,
+        host: {
+            userName: 'Mike L'
+        },
+        carDetails: {
+            make: 'Porshe',
+            model: 'Panamera',
+            year: 2016,
+            trips: 4,
+            rate: 4,
+            distance: 8
+        },
+        tripDetails: {
+            total: 1924,
+            deposit: 1500
+        },
         reportListing: false,
         value: 0
     };
@@ -52,7 +69,26 @@ class TripDetailsPage extends Component {
         })
     }
 
+    handleViewDetails = () => {
+        if (this.state.status === 'tripPending') {
+            this.props.history.push('/total-cost')
+        }
+    }
+
     render() {
+
+        let firstRowTitle = null
+        let firstRowDetails = null
+
+        switch (this.state.status) {
+            case 'tripPending':
+                firstRowTitle = 'TOTAL COST';
+                firstRowDetails = 'Trip total does not include your deposit of $' + this.state.tripDetails.deposit;
+                break;
+            default:
+                break;
+        }
+
         return (
             <React.Fragment>
                 <StyledImageContainer>
@@ -61,26 +97,23 @@ class TripDetailsPage extends Component {
                 <StyledExtContainer>
                     <StyledMiddleContainer>
                         <StyledTitleLayout>
-                            <Notice 
-                                color={palette.green} 
-                                label='Pending your approval' 
+                            <Notice
+                                status={this.state.status}
                             />
-                            <Typography varaint="body2" component="h2" style={{ color: `${palette.grey02}`, marginBottom: `${space[2]}` }}>Hosted by <span style={{ color: `${palette.black}`, fontWeight: 600}}>you</span></Typography>
-                            <Typography variant="display1" color="primary" component="h2">Porsche Panamera</Typography>
-                            <Typography variant="display1" color="primary" component="h2">2016</Typography>
+                            <Typography varaint="body2" component="h2" style={{ color: `${palette.grey02}`, marginBottom: `${space[2]}` }}>Hosted by <span style={{ color: `${palette.black}`, fontWeight: 600 }}>{this.state.host.userName}</span></Typography>
+                            <Typography variant="display1" color="primary" component="h2">{this.state.carDetails.make + ' ' + this.state.carDetails.model}</Typography>
+                            <Typography variant="display1" color="primary" component="h2">{this.state.carDetails.year}</Typography>
                             <StyledRateLayout>
-                                <div>4 trips</div>
-                                <div><RateStars rate='4' /></div>
+                                <div>{this.state.carDetails.trips} trips</div>
+                                <div><RateStars rate={ this.state.carDetails.rate.toString() } /></div>
                                 <div>
-                                    <Typography variant="body1" style={{ color: `${palette.grey02}` }}>
-                                        8 mi
-                                    </Typography>
+                                    <Typography variant="body1" style={{ color: `${palette.grey02}` }}>{this.state.carDetails.distance} mi</Typography>
                                 </div>
                             </StyledRateLayout>
                         </StyledTitleLayout>
                         <StyledAvatar
                             alt="Steve Jobs"
-                            src={avatar}/>
+                            src={avatar} />
                     </StyledMiddleContainer>
                     <Tabs
                         value={this.state.value}
@@ -88,9 +121,9 @@ class TripDetailsPage extends Component {
                         indicatorColor="secondary"
                         textColor="secondary"
                     >
-                        <Tab label="Trips" />
-                        <Tab label={this.props.activityItems > 0 ? <Badge color="secondary" badgeContent={this.props.activityItems}> Activity</Badge> : "Activity"} />
-                        <Tab label={this.props.historyItems > 0 ? <Badge color="secondary" badgeContent={this.props.historyItems}> Activity</Badge> : "History"} />
+                        <Tab label="Trip Info" />
+                        {/* <Tab label={this.state.unreadMessages > 0 ? <Badge color="secondary" badgeContent={this.state.unreadMessages}> Messages</Badge> : "Messages"} /> */}
+                        <Tab disabled={this.state.status === 'tripPending'} label="Contact" />
                     </Tabs>
                     <Divider />
                 </StyledExtContainer>
@@ -98,12 +131,16 @@ class TripDetailsPage extends Component {
                 <StyledGridContainer>
                     <StyledGridContainerTwo container spacing={40}>
                         <Grid item xs>
-                            <div style={{ marginBottom: `${space[4]}` }}>
-                                <Title component="h4">Total Earnings</Title>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Typography variant="title" component="p" style={{ marginTop: `${space[3]}` }} >$2,694</Typography>
-                                    <TextButton>View details</TextButton>
+                            <div style={{ marginBottom: space[3]}}>
+                                <Title component="h4">{firstRowTitle}</Title>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: `${space[3]}`, marginTop: space[3]}}>
+                                    <Typography variant="title" component="p" >{this.state.tripDetails.total}</Typography>
+                                    <TextButton onClick={this.handleViewDetails}>View details</TextButton>
                                 </div>
+                                <Typography
+                                    variant="body1"
+                                    component="p"
+                                    style={{ color: `${palette.grey02}` }}>{firstRowDetails}</Typography>
                             </div>
                             <Divider />
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
@@ -139,7 +176,7 @@ class TripDetailsPage extends Component {
                             </div>
                             <Divider />
                             <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                               <UnorderedList
+                                <UnorderedList
                                     title="Guidelines"
                                     itemOne="A deposit will be required"
                                     itemTwo="A minimum of 1 day is required to rent this car"

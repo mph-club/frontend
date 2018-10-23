@@ -20,6 +20,7 @@ import DeliverAndAirport from './components/ListingDetailsPageComponents/Deliver
 import CarLocation from './components/ListingDetailsPageComponents/CarLocation/CarLocation';
 import TripPreference from './components/ListingDetailsPageComponents/TripPreference/TripPreference';
 import FilterPage from './pages/FilterPage/FilterPage';
+import TotalCost from './components/TripsDetailsComponents/TotalCost/TotalCost';
 
 class App extends Component {
 
@@ -87,6 +88,7 @@ class App extends Component {
             <Route path="/car-location" component={CarLocation} />
             <Route path="/trip-preference" component={TripPreference} />
             <Route path="/filter" component={FilterPage} />
+            <Route path="/total-cost" component={TotalCost}/>
           </Switch>
         </main>
       </React.Fragment>

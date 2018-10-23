@@ -86,12 +86,30 @@ export const StyledReducedSearchContainer = styled.div`
     z-index: 1100;
 `
 
+// export const StyledFilterContainer = styled.div`
+//     position: fixed;
+//     top: 140px;
+//     left: auto;
+//     width: 300px;
+//     height: 700px;
+
+//     @media (min-width: 900px) {
+//         top: 248px;
+//     }
+
+//     @media (max-width: 500px) {
+//         display: none;
+//     }
+// `
+
 export const StyledFilterContainer = styled.div`
-    position: fixed;
-    top: 140px;
-    left: auto;
+    bottom:0;
+    position:fixed;
+    overflow-y:scroll;
+    overflow-x:hidden;
     width: 300px;
-    height: 700px;
+    padding-bottom: ${space[6]};
+    padding-right: ${space[3]};
 
     @media (min-width: 900px) {
         top: 248px;

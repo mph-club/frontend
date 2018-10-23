@@ -8,6 +8,8 @@ import {
 } from './styles';
 import CarCard from '../../components/UI/CarCard/CarCard';
 import tileData from './tileData';
+import TextButton from '../../components/UI/Buttons/TextButton/TextButton';
+import { space, palette } from '../../theme';
 
 class CarsCollection extends Component {
 
@@ -37,6 +39,11 @@ class CarsCollection extends Component {
                         ))}
                     </StyledGridList>
                 </StyledDivContainer>
+                <div style={{ marginTop: space[3] }}>
+                    <TextButton>View all {this.props.type}</TextButton>
+                    <span style={{ color: palette.grey01, marginLeft: space[1], marginRight: space[1] }}>or</span>
+                    <TextButton>View all Cars</TextButton>
+                </div>
             </StyledSection>
         );
     }

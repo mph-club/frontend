@@ -22,6 +22,14 @@ export const StyledCardMedia = styled(CardMedia)`
   }
 `
 
+export const StyledCardMediaSmall = styled(CardMedia)`
+  && {
+    height: 266px;
+    width: 400px;
+    border-radius: 8px;
+  }
+`
+
 export const StyledCardActions = styled(CardActions)`
   && {
     padding: 0;

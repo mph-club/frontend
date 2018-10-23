@@ -6,9 +6,9 @@ import {
     StyledPaper,
     StyledSlantedDivider
 } from './styles';
-import { space } from '../../../theme';
 import Typography from '@material-ui/core/Typography';
 import { hours } from '../../../tools/constants';
+import { space } from '../../../theme';
 
 class SearchBar extends Component {
 
@@ -29,7 +29,7 @@ class SearchBar extends Component {
                 }}>
                     <StyledPaper style={{ padding: space[2], display: 'flex' }}>
                         <div style={{ display: 'block' }}>
-                            <Typography variant="body1" component="p">Where</Typography>
+                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Where</Typography>
                             <TextField
                                 id="searchPage-search"
                                 type="search"
@@ -42,7 +42,7 @@ class SearchBar extends Component {
                         </div>
                         <StyledSlantedDivider />
                         <div style={{ display: 'block' }}>
-                            <Typography variant="body1" component="p">Pickup</Typography>
+                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Pickup</Typography>
                             <div style={{ display: 'flex' }}>
                                 <TextField
                                     id="searchPage-fromTextField"
@@ -74,7 +74,7 @@ class SearchBar extends Component {
                         </div>
                         <StyledSlantedDivider />
                         <div style={{ display: 'block' }}>
-                            <Typography variant="body1" component="p">Return</Typography>
+                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Return</Typography>
                             <div style={{ display: 'flex' }}>
                                 <TextField
                                     id="searchPage-fromTextField"

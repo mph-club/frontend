@@ -21,6 +21,7 @@ import CarLocation from './components/ListingDetailsPageComponents/CarLocation/C
 import TripPreference from './components/ListingDetailsPageComponents/TripPreference/TripPreference';
 import FilterPage from './pages/FilterPage/FilterPage';
 import TotalCost from './components/TripsDetailsComponents/TotalCost/TotalCost';
+import CancelTrip from './components/TripsDetailsComponents/CancelTrip/CancelTrip';
 
 class App extends Component {
 
@@ -89,6 +90,7 @@ class App extends Component {
             <Route path="/trip-preference" component={TripPreference} />
             <Route path="/filter" component={FilterPage} />
             <Route path="/total-cost" component={TotalCost}/>
+            <Route path="/cancel-trip" component={CancelTrip}/>
           </Switch>
         </main>
       </React.Fragment>

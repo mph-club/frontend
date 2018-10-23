@@ -43,7 +43,7 @@ class SummaryTripForHost extends Component {
             case 'tripPending':
                 label = this.props.userName + ' has ' + this.props.hoursRemaining + ' hours left to respond to this booking'
                 firstButton = <SecondaryButton large="true">   Change trip   </SecondaryButton>
-                secondButton = <TextButton onClick={this.handleGetHelpClicked} style={{ marginRight: `${space[1]}` }}>Cancel Trip</TextButton>
+                secondButton = <TextButton onClick={this.props.handleCancelTrip} style={{ marginRight: `${space[1]}` }}>Cancel Trip</TextButton>
                 break;
             default:
                 firstButton = <PrimaryButton large="true">Accept Jim's trip request</PrimaryButton>

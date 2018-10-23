@@ -8,7 +8,6 @@ import {
 } from './styles';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import ListVehicleBanner from '../../components/ListingDetailsPageComponents/ListVehicleBanner/ListVehicleBanner';
-import ReduceSearchBar from '../../components/UI/SearchBar/ReducedSearchBar/ReducedSearchBar';
 import Footer from '../../components/Navigation/Footer/Footer';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
 
@@ -21,7 +20,6 @@ class SearchPage extends Component {
                         <StyledTitle variant="title">Search and rent thousands of vehicles in all of Florida</StyledTitle>
                         <StyledSearchBarContainer>
                             <SearchBar />
-                            <ReduceSearchBar />
                         </StyledSearchBarContainer>
                     </StyledContainer>
                     

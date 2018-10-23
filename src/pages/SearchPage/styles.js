@@ -20,7 +20,15 @@ export const StyledContainer = styled.div`
 `
 
 export const StyledSearchBarContainer = styled.div`
-    margin-top: ${space[4]};
+    width: 960px;
+    margin-top: ${space[3]};
+    height: 70px; 
+    margin: 12px auto;
+    text-align: left;
+
+    @media (max-width: 900px) {
+        display: none;
+    }
 `
 
 export const StyledHeader = styled.header`

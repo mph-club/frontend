@@ -83,6 +83,10 @@ class TripDetailsPage extends Component {
         this.props.history.push('/car-details')
     }
 
+    handleCancelTrip = () => {
+        this.props.history.push('/cancel-trip')
+    }
+
     render() {
 
         let firstRowTitle = null
@@ -199,7 +203,8 @@ class TripDetailsPage extends Component {
                                 userName={this.state.host.userName}
                                 hoursRemaining={2}
                                 reportListingClicked={this.openFormToReportListing}
-                                checkout={this.goToCheckout} />
+                                checkout={this.goToCheckout} 
+                                handleCancelTrip={this.handleCancelTrip}/>
                         </Grid>
                     </StyledGridContainerTwo>
                 </StyledGridContainer>

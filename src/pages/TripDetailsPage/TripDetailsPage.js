@@ -75,6 +75,14 @@ class TripDetailsPage extends Component {
         }
     }
 
+    handleAddPhotos = () => {
+        this.props.history.push('/upload-pictures')
+    }
+
+    handleCarDetails = () => {
+        this.props.history.push('/car-details')
+    }
+
     render() {
 
         let firstRowTitle = null
@@ -134,7 +142,7 @@ class TripDetailsPage extends Component {
                             <div style={{ marginBottom: space[3]}}>
                                 <Title component="h4">{firstRowTitle}</Title>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: `${space[3]}`, marginTop: space[3]}}>
-                                    <Typography variant="title" component="p" >{this.state.tripDetails.total}</Typography>
+                                    <Typography variant="title" component="p" >${this.state.tripDetails.total}.00</Typography>
                                     <TextButton onClick={this.handleViewDetails}>View details</TextButton>
                                 </div>
                                 <Typography
@@ -145,7 +153,7 @@ class TripDetailsPage extends Component {
                             <Divider />
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
                                 <Typography variant="title" component="p" style={{ fontWeight: 400 }}>Trip photos</Typography>
-                                <TextButton>Add</TextButton>
+                                <TextButton onClick={this.handleAddPhotos}>Add</TextButton>
                             </div>
                             <Divider />
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
@@ -156,7 +164,7 @@ class TripDetailsPage extends Component {
                             <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
                                 <Title component="h4"> Car Details</Title>
                                 <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>Maserati Granturismo Convertible 2016</Typography>
-                                <TextButton style={{ marginTop: `${space[3]}` }}>View Details</TextButton>
+                                <TextButton style={{ marginTop: `${space[3]}` }} onClick={this.handleCarDetails}>View Details</TextButton>
                             </div>
                             <Divider />
                             <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
@@ -187,6 +195,9 @@ class TripDetailsPage extends Component {
                         </Grid>
                         <Grid item xs>
                             <SummaryTripForHost
+                                status={this.state.status}
+                                userName={this.state.host.userName}
+                                hoursRemaining={2}
                                 reportListingClicked={this.openFormToReportListing}
                                 checkout={this.goToCheckout} />
                         </Grid>

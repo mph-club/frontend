@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import { space } from '../../theme';
 
 export const StyledGrid = styled(Grid)`
     display: inline-flex !important;
@@ -105,6 +106,8 @@ export const StyledFormContainer = styled.div`
 
 export const StyledDateContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
+    margin-top: ${space[3]};
 `
 
 export const StyledDateContainerItemOne = styled.div`
@@ -113,10 +116,15 @@ export const StyledDateContainerItemOne = styled.div`
 
 export const StyledDateContainerItemTwo = styled.div`
     flex-grow: 1;
-    padding-left: 1rem;
+    padding-left: 0; 
+
+    @media (min-width: 768px) {
+        padding-left: 1rem; 
+    }
 `
 
 export const StyledButtonContainer = styled.div`
-    margin: 2rem 0;
+    margin-top: ${space[4]};
+    margin-bottom: ${space[6]};
     float: right;
 `

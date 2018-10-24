@@ -17,16 +17,30 @@ class SearchPage extends Component {
             <React.Fragment>
                 <StyledHeader>
                     <StyledContainer>
-                        <StyledTitle variant="title">Search and rent thousands of vehicles in all of Florida</StyledTitle>
+                        <StyledTitle 
+                            variant="display1"
+                            component="h1"
+                        > 
+                            Search and <span>book</span> from a variety of cars in all of Florida.
+                        </StyledTitle>
                         <StyledSearchBarContainer>
                             <SearchBar />
                         </StyledSearchBarContainer>
                     </StyledContainer>
                     
                 </StyledHeader>
-                <CarsCollection title="Sedans" />
-                <CarsCollection title="SUV's" />
-                <CarsCollection title="Exotics" />
+                <CarsCollection 
+                    title="Sedans"
+                    type="Sedans"
+                />
+                <CarsCollection 
+                    title="SUV's" 
+                    type="SUV's"
+                />
+                <CarsCollection 
+                    title="Exotics"
+                    type="Exotics" 
+                />
                 <ListVehicleBanner />
                 <Footer/>
             </React.Fragment>

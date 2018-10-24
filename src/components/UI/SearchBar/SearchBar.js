@@ -8,7 +8,6 @@ import {
 } from './styles';
 import Typography from '@material-ui/core/Typography';
 import { hours } from '../../../tools/constants';
-import { space } from '../../../theme';
 
 class SearchBar extends Component {
 
@@ -27,7 +26,7 @@ class SearchBar extends Component {
                     display: 'flex',
                     justifyContent: 'space-between'
                 }}>
-                    <StyledPaper style={{ padding: space[2], display: 'flex' }}>
+                    <StyledPaper>
                         <div style={{ display: 'block' }}>
                             <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Where</Typography>
                             <TextField

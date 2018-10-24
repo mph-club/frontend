@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Title from '../../components/UI/CustomTypography/Title/Title';
-import { space, palette } from '../../theme';
-import TripDates from './TripDates/TripDates';
-import PrimaryButton from '../../components/UI/Buttons/PrimaryButton/PrimaryButton';
-import SecondaryButton from '../../components/UI/Buttons/SecondayButton/SecondaryButton';
-import TextButton from '../../components/UI/Buttons/TextButton/TextButton';
+import Title from '../../UI/CustomTypography/Title/Title';
+import { space, palette } from '../../../theme';
+import TripDates from '../TripDates/TripDates';
+import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
+import SecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
+import TextButton from '../../UI/Buttons/TextButton/TextButton';
 import { Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
@@ -17,9 +17,9 @@ import {
     StyledNoticeWrapper,
     StyledReportThisListingWrapper
 } from './styles';
-import GetHelpDialog from './GetHelpDialog/GetHelpDialog';
+import GetHelpDialog from '../GetHelpDialog/GetHelpDialog';
 
-class SummaryTripForHost extends Component {
+class SummaryTripByUser extends Component {
 
     state = {
         open: false
@@ -40,8 +40,13 @@ class SummaryTripForHost extends Component {
         let secondButton = null
 
         switch (this.props.status) {
-            case 'tripPending':
+            case 'tripRequestPending':
                 label = this.props.userName + ' has ' + this.props.hoursRemaining + ' hours left to respond to this booking'
+                firstButton = <SecondaryButton large="true">   Change trip   </SecondaryButton>
+                secondButton = <TextButton onClick={this.props.handleCancelTrip} style={{ marginRight: `${space[1]}` }}>Cancel Trip</TextButton>
+                break;
+            case 'tripConfirmed':
+                label = 'Your trip starts in 2 days.'
                 firstButton = <SecondaryButton large="true">   Change trip   </SecondaryButton>
                 secondButton = <TextButton onClick={this.props.handleCancelTrip} style={{ marginRight: `${space[1]}` }}>Cancel Trip</TextButton>
                 break;
@@ -154,4 +159,4 @@ class SummaryTripForHost extends Component {
 
 };
 
-export default SummaryTripForHost
+export default SummaryTripByUser

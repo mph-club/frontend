@@ -20,7 +20,8 @@ class CancelTrip extends Component {
 
     state = {
         value: '0',
-        length: 0
+        length: 0,
+        status: 'tripConfirmed'
     }
 
     handleChange = event => {
@@ -30,17 +31,32 @@ class CancelTrip extends Component {
             //if someone else is added to this method we need a way to filter the target
             this.setState({ length: event.target.value.length });
         }
-
     };
+
+    handleKeepTrip = () => {
+        this.props.history.goBack();
+    }
+
+    handleCancelTrip = () => {
+        this.props.history.push('/cancellation-review')
+    }
 
     render() {
         const inputProps = {
             maxLength: '400'
         }
 
+        let title = null
+
+        if (this.state.status === 'tripConfirmed') {
+            title = 'Why are you cancelling your trip?'
+        } else if (this.state.status === 'tripRequestPending') {
+            title = 'Why are you cancelling your trip request?'
+        }
+
         return (
             <StyledContainer>
-                <Title component="h1" variant="title" color="primary">Why are you canceling your trip request?</Title>
+                <Title component="h1" variant="title" color="primary">{title}</Title>
                 <FormControl style={{ width: '100%' }}>
                     <RadioGroup
                         aria-label="Reasons"
@@ -95,8 +111,8 @@ class CancelTrip extends Component {
                         justifyContent: 'flex-end',
                         margin: '12px'
                     }}>
-                        <StyledSecondaryButton style={{marginRight: '12px'}}>Cancel this trip</StyledSecondaryButton>
-                        <PrimaryButton>Keep this trip</PrimaryButton>
+                        <StyledSecondaryButton style={{marginRight: '12px'}} onClick={this.handleCancelTrip}>Cancel this trip</StyledSecondaryButton>
+                        <PrimaryButton onClick={this.handleKeepTrip}>Keep this trip</PrimaryButton>
                     </div>
                 </FormControl>
             </StyledContainer>

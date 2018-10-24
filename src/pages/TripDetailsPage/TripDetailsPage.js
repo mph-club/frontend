@@ -6,7 +6,7 @@ import { palette, space } from '../../theme';
 import Grid from '@material-ui/core/Grid';
 import RateStars from '../../components/UI/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
-import SummaryTripForHost from '../../components/SummaryTripForHost/SummaryTripForHost';
+import SummaryTripByUser from '../../components/TripsDetailsComponents/SummaryTripByUser/SummaryTripByUser';
 import ReportListing from '../../components/DetailPageComponents/ReportListing/ReportListing';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -34,7 +34,7 @@ import {
 
 class TripDetailsPage extends Component {
     state = {
-        status: 'tripPending',
+        status: 'tripConfirmed',
         unreadMessages: 0,
         host: {
             userName: 'Mike L'
@@ -198,7 +198,7 @@ class TripDetailsPage extends Component {
                             <Divider />
                         </Grid>
                         <Grid item xs>
-                            <SummaryTripForHost
+                            <SummaryTripByUser
                                 status={this.state.status}
                                 userName={this.state.host.userName}
                                 hoursRemaining={2}

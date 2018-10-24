@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import { space, palette } from '../../theme';
+import { space, palette } from '../../../theme';
 
 export const StyledDateForm = styled.form`
     display: flex;

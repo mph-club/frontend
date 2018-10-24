@@ -1,0 +1,120 @@
+import React, { Component } from 'react';
+import Footer from '../../Navigation/Footer/Footer';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { palette, space } from '../../../theme';
+import Tooltip from '@material-ui/core/Tooltip';
+import InfoIcon from '@material-ui/icons/Info';
+
+import {
+    StyledExternalContainer,
+    StyledFooterContainer,
+    StyledContainer,
+    StyledRowContainer,
+    StyledWhiteContainer,
+    StyledRoundedContainer
+} from './styles';
+import Alert from '../../UI/Alert/Alert';
+
+class CancellationReview extends Component {
+
+    state = {
+        openAlert: false,
+        totalPerDay: 481,
+        cancellationFee: 50,
+        tripFee: 36,
+        tripDays: 4,
+        totalRefund: 1838
+    }
+
+    render() {
+
+        return (
+            <React.Fragment>
+                <StyledExternalContainer>
+                    <div
+                        style={{
+                            width: '300px',
+                            paddingLeft: `${space[3]}`,
+                            paddingRight: `${space[3]}`
+                        }}>
+                        <Typography variant="display1" color="primary" component="h2">Review our cancellation policy</Typography>
+                    </div>
+                    <div
+                        style={{
+                            marginTop: '32px',
+                            paddingLeft: `${space[3]}`,
+                            paddingRight: `${space[3]}`
+                        }}>
+                        <Grid container spacing={40}>
+                            <Grid item xs>
+                                <div style={{ margin: '16px 0', display: 'flex'}}>
+                                    <StyledRoundedContainer>1</StyledRoundedContainer>
+                                    <Typography variant="body2" component="p">If you cancel multiple trips, your account may be removed from our platform</Typography>
+                                </div>
+                                <div style={{ margin: '16px 0', display: 'flex'}}>
+                                    <StyledRoundedContainer>2</StyledRoundedContainer>
+                                    <Typography variant="body2" component="p">Non-Refundable trip fee</Typography>
+                                </div>
+                                <div style={{ margin: '16px 0', display: 'flex'}}>
+                                    <StyledRoundedContainer>3</StyledRoundedContainer>
+                                    <Typography variant="body2" component="p">Cancellation fee</Typography>
+                                </div>
+                            </Grid>
+                            <Grid item xs>
+                                <StyledContainer>
+                                    <StyledWhiteContainer>
+                                        <StyledRowContainer>
+                                            <Typography variant="body2" component="p">${this.state.totalPerDay}.00 x {this.state.tripDays} day trip</Typography>
+                                            <Typography variant="body2" component="p">${this.state.totalPerDay * this.state.tripDays}.00/day</Typography>
+                                        </StyledRowContainer>
+                                        <StyledRowContainer>
+
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                <Typography variant="body2" component="p" style={{ marginRight: space[1] }}>Non-Refundable trip fee</Typography>
+                                                <InfoIcon style={{ fontSize: 16, color: palette.grey02 }} onClick={this.showDepositDetails} />
+                                            </div>
+                                            <Typography variant="body2" component="p">-${this.state.tripFee}.00</Typography>
+
+                                        </StyledRowContainer>
+                                        <div style={{ marginTop: '-16px', display: 'flex', justifyContent: 'flex-end'}}>
+                                            <Typography variant="body1" component="p" style={{ color: palette.grey02 }}>$9.00 x 4 day trip</Typography>
+                                        </div>
+                                        <StyledRowContainer>
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                <Typography variant="body2" component="p" style={{ marginRight: space[1] }}>Cancellation fee</Typography>
+                                                <InfoIcon style={{ fontSize: 16, color: palette.grey02 }} onClick={this.showDepositDetails} />
+                                            </div>
+                                            <Typography variant="body2" component="p">-${this.state.cancellationFee}.00</Typography>
+                                        </StyledRowContainer>
+                                        <StyledRowContainer>
+                                            <Typography variant="title" component="p">Your trip refund</Typography>
+                                            <Typography variant="title" component="p">${this.state.totalRefund}.00/day</Typography>
+                                        </StyledRowContainer>
+                                        <div style={{ marginTop: '-8px', width: '200px'}}>
+                                            <Typography variant="body1" component="p" style={{ color: palette.grey02 }}>Your deposit of of $1500 will be also refunded</Typography>
+                                        </div>
+                                    </StyledWhiteContainer>
+                                </StyledContainer>
+                            </Grid>
+                        </Grid>
+                    </div>
+                </StyledExternalContainer>
+                <StyledFooterContainer>
+                    <Footer />
+                </StyledFooterContainer>
+                <Alert
+                    id="delete-photo"
+                    title="Delete photo"
+                    text="Are you sure you want to delete this photo?"
+                    okTitle="Delete"
+                    handleOk={this.handleOk}
+                    openAlert={this.state.openAlert}
+                    handleClose={this.handleCloseAlert}
+                />
+            </React.Fragment>
+        );
+    }
+}
+
+export default CancellationReview

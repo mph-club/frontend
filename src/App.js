@@ -13,7 +13,7 @@ import Checkout from './components/Checkout/Checkout';
 import Dashboard from './pages/Dashboard/Dashboard';
 import TripDetailsPage from './pages/TripDetailsPage/TripDetailsPage';
 import HostDashboard from './pages/HostDashboard/HostDashboard';
-import DeclineForm from './components/SummaryTripForHost/DeclineForm/DeclineForm';
+import DeclineForm from './components/TripsDetailsComponents/DeclineForm/DeclineForm';
 import ListingDetailsPage from './pages/ListingDetailsPage/ListingDetailsPage';
 import Photos from './components/ListingDetailsPageComponents/Photos/Photos';
 import DeliverAndAirport from './components/ListingDetailsPageComponents/DeliverAndAirport/DeliverAndAirport';
@@ -22,6 +22,7 @@ import TripPreference from './components/ListingDetailsPageComponents/TripPrefer
 import FilterPage from './pages/FilterPage/FilterPage';
 import TotalCost from './components/TripsDetailsComponents/TotalCost/TotalCost';
 import CancelTrip from './components/TripsDetailsComponents/CancelTrip/CancelTrip';
+import CancellationReview from './components/TripsDetailsComponents/CancellationReview/CancellationReview';
 
 class App extends Component {
 
@@ -91,6 +92,7 @@ class App extends Component {
             <Route path="/filter" component={FilterPage} />
             <Route path="/total-cost" component={TotalCost}/>
             <Route path="/cancel-trip" component={CancelTrip}/>
+            <Route path="/cancellation-review" component={CancellationReview}/>
           </Switch>
         </main>
       </React.Fragment>

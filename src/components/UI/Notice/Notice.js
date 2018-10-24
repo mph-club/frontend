@@ -16,8 +16,11 @@ const Notice = (props) => {
             label = 'Pending Approval';
             color = palette.black;
             break;
+        case 'tripPast':
+            shouldMount=false;
+            break;
         case 'tripConfirmed':
-            shouldMount = false
+            shouldMount = false;
             break;
         default:
             label = props.label;

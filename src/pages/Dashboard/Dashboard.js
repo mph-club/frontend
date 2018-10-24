@@ -39,6 +39,13 @@ class Dashboard extends Component {
                     <TripCard status='tripRequestCancelled' />
                 </React.Fragment>
                 break;
+            case 1:
+                break;
+            case 2:
+                content = <React.Fragment>
+                    <TripCard clicked={this.handleCardClick} status='tripPast' />
+                </React.Fragment>
+                break;
             default:
                 break;
         }

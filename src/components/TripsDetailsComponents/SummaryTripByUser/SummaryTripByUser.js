@@ -36,23 +36,44 @@ class SummaryTripByUser extends Component {
     render() {
 
         let label = null
-        let firstButton = null
-        let secondButton = null
+        let actions = null
 
         switch (this.props.status) {
             case 'tripRequestPending':
                 label = this.props.userName + ' has ' + this.props.hoursRemaining + ' hours left to respond to this booking'
-                firstButton = <SecondaryButton large="true">   Change trip   </SecondaryButton>
-                secondButton = <TextButton onClick={this.props.handleCancelTrip} style={{ marginRight: `${space[1]}` }}>Cancel Trip</TextButton>
+                actions = <React.Fragment>
+                    <div style={{ textAlign: 'center' }}>
+                        <SecondaryButton large="true">   Change trip   </SecondaryButton>
+                    </div>
+                    <StyledDividerLayout>
+                        <StyledDivider variant="body2">or</StyledDivider>
+                    </StyledDividerLayout>
+                    <div style={{ textAlign: 'center', marginBottom: `${space[4]}` }}>
+                        <TextButton onClick={this.props.handleCancelTrip} style={{ marginRight: `${space[1]}` }}>Cancel Trip</TextButton>
+                    </div>
+                </React.Fragment>
                 break;
             case 'tripConfirmed':
                 label = 'Your trip starts in 2 days.'
-                firstButton = <SecondaryButton large="true">   Change trip   </SecondaryButton>
-                secondButton = <TextButton onClick={this.props.handleCancelTrip} style={{ marginRight: `${space[1]}` }}>Cancel Trip</TextButton>
+                actions = <React.Fragment>
+                    <div style={{ textAlign: 'center' }}>
+                        <SecondaryButton large="true">   Change trip   </SecondaryButton>
+                    </div>
+                    <StyledDividerLayout>
+                        <StyledDivider variant="body2">or</StyledDivider>
+                    </StyledDividerLayout>
+                    <div style={{ textAlign: 'center', marginBottom: `${space[4]}` }}>
+                        <TextButton onClick={this.props.handleCancelTrip} style={{ marginRight: `${space[1]}` }}>Cancel Trip</TextButton>
+                    </div>
+                </React.Fragment>
+                break;
+            case 'tripPast':
+                label = 'Past trip'
                 break;
             default:
-                firstButton = <PrimaryButton large="true">Accept Jim's trip request</PrimaryButton>
-                secondButton = <SecondaryButton large="true" component={Link} to="/decline-trip">Decline trip request</SecondaryButton>
+
+                actions = [<PrimaryButton large="true">Accept Jim's trip request</PrimaryButton>,
+                <SecondaryButton large="true" component={Link} to="/decline-trip">Decline trip request</SecondaryButton>]
                 break;
         }
 
@@ -125,15 +146,7 @@ class SummaryTripByUser extends Component {
                             {label}
                         </Typography>
                     </StyledNoticeWrapper>
-                    <div style={{ textAlign: 'center' }}>
-                        {firstButton}
-                    </div>
-                    <StyledDividerLayout>
-                        <StyledDivider variant="body2">or</StyledDivider>
-                    </StyledDividerLayout>
-                    <div style={{ textAlign: 'center', marginBottom: `${space[4]}` }}>
-                        {secondButton}
-                    </div>
+                    {actions}
                 </StyledContainer>
                 <StyledReportThisListingWrapper>
                     <TextButton

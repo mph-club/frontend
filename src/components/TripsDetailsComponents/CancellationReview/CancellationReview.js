@@ -3,7 +3,6 @@ import Footer from '../../Navigation/Footer/Footer';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { palette, space } from '../../../theme';
-import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 import Divider from '@material-ui/core/Divider';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';

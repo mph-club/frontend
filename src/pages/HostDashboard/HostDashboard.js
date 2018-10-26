@@ -9,12 +9,22 @@ import {
     StyledListContainer,
     StyledBadge,
     StyledContainer,
-    StyleNoVehiclesContainer
+    StyleNoVehiclesContainer,
+    StyledTabs
 } from './styles';
+import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { space, palette } from '../../theme';
 import CarCard from '../../components/HostDashboardComponents/CarCard/CarCard';
 
+const styles = theme => ({
+    indicator: {
+        color: palette.green
+    },
+    selected: {
+        borderColor: palette.green
+    }
+})
 
 class HostDashboard extends Component {
 
@@ -67,23 +77,23 @@ class HostDashboard extends Component {
                 break;
             default:
                 break;
-        }
+        }        
+
+        const { classes } = this.props
 
         return (
             <StyledContainer>
                 <StyledAppBar position="fixed">
-                    <Tabs
+                    <StyledTabs
                         value={this.state.value}
                         onChange={this.handleChange}
-                        style={
-                            { color: palette.green }
-                        }
+                        className={ classes.indicator }
                         centered
                     >
-                        <Tab label="Vehicles" />
+                        <Tab label="Vehicles" className={ classes.selected}/>
                         <Tab label={this.state.pendingApproval > 0 ? <StyledBadge badgeContent={this.state.pendingApproval}> Requests</StyledBadge> : "Requests"} />
                         <Tab label={this.props.historyItems > 0 ? <StyledBadge badgeContent={this.props.historyItems}>History</StyledBadge> : "History"} />
-                    </Tabs>
+                    </StyledTabs>
                 </StyledAppBar>
                 <Divider />
                 <StyledListContainer>
@@ -94,4 +104,4 @@ class HostDashboard extends Component {
     }
 }
 
-export default HostDashboard
+export default withStyles(styles)(HostDashboard)

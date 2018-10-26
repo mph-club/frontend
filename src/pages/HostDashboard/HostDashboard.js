@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
 import TripCard from '../../components/DashboardComponents/TripCard/TripCard';
@@ -9,20 +7,17 @@ import {
     StyledListContainer,
     StyledBadge,
     StyledContainer,
-    StyleNoVehiclesContainer,
-    StyledTabs
+    StyleNoVehiclesContainer
 } from './styles';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { space, palette } from '../../theme';
 import CarCard from '../../components/HostDashboardComponents/CarCard/CarCard';
+import Tabs from '@material-ui/core/Tabs';
 
 const styles = theme => ({
     indicator: {
-        color: palette.green
-    },
-    selected: {
-        borderColor: palette.green
+        color: palette.green,
     }
 })
 
@@ -84,16 +79,16 @@ class HostDashboard extends Component {
         return (
             <StyledContainer>
                 <StyledAppBar position="fixed">
-                    <StyledTabs
+                    <Tabs
                         value={this.state.value}
                         onChange={this.handleChange}
-                        className={ classes.indicator }
+                        className={ [classes.indicator, classes.tabsIndicator].join(' ') }
                         centered
                     >
-                        <Tab label="Vehicles" className={ classes.selected}/>
+                        <Tab label="Vehicles" />
                         <Tab label={this.state.pendingApproval > 0 ? <StyledBadge badgeContent={this.state.pendingApproval}> Requests</StyledBadge> : "Requests"} />
                         <Tab label={this.props.historyItems > 0 ? <StyledBadge badgeContent={this.props.historyItems}>History</StyledBadge> : "History"} />
-                    </StyledTabs>
+                    </Tabs>
                 </StyledAppBar>
                 <Divider />
                 <StyledListContainer>

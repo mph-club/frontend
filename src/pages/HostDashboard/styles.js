@@ -2,7 +2,16 @@ import styled from 'styled-components';
 
 import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
+import Tabs from '@material-ui/core/Tabs';
 import { space, palette } from '../../theme';
+
+export const StyledTabs = styled(Tabs)`
+    && {
+        .TabIndicator-colorSecondary-139 {
+            background-color: ${palette.green}
+        }
+    }
+`
 
 export const StyledBadge = styled(Badge)`
     padding: 0 16px;

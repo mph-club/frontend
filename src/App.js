@@ -23,6 +23,8 @@ import FilterPage from './pages/FilterPage/FilterPage';
 import TotalCost from './components/TripsDetailsComponents/TotalCost/TotalCost';
 import CancelTrip from './components/TripsDetailsComponents/CancelTrip/CancelTrip';
 import CancellationReview from './components/TripsDetailsComponents/CancellationReview/CancellationReview';
+import ChangeTrip from './components/TripsDetailsComponents/ChangeTrip/ChangeTrip';
+import RequestChange from './components/TripsDetailsComponents/RequestChange/RequestChange';
 
 class App extends Component {
 
@@ -93,6 +95,8 @@ class App extends Component {
             <Route path="/total-cost" component={TotalCost}/>
             <Route path="/cancel-trip" component={CancelTrip}/>
             <Route path="/cancellation-review" component={CancellationReview}/>
+            <Route path="/change-trip" component={ChangeTrip}/>
+            <Route path="/request-change" component={RequestChange}/>
           </Switch>
         </main>
       </React.Fragment>

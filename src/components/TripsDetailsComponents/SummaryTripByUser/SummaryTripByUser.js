@@ -43,7 +43,7 @@ class SummaryTripByUser extends Component {
                 label = this.props.userName + ' has ' + this.props.hoursRemaining + ' hours left to respond to this booking'
                 actions = <React.Fragment>
                     <div style={{ textAlign: 'center' }}>
-                        <SecondaryButton large="true">   Change trip   </SecondaryButton>
+                        <SecondaryButton large="true" onClick={this.props.handleChangeTrip}>Change trip</SecondaryButton>
                     </div>
                     <StyledDividerLayout>
                         <StyledDivider variant="body2">or</StyledDivider>
@@ -57,7 +57,7 @@ class SummaryTripByUser extends Component {
                 label = 'Your trip starts in 2 days.'
                 actions = <React.Fragment>
                     <div style={{ textAlign: 'center' }}>
-                        <SecondaryButton large="true">   Change trip   </SecondaryButton>
+                        <SecondaryButton large="true">Change trip</SecondaryButton>
                     </div>
                     <StyledDividerLayout>
                         <StyledDivider variant="body2">or</StyledDivider>

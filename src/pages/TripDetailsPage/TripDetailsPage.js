@@ -31,11 +31,9 @@ import {
     StyledGridContainerTwo
 } from './styles';
 
-
-
 class TripDetailsPage extends Component {
     state = {
-        status: 'tripPast',
+        status: 'tripRequestPending',
         unreadMessages: 0,
         host: {
             userName: 'Mike L',
@@ -72,7 +70,7 @@ class TripDetailsPage extends Component {
     }
 
     handleViewDetails = () => {
-        if (this.state.status === 'tripPending') {
+        if (this.state.status === 'tripPending' || this.state.status === 'tripPast'){
             this.props.history.push('/total-cost')
         }
     }
@@ -87,6 +85,10 @@ class TripDetailsPage extends Component {
 
     handleCancelTrip = () => {
         this.props.history.push('/cancel-trip')
+    }
+
+    handleChangeTrip = () => {
+        this.props.history.push('/change-trip')
     }
 
     render() {
@@ -236,6 +238,7 @@ class TripDetailsPage extends Component {
                                 status={this.state.status}
                                 userName={this.state.host.userName}
                                 hoursRemaining={2}
+                                handleChangeTrip={this.handleChangeTrip}
                                 reportListingClicked={this.openFormToReportListing}
                                 checkout={this.goToCheckout}
                                 handleCancelTrip={this.handleCancelTrip} />

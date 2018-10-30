@@ -7,7 +7,7 @@ export const StyledAvatar = styled(Avatar)`
 `
 
 export const StyledUserContainer = styled.div`
-    width: 34%
+    width: 34%;
     margin: 100px auto;
     display: flex;
 `

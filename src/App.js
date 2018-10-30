@@ -25,6 +25,7 @@ import CancelTrip from './components/TripsDetailsComponents/CancelTrip/CancelTri
 import CancellationReview from './components/TripsDetailsComponents/CancellationReview/CancellationReview';
 import ChangeTrip from './components/TripsDetailsComponents/ChangeTrip/ChangeTrip';
 import RequestChange from './components/TripsDetailsComponents/RequestChange/RequestChange';
+import Account from './pages/Account/Account';
 
 class App extends Component {
 
@@ -97,6 +98,7 @@ class App extends Component {
             <Route path="/cancellation-review" component={CancellationReview}/>
             <Route path="/change-trip" component={ChangeTrip}/>
             <Route path="/request-change" component={RequestChange}/>
+            <Route path="/account" component={Account}/>
           </Switch>
         </main>
       </React.Fragment>

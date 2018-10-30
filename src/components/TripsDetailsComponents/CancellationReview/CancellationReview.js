@@ -16,7 +16,6 @@ import {
     StyledWhiteContainer,
     StyledRoundedContainer
 } from './styles';
-import Alert from '../../UI/Alert/Alert';
 
 class CancellationReview extends Component {
 
@@ -113,15 +112,6 @@ class CancellationReview extends Component {
                 <StyledFooterContainer>
                     <Footer />
                 </StyledFooterContainer>
-                <Alert
-                    id="delete-photo"
-                    title="Delete photo"
-                    text="Are you sure you want to delete this photo?"
-                    okTitle="Delete"
-                    handleOk={this.handleOk}
-                    openAlert={this.state.openAlert}
-                    handleClose={this.handleCloseAlert}
-                />
             </React.Fragment>
         );
     }

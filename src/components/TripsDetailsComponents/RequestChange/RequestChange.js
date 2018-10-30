@@ -13,7 +13,6 @@ import {
 import Alert from '../../UI/Alert/Alert';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import SecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
-import { hours } from '../../../tools/constants';
 import InfoIcon from '@material-ui/icons/Info';
 import Title from '../../UI/CustomTypography/Title/Title';
 import Tooltip from '@material-ui/core/Tooltip';

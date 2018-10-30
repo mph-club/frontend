@@ -134,9 +134,7 @@ class DetailPage extends Component {
                                 <StyledRateLayout>
                                     <div>4 trips</div>
                                     <div><RateStars rate='4' /></div>
-                                    <div>
-                                        <Typography variant="body1" style={{ color: `${palette.grey02}` }}> 8 mi</Typography>
-                                    </div>
+                                    <div><Typography variant="body1" style={{ color: `${palette.grey02}` }}> 8 mi</Typography></div>
                                 </StyledRateLayout>
                             </StyledTitleLayout>
                             <Divider />

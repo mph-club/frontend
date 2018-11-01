@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import RateStars from '../UI/RateStars/RateStars';
-import PrimaryButton from '../UI/Buttons/PrimaryButton/PrimaryButton';
+import RateStars from '../../UI/RateStars/RateStars';
+import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import InfoIcon from '@material-ui/icons/InfoOutlined';
-import Footer from '../Navigation/Footer/Footer';
-import { space, palette } from '../../theme';
-import Title from '../../components/UI/CustomTypography/Title/Title';
-import CheckIconOutlined from '../../assets/icons/CheckIconOutlined';
-import TextButton from '../UI/Buttons/TextButton/TextButton';
-import CheckIcon from '../../assets/icons/CheckIcon';
-import Alert from '../UI/Alert/Alert';
+import Footer from '../../Navigation/Footer/Footer';
+import { space, palette } from '../../../theme';
+import Title from '../../UI/CustomTypography/Title/Title';
+import CheckIconOutlined from '../../../assets/icons/CheckIconOutlined';
+import TextButton from '../../UI/Buttons/TextButton/TextButton';
+import CheckIcon from '../../../assets/icons/CheckIcon';
+import Alert from '../../UI/Alert/Alert';
 
 import {
     StyledGridContainer,

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space, palette } from '../../theme';
+import { space, palette } from '../../../theme';
 
 export const StyledGridContainer = styled.div`
     max-width: 960px;

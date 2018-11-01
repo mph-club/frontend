@@ -1,7 +1,7 @@
 import React from 'react';
 
 import avatar from '../../../assets/images/avatar.png'
-import ReadMore from '../../ReadMore/ReadMore';
+import ReadMore from '../../UI/ReadMore/ReadMore';
 import RateStars from '../../UI/RateStars/RateStars';
 import TextButton from '../../UI/Buttons/TextButton/TextButton';
 import { Typography } from '@material-ui/core';

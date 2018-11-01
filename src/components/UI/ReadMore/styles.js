@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { palette } from '../../theme';
+import { palette } from '../../../theme';
 
 export const StyledReadMore = styled.button`
   cursor: pointer;

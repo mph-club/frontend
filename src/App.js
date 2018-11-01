@@ -9,7 +9,7 @@ import SignUp from './components/SignUp/SignUp';
 import SearchPage from './pages/SearchPage/SearchPage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import UserDetails from './components/UserDetails/UserDetails';
-import Checkout from './components/Checkout/Checkout';
+import Checkout from './components/DetailPageComponents/Checkout/Checkout';
 import Dashboard from './pages/Dashboard/Dashboard';
 import TripDetailsPage from './pages/TripDetailsPage/TripDetailsPage';
 import HostDashboard from './pages/HostDashboard/HostDashboard';

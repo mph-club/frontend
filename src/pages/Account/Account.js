@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { palette, space } from '../../theme';
 import avatar from '../../assets/images/avatar.png';
-import InfoIcon from '@material-ui/icons/Info';
 import CameraIcon from '@material-ui/icons/CameraAlt';
 import TextButton from '../../components/UI/Buttons/TextButton/TextButton';
 import ListItem from '@material-ui/core/ListItem';
@@ -12,24 +11,40 @@ import {
     StyledExternalContainer,
     StyledLeftContainer,
     StyledFooterContainer,
-    StyledContainer,
-    StyledRowContainer,
-    StyledWhiteContainer,
     StyledAvatar
 } from './styles';
 import IconButton from '@material-ui/core/IconButton';
+import ContactInfo from '../../components/AccountComponents/ContactInfo/ContactInfo';
+import TransactionHistory from '../../components/AccountComponents/TransactionHistory/TransactionHistory';
 
 class Account extends Component {
 
     state = {
-        selectedIndex: 0
+        value: 'contactInfo'
     }
 
-    handleListItemClick = (index) => {
-        this.setState({ selectedIndex: index });
+    handleListItemClick = (value) => {
+        this.setState({ value: value });
     };
 
     render() {
+
+        let content = null
+
+        switch (this.state.value) {
+            case 'contactInfo':
+                content = <ContactInfo />
+                break;
+            case 'paymentInfo':
+
+                break;
+            case 'transactionHistory':
+                content = <TransactionHistory />
+                break;
+            default:
+                break;
+        }
+
         return (
             <React.Fragment>
                 <StyledExternalContainer>
@@ -51,63 +66,37 @@ class Account extends Component {
                                     </div>
                                     <ListItem
                                         button
-                                        onClick={() => this.handleListItemClick(0)}>
-                                        <Typography 
+                                        value='contactInfo'
+                                        onClick={() => this.handleListItemClick('contactInfo')}>
+                                        <Typography
                                             variant="body2"
-                                            style={{ color: (this.state.selectedIndex === 0) ? palette.green : palette.black}} 
+                                            style={{ color: (this.state.value === 'contactInfo') ? palette.green : palette.black }}
                                             component="p">Contact Info</Typography>
                                     </ListItem>
                                     <ListItem
                                         button
-                                        onClick={() => this.handleListItemClick(1)}>
-                                        <Typography 
-                                            variant="body2" 
-                                            style={{ color: (this.state.selectedIndex === 1) ? palette.green : palette.black}} 
+                                        value='paymentInfo'
+                                        onClick={() => this.handleListItemClick('paymentInfo')}>
+                                        <Typography
+                                            variant="body2"
+                                            style={{ color: (this.state.value === 'paymentInfo') ? palette.green : palette.black }}
                                             component="p">Payment Info</Typography>
                                     </ListItem>
                                     <ListItem
                                         button
-                                        onClick={() => this.handleListItemClick(2)}>
-                                        <Typography 
-                                            variant="body2" 
-                                            style={{ color: (this.state.selectedIndex === 2) ? palette.green : palette.black}} 
+                                        value='transactionHistory'
+                                        onClick={() => this.handleListItemClick('transactionHistory')}>
+                                        <Typography
+                                            variant="body2"
+                                            style={{ color: (this.state.selectedIndex === 'transactionHistory') ? palette.green : palette.black }}
                                             component="p">Transaction History</Typography>
                                     </ListItem>
                                 </div>
 
                             </StyledLeftContainer>
                         </Grid>
-                        <Grid item xs={6}>
-                            <StyledContainer>
-                                <StyledWhiteContainer>
-                                    <StyledRowContainer>
-                                    </StyledRowContainer>
-                                    <StyledRowContainer>
-                                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            <Typography variant="body2" component="p" style={{ marginRight: space[1] }}>Non-Refundable trip fee</Typography>
-                                            <InfoIcon style={{ fontSize: 16, color: palette.grey02 }} onClick={this.showDepositDetails} />
-                                        </div>
-                                        <Typography variant="body2" component="p">-${this.state.tripFee}.00</Typography>
-                                    </StyledRowContainer>
-                                    <div style={{ marginTop: '-16px', display: 'flex', justifyContent: 'flex-end' }}>
-                                        <Typography variant="body1" component="p" style={{ color: palette.grey02 }}>$9.00 x 4 day trip</Typography>
-                                    </div>
-                                    <StyledRowContainer>
-                                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            <Typography variant="body2" component="p" style={{ marginRight: space[1] }}>Cancellation fee</Typography>
-                                            <InfoIcon style={{ fontSize: 16, color: palette.grey02 }} onClick={this.showDepositDetails} />
-                                        </div>
-                                        <Typography variant="body2" component="p">-${this.state.cancellationFee}.00</Typography>
-                                    </StyledRowContainer>
-                                    <StyledRowContainer>
-                                        <Typography variant="title" component="p">Your trip refund</Typography>
-                                        <Typography variant="title" component="p">${this.state.totalRefund}.00/day</Typography>
-                                    </StyledRowContainer>
-                                    <div style={{ marginTop: '-8px', width: '200px' }}>
-                                        <Typography variant="body1" component="p" style={{ color: palette.grey02 }}>Your deposit of of $1500 will be also refunded</Typography>
-                                    </div>
-                                </StyledWhiteContainer>
-                            </StyledContainer>
+                        <Grid item xs={8}>
+                            {content}
                         </Grid>
                     </Grid>
                 </StyledExternalContainer>

@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
 import { space, palette } from '../../theme';
 
+
 export const StyledBadge = styled(Badge)`
     padding: 0 16px;
 

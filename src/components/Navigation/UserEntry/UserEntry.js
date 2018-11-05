@@ -30,6 +30,7 @@ class UserEntry extends Component {
     render() {
         const { open } = this.state;
         const DashboardLink = props => <Link to="/dashboard" {...props} />
+        const AccountLink = props => <Link to="/account" {...props}/>
 
         return (
             <React.Fragment>
@@ -60,7 +61,7 @@ class UserEntry extends Component {
                                 <ClickAwayListener onClickAway={this.handleClose}>
                                     <MenuList>
                                         <MenuItem onClick={this.handleClose} component={DashboardLink}>Dashboard</MenuItem>
-                                        <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                                        <MenuItem onClick={this.handleClose} component={AccountLink}>My account</MenuItem>
                                         <MenuItem onClick={this.handleClose}>Logout</MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>

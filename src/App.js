@@ -9,7 +9,7 @@ import SignUp from './components/SignUp/SignUp';
 import SearchPage from './pages/SearchPage/SearchPage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import UserDetails from './components/UserDetails/UserDetails';
-import Checkout from './components/Checkout/Checkout';
+import Checkout from './components/DetailPageComponents/Checkout/Checkout';
 import Dashboard from './pages/Dashboard/Dashboard';
 import TripDetailsPage from './pages/TripDetailsPage/TripDetailsPage';
 import HostDashboard from './pages/HostDashboard/HostDashboard';
@@ -23,6 +23,9 @@ import FilterPage from './pages/FilterPage/FilterPage';
 import TotalCost from './components/TripsDetailsComponents/TotalCost/TotalCost';
 import CancelTrip from './components/TripsDetailsComponents/CancelTrip/CancelTrip';
 import CancellationReview from './components/TripsDetailsComponents/CancellationReview/CancellationReview';
+import ChangeTrip from './components/TripsDetailsComponents/ChangeTrip/ChangeTrip';
+import RequestChange from './components/TripsDetailsComponents/RequestChange/RequestChange';
+import Account from './pages/Account/Account';
 
 class App extends Component {
 
@@ -93,6 +96,9 @@ class App extends Component {
             <Route path="/total-cost" component={TotalCost}/>
             <Route path="/cancel-trip" component={CancelTrip}/>
             <Route path="/cancellation-review" component={CancellationReview}/>
+            <Route path="/change-trip" component={ChangeTrip}/>
+            <Route path="/request-change" component={RequestChange}/>
+            <Route path="/account" component={Account}/>
           </Switch>
         </main>
       </React.Fragment>

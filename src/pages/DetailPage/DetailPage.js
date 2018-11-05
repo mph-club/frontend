@@ -9,7 +9,7 @@ import { tutorialSteps } from '../CarsCollection/tileData';
 import RateStars from '../../components/UI/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
 import CarFeature from '../../components/DetailPageComponents/CarFeature/CarFeature';
-import ReadMore from '../../components/ReadMore/ReadMore';
+import ReadMore from '../../components/UI/ReadMore/ReadMore';
 import RenterReviews from '../../components/DetailPageComponents/RenterReviews/RenterReview';
 import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
 import CarsCollection from '../CarsCollection/CarsCollection';
@@ -134,9 +134,7 @@ class DetailPage extends Component {
                                 <StyledRateLayout>
                                     <div>4 trips</div>
                                     <div><RateStars rate='4' /></div>
-                                    <div>
-                                        <Typography variant="body1" style={{ color: `${palette.grey02}` }}> 8 mi</Typography>
-                                    </div>
+                                    <div><Typography variant="body1" style={{ color: `${palette.grey02}` }}> 8 mi</Typography></div>
                                 </StyledRateLayout>
                             </StyledTitleLayout>
                             <Divider />

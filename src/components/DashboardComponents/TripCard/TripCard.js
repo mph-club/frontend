@@ -20,6 +20,10 @@ const TripCard = (props) => {
     let styles = null
 
     switch (props.status) {
+        case 'tripPast':
+            title = 'Your trip'
+            message = 'Past trip'
+            break;
         case 'tripRequestCancelled':
             title = 'You cancelled your trip request on Jul 28'
             styles = { textDecoration: 'line-through', color: palette.grey02 }

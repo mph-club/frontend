@@ -11,6 +11,7 @@ import ReportListing from '../../components/DetailPageComponents/ReportListing/R
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 // import Badge from '@material-ui/core/Badge';
+import TextField from '@material-ui/core/TextField';
 import avatar from '../../assets/images/avatar.png';
 import Footer from '../../components/Navigation/Footer/Footer';
 import Notice from '../../components/UI/Notice/Notice';
@@ -30,14 +31,13 @@ import {
     StyledGridContainerTwo
 } from './styles';
 
-
-
 class TripDetailsPage extends Component {
     state = {
-        status: 'tripConfirmed',
+        status: 'tripRequestPending',
         unreadMessages: 0,
         host: {
-            userName: 'Mike L'
+            userName: 'Mike L',
+            phoneNumber: '+1 (786) 769-3202'
         },
         carDetails: {
             make: 'Porshe',
@@ -70,7 +70,7 @@ class TripDetailsPage extends Component {
     }
 
     handleViewDetails = () => {
-        if (this.state.status === 'tripPending') {
+        if (this.state.status === 'tripPending' || this.state.status === 'tripPast'){
             this.props.history.push('/total-cost')
         }
     }
@@ -87,15 +87,105 @@ class TripDetailsPage extends Component {
         this.props.history.push('/cancel-trip')
     }
 
+    handleChangeTrip = () => {
+        this.props.history.push('/change-trip')
+    }
+
     render() {
 
         let firstRowTitle = null
         let firstRowDetails = null
+        let showContactInfo = true
 
         switch (this.state.status) {
             case 'tripPending':
+                showContactInfo = false
                 firstRowTitle = 'TOTAL COST';
                 firstRowDetails = 'Trip total does not include your deposit of $' + this.state.tripDetails.deposit;
+                break;
+            case 'tripPast':
+                showContactInfo = false
+                firstRowTitle = 'TOTAL COST';
+                break;
+            default:
+                break;
+        }
+
+        let leftContent = null
+
+        switch (this.state.value) {
+            case 0:
+                leftContent = <Grid item xs>
+                    <div style={{ marginBottom: space[3] }}>
+                        <Title component="h4">{firstRowTitle}</Title>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: `${space[3]}`, marginTop: space[3] }}>
+                            <Typography variant="title" component="p" >${this.state.tripDetails.total}.00</Typography>
+                            <TextButton onClick={this.handleViewDetails}>View details</TextButton>
+                        </div>
+                        <Typography
+                            variant="body1"
+                            component="p"
+                            style={{ color: `${palette.grey02}` }}>{firstRowDetails}</Typography>
+                    </div>
+                    <Divider />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
+                        <Typography variant="title" component="p" style={{ fontWeight: 400 }}>Trip photos</Typography>
+                        <TextButton onClick={this.handleAddPhotos}>Add</TextButton>
+                    </div>
+                    <Divider />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
+                        <Typography variant="title" component="p" style={{ fontWeight: 400 }} >Insurance protection</Typography>
+                        <TextButton>Premium</TextButton>
+                    </div>
+                    <Divider />
+                    <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
+                        <Title component="h4"> Car Details</Title>
+                        <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>Maserati Granturismo Convertible 2016</Typography>
+                        <TextButton style={{ marginTop: `${space[3]}` }} onClick={this.handleCarDetails}>View Details</TextButton>
+                    </div>
+                    <Divider />
+                    <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
+                        <Title>LICENSE PLATE NUMBER</Title>
+                        <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>BAASD34</Typography>
+                    </div>
+                    <Divider />
+                    <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
+                        <Title>PRIMARY DRIVER</Title>
+                        <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>Jim Jones</Typography>
+                        <Typography variant="body1" component="p" style={{ marginTop: `${space[2]}`, color: `${palette.grey02}` }}>The primary driver must be present for pick up and drop off</Typography>
+                    </div>
+                    <Divider />
+                    <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
+                        <Title>RESERVATION NUMBER</Title>
+                        <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>32424467</Typography>
+                    </div>
+                    <Divider />
+                    <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
+                        <UnorderedList
+                            title="Guidelines"
+                            itemOne="A deposit will be required"
+                            itemTwo="A minimum of 1 day is required to rent this car"
+                            itemThree="No smoking"
+                        />
+                    </div>
+                    <Divider />
+                </Grid>
+                break;
+            case 1:
+                leftContent = <Grid item xs>
+                    <div>
+                        <TextField
+                            id="outlined-tripDetailsPage-PhoneContact"
+                            label="Phone"
+                            fullWidth
+                            defaultValue={this.state.host.phoneNumber}
+                            InputProps={{
+                                readOnly: true,
+                            }}
+                            variant="outlined"
+                        />
+                    </div>
+                </Grid>
                 break;
             default:
                 break;
@@ -117,7 +207,7 @@ class TripDetailsPage extends Component {
                             <Typography variant="display1" color="primary" component="h2">{this.state.carDetails.year}</Typography>
                             <StyledRateLayout>
                                 <div>{this.state.carDetails.trips} trips</div>
-                                <div><RateStars rate={ this.state.carDetails.rate.toString() } /></div>
+                                <div><RateStars rate={this.state.carDetails.rate.toString()} /></div>
                                 <div>
                                     <Typography variant="body1" style={{ color: `${palette.grey02}` }}>{this.state.carDetails.distance} mi</Typography>
                                 </div>
@@ -135,76 +225,23 @@ class TripDetailsPage extends Component {
                     >
                         <Tab label="Trip Info" />
                         {/* <Tab label={this.state.unreadMessages > 0 ? <Badge color="secondary" badgeContent={this.state.unreadMessages}> Messages</Badge> : "Messages"} /> */}
-                        <Tab disabled={this.state.status === 'tripPending'} label="Contact" />
+                        <Tab disabled={showContactInfo} label="Contact" />
                     </Tabs>
                     <Divider />
                 </StyledExtContainer>
 
                 <StyledGridContainer>
                     <StyledGridContainerTwo container spacing={40}>
-                        <Grid item xs>
-                            <div style={{ marginBottom: space[3]}}>
-                                <Title component="h4">{firstRowTitle}</Title>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: `${space[3]}`, marginTop: space[3]}}>
-                                    <Typography variant="title" component="p" >${this.state.tripDetails.total}.00</Typography>
-                                    <TextButton onClick={this.handleViewDetails}>View details</TextButton>
-                                </div>
-                                <Typography
-                                    variant="body1"
-                                    component="p"
-                                    style={{ color: `${palette.grey02}` }}>{firstRowDetails}</Typography>
-                            </div>
-                            <Divider />
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                                <Typography variant="title" component="p" style={{ fontWeight: 400 }}>Trip photos</Typography>
-                                <TextButton onClick={this.handleAddPhotos}>Add</TextButton>
-                            </div>
-                            <Divider />
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                                <Typography variant="title" component="p" style={{ fontWeight: 400 }} >Insurance protection</Typography>
-                                <TextButton>Premium</TextButton>
-                            </div>
-                            <Divider />
-                            <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                                <Title component="h4"> Car Details</Title>
-                                <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>Maserati Granturismo Convertible 2016</Typography>
-                                <TextButton style={{ marginTop: `${space[3]}` }} onClick={this.handleCarDetails}>View Details</TextButton>
-                            </div>
-                            <Divider />
-                            <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                                <Title>LICENSE PLATE NUMBER</Title>
-                                <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>BAASD34</Typography>
-                            </div>
-                            <Divider />
-                            <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                                <Title>PRIMARY DRIVER</Title>
-                                <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>Jim Jones</Typography>
-                                <Typography variant="body1" component="p" style={{ marginTop: `${space[2]}`, color: `${palette.grey02}` }}>The primary driver must be present for pick up and drop off</Typography>
-                            </div>
-                            <Divider />
-                            <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                                <Title>RESERVATION NUMBER</Title>
-                                <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>32424467</Typography>
-                            </div>
-                            <Divider />
-                            <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                                <UnorderedList
-                                    title="Guidelines"
-                                    itemOne="A deposit will be required"
-                                    itemTwo="A minimum of 1 day is required to rent this car"
-                                    itemThree="No smoking"
-                                />
-                            </div>
-                            <Divider />
-                        </Grid>
+                        {leftContent}
                         <Grid item xs>
                             <SummaryTripByUser
                                 status={this.state.status}
                                 userName={this.state.host.userName}
                                 hoursRemaining={2}
+                                handleChangeTrip={this.handleChangeTrip}
                                 reportListingClicked={this.openFormToReportListing}
-                                checkout={this.goToCheckout} 
-                                handleCancelTrip={this.handleCancelTrip}/>
+                                checkout={this.goToCheckout}
+                                handleCancelTrip={this.handleCancelTrip} />
                         </Grid>
                     </StyledGridContainerTwo>
                 </StyledGridContainer>

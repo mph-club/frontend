@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
 import TripCard from '../../components/DashboardComponents/TripCard/TripCard';
@@ -11,10 +9,17 @@ import {
     StyledContainer,
     StyleNoVehiclesContainer
 } from './styles';
+import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { space, palette } from '../../theme';
 import CarCard from '../../components/HostDashboardComponents/CarCard/CarCard';
+import Tabs from '@material-ui/core/Tabs';
 
+const styles = theme => ({
+    indicator: {
+        color: palette.green,
+    }
+})
 
 class HostDashboard extends Component {
 
@@ -67,7 +72,9 @@ class HostDashboard extends Component {
                 break;
             default:
                 break;
-        }
+        }        
+
+        const { classes } = this.props
 
         return (
             <StyledContainer>
@@ -75,9 +82,7 @@ class HostDashboard extends Component {
                     <Tabs
                         value={this.state.value}
                         onChange={this.handleChange}
-                        style={
-                            { color: palette.green }
-                        }
+                        className={ [classes.indicator, classes.tabsIndicator].join(' ') }
                         centered
                     >
                         <Tab label="Vehicles" />
@@ -94,4 +99,4 @@ class HostDashboard extends Component {
     }
 }
 
-export default HostDashboard
+export default withStyles(styles)(HostDashboard)

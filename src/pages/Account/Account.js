@@ -88,7 +88,7 @@ class Account extends Component {
                                         onClick={() => this.handleListItemClick('transactionHistory')}>
                                         <Typography
                                             variant="body2"
-                                            style={{ color: (this.state.selectedIndex === 'transactionHistory') ? palette.green : palette.black }}
+                                            style={{ color: (this.state.value === 'transactionHistory') ? palette.green : palette.black }}
                                             component="p">Transaction History</Typography>
                                     </ListItem>
                                 </div>

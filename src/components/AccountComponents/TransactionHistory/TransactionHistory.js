@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import TextButton from '../../UI/Buttons/TextButton/TextButton';
-import { palette } from '../../../theme';
+import { palette, space } from '../../../theme';
 import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import { payoutData } from './payoutData';
 import Payout from './Payouts/Payouts';
 import { withStyles } from '@material-ui/core/styles';
+import {StyledTab} from './styles';
 
 const styles = theme => ({
     indicator: {
@@ -32,14 +32,14 @@ class TransactionHistory extends Component {
         switch (this.state.value) {
             case 0:
                 content = <React.Fragment>
-                    <Typography variant="body2" component="p" style={{ marginTop: '16px' }}>Payout Account</Typography>
-                    <Typography variant="body2" component="p">*******2339</Typography>
-                    <TextButton color={palette.green} style={{ marginBottom: '16px' }}>Change your account payout</TextButton>
+                    <Typography variant="title" component="p" style={{ marginTop: `${space[4]}`, marginBottom: `${space[2]}` }}>Payout Account</Typography>
+                    <Typography variant="body2" component="p">****2345</Typography>
+                    <TextButton color={palette.green} style={{ marginBottom: '16px' }}>Change your payout account</TextButton>
 
                     {payoutData.map((item, index) => {
                         return (
                             <React.Fragment key={index}>
-                                <Typography variant="body2" component="p" style={{ marginTop: '16px' }}>{item.date}</Typography>
+                                <Typography variant="headline" component="p" style={{ marginTop: space[4], marginBottom: `-${space[3]}`}}>{item.date}</Typography>
                                 {
                                     item.payouts.map((el, index) => {
                                         return (
@@ -65,7 +65,7 @@ class TransactionHistory extends Component {
                     {payoutData.map((item, index) => {
                         return (
                             <React.Fragment key={index}>
-                                <Typography variant="body2" component="p" style={{ marginTop: '16px' }}>{item.date}</Typography>
+                                <Typography variant="headline" component="p" style={{ marginTop: '16px' }}>{item.date}</Typography>
                                 {
                                     item.payouts.map((el, index) => {
                                         return (
@@ -96,8 +96,8 @@ class TransactionHistory extends Component {
                     onChange={this.handleChange}
                     className={classes.indicator}
                 >
-                    <Tab label="UPCOMING PAYOUTS" />
-                    <Tab label="COMPLETED PAYOUTS" />
+                    <StyledTab label="UPCOMING PAYOUTS" />
+                    <StyledTab label="COMPLETED PAYOUTS" />
                 </Tabs>
                 {content}
             </React.Fragment>

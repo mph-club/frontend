@@ -14,6 +14,11 @@ export const StyledExternalContainer = styled.div`
 export const StyledLeftContainer = styled.div`
     display: flex;
     justify-content: space-around;
+    margin-bottom: ${space[3]};
+
+    @media (min-width: 768px) {
+        margin-bottom: ${space[0]};
+    }
 `
 
 export const StyledAvatar = styled(Avatar)`
@@ -30,6 +35,16 @@ export const StyledFooterContainer = styled.div`
     bottom: 0;
     width: 100%;
     height: auto;
+`
+
+export const StyledAvatarWrapper = styled.div`
+    position: relative;
+    
+    button {
+        position: absolute;
+        right: 22px;
+        bottom: -25px;
+    }
 `
 
 export const StyledContainer = styled.div`

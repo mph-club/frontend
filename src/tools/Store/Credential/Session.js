@@ -15,7 +15,6 @@ export default {
     })
 
     let UID = Fingerprint2.x64hash128(values.join(''), 31)
-    console.log(UID)
 
     return (jwt.sign({
       "token": credential.token,

@@ -12,9 +12,6 @@ import FormHelper from '../../helpers/Login/formValidator';
 import Presenter from '../../helpers/Login/Presenter';
 import { connect } from "react-redux";
 
-import Cognito from '../../config/cognitoConfigure';
-import { CreateUserSessionProperties, RemoveUserSessionProperties } from '../../tools/Store/Authentication/Presenter';
-
 import {
     StyledDiv,
     StyledIconButton,
@@ -72,39 +69,13 @@ class Login extends Component {
 
         if (FormHelper.ValidateForm(this)) {
 
-            var AmazonCognitoIdentity = require('amazon-cognito-identity-js');
-
-
-            var authenticationData = {
-                Username: this.state.email.value,
-                Password: this.state.password.value,
-            };
-
-            var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
-
-            var poolData = {
-                UserPoolId: Cognito.COGNITOCONFIG.userPool,
-                ClientId: Cognito.COGNITOCONFIG.clientId
-            };
-
-            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-
-            var userData = {
-                Username: this.state.email.value,
-                Pool: userPool
-            };
-
-            var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-
-            cognitoUser.authenticateUser(authenticationDetails, {
-                onSuccess: function (result) {
-                    self.props.RunRedux(CreateUserSessionProperties(result))
-                    self.onLoginSucceed(result)
-                },
-
-                onFailure: function (err) {
-                    self.onLoginFailed(err);
-                }
+            Presenter.Auth({
+                emailuser: this.state.email.value,
+                password: this.state.password.value,
+                RunRedux: this.props.RunRedux,
+                onfailed: this.onLoginFailed,
+                onsuccess: this.onLoginSucceed,
+                self: self
             })
 
         } else {
@@ -116,6 +87,7 @@ class Login extends Component {
 
     onLoginSucceed = (response) => {
         this.togglePostRequest();
+        this.props.handleAuth( true )
     }
 
     onLoginFailed = (response) => {

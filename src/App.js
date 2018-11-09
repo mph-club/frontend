@@ -59,6 +59,10 @@ class App extends Component {
     }
   }
 
+  handleAuth = (value) => {
+    this.setState({ auth: value, openLogin: false })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -71,6 +75,7 @@ class App extends Component {
         <main>
           <Login
             openLogin={this.state.openLogin}
+            handleAuth={ (value ) => this.handleAuth(value)}
             handleCloseLogin={() => this.closeLogin(false)}
             openSignUp={() => this.closeLogin(true)} />
           <SignUp

@@ -31,7 +31,6 @@ export const StyledAvatar = styled(Avatar)`
 `
 
 export const StyledFooterContainer = styled.div`
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;

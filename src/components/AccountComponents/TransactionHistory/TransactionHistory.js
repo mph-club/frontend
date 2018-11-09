@@ -9,8 +9,11 @@ import { withStyles } from '@material-ui/core/styles';
 import {StyledTab} from './styles';
 
 const styles = theme => ({
-    indicator: {
+    root: {
         color: palette.green
+    },
+    tabsIndicator: {
+        backgroundColor: palette.green
     }
 })
 
@@ -92,6 +95,7 @@ class TransactionHistory extends Component {
         return (
             <React.Fragment>
                 <Tabs
+                    classes={{ indicator: classes.tabsIndicator, root: classes.root }}
                     value={this.state.value}
                     onChange={this.handleChange}
                     classes={{ indicator: classes.tabsIndicator, root: classes.root }}

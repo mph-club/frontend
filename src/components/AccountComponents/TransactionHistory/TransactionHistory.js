@@ -9,8 +9,11 @@ import { withStyles } from '@material-ui/core/styles';
 import {StyledTab} from './styles';
 
 const styles = theme => ({
-    indicator: {
+    root: {
         color: palette.green
+    },
+    tabsIndicator: {
+        backgroundColor: palette.green
     }
 })
 
@@ -94,7 +97,7 @@ class TransactionHistory extends Component {
                 <Tabs
                     value={this.state.value}
                     onChange={this.handleChange}
-                    className={classes.indicator}
+                    classes={{ indicator: classes.tabsIndicator, root: classes.root }}
                 >
                     <StyledTab label="UPCOMING PAYOUTS" />
                     <StyledTab label="COMPLETED PAYOUTS" />

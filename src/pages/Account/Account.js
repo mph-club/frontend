@@ -6,13 +6,13 @@ import { palette, space } from '../../theme';
 import avatar from '../../assets/images/avatar.png';
 import CameraIcon from '@material-ui/icons/CameraAlt';
 import TextButton from '../../components/UI/Buttons/TextButton/TextButton';
-import ListItem from '@material-ui/core/ListItem';
 import {
     StyledExternalContainer,
     StyledLeftContainer,
     StyledFooterContainer,
     StyledAvatar,
-    StyledAvatarWrapper
+    StyledAvatarWrapper,
+    StyledListItem
 } from './styles';
 import IconButton from '@material-ui/core/IconButton';
 import ContactInfo from '../../components/AccountComponents/ContactInfo/ContactInfo';
@@ -65,11 +65,12 @@ class Account extends Component {
                                     <div style={{ marginTop: `${space[3]}`}}>
                                         <Typography variant="title" component="p" align='center' >Mike L.</Typography>
                                         <Typography variant="body1" component="p" align='center' style={{ color: palette.grey02 }}>Member since Jan 2018</Typography>
-                                        <div style={{ textAlign: 'center', marginTop: space[2], marginBottom: space[4] }}>
+                                        <div style={{ textAlign: 'center', marginTop: space[2], marginBottom: space[3] }}>
                                             <TextButton style={{ color: palette.green, fontSize: 14 }}>View Profile</TextButton>
                                         </div>
                                     </div>
-                                    <ListItem
+                                    <StyledListItem
+                                        disableGutters
                                         button
                                         value='contactInfo'
                                         onClick={() => this.handleListItemClick('contactInfo')}>
@@ -78,11 +79,12 @@ class Account extends Component {
                                             style={{
                                                 textTransform: 'uppercase',
                                                 color: (this.state.value === 'contactInfo') ? palette.green : palette.grey02, 
-                                                fontWeight: (this.state.value === 'contactInfo') ? 900 : 600
+                                                fontWeight: (this.state.value === 'contactInfo') ? 900 : 600,
                                             }}
                                             component="p">Contact Info</Typography>
-                                    </ListItem>
-                                    <ListItem
+                                    </StyledListItem>
+                                    <StyledListItem
+                                        disableGutters
                                         button
                                         value='paymentInfo'
                                         onClick={() => this.handleListItemClick('paymentInfo')}>
@@ -94,8 +96,9 @@ class Account extends Component {
                                                 fontWeight: (this.state.value === 'paymentInfo') ? 900 : 600
                                              }}
                                             component="p">Payment Info</Typography>
-                                    </ListItem>
-                                    <ListItem
+                                    </StyledListItem>
+                                    <StyledListItem
+                                        disableGutters
                                         button
                                         value='transactionHistory'
                                         onClick={() => this.handleListItemClick('transactionHistory')}>
@@ -107,7 +110,7 @@ class Account extends Component {
                                                 fontWeight: (this.state.value === 'transactionHistory') ? 900 : 600
                                             }}
                                             component="p">Transactions</Typography>
-                                    </ListItem>
+                                    </StyledListItem>
                                 </div>
 
                             </StyledLeftContainer>

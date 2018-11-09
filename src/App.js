@@ -30,7 +30,7 @@ import Account from './pages/Account/Account';
 class App extends Component {
 
   state = {
-    auth: true,
+    auth: false,
     openLogin: false,
     openSignUp: false
   }

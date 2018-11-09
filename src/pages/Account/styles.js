@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { palette, space } from '../../theme';
 import Avatar from '@material-ui/core/Avatar';
+import ListItem from '@material-ui/core/ListItem';
 
 export const StyledExternalContainer = styled.div`
     max-width: 1060px;
@@ -42,8 +43,8 @@ export const StyledAvatarWrapper = styled.div`
     
     button {
         position: absolute;
-        right: 22px;
-        bottom: -25px;
+        right: 20px;
+        bottom: -32px;
     }
 `
 
@@ -63,4 +64,10 @@ export const StyledWhiteContainer = styled.div`
     background-color: white;
     padding: ${space[3]};
     margin: ${space[4]} 0;
+`
+
+export const StyledListItem = styled(ListItem)`
+    && {
+        padding-bottom: ${space[0]};
+    }
 `

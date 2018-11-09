@@ -7,9 +7,10 @@ export const StyledExternalContainer = styled.div`
     max-width: 1060px;
     display: block;
     box-sizing: border-box;
-    margin: 120px auto 128px;
+    margin: 120px auto 0px;
     padding-left: ${space[3]};
     padding-right: ${space[3]};
+    height: 100vh;
 `
 
 export const StyledLeftContainer = styled.div`

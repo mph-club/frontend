@@ -51,7 +51,7 @@ class InitialPage extends Component {
                                         <SelectTextField
                                             fullWidth
                                             id="fromTextField"
-                                            label="From"
+                                            label="Trip start"
                                             type="date"
                                             defaultValue="2017-05-24"
                                             variant="outlined"
@@ -62,7 +62,7 @@ class InitialPage extends Component {
                                         <SelectTextField
                                             fullWidth
                                             id="untilTextField"
-                                            label="Until"
+                                            label="Trip end"
                                             type="date"
                                             defaultValue="2017-05-24"
                                             variant="outlined"

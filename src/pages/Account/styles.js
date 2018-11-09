@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { palette, space } from '../../theme';
 import Avatar from '@material-ui/core/Avatar';
+import ListItem from '@material-ui/core/ListItem';
 
 export const StyledExternalContainer = styled.div`
     max-width: 1060px;
@@ -14,6 +15,11 @@ export const StyledExternalContainer = styled.div`
 export const StyledLeftContainer = styled.div`
     display: flex;
     justify-content: space-around;
+    margin-bottom: ${space[3]};
+
+    @media (min-width: 768px) {
+        margin-bottom: ${space[0]};
+    }
 `
 
 export const StyledAvatar = styled(Avatar)`
@@ -32,6 +38,16 @@ export const StyledFooterContainer = styled.div`
     height: auto;
 `
 
+export const StyledAvatarWrapper = styled.div`
+    position: relative;
+    
+    button {
+        position: absolute;
+        right: 20px;
+        bottom: -32px;
+    }
+`
+
 export const StyledContainer = styled.div`
     border: 1px solid ${palette.grey04};
     border-radius: 10px;
@@ -48,4 +64,10 @@ export const StyledWhiteContainer = styled.div`
     background-color: white;
     padding: ${space[3]};
     margin: ${space[4]} 0;
+`
+
+export const StyledListItem = styled(ListItem)`
+    && {
+        padding-bottom: ${space[0]};
+    }
 `

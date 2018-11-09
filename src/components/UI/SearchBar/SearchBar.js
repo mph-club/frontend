@@ -41,7 +41,7 @@ class SearchBar extends Component {
                         </div>
                         <StyledSlantedDivider />
                         <div style={{ display: 'block' }}>
-                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Pickup</Typography>
+                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip start</Typography>
                             <div style={{ display: 'flex' }}>
                                 <TextField
                                     id="searchPage-fromTextField"
@@ -73,7 +73,7 @@ class SearchBar extends Component {
                         </div>
                         <StyledSlantedDivider />
                         <div style={{ display: 'block' }}>
-                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Return</Typography>
+                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip end</Typography>
                             <div style={{ display: 'flex' }}>
                                 <TextField
                                     id="searchPage-fromTextField"

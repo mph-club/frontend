@@ -9,11 +9,8 @@ import { withStyles } from '@material-ui/core/styles';
 import {StyledTab} from './styles';
 
 const styles = theme => ({
-    root: {
+    indicator: {
         color: palette.green
-    },
-    tabsIndicator: {
-        backgroundColor: palette.green
     }
 })
 

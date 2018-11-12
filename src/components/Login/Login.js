@@ -167,9 +167,7 @@ class Login extends Component {
                                     </StyledPrimaryButton>
                                 </StyledFooterButtonLayout>
                                 <StyledDividerLayout>
-                                    <StyledDivider
-                                        variant="body2">or
-                                    </StyledDivider>
+                                    <StyledDivider variant="body2">or</StyledDivider>
                                 </StyledDividerLayout>
                                 <Typography align="center" variant="body1">Don't have an account? <button onClick={this.props.openSignUp}>Sign up</button>
                                 </Typography>

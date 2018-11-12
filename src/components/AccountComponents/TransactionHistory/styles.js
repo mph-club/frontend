@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space } from '../../../theme';
+import { space, palette } from '../../../theme';
 import Tab from '@material-ui/core/Tab';
 
 export const StyledStepsContainer = styled.div`
@@ -18,5 +18,9 @@ export const StyledTab = styled(Tab)`
 `
 
 export const StyledTabContainer = styled.div`
-    position: fixed
+    position: fixed;
+    width: 100%;
+    margin-top: -200px;
+    padding-top: 200px;
+    background-color: ${palette.white};
 `

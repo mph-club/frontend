@@ -35,32 +35,37 @@ class TransactionHistory extends Component {
         switch (this.state.value) {
             case 0:
                 content = <React.Fragment>
-                    <Typography variant="title" component="p" style={{ marginTop: `${space[4]}`, marginBottom: `${space[2]}` }}>Payout Account</Typography>
-                    <Typography variant="body2" component="p">****2345</Typography>
-                    <TextButton color={palette.green} style={{ marginBottom: '16px' }}>Change your payout account</TextButton>
 
-                    {payoutData.map((item, index) => {
-                        return (
-                            <React.Fragment key={index}>
-                                <Typography variant="headline" component="p" style={{ marginTop: space[4], marginBottom: `-${space[3]}` }}>{item.date}</Typography>
-                                {
-                                    item.payouts.map((el, index) => {
-                                        return (
-                                            <Payout
-                                                key={index}
-                                                userName={el.userName}
-                                                carMake={el.carMake}
-                                                carYear={el.carYear}
-                                                amount={el.amount}
-                                                status={el.status}
-                                                cardNumber={el.paymentAccount}
-                                            />
-                                        );
-                                    })
-                                }
-                            </React.Fragment>
-                        );
-                    })}
+                    <div style={{ position: "fixed", marginTop: '48px', paddingTop: '40px', backgroundColor: palette.white, width: '100%' }}>
+                        <Typography variant="title" component="p" style={{ marginBottom: `${space[2]}` }}>Payout Account</Typography>
+                        <Typography variant="body2" component="p">****2345</Typography>
+                        <TextButton color={palette.green} style={{ marginBottom: '16px' }}>Change your payout account</TextButton>
+                    </div>
+
+                    <div style={{ marginTop: '180px' }}>
+                        {payoutData.map((item, index) => {
+                            return (
+                                <React.Fragment key={index}>
+                                    <Typography variant="headline" component="p" style={{ marginTop: space[4], marginBottom: `-${space[3]}` }}>{item.date}</Typography>
+                                    {
+                                        item.payouts.map((el, index) => {
+                                            return (
+                                                <Payout
+                                                    key={index}
+                                                    userName={el.userName}
+                                                    carMake={el.carMake}
+                                                    carYear={el.carYear}
+                                                    amount={el.amount}
+                                                    status={el.status}
+                                                    cardNumber={el.paymentAccount}
+                                                />
+                                            );
+                                        })
+                                    }
+                                </React.Fragment>
+                            );
+                        })}
+                    </div>
                 </React.Fragment>
                 break;
             case 1:
@@ -104,7 +109,6 @@ class TransactionHistory extends Component {
                         <StyledTab label="COMPLETED PAYOUTS" />
                     </Tabs>
                 </StyledTabContainer>
-
                 {content}
             </React.Fragment>
         );

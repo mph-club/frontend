@@ -7,9 +7,10 @@ export const StyledExternalContainer = styled.div`
     max-width: 1060px;
     display: block;
     box-sizing: border-box;
-    margin: 120px auto 250px;
+    margin: 120px auto 0px;
     padding-left: ${space[3]};
     padding-right: ${space[3]};
+    height: 100vh;
 `
 
 export const StyledLeftContainer = styled.div`
@@ -33,7 +34,6 @@ export const StyledAvatar = styled(Avatar)`
 `
 
 export const StyledFooterContainer = styled.div`
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;

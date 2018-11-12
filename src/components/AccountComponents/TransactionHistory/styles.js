@@ -16,3 +16,7 @@ export const StyledTab = styled(Tab)`
         font-weight: 600;
     }
 `
+
+export const StyledTabContainer = styled.div`
+    position: fixed
+`

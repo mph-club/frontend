@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import { payoutData } from './payoutData';
 import Payout from './Payouts/Payouts';
 import { withStyles } from '@material-ui/core/styles';
-import {StyledTab} from './styles';
+import { StyledTab, StyledTabContainer } from './styles';
 
 const styles = theme => ({
     root: {
@@ -42,7 +42,7 @@ class TransactionHistory extends Component {
                     {payoutData.map((item, index) => {
                         return (
                             <React.Fragment key={index}>
-                                <Typography variant="headline" component="p" style={{ marginTop: space[4], marginBottom: `-${space[3]}`}}>{item.date}</Typography>
+                                <Typography variant="headline" component="p" style={{ marginTop: space[4], marginBottom: `-${space[3]}` }}>{item.date}</Typography>
                                 {
                                     item.payouts.map((el, index) => {
                                         return (
@@ -94,14 +94,17 @@ class TransactionHistory extends Component {
         }
         return (
             <React.Fragment>
-                <Tabs
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                    classes={{ indicator: classes.tabsIndicator, root: classes.root }}
-                >
-                    <StyledTab label="UPCOMING PAYOUTS" />
-                    <StyledTab label="COMPLETED PAYOUTS" />
-                </Tabs>
+                <StyledTabContainer>
+                    <Tabs
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                        classes={{ indicator: classes.tabsIndicator, root: classes.root }}
+                    >
+                        <StyledTab label="UPCOMING PAYOUTS" />
+                        <StyledTab label="COMPLETED PAYOUTS" />
+                    </Tabs>
+                </StyledTabContainer>
+
                 {content}
             </React.Fragment>
         );

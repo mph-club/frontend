@@ -13,6 +13,8 @@ export const StyledExternalContainer = styled.div`
 `
 
 export const StyledLeftContainer = styled.div`
+
+    position: fixed;
     display: flex;
     justify-content: space-around;
     margin-bottom: ${space[3]};

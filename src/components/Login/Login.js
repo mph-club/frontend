@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import StyledPrimaryButton from '../../components/UI/Buttons/PrimaryButton/PrimaryButton';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import FormHelper from '../../helpers/Login/formValidator';
 import Presenter from '../../helpers/Login/Presenter';
@@ -21,6 +22,7 @@ import {
     StyledDividerLayout,
     StyledFooterButtonLayout
 } from './styles';
+import { palette } from '../../theme';
 
 class Login extends Component {
 
@@ -161,7 +163,7 @@ class Login extends Component {
                                         color="primary"
                                         onClick={() => this.onLoginClicked(this)}
                                     >
-                                        Log in
+                                        { this.state.loading ? <CircularProgress size={20} style={ {color: palette.white} }/> : 'Log in'}
                                     </StyledPrimaryButton>
                                 </StyledFooterButtonLayout>
                                 <StyledDividerLayout>
@@ -172,6 +174,7 @@ class Login extends Component {
                                 <Typography align="center" variant="body1">Don't have an account? <button onClick={this.props.openSignUp}>Sign up</button>
                                 </Typography>
                             </StyledFooter>
+                            
                         </StyledForm>
                     </StyledDiv>
                 </Modal>

@@ -1,6 +1,6 @@
 import UserAuthenticationModel from './Storage.js'
 
-const SessionReducer = (state = UserAuthenticationModel.GetCredential(),action) => {
+const SessionReducer = (state = UserAuthenticationModel.GetCredential(), action) => {
     switch (action.type) {
         case "CreateUserSession":
             state = {

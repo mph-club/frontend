@@ -32,8 +32,8 @@ export default {
       cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
 
-          params.RunRedux(CreateUserSessionProperties(result)) //run redux method
-          params.onsuccess(result)//direct to dashboard page
+          params.RunRedux(CreateUserSessionProperties(result))
+          params.onsuccess(result)
         },
 
         onFailure: function (error) {
@@ -49,9 +49,5 @@ export default {
     localStorage.clear();
     window.location = "./";
 
-  },
-
-  // ClientDetails: function (params) {
-  //   Model.ClientDetails(params)
-  // }
+  }
 }

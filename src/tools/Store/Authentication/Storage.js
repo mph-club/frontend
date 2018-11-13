@@ -1,18 +1,10 @@
 import Session from '../Credential/Session.js'
 
-export default {
-  
-  /*
-   * Write session to storage 
-   */   
+export default { 
   
   WriteCredential:function(data){
       localStorage.setItem(Session.__SESSION_KEY__,Session.CreateBrowserSession(data))
   },
-  
-  /*
-   * Get the credentials from local storage
-   */
   
   GetCredential:function(){
     var Credential = localStorage.getItem(Session.__SESSION_KEY__)
@@ -35,10 +27,6 @@ export default {
     }
     return Credential
   },
-  
-  /*
-   * Remove credentials from local storage when logout
-   */
   
   RemoveCredential : function(){
     localStorage.removeItem(Session.__SESSION_KEY__);

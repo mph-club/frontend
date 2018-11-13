@@ -60,7 +60,10 @@ class App extends Component {
   }
 
   handleAuth = (value) => {
-    this.setState({ auth: value, openLogin: false })
+    this.setState({
+      auth: value,
+      openLogin: false
+    })
   }
 
   render() {
@@ -75,7 +78,7 @@ class App extends Component {
         <main>
           <Login
             openLogin={this.state.openLogin}
-            handleAuth={ (value ) => this.handleAuth(value)}
+            handleAuth={(value) => this.handleAuth(value)}
             handleCloseLogin={() => this.closeLogin(false)}
             openSignUp={() => this.closeLogin(true)} />
           <SignUp
@@ -98,12 +101,12 @@ class App extends Component {
             <Route path="/car-location" component={CarLocation} />
             <Route path="/trip-preference" component={TripPreference} />
             <Route path="/filter" component={FilterPage} />
-            <Route path="/total-cost" component={TotalCost}/>
-            <Route path="/cancel-trip" component={CancelTrip}/>
-            <Route path="/cancellation-review" component={CancellationReview}/>
-            <Route path="/change-trip" component={ChangeTrip}/>
-            <Route path="/request-change" component={RequestChange}/>
-            <Route path="/account" component={Account}/>
+            <Route path="/total-cost" component={TotalCost} />
+            <Route path="/cancel-trip" component={CancelTrip} />
+            <Route path="/cancellation-review" component={CancellationReview} />
+            <Route path="/change-trip" component={ChangeTrip} />
+            <Route path="/request-change" component={RequestChange} />
+            <Route path="/account" component={Account} />
           </Switch>
         </main>
       </React.Fragment>

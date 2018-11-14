@@ -7,7 +7,10 @@ export default{
         EMAIL:{
           EMPTY:'Please the email can not be empty',
           INVALID: 'Please enter valid email address'
-        },        
+        },    
+        PHONE : {
+          EMPTY: 'Please the phone number can\'t be empty'
+        }    
       },
     },
 }

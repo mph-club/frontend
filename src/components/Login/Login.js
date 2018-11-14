@@ -89,7 +89,7 @@ class Login extends Component {
 
     onLoginSucceed = (response) => {
         this.togglePostRequest();
-        this.props.handleAuth( true )
+        this.props.handleAuth(true)
     }
 
     onLoginFailed = (response) => {
@@ -103,80 +103,83 @@ class Login extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    open={this.props.openLogin}
-                    disableAutoFocus
-                    disableBackdropClick
+
+        let content = this.props.openLogin ? <Modal
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            open={this.props.openLogin}
+            disableAutoFocus
+            disableBackdropClick
+        >
+            <StyledDiv>
+                <StyledIconButton
+                    color="inherit"
+                    aria-label="Clear"
+                    onClick={this.props.handleCloseLogin}
                 >
-                    <StyledDiv>
-                        <StyledIconButton
-                            color="inherit"
-                            aria-label="Clear"
-                            onClick={this.props.handleCloseLogin}
-                        >
-                            <ClearIcon />
-                        </StyledIconButton>
-                        <Typography style={{ marginLeft: '5%' }}
-                            variant="title"
-                            id="modal-title">Login</Typography>
-                        <StyledForm>
-                            <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="email">Email Address</InputLabel>
-                                <Input
-                                    id="email"
-                                    name="email"
-                                    autoComplete="email"
-                                    autoFocus
-                                    onChange={(event) => this.setState({
-                                        email: {
-                                            ...this.state.email,
-                                            value: event.target.value,
-                                        }
-                                    }
-                                    )} />
-                            </FormControl>
-                            <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="password">Password</InputLabel>
-                                <Input
-                                    name="password"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="current-password"
-                                    onChange={(event) => this.setState({
-                                        password: {
-                                            ...this.state.email,
-                                            value: event.target.value,
-                                        }
-                                    }
-                                    )}
-                                />
-                            </FormControl>
-                            <StyledFooter>
-                                <StyledFooterButtonLayout>
-                                    <StyledPrimaryButton
-                                        fullWidth
-                                        variant="raised"
-                                        color="primary"
-                                        onClick={() => this.onLoginClicked(this)}
-                                    >
-                                        { this.state.loading ? <CircularProgress size={20} style={ {color: palette.white} }/> : 'Log in'}
-                                    </StyledPrimaryButton>
-                                </StyledFooterButtonLayout>
-                                <StyledDividerLayout>
-                                    <StyledDivider variant="body2">or</StyledDivider>
-                                </StyledDividerLayout>
-                                <Typography align="center" variant="body1">Don't have an account? <button onClick={this.props.openSignUp}>Sign up</button>
-                                </Typography>
-                            </StyledFooter>
-                            
-                        </StyledForm>
-                    </StyledDiv>
-                </Modal>
-            </div>
+                    <ClearIcon />
+                </StyledIconButton>
+                <Typography style={{ marginLeft: '5%' }}
+                    variant="title"
+                    id="modal-title">Login</Typography>
+                <StyledForm>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="email">Email Address</InputLabel>
+                        <Input
+                            id="email"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
+                            onChange={(event) => this.setState({
+                                email: {
+                                    ...this.state.email,
+                                    value: event.target.value,
+                                }
+                            }
+                            )} />
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="password">Password</InputLabel>
+                        <Input
+                            name="password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                            onChange={(event) => this.setState({
+                                password: {
+                                    ...this.state.email,
+                                    value: event.target.value,
+                                }
+                            }
+                            )}
+                        />
+                    </FormControl>
+                    <StyledFooter>
+                        <StyledFooterButtonLayout>
+                            <StyledPrimaryButton
+                                fullWidth
+                                variant="raised"
+                                color="primary"
+                                onClick={() => this.onLoginClicked(this)}
+                            >
+                                {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Log in'}
+                            </StyledPrimaryButton>
+                        </StyledFooterButtonLayout>
+                        <StyledDividerLayout>
+                            <StyledDivider variant="body2">or</StyledDivider>
+                        </StyledDividerLayout>
+                        <Typography align="center" variant="body1">Don't have an account? <button onClick={this.props.openSignUp}>Sign up</button>
+                        </Typography>
+                    </StyledFooter>
+
+                </StyledForm>
+            </StyledDiv>
+        </Modal> :
+            null;
+        return (
+            <React.Fragment>
+                {content}
+            </React.Fragment>
         );
     }
 }

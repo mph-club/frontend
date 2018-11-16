@@ -26,23 +26,23 @@ export default {
             valid = false
         }
 
-        if (self.state.phone.value.trim() === "") {
-            self.setState({
-                phone: {
-                    ...self.state.phone,
-                    error: true,
-                    message: FormMessage.AUTHENTICATION.ERROR.PHONE.EMPTY,
-                }
-            })
-            valid = false
-        }
-
         if (self.state.password.value.trim() === "") {
             self.setState({
                 password: {
                     ...self.state.password,
                     error: true,
                     message: FormMessage.AUTHENTICATION.ERROR.PASSWORD.EMPTY,
+                }
+            })
+            valid = false
+        }
+
+        if (self.state.phone.value.trim() === "") {
+            self.setState({
+                phone: {
+                    ...self.state.password,
+                    error: true,
+                    message: FormMessage.AUTHENTICATION.ERROR.PHONE.EMPTY,
                 }
             })
             valid = false

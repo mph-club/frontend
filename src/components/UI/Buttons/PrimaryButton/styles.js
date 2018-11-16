@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 
 export const StyledButton = styled(Button)`
     && {
-        background-color: #000000;
+        background-color: ${props => props.backgroundcolor ? props.backgroundcolor : '#000000'};
         border-radius: 8px;
         border: 0;
         color: white;
@@ -12,11 +12,11 @@ export const StyledButton = styled(Button)`
         min-width: 112px;
         min-height: 40px;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;
-        transition: all 0.2s ease-out 0s
+        transition: all 0.2s ease-out 0s;
         &:hover {
             cursor: pointer;
             box-shadow: 0 3px 10px rgba(0,0,0,.4);
-            background-color: black;
+            background-color: ${props=> props.hovercolor ? props.hovercolor : 'black'};
         }
         &:disabled{
             color: white;

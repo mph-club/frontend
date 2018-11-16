@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import { palette, space } from '../../theme';
 
 export const StyledIconButton = styled(IconButton)`
     margin-left: -12px;
@@ -55,15 +56,19 @@ export const StyledDiv = styled.div`
 `
 
 export const StyledFooter = styled.div`
-    margin-top: 2rem;
+    margin-top: ${space[3]};
     display: flex;
     flex-direction: column;
 `
 export const StyledFooterButtonLayout = styled.div`
     align-self: flex-end;
-    margin-bottom: 2.5rem;
+    margin-bottom: ${space[3]};
 `
 
 export const StyledDividerLayout = styled.div`
-    margin-bottom: 2rem;
+    margin-bottom: ${space[3]};
+`
+export const StyledSpan = styled.span`
+    color: ${palette.blue};
+    cursor: pointer;
 `

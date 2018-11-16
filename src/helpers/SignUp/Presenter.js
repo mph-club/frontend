@@ -45,16 +45,10 @@ export default {
 
         userPool.signUp(params.email, params.password, attributeList, null, (err, result) => {
             if (err) {
-                console.log(result)
-                console.log(err.message || JSON.stringify(err))
-                //params.onfailed(err.message || JSON.stringify(err));
-
+                params.onfailed(err);
                 return;
             }
-            console.log(result)
-            var cognitoUser = result.user;
-            params.onsuccess(cognitoUser);
-
+            params.onsuccess(result);
         });
 
     },

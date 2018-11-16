@@ -26,13 +26,17 @@ import CancellationReview from './components/TripsDetailsComponents/Cancellation
 import ChangeTrip from './components/TripsDetailsComponents/ChangeTrip/ChangeTrip';
 import RequestChange from './components/TripsDetailsComponents/RequestChange/RequestChange';
 import Account from './pages/Account/Account';
+import WelcomeDialog from './components/SignUp/WelcomeDialog/WelcomeDialog';
+import ValidationWrapper from './components/SignUp/ValidationWrapper/ValidationWrapper';
 
 class App extends Component {
 
   state = {
     auth: false,
     openLogin: false,
-    openSignUp: false
+    openSignUp: false,
+    openWelcomeDialog: false,
+    openValidationWrapper: true
   }
 
   handleLogin = () => {
@@ -51,11 +55,14 @@ class App extends Component {
     this.setState({ openSignUp: true })
   }
 
-  closeSignup = (login) => {
-    this.setState({ openSignUp: false })
+  closeSignup = (openLogin, result) => {
+    this.setState({
+      openSignUp: false,
+      openLogin: openLogin
+    })
 
-    if (login) {
-      this.setState({ openLogin: true })
+    if (result.user) {
+      this.setState({ openWelcomeDialog: true })
     }
   }
 
@@ -83,8 +90,11 @@ class App extends Component {
             openSignUp={() => this.closeLogin(true)} />
           <SignUp
             openSignUp={this.state.openSignUp}
-            closeSignUp={() => this.closeSignup(false)}
+            closeSignUp={(result) => this.closeSignup(false, result)}
             openLogin={() => this.closeSignup(true)} />
+          <WelcomeDialog
+            open={this.state.openWelcomeDialog} />
+          <ValidationWrapper open={this.state.openValidationWrapper} />
           <Switch>
             <Route exact path="/" component={InitialPage} />
             <Route path="/search-page" component={SearchPage} />

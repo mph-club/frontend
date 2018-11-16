@@ -76,7 +76,7 @@ class SearchBar extends Component {
                             <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip end</Typography>
                             <div style={{ display: 'flex' }}>
                                 <TextField
-                                    id="searchPage-fromTextField"
+                                    id="searchPage-untilTextField"
                                     type="date"
                                     defaultValue="2017-05-24"
                                     InputLabelProps={{

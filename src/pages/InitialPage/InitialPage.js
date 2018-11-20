@@ -28,7 +28,7 @@ class InitialPage extends Component {
     render() {
         return (
             <React.Fragment>
-                <Grid container spacing={0} style={{marginTop: space[5]}}>
+                <Grid container spacing={0} style={{marginTop: space[4]}}>
                     <Grid item xs={12} sm={12} md={6}>
                         <StyledLeftLayout>
                             <div>

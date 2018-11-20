@@ -36,6 +36,7 @@ export const theme = createMuiTheme({
           '"Segoe UI Emoji"',
           '"Segoe UI Symbol"',
         ].join(','),
+        
         display2: {
           fontWeight: 600,
           fontSize: "3rem" //48px

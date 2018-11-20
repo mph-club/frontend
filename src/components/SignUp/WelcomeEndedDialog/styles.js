@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import welcomeBackground from '../../../assets/images/welcomeBackground.png';
+import welcomeBackground from '../../../assets/images/welcomeCompletedBg.png';
 import { space } from '../../../theme';
 
 export const StyledBackground = styled.div`

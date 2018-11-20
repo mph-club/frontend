@@ -37,11 +37,6 @@ class SignUp extends Component {
             error: false,
             message: "",
         },
-        phone: {
-            value: "",
-            error: false,
-            message: "",
-        },
         passwordMatch: {
             error: false,
             message: ""
@@ -49,7 +44,7 @@ class SignUp extends Component {
         loading: false,
     }
 
-    onSignUpClicked = (self) => {
+    onSignUpClicked = () => {
 
         this.togglePostRequest();
 
@@ -63,25 +58,17 @@ class SignUp extends Component {
                 ...this.state.password,
                 error: false,
                 message: "",
-            },
-            phone: {
-                ...this.state.phone,
-                error: false,
-                message: "",
-            },
-
+            }
         })
 
         if (FormHelper.ValidateForm(this)) {
             Presenter.SignUp({
                 email: this.state.email.value,
                 password: this.state.password.value,
-                RunRedux: this.props.RunRedux,
-                phone: this.state.phone.value,
-                onfailed: this.onSignupFailed,
-                onsuccess: this.onSignupSucceed,
-                self: self
+                onFailed: this.onSignupFailed,
+                onSuccess: this.onSignupSucceed,
             })
+
         } else {
             setTimeout(() => this.togglePostRequest(), 400);
             return false;
@@ -103,10 +90,10 @@ class SignUp extends Component {
     onSignupFailed = (err) => {
         this.togglePostRequest();
 
-        console.log(err)
-
         if (err.code === "UsernameExistsException") {
             this.setState({ email: { ...this.state.email, error: true, message: err.message + " Log in instead" } })
+        } else {
+            alert('Ops! Looks like something was wrong')
         }
     }
 
@@ -223,24 +210,6 @@ class SignUp extends Component {
                         />
                         <Typography color='error'>{this.state.passwordMatch.message}</Typography>
                     </FormControl>
-                    <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="phoneNumberSignUp">Phone Number</InputLabel>
-                        <Input
-                            name="phoneNumber"
-                            type="tel"
-                            error={this.state.phone.error}
-                            // onBlur={this.confirmPasswordOnBlur.bind(this)}
-                            id="phoneNumberSignUp"
-                            onChange={(event) => this.setState({
-                                phone: {
-                                    ...this.state.phone,
-                                    value: event.target.value,
-                                }
-                            }
-                            )}
-                        />
-                        <Typography color='error'>{this.state.phone.message}</Typography>
-                    </FormControl>
                     <Typography style={{ marginTop: space[3] }} color='primary'>By signing up or logging in, you agree to our <StyledSpan>terms of service</StyledSpan> and <StyledSpan>privacy policy</StyledSpan></Typography>
                     <StyledFooter>
                         <StyledFooterButtonLayout>
@@ -248,7 +217,7 @@ class SignUp extends Component {
                                 fullWidth
                                 variant="raised"
                                 color="primary"
-                                onClick={() => this.onSignUpClicked(this)}
+                                onClick={() => this.onSignUpClicked()}
                             >
                                 {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Sign Up'}
                             </StyledPrimaryButton>

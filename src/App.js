@@ -28,15 +28,18 @@ import RequestChange from './components/TripsDetailsComponents/RequestChange/Req
 import Account from './pages/Account/Account';
 import WelcomeDialog from './components/SignUp/WelcomeDialog/WelcomeDialog';
 import ValidationWrapper from './components/SignUp/ValidationWrapper/ValidationWrapper';
+import WelcomeEndedDialog from './components/SignUp/WelcomeEndedDialog/WelcomeEndedDialog';
 
 class App extends Component {
 
   state = {
     auth: false,
+    cognitoUser: null,
     openLogin: false,
     openSignUp: false,
     openWelcomeDialog: false,
-    openValidationWrapper: true
+    openValidationWrapper: false,
+    openWelcomeEndedDialog: false
   }
 
   handleLogin = () => {
@@ -52,7 +55,10 @@ class App extends Component {
   }
 
   handleSignUp = () => {
-    this.setState({ openSignUp: true })
+    this.setState({
+      openValidationWrapper: false,
+      openSignUp: true
+    })
   }
 
   closeSignup = (openLogin, result) => {
@@ -62,14 +68,27 @@ class App extends Component {
     })
 
     if (result.user) {
-      this.setState({ openWelcomeDialog: true })
+      this.setState({
+        openWelcomeDialog: true,
+        cognitoUser: result.user
+      })
     }
+
+    console.log(result)
+    console.log(result.user)
   }
 
   handleAuth = (value) => {
     this.setState({
       auth: value,
       openLogin: false
+    })
+  }
+
+  handleGetStarted = () => {
+    this.setState({
+      openWelcomeDialog: false,
+      openValidationWrapper: true
     })
   }
 
@@ -93,8 +112,13 @@ class App extends Component {
             closeSignUp={(result) => this.closeSignup(false, result)}
             openLogin={() => this.closeSignup(true)} />
           <WelcomeDialog
-            open={this.state.openWelcomeDialog} />
-          <ValidationWrapper open={this.state.openValidationWrapper} />
+            open={this.state.openWelcomeDialog}
+            getStarted={this.handleGetStarted} />
+          <ValidationWrapper
+            open={this.state.openValidationWrapper}
+            cognitoUser={this.state.cognitoUser}
+            changeEmail={this.handleSignUp} />
+          <WelcomeEndedDialog open={this.state.openWelcomeEndedDialog} />
           <Switch>
             <Route exact path="/" component={InitialPage} />
             <Route path="/search-page" component={SearchPage} />

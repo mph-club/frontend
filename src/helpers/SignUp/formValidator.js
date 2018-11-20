@@ -37,17 +37,6 @@ export default {
             valid = false
         }
 
-        if (self.state.phone.value.trim() === "") {
-            self.setState({
-                phone: {
-                    ...self.state.password,
-                    error: true,
-                    message: FormMessage.AUTHENTICATION.ERROR.PHONE.EMPTY,
-                }
-            })
-            valid = false
-        }
-
         return valid
     }
 }

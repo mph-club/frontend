@@ -34,7 +34,10 @@ class App extends Component {
 
   state = {
     auth: false,
-    cognitoUser: null,
+    user: {
+      cognitoUser: null,
+      password: ''
+    },
     openLogin: false,
     openSignUp: false,
     openWelcomeDialog: false,
@@ -61,7 +64,7 @@ class App extends Component {
     })
   }
 
-  closeSignup = (openLogin, result) => {
+  closeSignup = (openLogin, result, _password) => {
     this.setState({
       openSignUp: false,
       openLogin: openLogin
@@ -70,12 +73,12 @@ class App extends Component {
     if (result.user) {
       this.setState({
         openWelcomeDialog: true,
-        cognitoUser: result.user
+        user: {
+          cognitoUser: result.user,
+          password: _password
+        }
       })
     }
-
-    console.log(result)
-    console.log(result.user)
   }
 
   handleAuth = (value) => {
@@ -109,15 +112,20 @@ class App extends Component {
             openSignUp={() => this.closeLogin(true)} />
           <SignUp
             openSignUp={this.state.openSignUp}
-            closeSignUp={(result) => this.closeSignup(false, result)}
+            closeSignUp={(result, password) => this.closeSignup(false, result, password)}
             openLogin={() => this.closeSignup(true)} />
           <WelcomeDialog
             open={this.state.openWelcomeDialog}
             getStarted={this.handleGetStarted} />
-          <ValidationWrapper
-            open={this.state.openValidationWrapper}
-            cognitoUser={this.state.cognitoUser}
-            changeEmail={this.handleSignUp} />
+
+          {
+            this.state.openValidationWrapper ? <ValidationWrapper
+              open={this.state.openValidationWrapper}
+              user={this.state.user}
+              authenticationFailed={() => this.closeSignup(true)}
+              changeEmail={this.handleSignUp} /> : null
+          }
+
           <WelcomeEndedDialog open={this.state.openWelcomeEndedDialog} />
           <Switch>
             <Route exact path="/" component={InitialPage} />

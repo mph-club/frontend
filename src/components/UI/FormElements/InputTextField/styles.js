@@ -15,7 +15,6 @@ export const StyledInputTextField = styled(TextField)`
         label {
             font-weight: 600;
             color: ${props => props.error ? "#f44336" : "black"};
-
         }
     }
 `

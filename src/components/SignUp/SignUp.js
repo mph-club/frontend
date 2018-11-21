@@ -84,7 +84,7 @@ class SignUp extends Component {
 
     onSignupSucceed = (result) => {
         this.togglePostRequest();
-        this.props.closeSignUp(result)
+        this.props.closeSignUp(result, this.state.password)
     }
 
     onSignupFailed = (err) => {

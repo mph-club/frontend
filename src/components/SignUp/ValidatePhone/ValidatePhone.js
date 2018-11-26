@@ -52,6 +52,8 @@ class ValidatePhone extends Component {
     };
 
     handleConfirmNumber = (self) => {
+        this.toggleLoadingState();
+
         const userData = {
             attributeName: 'phone_number',
             user: self.state.user,
@@ -63,7 +65,16 @@ class ValidatePhone extends Component {
         Presenter.changeUserAttribute(userData)
     }
 
+    toggleLoadingState = () => {
+        const prev = this.state.loading
+        this.setState({ 
+            loading: !prev 
+        })
+    }
+
     confirmNumberOnSuccess = (err, result) => {
+
+        this.toggleLoadingState();
 
         if (err) {
             alert(err.message)
@@ -80,25 +91,39 @@ class ValidatePhone extends Component {
     }
 
     onFailed = (error) => {
-         this.setState({ code: { ...this.state.code, error: true, message: error.message } })
+        this.toggleLoadingState();
+        this.setState({ 
+             code: { 
+                 ...this.state.code, 
+                 error: true, 
+                 message: error.message 
+            }
+        })
     }
 
-    handleVerify = () => {
+    handleVerify = (self) => {
+
+        this.toggleLoadingState();
+
         const userData = {
-            email: this.state.user.username,
-            onFailed: this.onFailed,
-            onSuccess: this.verificationOnSuccessHandle,
-            confirmCode: this.state.code.value
+            user: self.state.user,
+            onFailed: self.onFailed,
+            onSuccess: self.verificationOnSuccessHandle,
+            confirmCode: self.state.code.value
         }
 
-        Presenter.UserConfirm(userData)
+        Presenter.confirmAttribute(userData)
     }
 
     verificationOnSuccessHandle = () => {
+        this.toggleLoadingState();
         this.props.phoneValidationSucceed()
     }
 
     handelResendCode = () => {
+
+        this.toggleLoadingState();
+
         const userData = {
             user: this.state.user,
             onSuccess: this.resendCodeSuccess,
@@ -109,6 +134,7 @@ class ValidatePhone extends Component {
     }
 
     resendCodeSuccess = (response) => {
+        this.toggleLoadingState();
         alert('A new 6-digits code was sent')
     }
 
@@ -184,7 +210,10 @@ class ValidatePhone extends Component {
                                 onClick={() => this.handleConfirmNumber(this)}>
                                     {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Confirm phone number'}
                             </StyledPrimaryButton> :
-                            <StyledPrimaryButton onClick={this.handleVerify}> {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Verify'} </StyledPrimaryButton>}
+                            <StyledPrimaryButton 
+                                onClick={() => this.handleVerify(this)}> 
+                                    {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Verify'} 
+                            </StyledPrimaryButton>}
                 </div>
 
                 {!this.state.addingNumber ? <div>

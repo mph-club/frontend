@@ -1,5 +1,5 @@
 import Cognito from '../../config/cognitoConfigure';
-import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
+import { CognitoUserPool, CognitoUserAttribute } from 'amazon-cognito-identity-js';
 
 export default {
 
@@ -78,8 +78,6 @@ export default {
     },
 
     resendCode: function (params) {
-
-
         if (params.codeAttribute === 'email') {
             params.user.resendConfirmationCode(function (err, result) {
                 if (err) {
@@ -101,5 +99,17 @@ export default {
             });
         }
     },
+
+    confirmAttribute: function (params) {
+
+        params.user.verifyAttribute('phone_number', params.confirmCode, {
+            onSuccess: function (result) {
+                params.onSuccess(result)
+            },
+            onFailure: function (err) {
+                params.onFailed(err)
+            }
+        });
+    }
 
 }

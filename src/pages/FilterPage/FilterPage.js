@@ -18,7 +18,7 @@ import 'react-input-range/lib/css/index.css';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { space, palette } from '../../theme';
-import { carTypes, sortOptions, vehicleMakes } from '../../tools/constants';
+import { carTypes, sortOptions, vehicleMakes } from '../../shared/constants';
 import tileData from '../CarsCollection/tileData';
 import GridList from '@material-ui/core/GridList';
 import CarCardSmall from '../../components/UI/CarCard/CarCardSmall';

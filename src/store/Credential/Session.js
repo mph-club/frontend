@@ -4,13 +4,10 @@ import jwt from 'jsonwebtoken';
 
 export default {
 
-  __SESSION_KEY__: '_props_',
-
-  CreateBrowserSession: function (credential) {
-
+  CreateBrowserSession: (credential) => {
     let values = [];
 
-    Fingerprint2.get(function (components) {
+    Fingerprint2.get(components => {
       values = components.map(function (component) { return component.value })
     })
 
@@ -19,14 +16,13 @@ export default {
     return (jwt.sign({
       "token": credential.token,
       "name": credential.name,
-      "auth": credential.auth, // to check user is logged in or not
+      "auth": credential.auth,
       "alias": credential.alias,
-      "email": credential.email,
-      "admin": credential.admin // true/false to check admin or client login
+      "email": credential.email
     }, UID))
   },
 
-  VerifySession: function (credential) {
+  VerifySession: (credential) => {
 
     let values = [];
 

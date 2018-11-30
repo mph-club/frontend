@@ -95,6 +95,13 @@ class App extends Component {
     })
   }
 
+  handleGetStartedEnded = () => {
+    this.setState({
+      openValidationWrapper: false,
+      openWelcomeEndedDialog: true
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -123,10 +130,16 @@ class App extends Component {
               open={this.state.openValidationWrapper}
               user={this.state.user}
               authenticationFailed={() => this.closeSignup(true)}
-              changeEmail={this.handleSignUp} /> : null
+              changeEmail={this.handleSignUp} 
+              getStartedEnded={this.handleGetStartedEnded}/> : null
           }
 
-          <WelcomeEndedDialog open={this.state.openWelcomeEndedDialog} />
+          <WelcomeEndedDialog 
+            open={this.state.openWelcomeEndedDialog} 
+            handleContinueExploring={() => this.setState({ 
+              openWelcomeEndedDialog: false
+            })}/>
+
           <Switch>
             <Route exact path="/" component={InitialPage} />
             <Route path="/search-page" component={SearchPage} />

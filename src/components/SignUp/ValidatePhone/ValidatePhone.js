@@ -66,9 +66,11 @@ class ValidatePhone extends Component {
     }
 
     toggleLoadingState = () => {
-        const prev = this.state.loading
-        this.setState({ 
-            loading: !prev 
+        this.setState(prevState => { 
+            return {
+                ...this.state,
+                loading: prevState.loading 
+            }
         })
     }
 
@@ -86,8 +88,12 @@ class ValidatePhone extends Component {
     }
 
     handleChangeNumber = () => {
-        const prev = this.state.addingNumber
-        this.setState({ addingNumber: !prev })
+        this.setState(prevState => { 
+            return { 
+                ...this.state,
+                addingNumber: !prevState.addingNumber 
+            }
+        })
     }
 
     onFailed = (error) => {

@@ -1,4 +1,4 @@
-import FormMessage from '../../tools/messages';
+import FormMessage from '../../shared/messages';
 
 export default {
 

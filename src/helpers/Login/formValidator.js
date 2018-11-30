@@ -1,4 +1,4 @@
-import Messages from '../../tools/messages';
+import Messages from '../../shared/messages';
 
 export default {
 

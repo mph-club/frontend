@@ -12,10 +12,6 @@ class ProfilePhoto extends Component {
         selectedPhoto: null
     }
 
-    handleDoThisLater = () => {
-        this.props.doThisLater();
-    }
-
     fileSelectedHandler = (event) => {
         this.setState({
             selectedPhoto: event.target.files[0]
@@ -26,7 +22,7 @@ class ProfilePhoto extends Component {
 
         return (
             <div>
-                <Typography variant='body1' component='h3' align='center'>Add a profile photo</Typography>
+                <Typography variant='title' component='h6' align='center'>Add a profile photo</Typography>
                 <Typography variant='body1' component='p' align='center' style={{ margin: '16px 0' }}>Adding a photo helps build trust among hosts and guests on our platform.</Typography>
                 <StyledAvatar
                     alt="Steve Jobs"
@@ -52,7 +48,7 @@ class ProfilePhoto extends Component {
                 <Typography
                     align='center'
                     style={{ marginTop: space[4], cursor: 'pointer', color: palette.grey01 }}
-                    onClick={this.handleDoThisLater}>I'll do this later</Typography>
+                    onClick={this.props.doThisLater}>I'll do this later</Typography>
             </div>
         );
     }

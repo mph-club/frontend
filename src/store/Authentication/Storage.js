@@ -2,11 +2,11 @@ import Session from '../Credential/Session.js'
 
 export default { 
   
-  WriteCredential:function(data){
+  WriteCredential: data => {
       localStorage.setItem(Session.__SESSION_KEY__,Session.CreateBrowserSession(data))
   },
   
-  GetCredential:function(){
+  GetCredential: () => {
     var Credential = localStorage.getItem(Session.__SESSION_KEY__)
     if(Credential == null){
       return{

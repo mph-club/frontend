@@ -12,7 +12,7 @@ import {
 import Alert from '../../UI/Alert/Alert';
 import PrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import SecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
-import { hours } from '../../../tools/constants';
+import { hours } from '../../../shared/constants';
 
 class ChangeTrip extends Component {
 

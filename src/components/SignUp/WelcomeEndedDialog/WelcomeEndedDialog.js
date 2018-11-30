@@ -5,9 +5,9 @@ import Dialog from '@material-ui/core/Dialog';
 import withMobileDialog from '@material-ui/core/withMobileDialog'
 import logo from '../../../assets/images/logo.png';
 import { StyledBackground, StyledExternalContainer } from './styles';
-import { palette, space } from '../../../theme';
+import { palette } from '../../../theme';
 import StyledPrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
-import StyledSecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
+// import StyledSecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
 
 const WelcomeEndedDialog = (props) => {
 
@@ -32,14 +32,17 @@ const WelcomeEndedDialog = (props) => {
                     <div style={{ maxWidth: '220px'}}>
                         <StyledPrimaryButton
                             backgroundcolor={palette.green}
-                            hovercolor='#2EBB57' style={{ width: '100%' }}>Continue exploring</StyledPrimaryButton>
-                        <StyledSecondaryButton style={{ width: '100%', marginTop: space[3] }}>List your card</StyledSecondaryButton>
+                            onClick={props.handleContinueExploring}
+                            hovercolor='#2EBB57' style={{ width: '100%' }}>
+                                Continue exploring
+                        </StyledPrimaryButton>
+                        {/* <StyledSecondaryButton 
+                            style={{ width: '100%', marginTop: space[3] }}>
+                                List your card
+                        </StyledSecondaryButton> */}
                     </div>
-
                 </StyledExternalContainer>
-
             </StyledBackground>
-
         </Dialog>
     );
 }

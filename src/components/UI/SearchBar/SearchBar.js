@@ -7,7 +7,7 @@ import {
     StyledSlantedDivider
 } from './styles';
 import Typography from '@material-ui/core/Typography';
-import { hours } from '../../../tools/constants';
+import { hours } from '../../../shared/constants';
 
 class SearchBar extends Component {
 

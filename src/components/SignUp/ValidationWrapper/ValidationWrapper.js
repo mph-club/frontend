@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 
 import Dialog from '@material-ui/core/Dialog';
 import withMobileDialog from '@material-ui/core/withMobileDialog'
@@ -10,40 +11,25 @@ import { StyledExternalContainer, CustomLinearProgress } from './styles';
 import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
 import ValidateEmail from '../ValidateEmail/ValidateEmail';
 
-import { connect } from "react-redux";
-import { CreateUserSessionProperties } from '../../../tools/Store/Authentication/Presenter';
+import { CreateUserSessionProperties } from '../../../store/Authentication/Presenter';
 
 
 class ValidationWrapper extends Component {
 
     state = {
-        completed: 33.3,
+        completed: 25,
         activeStep: 0,
         user: this.props.user,
         userSession: null
     };
 
-
-    progress = () => {
-        const { completed } = this.state;
-        if (completed === 100) {
-            console.log('completed')
-        }
-    };
-
     handleNext = () => {
         this.setState(prevState => ({
+            ...this.state,
             activeStep: prevState.activeStep + 1,
             completed: prevState.completed + Math.round(prevState.completed * (prevState.activeStep + 1))
         }));
     };
-
-    handleDoThisLater = () => {
-        this.setState(prevState => ({
-            activeStep: prevState.activeStep + 1,
-            completed: prevState.completed + Math.round(prevState.completed * (prevState.activeStep + 1))
-        }))
-    }
 
     handleEmailValidation = (err, result) => {
         if (err) {
@@ -73,14 +59,14 @@ class ValidationWrapper extends Component {
             }
             case 1: {
                 content = <ValidatePhone
-                    doThisLater={this.handleDoThisLater}
+                    doThisLater={this.handleNext}
                     phoneValidationSucceed={this.handleNext}
                     user={this.state.user.cognitoUser} />
                 break;
             }
             case 2: {
                 content = <ProfilePhoto
-                    doThisLater={this.handleDoThisLater} />
+                    doThisLater={this.props.getStartedEnded} />
                 break;
             }
             default: {

@@ -1,5 +1,5 @@
 
-import { CreateUserSessionProperties, RemoveUserSessionProperties } from '../../tools/Store/Authentication/Presenter';
+import { CreateUserSessionProperties, RemoveUserSessionProperties } from '../../store/Authentication/Presenter';
 import Cognito from '../../config/cognitoConfigure';
 
 export default {

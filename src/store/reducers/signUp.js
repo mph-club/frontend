@@ -10,7 +10,8 @@ const initialState = {
     error: null,
     loading: false,
     completed: 25,
-    activeStep: 0
+    activeStep: 0,
+    addingNumber: true
 };
 
 const handleNext = state => {
@@ -20,7 +21,6 @@ const handleNext = state => {
     }
     )
 }
-
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -41,11 +41,17 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SIGNUP_CONFIRM_EMAIL_FAILED:
             return updateObject(state, { loading: false, error: action.error })
         case actionTypes.SIGNUP_CONFIRM_EMAIL_SUCCEED:
-            return updateObject(state, { loading: false, error: null })
+            return updateObject(state, { loading: false, error: null, password: null })
         case actionTypes.SIGNUP_HANDLE_NEXT_VALIDATION_STEP:
             return handleNext(state)
         case actionTypes.SIGNUP_AUTHENTICATION_FAILED:
             return updateObject(state, { loading: false, error: null, openValidationWrapper: false })
+        case actionTypes.SIGNUP_ADD_PHONE_START:
+            return updateObject(state, { loading: true, error: null })
+        case actionTypes.SIGNUP_ADD_PHONE_SUCCEED:
+            return updateObject(state, { loading: false, error: null, addingNumber: false })
+        case actionTypes.SIGNUP_ADD_PHONE_FAILED: 
+            return updateObject( state, { loading: false, error: action.error })
         default:
             return state
     }

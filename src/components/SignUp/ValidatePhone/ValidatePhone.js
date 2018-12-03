@@ -48,71 +48,14 @@ class ValidatePhone extends Component {
             value: '',
             error: false,
             message: ''
-        },
-        addingNumber: true,
-        loading: false
+        }
     };
 
-    handleConfirmNumber = (self) => {
-        this.toggleLoadingState();
-
-        const userData = {
-            attributeName: 'phone_number',
-            user: self.state.user,
-            value: self.state.phone.value,
-            onSuccess: self.confirmNumberOnSuccess,
-            onFailed: self.onFailed
-        }
-
-        Presenter.changeUserAttribute(userData)
-    }
-
-    toggleLoadingState = () => {
-        this.setState(prevState => {
-            return {
-                ...this.state,
-                loading: prevState.loading
-            }
-        })
-    }
-
-    confirmNumberOnSuccess = (err, result) => {
-
-        this.toggleLoadingState();
-
-        if (err) {
-            alert(err.message)
-            this.props.doThisLater();
-            return;
-        }
-
-        this.handleChangeNumber();
-    }
-
-    handleChangeNumber = () => {
-        this.setState(prevState => {
-            return {
-                ...this.state,
-                addingNumber: !prevState.addingNumber
-            }
-        })
-    }
-
-    onFailed = (error) => {
-        this.toggleLoadingState();
-        this.setState({
-            code: {
-                ...this.state.code,
-                error: true,
-                message: error.message
-            }
-        })
+    handleConfirmNumber = () => {
+        this.props.onAddPhone(this.state.phone.value)
     }
 
     handleVerify = (self) => {
-
-        this.toggleLoadingState();
-
         const userData = {
             user: self.state.user,
             onFailed: self.onFailed,
@@ -124,25 +67,19 @@ class ValidatePhone extends Component {
     }
 
     verificationOnSuccessHandle = () => {
-        this.toggleLoadingState();
         this.props.phoneValidationSucceed()
     }
 
     handelResendCode = () => {
-
-        this.toggleLoadingState();
-
         const userData = {
             user: this.state.user,
             onSuccess: this.resendCodeSuccess,
             onFailed: this.onFailed
         }
-
         Presenter.resendCode(userData)
     }
 
     resendCodeSuccess = (response) => {
-        this.toggleLoadingState();
         alert('A new 6-digits code was sent')
     }
 
@@ -150,7 +87,7 @@ class ValidatePhone extends Component {
 
         return (
             <React.Fragment>
-                {this.state.addingNumber ?
+                {this.props.addingNumber ?
                     <div>
                         <Typography variant='title' component='h6'>Confirm your phone number</Typography>
                         <Typography variant='body1' component='p' style={{ margin: '16px 0' }}>We’ll send you a text message with a code to verify your number. We’ll only share your number with your host or guest after a booking is confirmed.</Typography>
@@ -165,8 +102,8 @@ class ValidatePhone extends Component {
                         name="phoneNumber"
                         autoFocus
                         type="tel"
-                        disabled={!this.state.addingNumber}
-                        error={this.state.phone.error}
+                        disabled={!this.props.addingNumber}
+                        error={this.props.error !== null}
                         value={this.state.phone.value}
                         id="phoneNumberValidate"
                         prefix='+1'
@@ -179,45 +116,43 @@ class ValidatePhone extends Component {
                         }
                         )}
                     />
-                    <Typography color='error'>{this.state.phone.message}</Typography>
+                    <Typography color='error'>{this.props.error ? this.props.error.message : null}</Typography>
                 </FormControl>
                 {
-                    this.state.addingNumber ? null :
+                    this.props.addingNumber ? null :
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="codeValidatorId">Enter your code</InputLabel>
                             <Input
                                 placeholder='Enter 6-digit code'
                                 name="phoneNumber"
                                 type="text"
-                                error={this.state.code.error}
-                                // onBlur={this.confirmPasswordOnBlur.bind(this)}
+                                error={this.props.error !== null}
                                 id="codeValidatorId"
                                 onChange={(event) => this.setState({
                                     code: {
                                         message: '',
-                                        error: false,
                                         value: event.target.value,
                                     }
                                 })
                                 }
                             />
-                            <Typography color='error'>{this.state.code.message}</Typography>
+                            <Typography color='error'>{this.props.error ? this.props.error.message : null}</Typography>
                         </FormControl>
                 }
                 <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '32px 0' }}>
                     {
-                        this.state.addingNumber ?
+                        this.props.addingNumber ?
                             <StyledPrimaryButton
-                                onClick={() => this.handleConfirmNumber(this)}>
-                                {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Confirm phone number'}
+                                onClick={() => this.handleConfirmNumber()}>
+                                {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Confirm phone number'}
                             </StyledPrimaryButton> :
                             <StyledPrimaryButton
                                 onClick={() => this.handleVerify(this)}>
-                                {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Verify'}
+                                {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Verify'}
                             </StyledPrimaryButton>}
                 </div>
 
-                {!this.state.addingNumber ? <div>
+                {!this.props.addingNumber ? <div>
                     <Typography align='center'>Din't receive the text? <StyledSpan onClick={this.handelResendCode}>Resend Code</StyledSpan></Typography>
                     <div style={{ display: 'flex', justifyContent: 'center', margin: '8px 20%' }}>
                         <StyledDivider variant="body2">or</StyledDivider>
@@ -233,14 +168,18 @@ class ValidatePhone extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.signUp.user
+        user: state.signUp.user,
+        loading: state.signUp.loading,
+        addingNumber: state.signUp.addingNumber,
+        error: state.signUp.error
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleNext: () => { dispatch(actions.handleNext()) }
+        handleNext: () => { dispatch(actions.handleNext()) },
+        onAddPhone: (phone) => { dispatch(actions.onAddPhone(phone)) }
     }
 }
 
-export default connect(mapStateToProps)(ValidatePhone)
+export default connect(mapStateToProps, mapDispatchToProps)(ValidatePhone)

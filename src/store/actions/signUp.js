@@ -73,7 +73,7 @@ export const handleNext = () => {
 }
 
 export const signAuthenticationFailed = () => {
-    return { 
+    return {
         type: actionTypes.SIGNUP_AUTHENTICATION_FAILED
     }
 }
@@ -101,7 +101,7 @@ export const onConfirmEmail = (code) => {
             }
 
             const authenticationDetails = new AuthenticationDetails(userData);
-    
+
             user.authenticateUser(authenticationDetails, {
                 onSuccess: (result) => {
                     localStorage.setItem('accessToken', result.accessToken.jwtToken)
@@ -115,7 +115,7 @@ export const onConfirmEmail = (code) => {
                     alert(err.message || JSON.stringify(err))
                     dispatch(signAuthenticationFailed())
                 }
-            })  
+            })
         });
     }
 }
@@ -149,5 +149,63 @@ export const signUp = (email, password) => {
 
             dispatch(signUpSuccess(result.user, password));
         })
+    }
+}
+
+export const addPhoneNumberStarted = () => {
+    return {
+        type: actionTypes.SIGNUP_ADD_PHONE_START
+    }
+}
+
+export const addPhoneNumberSucceed = () => {
+    return {
+        type: actionTypes.SIGNUP_ADD_PHONE_SUCCEED
+    }
+}
+
+export const addPhoneNumberFailed = (error) => {
+    return {
+        type: actionTypes.SIGNUP_ADD_PHONE_FAILED,
+        error: error
+    }
+}
+
+export const onAddPhone = (phone) => {
+    return (dispatch, getState) => {
+
+        dispatch(addPhoneNumberStarted())
+        const user = getState().signUp.user;
+        const phoneNumber = phone.replace(/\D/g, '');
+
+        var attributeItem = {
+            Name: 'phone_number',
+            Value: '+1' + phoneNumber
+        };
+
+        var attribute = new CognitoUserAttribute(attributeItem);
+
+        var attributeList = [];
+        attributeList.push(attribute);
+
+        user.updateAttributes(attributeList, function (err, result) {
+            if (err) {
+                console.log(err)
+                dispatch(addPhoneNumberFailed(err))
+                return;
+            }
+
+            user.getAttributeVerificationCode('phone_number', {
+                onSuccess: (result) => {
+                    console.log(result)
+                    dispatch(addPhoneNumberSucceed())
+                },
+                onFailure: (err) => {
+                    console.log(err)
+                    dispatch(addPhoneNumberFailed(err))
+                },
+                inputVerificationCode: null
+            });
+        });
     }
 }

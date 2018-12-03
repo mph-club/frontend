@@ -10,5 +10,6 @@ export {
     onBoardingGetStarted,
     onChangeEmail,
     onConfirmEmail,
+    onAddPhone,
     handleNext
 } from './signUp';

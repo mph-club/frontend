@@ -10,6 +10,10 @@ export {
     onBoardingGetStarted,
     onChangeEmail,
     onConfirmEmail,
+    onResendEmailCode,
     onAddPhone,
-    handleNext
+    onResendPhoneCode,
+    handleNext,
+    onChangePhoneNumber,
+    onValidatePhone
 } from './signUp';

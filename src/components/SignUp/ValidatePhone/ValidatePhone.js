@@ -52,35 +52,7 @@ class ValidatePhone extends Component {
     };
 
     handleConfirmNumber = () => {
-        this.props.onAddPhone(this.state.phone.value)
-    }
-
-    handleVerify = (self) => {
-        const userData = {
-            user: self.state.user,
-            onFailed: self.onFailed,
-            onSuccess: self.verificationOnSuccessHandle,
-            confirmCode: self.state.code.value
-        }
-
-        Presenter.confirmAttribute(userData)
-    }
-
-    verificationOnSuccessHandle = () => {
-        this.props.phoneValidationSucceed()
-    }
-
-    handelResendCode = () => {
-        const userData = {
-            user: this.state.user,
-            onSuccess: this.resendCodeSuccess,
-            onFailed: this.onFailed
-        }
-        Presenter.resendCode(userData)
-    }
-
-    resendCodeSuccess = (response) => {
-        alert('A new 6-digits code was sent')
+        this.props.handleAddPhone(this.state.phone.value)
     }
 
     render() {
@@ -147,13 +119,13 @@ class ValidatePhone extends Component {
                                 {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Confirm phone number'}
                             </StyledPrimaryButton> :
                             <StyledPrimaryButton
-                                onClick={() => this.handleVerify(this)}>
+                                onClick={() => this.props.handleValidatePhone(this.state.code.value)}>
                                 {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Verify'}
                             </StyledPrimaryButton>}
                 </div>
 
                 {!this.props.addingNumber ? <div>
-                    <Typography align='center'>Din't receive the text? <StyledSpan onClick={this.handelResendCode}>Resend Code</StyledSpan></Typography>
+                    <Typography align='center'>Din't receive the text? <StyledSpan onClick={() => this.props.handleResendCode(this.state.phone.value)}>Resend Code</StyledSpan></Typography>
                     <div style={{ display: 'flex', justifyContent: 'center', margin: '8px 20%' }}>
                         <StyledDivider variant="body2">or</StyledDivider>
                     </div>
@@ -178,7 +150,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         handleNext: () => { dispatch(actions.handleNext()) },
-        onAddPhone: (phone) => { dispatch(actions.onAddPhone(phone)) }
+        handleAddPhone: (phone) => { dispatch(actions.onAddPhone(phone)) },
+        handleResendCode: (phone) => { dispatch(actions.onResendPhoneCode(phone)) },
+        handleChangePhoneNumber: () => { dispatch(actions.onChangePhoneNumber()) },
+        handleValidatePhone: (code) => { dispatch(actions.onValidatePhone(code)) }
     }
 }
 

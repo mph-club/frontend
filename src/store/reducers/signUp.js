@@ -50,8 +50,18 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { loading: true, error: null })
         case actionTypes.SIGNUP_ADD_PHONE_SUCCEED:
             return updateObject(state, { loading: false, error: null, addingNumber: false })
-        case actionTypes.SIGNUP_ADD_PHONE_FAILED: 
+        case actionTypes.SIGNUP_ADD_PHONE_FAILED:
+            return updateObject(state, { loading: false, error: action.error })
+        case actionTypes.SIGNUP_RESEND_PHONE_CODE_FAILED:
+            return updateObject(state, { error: action.error })
+        case actionTypes.SIGNUP_CHANGE_PHONE_NUMBER:
+            return updateObject(state, { loading: false, error: null, addingNumber: true })
+        case actionTypes.SIGNUP_VALIDATE_PHONE_START: 
+            return updateObject( state, { loading: true, error: null })
+        case actionTypes.SIGNUP_VALIDATE_PHONE_FAILED: 
             return updateObject( state, { loading: false, error: action.error })
+        case actionTypes.SIGNUP_VALIDATE_PHONE_SUCCEED: 
+            return updateObject( state, { loading: false, error: null })
         default:
             return state
     }

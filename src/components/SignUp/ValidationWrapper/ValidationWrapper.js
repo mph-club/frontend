@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 
 import Dialog from '@material-ui/core/Dialog';
@@ -9,21 +9,12 @@ import { StyledExternalContainer, CustomLinearProgress } from './styles';
 import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
 import ValidateEmail from '../ValidateEmail/ValidateEmail';
 
-import { CreateUserSessionProperties } from '../../../store/Authentication/Presenter';
 
-
-class ValidationWrapper extends Component {
-
-    handleEmailValidation = (err, result) => {
-        //this.props.RunRedux(CreateUserSessionProperties(result));
-        this.handleNext()
-    }
-
-    render() {
+const ValidationWrapper = (props) => {
 
         let content = null
 
-        switch (this.props.activeStep) {
+        switch (props.activeStep) {
             case 0: {
                 content = <ValidateEmail/>
                 break;
@@ -34,7 +25,7 @@ class ValidationWrapper extends Component {
             }
             case 2: {
                 content = <ProfilePhoto
-                    doThisLater={this.props.getStartedEnded} />
+                    doThisLater={props.getStartedEnded} />
                 break;
             }
             default: {
@@ -44,12 +35,12 @@ class ValidationWrapper extends Component {
 
         return (
             <Dialog
-                open={this.props.open}
+                open={props.open}
                 aria-labelledby="responsive-dialog-title"
             >
                 <Paper style={{ width: '460px', height: 'auto' }} elevation={1}>
                     <div style={{ width: '460px' }}>
-                        <CustomLinearProgress style={{ height: '16px' }} color="secondary" variant="determinate" value={this.props.completed} />
+                        <CustomLinearProgress style={{ height: '16px' }} color="secondary" variant="determinate" value={props.completed} />
                     </div>
                     <StyledExternalContainer>
                         {content}
@@ -57,7 +48,6 @@ class ValidationWrapper extends Component {
                 </Paper>
             </Dialog>
         );
-    }
 }
 
 const mapStateToProps = (state) => {

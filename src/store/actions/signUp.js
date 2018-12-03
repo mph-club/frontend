@@ -78,6 +78,12 @@ export const signAuthenticationFailed = () => {
     }
 }
 
+export const onResendEmailCode = () => {
+    return {
+        type: actionTypes.SIGNUP_RESEND_EMAIL_CODE
+    }
+}
+
 export const onConfirmEmail = (code) => {
 
     return (dispatch, getState) => {
@@ -171,6 +177,38 @@ export const addPhoneNumberFailed = (error) => {
     }
 }
 
+export const resendPhoneCodeFailed = (error) => {
+    return {
+        type: actionTypes.SIGNUP_RESEND_PHONE_CODE_FAILED,
+        error: error
+    }
+}
+
+export const onChangePhoneNumber = () => {
+    return {
+        type: actionTypes.SIGNUP_CHANGE_PHONE_NUMBER
+    }
+}
+
+export const onResendPhoneCode = (phoneNumber) => {
+
+    return (dispatch, getState) => {
+
+        const { user } = getState().signUp
+
+        user.getAttributeVerificationCode('phone_number', {
+            onSuccess: () => {
+                alert('A 6-digits code was sent to + 1 ' + phoneNumber)
+                dispatch({ type: actionTypes.SIGNUP_RESEND_PHONE_CODE })
+            },
+            onFailure: (err) => {
+                dispatch(resendPhoneCodeFailed(err))
+            },
+            inputVerificationCode: null
+        });
+    }
+}
+
 export const onAddPhone = (phone) => {
     return (dispatch, getState) => {
 
@@ -188,24 +226,58 @@ export const onAddPhone = (phone) => {
         var attributeList = [];
         attributeList.push(attribute);
 
-        user.updateAttributes(attributeList, function (err, result) {
+        user.updateAttributes(attributeList, (err, result) => {
             if (err) {
-                console.log(err)
                 dispatch(addPhoneNumberFailed(err))
                 return;
             }
 
             user.getAttributeVerificationCode('phone_number', {
-                onSuccess: (result) => {
-                    console.log(result)
+                onSuccess: () => {
                     dispatch(addPhoneNumberSucceed())
                 },
                 onFailure: (err) => {
-                    console.log(err)
                     dispatch(addPhoneNumberFailed(err))
                 },
                 inputVerificationCode: null
             });
+        });
+    }
+}
+
+export const validatePhoneStart = () => {
+    return {
+        type: actionTypes.SIGNUP_VALIDATE_PHONE_START
+    }
+}
+
+export const validatePhoneFailed = (error) => {
+    return {
+        type: actionTypes.SIGNUP_VALIDATE_PHONE_FAILED,
+        error: error
+    }
+}
+
+export const validatePhoneSucceed = () => {
+    return {
+        type: actionTypes.SIGNUP_VALIDATE_PHONE_SUCCEED
+    }
+}
+
+export const onValidatePhone = (code) => {
+    return (dispatch, getState) => {
+
+        dispatch(validatePhoneStart());
+        const { user } = getState().signUp
+
+        user.verifyAttribute('phone_number', code, {
+            onSuccess: () => {
+                dispatch(validatePhoneSucceed())
+                dispatch(handleNext())
+            },
+            onFailure: (err) => {
+                dispatch(validatePhoneFailed(err))
+            }
         });
     }
 }

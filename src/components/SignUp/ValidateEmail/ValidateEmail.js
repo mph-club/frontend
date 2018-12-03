@@ -25,15 +25,6 @@ class ValidateEmail extends PureComponent {
         }
     };
 
-    handleResendCode = () => {
-        const userData = {
-            user: this.props.user,
-            codeAttribute: 'email'
-        }
-
-        Presenter.resendCode(userData)
-    }
-
     handleVerifyEmail = () => {
         this.props.handleConfirmEmail(this.state.code.value)
     }
@@ -68,7 +59,7 @@ class ValidateEmail extends PureComponent {
                         {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Okay'}
                     </StyledPrimaryButton>
                 </div>
-                <Typography align='center'>Din't receive the email? <StyledSpan onClick={this.handleResendCode}>Resend Code</StyledSpan></Typography>
+                <Typography align='center'>Din't receive the email? <StyledSpan onClick={() => this.props.handleResendCode()}>Resend Code</StyledSpan></Typography>
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '8px 20%' }}>
                     <StyledDivider variant="body2">or</StyledDivider>
                 </div>
@@ -90,7 +81,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         handleChangeEmail: () => { dispatch(actions.onChangeEmail()) },
-        handleConfirmEmail: (code) => { dispatch(actions.onConfirmEmail(code)) }
+        handleConfirmEmail: (code) => { dispatch(actions.onConfirmEmail(code)) },
+        handleResendCode: () => { dispatch(actions.onResendEmailCode())}
     }
 }
 

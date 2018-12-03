@@ -33,66 +33,7 @@ import WelcomeEndedDialog from './components/SignUp/WelcomeEndedDialog/WelcomeEn
 class App extends Component {
 
   state = {
-    auth: false,
-    user: {
-      cognitoUser: null,
-      password: ''
-    },
-    openLogin: false,
-    openSignUp: false,
-    openWelcomeDialog: false,
-    openValidationWrapper: false,
     openWelcomeEndedDialog: false
-  }
-
-  handleLogin = () => {
-    this.setState({ openLogin: true })
-  }
-
-  closeLogin = (signUp) => {
-    this.setState({ openLogin: false })
-
-    if (signUp) {
-      this.setState({ openSignUp: true })
-    }
-  }
-
-  handleSignUp = () => {
-    this.setState({
-      openValidationWrapper: false,
-      openSignUp: true
-    })
-  }
-
-  closeSignup = (openLogin, result, _password) => {
-    this.setState({
-      openSignUp: false,
-      openLogin: openLogin
-    })
-
-    if (result.user) {
-      this.setState({
-        openWelcomeDialog: true,
-        user: {
-          cognitoUser: result.user,
-          password: _password
-        }
-      })
-    }
-  }
-
-  handleAuth = (value) => {
-    this.setState({
-      auth: value,
-      openLogin: false
-    })
-  }
-
-  handleGetStarted = () => {
-    this.setState({
-      openWelcomeDialog: false,
-      openValidationWrapper: true
-    })
   }
 
   handleGetStartedEnded = () => {
@@ -106,39 +47,20 @@ class App extends Component {
     return (
       <React.Fragment>
         <Toolbar
-          loginClicked={this.handleLogin}
-          signupClicked={this.handleSignUp}
           auth={this.state.auth}
           userName='Juan Luis'>
         </Toolbar>
         <main>
-          <Login
-            openLogin={this.state.openLogin}
-            handleAuth={(value) => this.handleAuth(value)}
-            handleCloseLogin={() => this.closeLogin(false)}
-            openSignUp={() => this.closeLogin(true)} />
-          <SignUp
-            openSignUp={this.state.openSignUp}
-            closeSignUp={(result, password) => this.closeSignup(false, result, password)}
-            openLogin={() => this.closeSignup(true)} />
-          <WelcomeDialog
-            open={this.state.openWelcomeDialog}
-            getStarted={this.handleGetStarted} />
-
-          {
-            this.state.openValidationWrapper ? <ValidationWrapper
-              open={this.state.openValidationWrapper}
-              user={this.state.user}
-              authenticationFailed={() => this.closeSignup(true)}
-              changeEmail={this.handleSignUp} 
-              getStartedEnded={this.handleGetStartedEnded}/> : null
-          }
-
-          <WelcomeEndedDialog 
-            open={this.state.openWelcomeEndedDialog} 
-            handleContinueExploring={() => this.setState({ 
+          <Login />
+          <SignUp />
+          <WelcomeDialog />
+          <ValidationWrapper
+            getStartedEnded={this.handleGetStartedEnded} />
+          <WelcomeEndedDialog
+            open={this.state.openWelcomeEndedDialog}
+            handleContinueExploring={() => this.setState({
               openWelcomeEndedDialog: false
-            })}/>
+            })} />
 
           <Switch>
             <Route exact path="/" component={InitialPage} />
@@ -169,4 +91,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

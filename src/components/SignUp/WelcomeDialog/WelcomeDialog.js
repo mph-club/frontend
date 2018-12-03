@@ -1,21 +1,20 @@
 
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
-import withMobileDialog from '@material-ui/core/withMobileDialog'
 import logo from '../../../assets/images/logo.png';
 import { StyledBackground, StyledExternalContainer } from './styles';
 import { palette } from '../../../theme';
 import StyledPrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 
-const WelcomeDialog = (props) => {
+import * as actions from '../../../store/actions/index';
 
-    const { fullScreen } = props.fullScreen
+const WelcomeDialog = (props) => {
 
     return (
         <Dialog
-            fullScreen={fullScreen}
             open={props.open}
             aria-labelledby="responsive-dialog-title"
             style={{ backgroundColor: 'transparent' }}
@@ -30,7 +29,7 @@ const WelcomeDialog = (props) => {
                     <StyledPrimaryButton
                         backgroundcolor={palette.green}
                         hovercolor='#2EBB57'
-                        onClick={props.getStarted}>Get Started</StyledPrimaryButton>
+                        onClick={() => props.handleGetStarted()}>Get Started</StyledPrimaryButton>
                 </StyledExternalContainer>
 
             </StyledBackground>
@@ -39,4 +38,16 @@ const WelcomeDialog = (props) => {
     );
 }
 
-export default withMobileDialog()(WelcomeDialog)
+const mapStateToProps = state => {
+    return {
+        open: state.signUp.openWelcomeDialog
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        handleGetStarted: () => { dispatch(actions.onBoardingGetStarted()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeDialog)

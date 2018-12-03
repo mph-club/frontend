@@ -1,8 +1,14 @@
 export {
     auth,
-    logout
-} from './auth';
+    logout,
+    openSignIn
+} from './signIn';
 
 export {
-    signUp
+    signUp,
+    openSignUp,
+    onBoardingGetStarted,
+    onChangeEmail,
+    onConfirmEmail,
+    handleNext
 } from './signUp';

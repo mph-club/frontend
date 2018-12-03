@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { theme } from './theme';
 
-import store from "./store/index.js";
+import store from "./store/store.js";
 import { Provider } from "react-redux";
 
 

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl'
 import Input from '@material-ui/core/Input';
@@ -14,6 +16,7 @@ import {
     StyledDivider
 } from './styles';
 import { palette } from '../../../theme';
+import * as actions from '../../../store/actions/index';
 
 function TextMaskCustom(props) {
     const { inputRef, ...other } = props;
@@ -36,7 +39,6 @@ TextMaskCustom.propTypes = {
 class ValidatePhone extends Component {
 
     state = {
-        user: this.props.user,
         phone: {
             value: '',
             message: '',
@@ -66,10 +68,10 @@ class ValidatePhone extends Component {
     }
 
     toggleLoadingState = () => {
-        this.setState(prevState => { 
+        this.setState(prevState => {
             return {
                 ...this.state,
-                loading: prevState.loading 
+                loading: prevState.loading
             }
         })
     }
@@ -88,21 +90,21 @@ class ValidatePhone extends Component {
     }
 
     handleChangeNumber = () => {
-        this.setState(prevState => { 
-            return { 
+        this.setState(prevState => {
+            return {
                 ...this.state,
-                addingNumber: !prevState.addingNumber 
+                addingNumber: !prevState.addingNumber
             }
         })
     }
 
     onFailed = (error) => {
         this.toggleLoadingState();
-        this.setState({ 
-             code: { 
-                 ...this.state.code, 
-                 error: true, 
-                 message: error.message 
+        this.setState({
+            code: {
+                ...this.state.code,
+                error: true,
+                message: error.message
             }
         })
     }
@@ -142,20 +144,6 @@ class ValidatePhone extends Component {
     resendCodeSuccess = (response) => {
         this.toggleLoadingState();
         alert('A new 6-digits code was sent')
-    }
-
-    handleDoThisLater = () => {
-        this.props.doThisLater();
-    }
-
-    handleOnChangeCode = (event) => {
-        this.setState({
-            code: {
-                message: '',
-                error: false,
-                value: event.target.value,
-            }
-        })
     }
 
     render() {
@@ -204,7 +192,14 @@ class ValidatePhone extends Component {
                                 error={this.state.code.error}
                                 // onBlur={this.confirmPasswordOnBlur.bind(this)}
                                 id="codeValidatorId"
-                                onChange={(event) => this.handleOnChangeCode(event)}
+                                onChange={(event) => this.setState({
+                                    code: {
+                                        message: '',
+                                        error: false,
+                                        value: event.target.value,
+                                    }
+                                })
+                                }
                             />
                             <Typography color='error'>{this.state.code.message}</Typography>
                         </FormControl>
@@ -212,13 +207,13 @@ class ValidatePhone extends Component {
                 <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '32px 0' }}>
                     {
                         this.state.addingNumber ?
-                            <StyledPrimaryButton 
+                            <StyledPrimaryButton
                                 onClick={() => this.handleConfirmNumber(this)}>
-                                    {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Confirm phone number'}
+                                {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Confirm phone number'}
                             </StyledPrimaryButton> :
-                            <StyledPrimaryButton 
-                                onClick={() => this.handleVerify(this)}> 
-                                    {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Verify'} 
+                            <StyledPrimaryButton
+                                onClick={() => this.handleVerify(this)}>
+                                {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Verify'}
                             </StyledPrimaryButton>}
                 </div>
 
@@ -230,10 +225,22 @@ class ValidatePhone extends Component {
                     <Typography align='center'>Need to change your number? <StyledSpan onClick={this.handleChangeNumber}>Change my number</StyledSpan></Typography>
                 </div> : null}
 
-                <Typography align='center' style={{ marginTop: '48px', cursor: 'pointer', color: palette.grey01 }} onClick={this.handleDoThisLater}>I'll do this later</Typography>
+                <Typography align='center' style={{ marginTop: '48px', cursor: 'pointer', color: palette.grey01 }} onClick={() => this.props.handleNext()}>I'll do this later</Typography>
             </React.Fragment>
         );
     }
 }
 
-export default ValidatePhone
+const mapStateToProps = state => {
+    return {
+        user: state.signUp.user
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        handleNext: () => { dispatch(actions.handleNext()) }
+    }
+}
+
+export default connect(mapStateToProps)(ValidatePhone)

@@ -13,7 +13,6 @@ import {
     StyledDivider
 } from './styles';
 
-import Presenter from '../../../helpers/SignUp/Presenter';
 import * as actions from '../../../store/actions/index';
 import { palette } from '../../../theme';
 

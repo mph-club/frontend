@@ -8,7 +8,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import StyledPrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import MaskedInput from 'react-text-mask'
 import PropTypes from 'prop-types';
-import Presenter from '../../../helpers/SignUp/Presenter';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {

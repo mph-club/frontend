@@ -78,10 +78,32 @@ export const signAuthenticationFailed = () => {
     }
 }
 
-export const onResendEmailCode = () => {
+export const resendEmailCodeFailed = (error) => {
     return {
-        type: actionTypes.SIGNUP_RESEND_EMAIL_CODE
+        type: actionTypes.SIGNUP_RESEND_EMAIL_CODE_FAILED,
+        error: error
     }
+}
+
+export const onResendEmailCode = () => {
+
+    return ( dispatch, getState ) => {
+
+        const { user } = getState().signUp
+
+        user.resendConfirmationCode( (err, result) => {
+            if (err) {
+                dispatch(resendEmailCodeFailed(err))
+                return;
+            }
+
+            alert('A new 6-digits code was sent to ' + user.username);
+            return {
+                type: actionTypes.SIGNUP_RESEND_EMAIL_CODE
+            } 
+        });
+    }
+    
 }
 
 export const onConfirmEmail = (code) => {

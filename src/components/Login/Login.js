@@ -22,7 +22,6 @@ import {
 import { palette } from '../../theme';
 
 import FormHelper from '../../helpers/Login/formValidator';
-import Presenter from '../../helpers/Login/Presenter';
 import * as actions from '../../store/actions/index';
 
 
@@ -38,43 +37,16 @@ class Login extends Component {
             value: "",
             error: false,
             message: "",
-        },
-        result: {
-            error: false,
-            message: "",
         }
     }
 
-    handleLogin = (self) => {
-
-        this.setState({
-            email: {
-                ...this.state.email,
-                error: false,
-                message: ""
-            },
-            password: {
-                ...this.state.password,
-                error: false,
-                message: ""
-            }
-        })
+    handleLogin = () => {
 
         if (FormHelper.ValidateForm(this)) {
-
-            Presenter.Auth({
-                emailuser: this.state.email.value,
-                password: this.state.password.value,
-                RunRedux: this.props.RunRedux,
-                onfailed: this.onLoginFailed,
-                onsuccess: this.onLoginSucceed,
-                self: self
-            })
-
+            this.props.handleSignIn(this.state.email.value, this.state.password.value)
         } else {
             alert('Ops! Looks like something was wrong');
         }
-
     }
 
     render() {
@@ -135,7 +107,7 @@ class Login extends Component {
                                     fullWidth
                                     variant="raised"
                                     color="primary"
-                                    onClick={() => this.handleLogin(this)}
+                                    onClick={() => this.handleLogin()}
                                 >
                                     {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Log in'}
                                 </StyledPrimaryButton>
@@ -162,6 +134,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         closeSignIn: () => { dispatch(actions.openSignIn(false)) },
+        handleSignIn: (email, password) => { dispatch(actions.onSingIn(email, password)) },
         openSignUp: () => {
             dispatch(actions.openSignIn(false));
             dispatch(actions.openSignUp(true));

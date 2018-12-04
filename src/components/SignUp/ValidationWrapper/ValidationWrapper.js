@@ -24,8 +24,7 @@ const ValidationWrapper = (props) => {
                 break;
             }
             case 2: {
-                content = <ProfilePhoto
-                    doThisLater={props.getStartedEnded} />
+                content = <ProfilePhoto/>
                 break;
             }
             default: {

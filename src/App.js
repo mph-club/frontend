@@ -32,36 +32,16 @@ import WelcomeEndedDialog from './components/SignUp/WelcomeEndedDialog/WelcomeEn
 
 class App extends Component {
 
-  state = {
-    openWelcomeEndedDialog: false
-  }
-
-  handleGetStartedEnded = () => {
-    this.setState({
-      openValidationWrapper: false,
-      openWelcomeEndedDialog: true
-    })
-  }
-
   render() {
     return (
       <React.Fragment>
-        <Toolbar
-          auth={this.state.auth}
-          userName='Juan Luis'>
-        </Toolbar>
+        <Toolbar/>
         <main>
           <Login />
           <SignUp />
           <WelcomeDialog />
-          <ValidationWrapper
-            getStartedEnded={this.handleGetStartedEnded} />
-          <WelcomeEndedDialog
-            open={this.state.openWelcomeEndedDialog}
-            handleContinueExploring={() => this.setState({
-              openWelcomeEndedDialog: false
-            })} />
-
+          <ValidationWrapper />
+          <WelcomeEndedDialog />
           <Switch>
             <Route exact path="/" component={InitialPage} />
             <Route path="/search-page" component={SearchPage} />

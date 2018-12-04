@@ -5,6 +5,7 @@ const initialState = {
     open: false,
     openWelcomeDialog: false,
     openValidationWrapper: false,
+    openWelcomeEndedDialog: false,
     user: null,
     password: '',
     error: null,

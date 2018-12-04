@@ -1,5 +1,5 @@
 export {
-    auth,
+    onSingIn,
     logout,
     openSignIn
 } from './signIn';

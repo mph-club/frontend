@@ -1,23 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
-import withMobileDialog from '@material-ui/core/withMobileDialog'
+
 import logo from '../../../assets/images/logo.png';
 import { StyledBackground, StyledExternalContainer } from './styles';
 import { palette } from '../../../theme';
 import StyledPrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
-// import StyledSecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
 
 const WelcomeEndedDialog = (props) => {
 
-    const { fullScreen } = props.fullScreen
-
     return (
         <Dialog
-            fullScreen={fullScreen}
             open={props.open}
-            onClose={props.handleClose}
+            onClose={this.handleClose}
             aria-labelledby="responsive-dialog-title"
             style={{ backgroundColor: 'transparent' }}
         >
@@ -47,4 +44,10 @@ const WelcomeEndedDialog = (props) => {
     );
 }
 
-export default withMobileDialog()(WelcomeEndedDialog)
+const mapStateToProps = state => {
+    return {
+        open: state.signUp.completed === 100,
+    }
+}
+
+export default connect(mapStateToProps)(WelcomeEndedDialog)

@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Toolbar/>
+        <Toolbar />
         <main>
           <Login />
           <SignUp />

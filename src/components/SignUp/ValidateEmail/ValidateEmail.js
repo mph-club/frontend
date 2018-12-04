@@ -70,10 +70,10 @@ class ValidateEmail extends PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.signUp.user,
-        password: state.signUp.password,
-        loading: state.signUp.loading,
-        error: state.signUp.error
+        user: state.auth.user,
+        password: state.auth.password,
+        loading: state.auth.loading,
+        error: state.auth.error
     };
 };
 

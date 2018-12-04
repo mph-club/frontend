@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
-
 import logo from '../../../assets/images/logo.png';
 import { StyledBackground, StyledExternalContainer } from './styles';
 import { palette } from '../../../theme';
@@ -46,7 +45,7 @@ const WelcomeEndedDialog = (props) => {
 
 const mapStateToProps = state => {
     return {
-        open: state.signUp.completed === 100,
+        open: state.auth.completed === 100,
     }
 }
 

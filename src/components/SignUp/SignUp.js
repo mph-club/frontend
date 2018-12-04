@@ -203,9 +203,9 @@ class SignUp extends Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.signUp.loading,
-        error: state.signUp.error,
-        open: state.signUp.open
+        loading: state.auth.loading,
+        error: state.auth.error,
+        open: state.auth.openSignUp
     }
 }
 

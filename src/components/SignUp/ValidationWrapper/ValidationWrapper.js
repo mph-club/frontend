@@ -51,9 +51,9 @@ const ValidationWrapper = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        open: state.signUp.openValidationWrapper,
-        activeStep: state.signUp.activeStep,
-        completed: state.signUp.completed
+        open: state.auth.openValidationWrapper,
+        activeStep: state.auth.activeStep,
+        completed: state.auth.completed
     };
 };
 

@@ -1,7 +1,73 @@
 import COGNITO from '../../config/cognitoConfigure';
-import { CognitoUserPool, CognitoUserAttribute, AuthenticationDetails } from 'amazon-cognito-identity-js';
+import { CognitoUserPool, CognitoUser, CognitoUserAttribute, AuthenticationDetails } from 'amazon-cognito-identity-js';
 
 import * as actionTypes from './actionTypes';
+
+export const signInStart = () => {
+    return {
+        type: actionTypes.SIGNIN_START
+    };
+};
+
+export const openSignIn = (open) => {
+    return {
+        type: actionTypes.SIGNIN_OPEN,
+        open: open
+    };
+};
+
+export const signInSuccess = (token) => {
+    return {
+        type: actionTypes.SIGNIN_SUCCESS,
+        idToken: token
+    };
+};
+
+export const signInFail = (error) => {
+    return {
+        type: actionTypes.SIGNIN_FAIL,
+        error: error
+    };
+};
+
+export const onSingIn = (email, password) => {
+    return dispatch => {
+
+        dispatch(signInStart());
+
+        var authenticationData = {
+            Username: email,
+            Password: password
+        };
+
+        var authenticationDetails = new AuthenticationDetails(authenticationData);
+
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var userPool = new CognitoUserPool(poolData);
+
+        var userData = {
+            Username: email,
+            Pool: userPool
+        };
+
+        var cognitoUser = new CognitoUser(userData);
+
+        cognitoUser.authenticateUser(authenticationDetails, {
+            onSuccess: (result) => {
+                dispatch(signInSuccess())
+            },
+
+            onFailure: (error) => {
+                alert(error.message || JSON.stringify(error))
+                dispatch(signInFail(error))
+            },
+        });
+    };
+};
 
 export const signUpStart = () => {
     return {
@@ -40,6 +106,12 @@ export const onBoardingGetStarted = () => {
     }
 }
 
+export const onBoardingEnded = () => {
+    return {
+        type: actionTypes.SIGNUP_ON_BOARDING_ENDED
+    }
+}
+
 export const onChangeEmail = () => {
     return {
         type: actionTypes.SIGNUP_CHANGE_EMAIL
@@ -59,10 +131,10 @@ export const confirmEmailFailed = (error) => {
     }
 }
 
-
-export const confirmEmailSucceed = () => {
+export const confirmEmailSucceed = (result) => {
     return {
-        type: actionTypes.SIGNUP_CONFIRM_EMAIL_SUCCEED
+        type: actionTypes.SIGNUP_CONFIRM_EMAIL_SUCCEED,
+        result: result
     }
 }
 
@@ -87,23 +159,22 @@ export const resendEmailCodeFailed = (error) => {
 
 export const onResendEmailCode = () => {
 
-    return ( dispatch, getState ) => {
+    return (dispatch, getState) => {
 
-        const { user } = getState().signUp
+        const { user } = getState().auth
 
-        user.resendConfirmationCode( (err, result) => {
+        user.resendConfirmationCode((err, result) => {
             if (err) {
                 dispatch(resendEmailCodeFailed(err))
                 return;
             }
 
             alert('A new 6-digits code was sent to ' + user.username);
-            return {
-                type: actionTypes.SIGNUP_RESEND_EMAIL_CODE
-            } 
+            dispatch({ type: actionTypes.SIGNUP_RESEND_EMAIL_CODE })
+            return
         });
     }
-    
+
 }
 
 export const onConfirmEmail = (code) => {
@@ -112,7 +183,7 @@ export const onConfirmEmail = (code) => {
 
         dispatch(confirmEmailStart())
 
-        const state = getState().signUp
+        const state = getState().auth
 
         const user = state.user
         const password = state.password
@@ -132,11 +203,7 @@ export const onConfirmEmail = (code) => {
 
             user.authenticateUser(authenticationDetails, {
                 onSuccess: (result) => {
-                    localStorage.setItem('accessToken', result.accessToken.jwtToken)
-                    localStorage.setItem('expirationDate', result.accessToken.payload.exp)
-                    localStorage.setItem('idToken', result.idToken.jwtToken)
-                    localStorage.setItem('refreshToken', result.refreshToken.token)
-                    dispatch(confirmEmailSucceed())
+                    dispatch(confirmEmailSucceed(result))
                     dispatch(handleNext())
                 },
                 onFailure: (err) => {
@@ -216,7 +283,7 @@ export const onResendPhoneCode = (phoneNumber) => {
 
     return (dispatch, getState) => {
 
-        const { user } = getState().signUp
+        const { user } = getState().auth
 
         user.getAttributeVerificationCode('phone_number', {
             onSuccess: () => {
@@ -235,7 +302,7 @@ export const onAddPhone = (phone) => {
     return (dispatch, getState) => {
 
         dispatch(addPhoneNumberStarted())
-        const user = getState().signUp.user;
+        const { user } = getState().auth;
         const phoneNumber = phone.replace(/\D/g, '');
 
         var attributeItem = {
@@ -290,7 +357,7 @@ export const onValidatePhone = (code) => {
     return (dispatch, getState) => {
 
         dispatch(validatePhoneStart());
-        const { user } = getState().signUp
+        const { user } = getState().auth
 
         user.verifyAttribute('phone_number', code, {
             onSuccess: () => {

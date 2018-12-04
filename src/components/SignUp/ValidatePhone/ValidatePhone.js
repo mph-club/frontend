@@ -139,10 +139,10 @@ class ValidatePhone extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.signUp.user,
-        loading: state.signUp.loading,
-        addingNumber: state.signUp.addingNumber,
-        error: state.signUp.error
+        user: state.auth.user,
+        loading: state.auth.loading,
+        addingNumber: state.auth.addingNumber,
+        error: state.auth.error
     }
 }
 

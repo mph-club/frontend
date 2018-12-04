@@ -1,10 +1,8 @@
+
 export {
     onSingIn,
     logout,
-    openSignIn
-} from './signIn';
-
-export {
+    openSignIn,
     signUp,
     openSignUp,
     onBoardingGetStarted,
@@ -15,5 +13,6 @@ export {
     onResendPhoneCode,
     handleNext,
     onChangePhoneNumber,
-    onValidatePhone
-} from './signUp';
+    onValidatePhone,
+    onBoardingEnded
+} from './auth';

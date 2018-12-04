@@ -40,7 +40,7 @@ const WelcomeDialog = (props) => {
 
 const mapStateToProps = state => {
     return {
-        open: state.signUp.openWelcomeDialog
+        open: state.auth.openWelcomeDialog
     }
 }
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
+
 
 import Typography from '@material-ui/core/Typography';
 import { StyledAvatar } from './styles';
@@ -21,6 +23,21 @@ class ProfilePhoto extends Component {
         })
     }
 
+    fileUploadHandler = () => {
+        const fd = new FormData();
+        fd.append('photo', this.state.selectedPhoto, this.state.selectedPhoto.name)
+
+        axios.defaults.headers.common['Authorization'] = this.props.accessToken;
+        axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
+
+        axios.post('uploadUserPhoto',fd).then( response => {
+            this.props.handleOnBoardingEnded()
+        }).catch( error => {
+            alert('Ops! Looks like something was wrong')
+            this.props.handleOnBoardingEnded()
+        });
+    }
+
     render() {
 
         return (
@@ -29,7 +46,7 @@ class ProfilePhoto extends Component {
                 <Typography variant='body1' component='p' align='center' style={{ margin: '16px 0' }}>Adding a photo helps build trust among hosts and guests on our platform.</Typography>
                 <StyledAvatar
                     alt="user profile"
-                    src={avatar}>
+                    src={this.state.selectedPhoto === null ? avatar : URL.createObjectURL(this.state.selectedPhoto)}>
                 </StyledAvatar>
 
                 <input
@@ -45,22 +62,28 @@ class ProfilePhoto extends Component {
                         </div> :
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                             <StyledSecondaryButton onClick={() => this.fileInput.click()}>Change photo</StyledSecondaryButton>
-                            <StyledPrimaryButton style={{ marginLeft: space[3] }}>Continue</StyledPrimaryButton>
+                            <StyledPrimaryButton style={{ marginLeft: space[3] }} onClick={this.fileUploadHandler}>Upload</StyledPrimaryButton>
                         </div>
                 }
                 <Typography
                     align='center'
                     style={{ marginTop: space[4], cursor: 'pointer', color: palette.grey01 }}
-                    onClick={() => this.props.handleDoThisLater()}>I'll do this later</Typography>
+                    onClick={() => this.props.handleOnBoardingEnded()}>I'll do this later</Typography>
             </div>
         );
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        handleDoThisLater: () => { dispatch(actions.handleNext()) }
+        accessToken: state.auth.accessToken
     }
 }
 
-export default connect(null, mapDispatchToProps)(ProfilePhoto)
+const mapDispatchToProps = dispatch => {
+    return {
+        handleOnBoardingEnded: () => { dispatch(actions.onBoardingEnded()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePhoto)

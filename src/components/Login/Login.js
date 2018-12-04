@@ -126,8 +126,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-        open: state.signIn.open,
-        loading: state.signIn.loading
+        open: state.auth.openSignIn,
+        loading: state.auth.loading
     }
 }
 

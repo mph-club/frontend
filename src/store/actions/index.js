@@ -1,9 +1,9 @@
 
 export {
-    onSingIn,
-    logout,
+    onSignIn,
+    onLogout,
     openSignIn,
-    signUp,
+    onSignUp,
     openSignUp,
     onBoardingGetStarted,
     onChangeEmail,
@@ -14,5 +14,7 @@ export {
     handleNext,
     onChangePhoneNumber,
     onValidatePhone,
-    onBoardingEnded
+    onBoardingEnded,
+    onCloseEndedDialog,
+    onAuthCheckState
 } from './auth';

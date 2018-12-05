@@ -8,12 +8,15 @@ import { StyledBackground, StyledExternalContainer } from './styles';
 import { palette } from '../../../theme';
 import StyledPrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 
+import * as actions from '../../../store/actions/index';
+
 const WelcomeEndedDialog = (props) => {
+
 
     return (
         <Dialog
             open={props.open}
-            onClose={this.handleClose}
+            onClose={() => props.handleClose()}
             aria-labelledby="responsive-dialog-title"
             style={{ backgroundColor: 'transparent' }}
         >
@@ -28,7 +31,7 @@ const WelcomeEndedDialog = (props) => {
                     <div style={{ maxWidth: '220px'}}>
                         <StyledPrimaryButton
                             backgroundcolor={palette.green}
-                            onClick={props.handleContinueExploring}
+                            onClick={() => props.handleClose()}
                             hovercolor='#2EBB57' style={{ width: '100%' }}>
                                 Continue exploring
                         </StyledPrimaryButton>
@@ -45,8 +48,14 @@ const WelcomeEndedDialog = (props) => {
 
 const mapStateToProps = state => {
     return {
-        open: state.auth.completed === 100,
+        open: state.auth.openWelcomeEndedDialog
     }
 }
 
-export default connect(mapStateToProps)(WelcomeEndedDialog)
+const mapDispatchToProps = dispatch => {
+    return {
+        handleClose: () => { dispatch( actions.onCloseEndedDialog() )}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeEndedDialog)

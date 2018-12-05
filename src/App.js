@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './App.css';
 import Toolbar from './components/Navigation/Toolbar/Toolbar';
-import InitialPage from './pages/InitialPage/InitialPage';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import SearchPage from './pages/SearchPage/SearchPage';
@@ -30,7 +30,13 @@ import WelcomeDialog from './components/SignUp/WelcomeDialog/WelcomeDialog';
 import ValidationWrapper from './components/SignUp/ValidationWrapper/ValidationWrapper';
 import WelcomeEndedDialog from './components/SignUp/WelcomeEndedDialog/WelcomeEndedDialog';
 
+import * as actions from './store/actions/index';
+
 class App extends Component {
+
+  componentWillMount() {
+    this.props.onChechAuthState();
+  }
 
   render() {
     return (
@@ -43,7 +49,7 @@ class App extends Component {
           <ValidationWrapper />
           <WelcomeEndedDialog />
           <Switch>
-            <Route exact path="/" component={InitialPage} />
+            <Route exact path="/" component={SearchPage} />
             <Route path="/search-page" component={SearchPage} />
             <Route path="/car-details" component={DetailPage} />
             <Route path="/user-details" component={UserDetails} />
@@ -71,4 +77,10 @@ class App extends Component {
   }
 }
 
-export default App
+const mapDispatchToProps = dispatch => {
+  return {
+    onChechAuthState: () => { dispatch(actions.onAuthCheckState())}
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);

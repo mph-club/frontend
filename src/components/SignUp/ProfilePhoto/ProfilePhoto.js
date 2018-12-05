@@ -8,13 +8,16 @@ import { StyledAvatar } from './styles';
 import avatar from '../../../assets/images/avatar.png';
 import StyledPrimaryButton from '../../UI/Buttons/PrimaryButton/PrimaryButton';
 import StyledSecondaryButton from '../../UI/Buttons/SecondayButton/SecondaryButton';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import { space, palette } from '../../../theme';
 import * as actions from '../../../store/actions/index';
 
 class ProfilePhoto extends Component {
 
     state = {
-        selectedPhoto: null
+        selectedPhoto: null,
+        loading: false
     }
 
     fileSelectedHandler = (event) => {
@@ -24,18 +27,28 @@ class ProfilePhoto extends Component {
     }
 
     fileUploadHandler = () => {
+
         const fd = new FormData();
         fd.append('photo', this.state.selectedPhoto, this.state.selectedPhoto.name)
 
         axios.defaults.headers.common['Authorization'] = this.props.accessToken;
         axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
-
-        axios.post('uploadUserPhoto',fd).then( response => {
+        axios.post('uploadUserPhoto', fd).then(response => {
+            this.toogleLoading()
             this.props.handleOnBoardingEnded()
-        }).catch( error => {
-            alert('Ops! Looks like something was wrong')
-            this.props.handleOnBoardingEnded()
+        }).catch(error => {
+            alert(error.message || JSON.stringify(error))
+            this.toogleLoading()
         });
+    }
+
+    toogleLoading = () => {
+        this.setState(prevState => { 
+            return {
+                ...prevState,
+                loading: !prevState.loading
+            }
+        })
     }
 
     render() {
@@ -62,7 +75,10 @@ class ProfilePhoto extends Component {
                         </div> :
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                             <StyledSecondaryButton onClick={() => this.fileInput.click()}>Change photo</StyledSecondaryButton>
-                            <StyledPrimaryButton style={{ marginLeft: space[3] }} onClick={this.fileUploadHandler}>Upload</StyledPrimaryButton>
+
+                            <StyledPrimaryButton style={{ marginLeft: space[3] }} onClick={this.fileUploadHandler}>
+                                {this.state.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Upload'}
+                            </StyledPrimaryButton>
                         </div>
                 }
                 <Typography
@@ -76,7 +92,7 @@ class ProfilePhoto extends Component {
 
 const mapStateToProps = state => {
     return {
-        accessToken: state.auth.accessToken
+        accessToken: state.auth.session.AccessToken
     }
 }
 

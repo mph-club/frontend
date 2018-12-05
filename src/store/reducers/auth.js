@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../shared/utility';
 
+
 const initialState = {
     openSignUp: false,
     openSignIn: false,
@@ -14,7 +15,12 @@ const initialState = {
     completed: 25,
     activeStep: 0,
     addingNumber: true,
-    accessToken: null,
+    session: {
+        IdToken: null,
+        AccessToken: null,
+        RefreshToken: null,
+        isValid: false,
+    },
 };
 
 const handleNext = state => {
@@ -25,11 +31,7 @@ const handleNext = state => {
     )
 }
 
-const handleToken = (result) => {
-    return {
-        accessToken: result.getAccessToken().getJwtToken() 
-    }
-}
+
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -41,6 +43,10 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { loading: false, error: action.error })
         case actionTypes.SIGNIN_SUCCESS:
             return updateObject(state, { loading: false, error: null, openSignIn: false })
+        case actionTypes.SIGNIN_AUTH_STATE_CHECKED:
+            return updateObject(state, { session: action.session })
+        case actionTypes.SIGNIN_LOGOUT: 
+            return updateObject(state, { })
 
         case actionTypes.SIGNUP_START:
             return updateObject(state, { error: null, loading: true })
@@ -61,7 +67,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SIGNUP_CONFIRM_EMAIL_FAILED:
             return updateObject(state, { loading: false, error: action.error })
         case actionTypes.SIGNUP_CONFIRM_EMAIL_SUCCEED:
-            return updateObject(state, { loading: false, error: null, password: null, accessToken: handleToken(action.result) })
+            return updateObject(state, { loading: false, error: null, password: null, session: action.session })
 
         case actionTypes.SIGNUP_HANDLE_NEXT_VALIDATION_STEP:
             return handleNext(state)
@@ -83,6 +89,8 @@ const reducer = (state = initialState, action) => {
             return updateObject( state, { loading: false, error: action.error })
         case actionTypes.SIGNUP_VALIDATE_PHONE_SUCCEED: 
             return updateObject( state, { loading: false, error: null })
+        case actionTypes.SIGNUP_CLOSE_ON_ENDED_DIALOG:
+            return updateObject(state, { openWelcomeEndedDialog: false })
         default:
             return state
     }

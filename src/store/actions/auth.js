@@ -3,34 +3,31 @@ import { CognitoUserPool, CognitoUser, CognitoUserAttribute, AuthenticationDetai
 
 import * as actionTypes from './actionTypes';
 
+///SIGN IN ACTION CREATORS
 export const signInStart = () => {
     return {
         type: actionTypes.SIGNIN_START
     };
 };
-
 export const openSignIn = (open) => {
     return {
         type: actionTypes.SIGNIN_OPEN,
         open: open
     };
 };
-
 export const signInSuccess = (token) => {
     return {
         type: actionTypes.SIGNIN_SUCCESS,
         idToken: token
     };
 };
-
 export const signInFail = (error) => {
     return {
         type: actionTypes.SIGNIN_FAIL,
         error: error
     };
 };
-
-export const onSingIn = (email, password) => {
+export const onSignIn = (email, password) => {
     return dispatch => {
 
         dispatch(signInStart());
@@ -58,6 +55,7 @@ export const onSingIn = (email, password) => {
 
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: (result) => {
+                dispatch(authStateChecked(handleSession(result)))
                 dispatch(signInSuccess())
             },
 
@@ -69,12 +67,56 @@ export const onSingIn = (email, password) => {
     };
 };
 
+///SIGN UP ACTION CREATORS
+export const openSignUp = (open) => {
+    return {
+        type: actionTypes.SIGNUP_OPEN,
+        open: open
+    }
+}
+export const onSignUp = (email, password) => {
+    return dispatch => {
+        dispatch(signUpStart())
+
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var dataEmail = {
+            Name: 'email',
+            Value: email
+        };
+
+        // var dataPhoneNumber = {
+        //     Name : 'phone_number',
+        //     Value : '+15555555555'
+        // }
+
+        var attributeEmail = new CognitoUserAttribute(dataEmail);
+        //var attributePhoneNumber = new CognitoUserAttribute(dataPhoneNumber);
+
+        var attributeList = [];
+        attributeList.push(attributeEmail);
+
+
+        var userPool = new CognitoUserPool(poolData);
+        userPool.signUp(email, password, attributeList, null, (err, result) => {
+
+            if (err) {
+                dispatch(signUpFail(err));
+                return;
+            }
+
+            dispatch(signUpSuccess(result.user, password));
+        })
+    }
+}
 export const signUpStart = () => {
     return {
         type: actionTypes.SIGNUP_START
     };
 };
-
 export const signUpSuccess = (user, password) => {
     return {
         type: actionTypes.SIGNUP_SUCCESS,
@@ -82,7 +124,6 @@ export const signUpSuccess = (user, password) => {
         password: password
     };
 };
-
 export const signUpFail = (error) => {
 
     alert(error.message || JSON.stringify(error))
@@ -93,90 +134,36 @@ export const signUpFail = (error) => {
     };
 };
 
-export const openSignUp = (open) => {
-    return {
-        type: actionTypes.SIGNUP_OPEN,
-        open: open
-    }
-}
-
+///SIGN UP ONBOARDING USERS
 export const onBoardingGetStarted = () => {
     return {
         type: actionTypes.SIGNUP_ON_BOARDING_GET_STARTED
     }
 }
 
-export const onBoardingEnded = () => {
-    return {
-        type: actionTypes.SIGNUP_ON_BOARDING_ENDED
-    }
-}
-
+///VALIDATING EMAIL ACTIONS
 export const onChangeEmail = () => {
     return {
         type: actionTypes.SIGNUP_CHANGE_EMAIL
     }
 }
-
 export const confirmEmailStart = () => {
     return {
         type: actionTypes.SIGNUP_CONFIRM_EMAIL_START
     }
 }
-
 export const confirmEmailFailed = (error) => {
     return {
         type: actionTypes.SIGNUP_CONFIRM_EMAIL_FAILED,
         error: error
     }
 }
-
-export const confirmEmailSucceed = (result) => {
+export const confirmEmailSucceed = (session) => {
     return {
         type: actionTypes.SIGNUP_CONFIRM_EMAIL_SUCCEED,
-        result: result
+        session: session
     }
 }
-
-export const handleNext = () => {
-    return {
-        type: actionTypes.SIGNUP_HANDLE_NEXT_VALIDATION_STEP
-    }
-}
-
-export const signAuthenticationFailed = () => {
-    return {
-        type: actionTypes.SIGNUP_AUTHENTICATION_FAILED
-    }
-}
-
-export const resendEmailCodeFailed = (error) => {
-    return {
-        type: actionTypes.SIGNUP_RESEND_EMAIL_CODE_FAILED,
-        error: error
-    }
-}
-
-export const onResendEmailCode = () => {
-
-    return (dispatch, getState) => {
-
-        const { user } = getState().auth
-
-        user.resendConfirmationCode((err, result) => {
-            if (err) {
-                dispatch(resendEmailCodeFailed(err))
-                return;
-            }
-
-            alert('A new 6-digits code was sent to ' + user.username);
-            dispatch({ type: actionTypes.SIGNUP_RESEND_EMAIL_CODE })
-            return
-        });
-    }
-
-}
-
 export const onConfirmEmail = (code) => {
 
     return (dispatch, getState) => {
@@ -203,7 +190,8 @@ export const onConfirmEmail = (code) => {
 
             user.authenticateUser(authenticationDetails, {
                 onSuccess: (result) => {
-                    dispatch(confirmEmailSucceed(result))
+
+                    dispatch(confirmEmailSucceed(handleSession(result)))
                     dispatch(handleNext())
                 },
                 onFailure: (err) => {
@@ -214,71 +202,70 @@ export const onConfirmEmail = (code) => {
         });
     }
 }
+export const handleNext = () => {
+    return {
+        type: actionTypes.SIGNUP_HANDLE_NEXT_VALIDATION_STEP
+    }
+}
+export const signAuthenticationFailed = () => {
+    return {
+        type: actionTypes.SIGNUP_AUTHENTICATION_FAILED
+    }
+}
+export const resendEmailCodeFailed = (error) => {
+    return {
+        type: actionTypes.SIGNUP_RESEND_EMAIL_CODE_FAILED,
+        error: error
+    }
+}
+export const onResendEmailCode = () => {
 
-export const signUp = (email, password) => {
-    return dispatch => {
-        dispatch(signUpStart())
+    return (dispatch, getState) => {
 
-        var poolData = {
-            UserPoolId: COGNITO.CONFIG.USER_POOL,
-            ClientId: COGNITO.CONFIG.CLIENT_ID
-        };
+        const { user } = getState().auth
 
-        var dataEmail = {
-            Name: 'email',
-            Value: email
-        };
-
-        var attributeEmail = new CognitoUserAttribute(dataEmail);
-
-        var attributeList = [];
-        attributeList.push(attributeEmail);
-
-        var userPool = new CognitoUserPool(poolData);
-        userPool.signUp(email, password, attributeList, null, (err, result) => {
-
+        user.resendConfirmationCode((err, result) => {
             if (err) {
-                dispatch(signUpFail(err));
+                dispatch(resendEmailCodeFailed(err))
                 return;
             }
 
-            dispatch(signUpSuccess(result.user, password));
-        })
+            alert('A new 6-digits code was sent to ' + user.username);
+            dispatch({ type: actionTypes.SIGNUP_RESEND_EMAIL_CODE })
+            return
+        });
     }
+
 }
 
+///ADDING PHONE NUMBER ACTIONS
 export const addPhoneNumberStarted = () => {
     return {
         type: actionTypes.SIGNUP_ADD_PHONE_START
     }
 }
-
 export const addPhoneNumberSucceed = () => {
     return {
         type: actionTypes.SIGNUP_ADD_PHONE_SUCCEED
     }
 }
-
 export const addPhoneNumberFailed = (error) => {
     return {
         type: actionTypes.SIGNUP_ADD_PHONE_FAILED,
         error: error
     }
 }
-
 export const resendPhoneCodeFailed = (error) => {
     return {
         type: actionTypes.SIGNUP_RESEND_PHONE_CODE_FAILED,
         error: error
     }
 }
-
 export const onChangePhoneNumber = () => {
     return {
         type: actionTypes.SIGNUP_CHANGE_PHONE_NUMBER
     }
 }
-
 export const onResendPhoneCode = (phoneNumber) => {
 
     return (dispatch, getState) => {
@@ -297,7 +284,6 @@ export const onResendPhoneCode = (phoneNumber) => {
         });
     }
 }
-
 export const onAddPhone = (phone) => {
     return (dispatch, getState) => {
 
@@ -333,26 +319,22 @@ export const onAddPhone = (phone) => {
         });
     }
 }
-
 export const validatePhoneStart = () => {
     return {
         type: actionTypes.SIGNUP_VALIDATE_PHONE_START
     }
 }
-
 export const validatePhoneFailed = (error) => {
     return {
         type: actionTypes.SIGNUP_VALIDATE_PHONE_FAILED,
         error: error
     }
 }
-
 export const validatePhoneSucceed = () => {
     return {
         type: actionTypes.SIGNUP_VALIDATE_PHONE_SUCCEED
     }
 }
-
 export const onValidatePhone = (code) => {
     return (dispatch, getState) => {
 
@@ -370,3 +352,94 @@ export const onValidatePhone = (code) => {
         });
     }
 }
+
+///SIGN UP ONBOARDING ENDED
+export const onBoardingEnded = () => {
+    return {
+        type: actionTypes.SIGNUP_ON_BOARDING_ENDED
+    }
+}
+
+///LOAGOUT AND SESSION VALIDATION ACTIONS
+export const authStateChecked = (session) => {
+    return {
+        type: actionTypes.SIGNIN_AUTH_STATE_CHECKED,
+        session: session
+    }
+}
+const handleSession = (session) => {
+    return {
+        IdToken: session ? session.getIdToken().getJwtToken() : null,
+        AccessToken: session ? session.getAccessToken().getJwtToken() : null,
+        RefreshToken: session ? session.getRefreshToken().getToken() : null,
+        isValid: session ? session.isValid() : false,
+    }
+}
+export const onAuthCheckState = () => {
+    return dispatch => {
+
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var userPool = new CognitoUserPool(poolData);
+        var cognitoUser = userPool.getCurrentUser();
+
+        if (cognitoUser != null) {
+
+            cognitoUser.getSession((err, session) => {
+                if (err) {
+                    dispatch(authStateChecked(handleSession(null)))
+                    return;
+                }
+                
+                dispatch(authStateChecked(handleSession(session)))
+            });
+        }
+    };
+}
+export const onCloseEndedDialog = () => {
+    return {
+        type: actionTypes.SIGNUP_CLOSE_ON_ENDED_DIALOG
+    }
+}
+export const onLogout = () => {
+
+    return dispatch => {
+
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var userPool = new CognitoUserPool(poolData);
+
+        var cognitoUser = userPool.getCurrentUser();
+
+        if (cognitoUser != null) {
+
+            cognitoUser.getSession((err, session) => {
+                if (err) {
+                    dispatch(authStateChecked(handleSession(null)))
+                }
+
+                if ( session.isValid() ) {
+                    cognitoUser.globalSignOut({
+                        onSucces: (message) => {
+                            dispatch(onAuthCheckState())
+                            dispatch({ type: actionTypes.SIGNIN_LOGOUT })
+            
+                        }, onFailure: (error) => {
+                            dispatch(authStateChecked(handleSession(null)))
+                            dispatch({ type: actionTypes.SIGNIN_LOGOUT })
+                        }
+                    });
+                } else {
+                    dispatch(onAuthCheckState())
+                }
+            });
+        }
+    }
+}
+

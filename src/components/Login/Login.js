@@ -134,7 +134,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         closeSignIn: () => { dispatch(actions.openSignIn(false)) },
-        handleSignIn: (email, password) => { dispatch(actions.onSingIn(email, password)) },
+        handleSignIn: (email, password) => { dispatch(actions.onSignIn(email, password)) },
         openSignUp: () => {
             dispatch(actions.openSignIn(false));
             dispatch(actions.openSignUp(true));

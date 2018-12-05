@@ -211,7 +211,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSignUp: (email, password) => dispatch(actions.signUp(email, password)),
+        onSignUp: (email, password) => dispatch(actions.onSignUp(email, password)),
         openSignUp: (open) => dispatch(actions.openSignUp(open)),
         openSignIn: () => { 
             dispatch(actions.openSignUp(false));

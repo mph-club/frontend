@@ -28,9 +28,10 @@ class ToolBar extends Component {
       } else if (this.props.location.pathname === '/host-dashboard') {
         buttons = <Button color="inherit" component={Link} to="/dashboard">Dashboard</Button>
       }
+
       buttons = <React.Fragment>
         {buttons}
-        <UserEntry userName={this.props.userName} />
+        <UserEntry/>
       </React.Fragment>
     } else {
       buttons = <React.Fragment>
@@ -54,6 +55,12 @@ class ToolBar extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    auth: state.auth.session.isValid
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     openSignUp: () => { dispatch(actions.openSignUp(true)) },
@@ -61,4 +68,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(ToolBar));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ToolBar));

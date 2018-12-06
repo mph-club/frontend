@@ -10,6 +10,11 @@ export const StyledGridList = styled(GridList)`
     }
 `
 
+export const ExternalContainer = styled.div`
+    max-width: 1350px;
+    margin: 0 auto;
+`
+
 export const StyledTitle = styled(Typography)`
     && {
         margin-top: ${space[5]};

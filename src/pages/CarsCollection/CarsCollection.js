@@ -4,7 +4,8 @@ import {
     StyledDivContainer,
     StyledGridList,
     StyledTitle,
-    StyledSection
+    StyledSection,
+    ExternalContainer
 } from './styles';
 import CarCard from '../../components/UI/CarCard/CarCard';
 import tileData from './tileData';
@@ -18,32 +19,34 @@ class CarsCollection extends Component {
     }
 
     handleCard = (cardId) => {
-        this.setState({ cardIdSelected: cardId});
+        this.setState({ cardIdSelected: cardId });
         this.props.history.push('/car-details');
     }
 
     render() {
         return (
             <StyledSection>
-                <StyledTitle variant="display1" color="primary">{this.props.title}</StyledTitle>
-                <StyledDivContainer>
-                    <StyledGridList spacing={4}>
-                        {tileData.map(tile => (
-                            <CarCard
-                                key={tile.id}
-                                image={tile.img}
-                                title={tile.title}
-                                price={tile.price}
-                                rate={tile.rate}
-                                handleCard={() => this.handleCard(tile.id)} />
-                        ))}
-                    </StyledGridList>
-                </StyledDivContainer>
-                <div style={{ marginTop: space[3] }}>
-                    <TextButton>View all {this.props.type}</TextButton>
-                    <span style={{ color: palette.grey01, marginLeft: space[1], marginRight: space[1] }}>or</span>
-                    <TextButton>View all Cars</TextButton>
-                </div>
+                <ExternalContainer>
+                    <StyledTitle variant="display1" color="primary">{this.props.title}</StyledTitle>
+                    <StyledDivContainer>
+                        <StyledGridList spacing={4}>
+                            {tileData.map(tile => (
+                                <CarCard
+                                    key={tile.id}
+                                    image={tile.img}
+                                    title={tile.title}
+                                    price={tile.price}
+                                    rate={tile.rate}
+                                    handleCard={() => this.handleCard(tile.id)} />
+                            ))}
+                        </StyledGridList>
+                    </StyledDivContainer>
+                    <div style={{ marginTop: space[3] }}>
+                        <TextButton>View all {this.props.type}</TextButton>
+                        <span style={{ color: palette.grey01, marginLeft: space[1], marginRight: space[1] }}>or</span>
+                        <TextButton>View all Cars</TextButton>
+                    </div>
+                </ExternalContainer>
             </StyledSection>
         );
     }

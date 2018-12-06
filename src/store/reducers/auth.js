@@ -31,10 +31,10 @@ const handleNext = state => {
     )
 }
 
-
-
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+
+        ///SIGN IN REDUCERS
         case actionTypes.SIGNIN_OPEN:
             return updateObject(state, { openSignIn: action.open })
         case actionTypes.SIGNIN_START:
@@ -45,9 +45,8 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { loading: false, error: null, openSignIn: false })
         case actionTypes.SIGNIN_AUTH_STATE_CHECKED:
             return updateObject(state, { session: action.session })
-        case actionTypes.SIGNIN_LOGOUT: 
-            return updateObject(state, { })
 
+        ///SIGN UP REDUCERS
         case actionTypes.SIGNUP_START:
             return updateObject(state, { error: null, loading: true })
         case actionTypes.SIGNUP_SUCCESS:
@@ -56,10 +55,12 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { error: action.error, loading: false })
         case actionTypes.SIGNUP_OPEN:
             return updateObject(state, { openSignUp: action.open })
+
+        ///SIGN UP ONBOARDING REDUCERS
         case actionTypes.SIGNUP_ON_BOARDING_GET_STARTED:
             return updateObject(state, { openWelcomeDialog: false, openValidationWrapper: true })
-        case actionTypes.SIGNUP_ON_BOARDING_ENDED:
-            return updateObject( state, { openValidationWrapper: false, openWelcomeEndedDialog: true })
+
+        ///EMAIL VALIDATION REDUCERS
         case actionTypes.SIGNUP_CHANGE_EMAIL:
             return updateObject(state, { openValidationWrapper: false, openSignUp: true })
         case actionTypes.SIGNUP_CONFIRM_EMAIL_START:
@@ -68,11 +69,13 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { loading: false, error: action.error })
         case actionTypes.SIGNUP_CONFIRM_EMAIL_SUCCEED:
             return updateObject(state, { loading: false, error: null, password: null, session: action.session })
+        case actionTypes.SIGNUP_AUTHENTICATION_FAILED:
+            return updateObject(state, { loading: false, error: null, openValidationWrapper: false })
 
         case actionTypes.SIGNUP_HANDLE_NEXT_VALIDATION_STEP:
             return handleNext(state)
-        case actionTypes.SIGNUP_AUTHENTICATION_FAILED:
-            return updateObject(state, { loading: false, error: null, openValidationWrapper: false })
+
+        ///PHONE VALIDATION REDUCERS
         case actionTypes.SIGNUP_ADD_PHONE_START:
             return updateObject(state, { loading: true, error: null })
         case actionTypes.SIGNUP_ADD_PHONE_SUCCEED:
@@ -83,12 +86,15 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { error: action.error })
         case actionTypes.SIGNUP_CHANGE_PHONE_NUMBER:
             return updateObject(state, { loading: false, error: null, addingNumber: true })
-        case actionTypes.SIGNUP_VALIDATE_PHONE_START: 
-            return updateObject( state, { loading: true, error: null })
-        case actionTypes.SIGNUP_VALIDATE_PHONE_FAILED: 
-            return updateObject( state, { loading: false, error: action.error })
-        case actionTypes.SIGNUP_VALIDATE_PHONE_SUCCEED: 
-            return updateObject( state, { loading: false, error: null })
+        case actionTypes.SIGNUP_VALIDATE_PHONE_START:
+            return updateObject(state, { loading: true, error: null })
+        case actionTypes.SIGNUP_VALIDATE_PHONE_FAILED:
+            return updateObject(state, { loading: false, error: action.error })
+        case actionTypes.SIGNUP_VALIDATE_PHONE_SUCCEED:
+            return updateObject(state, { loading: false, error: null })
+            
+        case actionTypes.SIGNUP_ON_BOARDING_ENDED:
+            return updateObject(state, { openValidationWrapper: false, openWelcomeEndedDialog: true })
         case actionTypes.SIGNUP_CLOSE_ON_ENDED_DIALOG:
             return updateObject(state, { openWelcomeEndedDialog: false })
         default:

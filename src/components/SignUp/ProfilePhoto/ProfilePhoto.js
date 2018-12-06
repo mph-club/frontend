@@ -28,6 +28,7 @@ class ProfilePhoto extends Component {
 
     fileUploadHandler = () => {
 
+        this.toogleLoading()
         const fd = new FormData();
         fd.append('photo', this.state.selectedPhoto, this.state.selectedPhoto.name)
 

@@ -18,3 +18,10 @@ export {
     onCloseEndedDialog,
     onAuthCheckState
 } from './auth';
+
+export {
+    onAccountFetchInfo,
+    openPhoneValidation,
+    onResendPhoneCodeFromAccount,
+    onValidatePhoneFromAccount
+} from './account';

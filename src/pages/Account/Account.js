@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Footer from '../../components/Navigation/Footer/Footer';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -17,6 +19,7 @@ import {
 import IconButton from '@material-ui/core/IconButton';
 import ContactInfo from '../../components/AccountComponents/ContactInfo/ContactInfo';
 import TransactionHistory from '../../components/AccountComponents/TransactionHistory/TransactionHistory';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Account extends Component {
 
@@ -32,9 +35,18 @@ class Account extends Component {
 
         let content = null
 
+        const circularProgress = <div style={{ 
+            margin: '12px auto',
+            justifyContent: 'space-between',
+            display: 'flex',
+            maxWidth: 'fit-content'
+         }}>
+            <CircularProgress size={40} style={{ color: palette.green }} />
+        </div>
+
         switch (this.state.value) {
             case 'contactInfo':
-                content = <ContactInfo />
+                content = this.props.loading ? circularProgress : <ContactInfo />
                 break;
             case 'paymentInfo':
 
@@ -62,7 +74,7 @@ class Account extends Component {
                                             <CameraIcon fontSize='large' />
                                         </IconButton>
                                     </StyledAvatarWrapper>
-                                    <div style={{ marginTop: `${space[3]}`}}>
+                                    <div style={{ marginTop: `${space[3]}` }}>
                                         <Typography variant="title" component="p" align='center' >Mike L.</Typography>
                                         <Typography variant="body1" component="p" align='center' style={{ color: palette.grey02 }}>Member since Jan 2018</Typography>
                                         <div style={{ textAlign: 'center', marginTop: space[2], marginBottom: space[3] }}>
@@ -78,7 +90,7 @@ class Account extends Component {
                                             variant="body2"
                                             style={{
                                                 textTransform: 'uppercase',
-                                                color: (this.state.value === 'contactInfo') ? palette.green : palette.grey02, 
+                                                color: (this.state.value === 'contactInfo') ? palette.green : palette.grey02,
                                                 fontWeight: (this.state.value === 'contactInfo') ? 900 : 600,
                                             }}
                                             component="p">Contact Info</Typography>
@@ -90,11 +102,11 @@ class Account extends Component {
                                         onClick={() => this.handleListItemClick('paymentInfo')}>
                                         <Typography
                                             variant="body2"
-                                            style={{ 
+                                            style={{
                                                 textTransform: 'uppercase',
-                                                color: (this.state.value === 'paymentInfo') ? palette.green : palette.grey02, 
+                                                color: (this.state.value === 'paymentInfo') ? palette.green : palette.grey02,
                                                 fontWeight: (this.state.value === 'paymentInfo') ? 900 : 600
-                                             }}
+                                            }}
                                             component="p">Payment Info</Typography>
                                     </StyledListItem>
                                     <StyledListItem
@@ -104,9 +116,9 @@ class Account extends Component {
                                         onClick={() => this.handleListItemClick('transactionHistory')}>
                                         <Typography
                                             variant="body2"
-                                            style={{ 
+                                            style={{
                                                 textTransform: 'uppercase',
-                                                color: (this.state.value === 'transactionHistory') ? palette.green : palette.grey02, 
+                                                color: (this.state.value === 'transactionHistory') ? palette.green : palette.grey02,
                                                 fontWeight: (this.state.value === 'transactionHistory') ? 900 : 600
                                             }}
                                             component="p">Transactions</Typography>
@@ -128,4 +140,12 @@ class Account extends Component {
     }
 }
 
-export default Account
+const mapStateToProps = state => {
+    return {
+        accessToken: state.auth.session.AccessToken,
+        user: state.account.user,
+        loading: state.account.loading
+    }
+}
+
+export default connect(mapStateToProps)(Account)

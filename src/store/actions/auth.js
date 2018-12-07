@@ -390,13 +390,10 @@ export const onAuthCheckState = () => {
 
             cognitoUser.getSession((err, session) => {
                 if (err) {
-                    console.log('[error getting a session]')
                     dispatch(authStateChecked(handleSession(null)))
                     return;
                 }
                 
-                console.log(session)
-                console.log(cognitoUser)
                 dispatch(authStateChecked(handleSession(session)))
             });
         }

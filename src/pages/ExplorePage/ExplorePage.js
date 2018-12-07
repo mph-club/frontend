@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import {
     StyledHeader,
@@ -12,8 +13,28 @@ import ListVehicleBanner from '../../components/ListingDetailsPageComponents/Lis
 import Footer from '../../components/Navigation/Footer/Footer';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
 
-class SearchPage extends Component {
+import * as actions from '../../store/actions/index';
+
+class ExplorePage extends Component {
+
+    componentWillMount() {
+        this.props.handleFetchInfo();
+    }
+
     render() {
+
+        let cars = null
+        const collections = this.props.data
+
+        if ( collections ) {
+            cars = Object.keys(collections).map( (collectionKey, index) => {
+                return <CarsCollection 
+                            key={index} 
+                            title={collectionKey} 
+                            items={collections[collectionKey]}/>
+            })
+        }
+
         return (
             <React.Fragment>
                 <StyledHeader>
@@ -28,20 +49,8 @@ class SearchPage extends Component {
                             <SearchBar />
                         </StyledSearchBarContainer>
                     </StyledContainer>
-                    
                 </StyledHeader>
-                <CarsCollection 
-                    title="Sedans"
-                    type="Sedans"
-                />
-                <CarsCollection 
-                    title="SUV's" 
-                    type="SUV's"
-                />
-                <CarsCollection 
-                    title="Exotics"
-                    type="Exotics" 
-                />
+                {cars}
                 <ListVehicleBanner />
                 <Footer/>
             </React.Fragment>
@@ -49,4 +58,18 @@ class SearchPage extends Component {
     }
 }
 
-export default withRouter(SearchPage)
+const mapStateToProps = state => {
+    return {
+        loading: state.explore.loading,
+        error: state.explore.error,
+        data: state.explore.data
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        handleFetchInfo: () => { dispatch(actions.onExploreFetchInfo())}
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ExplorePage))

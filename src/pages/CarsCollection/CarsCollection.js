@@ -8,7 +8,7 @@ import {
     ExternalContainer
 } from './styles';
 import CarCard from '../../components/UI/CarCard/CarCard';
-import tileData from './tileData';
+
 import TextButton from '../../components/UI/Buttons/TextButton/TextButton';
 import { space, palette } from '../../theme';
 
@@ -30,19 +30,18 @@ class CarsCollection extends Component {
                     <StyledTitle variant="display1" color="primary">{this.props.title}</StyledTitle>
                     <StyledDivContainer>
                         <StyledGridList spacing={4}>
-                            {tileData.map(tile => (
+                            {this.props.items.map( item => (
                                 <CarCard
-                                    key={tile.id}
-                                    image={tile.img}
-                                    title={tile.title}
-                                    price={tile.price}
-                                    rate={tile.rate}
-                                    handleCard={() => this.handleCard(tile.id)} />
+                                    key={item.id}
+                                    image={item.thumbnails[2]}
+                                    title={item.make + ' ' + item.model + ' ' + item.year}
+                                    price={item.price}
+                                    handleCard={() => this.handleCard(item.id)} />
                             ))}
                         </StyledGridList>
                     </StyledDivContainer>
                     <div style={{ marginTop: space[3] }}>
-                        <TextButton>View all {this.props.type}</TextButton>
+                        <TextButton>View all {this.props.title}</TextButton>
                         <span style={{ color: palette.grey01, marginLeft: space[1], marginRight: space[1] }}>or</span>
                         <TextButton>View all Cars</TextButton>
                     </div>

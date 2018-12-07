@@ -16,7 +16,7 @@ import * as actions from '../../../store/actions/index';
 class ToolBar extends Component {
 
   logoClicked = () => {
-    this.props.history.replace('/search-page')
+    this.props.history.replace('/')
   }
 
   render() {

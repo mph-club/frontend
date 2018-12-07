@@ -6,7 +6,7 @@ import './App.css';
 import Toolbar from './components/Navigation/Toolbar/Toolbar';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
-import SearchPage from './pages/SearchPage/SearchPage';
+import Explore from './pages/ExplorePage/ExplorePage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import UserDetails from './components/UserDetails/UserDetails';
 import Checkout from './components/DetailPageComponents/Checkout/Checkout';
@@ -51,8 +51,8 @@ class App extends Component {
           <ValidationWrapper />
           <WelcomeEndedDialog />
           <Switch>
-            <Route exact path="/" component={SearchPage} />
-            <Route path="/search-page" component={SearchPage} />
+            <Route exact path="/" component={Explore} />
+            <Route path="/explore" component={Explore} />
             <Route path="/car-details" component={DetailPage} />
             <Route path="/user-details" component={UserDetails} />
             <Route path="/checkout" component={Checkout} />

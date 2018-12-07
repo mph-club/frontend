@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -15,7 +15,7 @@ import avatar from '../../../assets/images/avatar.png';
 import * as actions from '../../../store/actions/index';
 
 
-class UserEntry extends Component {
+class UserEntry extends PureComponent {
 
     state = {
         open: false,
@@ -44,6 +44,7 @@ class UserEntry extends Component {
 
     render() {
         const { open } = this.state;
+        const { user } = this.props
         const DashboardLink = props => <Link to="/dashboard" {...props} />
         const AccountLink = props => <Link to="/account" {...props} />
 
@@ -58,9 +59,9 @@ class UserEntry extends Component {
                     aria-owns={open ? 'menu-list-grow' : null}
                     aria-haspopup="true"
                     onClick={this.handleToggle}>
-                    { this.props.user.firstName ? this.props.user.firstName : 'Menu'}
+                    { user.firstName ? user.firstName : 'Menu'}
                     <StyledAvatar 
-                        src={avatar} 
+                        src={user.profilePhoto ? user.profilePhoto : null} 
                         alt='user profile'/>
                 </Button>
                 <Popper

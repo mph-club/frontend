@@ -29,21 +29,16 @@ const CarCard = (props) => {
 					/>
 				</CardActionArea>
 				<StyledCardActions>
-					<StyledPriceLayout>
-						<StyledDollarSign>$</StyledDollarSign><StyledPrice>{props.price}</StyledPrice><StyledPerDay>/per day</StyledPerDay>
-					</StyledPriceLayout>
+					{props.price ? 
+						<StyledPriceLayout>
+							<StyledDollarSign>$</StyledDollarSign>
+							<StyledPrice>{props.price}</StyledPrice>
+							<StyledPerDay>/per day</StyledPerDay>
+						</StyledPriceLayout> : null}
 					<div>
-						<div>
-							<Typography variant="body2">4 trips</Typography>
-						</div>
-						<div>
-							<RateStars rate={props.rate}/>
-						</div>
-						<div>
-							<Typography variant="body1" style={{color: `${CustomTheme.palette.grey02}`}}>
-								8 mi
-							</Typography>
-						</div>
+						<Typography variant="body2">{props.trips}</Typography>
+						{props.rate ? <RateStars rate={props.rate} /> : null}
+						<Typography variant="body1" style={{ color: `${CustomTheme.palette.grey02}` }}>{props.distance}</Typography>
 					</div>
 				</StyledCardActions>
 			</StyledCard>

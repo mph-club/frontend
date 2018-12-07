@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import GridList from '@material-ui/core/GridList';
 import {space} from '../../theme';
 import { Typography } from '@material-ui/core';

@@ -30,7 +30,7 @@ class ProfilePhoto extends Component {
 
         this.toogleLoading()
         const fd = new FormData();
-        fd.append('photo', this.state.selectedPhoto, this.state.selectedPhoto.name)
+        fd.append('photo', this.state.selectedPhoto, this.state.selectedPhoto.name.replace(/\s/g, ''))
 
         axios.defaults.headers.common['Authorization'] = this.props.accessToken;
         axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';

@@ -204,7 +204,7 @@ class DetailPage extends Component {
                     </Grid>
                 </StyledGridContainer>
                 <div style={{marginBottom:space[4]}}>
-                    <CarsCollection title="You might also like" />
+                    {/* <CarsCollection title="You might also like" /> */}
                 </div>
                 <ReportListing
                     openForm={this.state.reportListing}

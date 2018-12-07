@@ -40,6 +40,7 @@ export const StyledCardActions = styled(CardActions)`
 
 export const StyledTitle = styled.h1`
   && {
+    margin-left: 2px;
     font-size: 1.2rem;
   }
 `

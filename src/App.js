@@ -29,6 +29,7 @@ import Account from './pages/Account/Account';
 import WelcomeDialog from './components/SignUp/WelcomeDialog/WelcomeDialog';
 import ValidationWrapper from './components/SignUp/ValidationWrapper/ValidationWrapper';
 import WelcomeEndedDialog from './components/SignUp/WelcomeEndedDialog/WelcomeEndedDialog';
+import ConfirmUser from './components/Login/ConfirmUser/ConfirmUser';
 
 import * as actions from './store/actions/index';
 
@@ -44,6 +45,7 @@ class App extends Component {
         <Toolbar />
         <main>
           <Login />
+          <ConfirmUser/>
           <SignUp />
           <WelcomeDialog />
           <ValidationWrapper />

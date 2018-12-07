@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
+import { withRouter } from 'react-router-dom';
 
 import {
     StyleButton,
@@ -14,11 +15,9 @@ class SearchBar extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        if (this.props.location.pathname === '/search-page') { 
-            this.props.history.push('/filter');
-        } 
+        this.props.history.push('/filter');
     }
-    
+
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
@@ -69,7 +68,7 @@ class SearchBar extends Component {
                                     </option>
                                 ))}</TextField>
                             </div>
-    
+
                         </div>
                         <StyledSlantedDivider />
                         <div style={{ display: 'block' }}>
@@ -102,16 +101,16 @@ class SearchBar extends Component {
                                 ))}</TextField>
                             </div>
                         </div>
-    
+
                     </StyledPaper>
-                    <div style={{display: 'flex', alignSelf:'center'}}>
+                    <div style={{ display: 'flex', alignSelf: 'center' }}>
                         <StyleButton type="submit">Search</StyleButton>
                     </div>
-    
+
                 </div>
             </form>
         );
     }
 }
 
-export default SearchBar
+export default withRouter(SearchBar)

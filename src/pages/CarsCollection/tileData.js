@@ -17,18 +17,6 @@ const tileData = [
         title: 'BMW I3',
         price: '30',
         rate: 2
-    }, {
-        id: '1asdfasfdq23',
-        img: 'https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/totR6CBQQ1qkbq81qjCOgg.1440x700.jpg',
-        title: 'BMW Serie 5',
-        price: '48',
-        rate: 4
-    }, {
-        id: '123qwe23',
-        img: 'https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/6TEUkndvSRqBU7rn_1CbAw.1440x700.jpg',
-        title: 'Fiat 500',
-        price: '25',
-        rate: 5
     }
 ];
 

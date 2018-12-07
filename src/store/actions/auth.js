@@ -21,10 +21,12 @@ export const signInSuccess = (token) => {
         idToken: token
     };
 };
-export const signInFail = (error) => {
+export const signInFail = (user, password, error) => {
     return {
         type: actionTypes.SIGNIN_FAIL,
-        error: error
+        error: error,
+        user: user, 
+        password: password
     };
 };
 export const onSignIn = (email, password) => {
@@ -60,8 +62,7 @@ export const onSignIn = (email, password) => {
             },
 
             onFailure: (error) => {
-                alert(error.message || JSON.stringify(error))
-                dispatch(signInFail(error))
+                dispatch(signInFail(cognitoUser, password, error))
             },
         });
     };
@@ -190,7 +191,6 @@ export const onConfirmEmail = (code) => {
 
             user.authenticateUser(authenticationDetails, {
                 onSuccess: (result) => {
-
                     dispatch(confirmEmailSucceed(handleSession(result)))
                     dispatch(handleNext())
                 },
@@ -390,10 +390,13 @@ export const onAuthCheckState = () => {
 
             cognitoUser.getSession((err, session) => {
                 if (err) {
+                    console.log('[error getting a session]')
                     dispatch(authStateChecked(handleSession(null)))
                     return;
                 }
                 
+                console.log(session)
+                console.log(cognitoUser)
                 dispatch(authStateChecked(handleSession(session)))
             });
         }

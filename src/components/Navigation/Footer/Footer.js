@@ -10,13 +10,13 @@ import { CustomTheme } from '../../../theme';
 import {
     StyledFooter,
     StyledDiv,
-    StyledHeadLine,
     StyledSocialUl,
     StyledFooterItemOne,
     StyledFooterItemTwo,
     StyledDivTwo,
     StyleA
 } from './styles';
+import Logo from '../../UI/Logo/Logo';
 
 
 const Footer = () => {
@@ -25,7 +25,7 @@ const Footer = () => {
             <Grid container spacing={24}>
                 <Grid item xs={12} sm={6}>
                     <StyledFooterItemOne>
-                        <StyledHeadLine variant="headline">mph club</StyledHeadLine>
+                        <Logo/>
                         <StyledFooterItemTwo>
                             <Typography variant="subheading" style={{color: CustomTheme.palette.white}} gutterBottom>
                                 mph club

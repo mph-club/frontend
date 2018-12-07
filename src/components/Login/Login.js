@@ -21,35 +21,35 @@ import {
 } from './styles';
 import { palette } from '../../theme';
 
-import FormHelper from '../../helpers/Login/formValidator';
 import * as actions from '../../store/actions/index';
 
 
 class Login extends Component {
 
     state = {
-        email: {
-            value: "",
-            error: false,
-            message: "",
-        },
-        password: {
-            value: "",
-            error: false,
-            message: "",
-        }
+        email: "",
+        password: ""
     }
 
     handleLogin = () => {
+        this.props.handleSignIn(this.state.email, this.state.password)
+    }
 
-        if (FormHelper.ValidateForm(this)) {
-            this.props.handleSignIn(this.state.email.value, this.state.password.value)
-        } else {
-            alert('Ops! Looks like something was wrong');
+    onChange = (event) => {
+        if (event.target) {
+            this.setState({
+                ...this.state,
+                [event.target.id]: event.target.value
+            })
         }
     }
 
+    handleConfirm = () => {
+
+    }
+
     render() {
+
         return (
             <Modal
                 aria-labelledby="simple-modal-title"
@@ -75,16 +75,14 @@ class Login extends Component {
                             <Input
                                 id="email"
                                 name="email"
+                                error={this.props.error !== null}
                                 autoComplete="email"
                                 autoFocus
-                                onChange={(event) => this.setState({
-                                    email: {
-                                        ...this.state.email,
-                                        value: event.target.value,
-                                    }
-                                }
-                                )} />
+                                onChange={(event) => this.onChange(event)} />
                         </FormControl>
+                        <div style={{ display: 'flex' }}>
+                            <Typography variant="body1" component='p' color='error'>{this.props.error ? this.props.error.message + ' ' : null}</Typography>
+                        </div>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="password">Password</InputLabel>
                             <Input
@@ -92,19 +90,12 @@ class Login extends Component {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
-                                onChange={(event) => this.setState({
-                                    password: {
-                                        ...this.state.email,
-                                        value: event.target.value,
-                                    }
-                                }
-                                )}
+                                onChange={(event) => this.onChange(event)}
                             />
                         </FormControl>
                         <StyledFooter>
                             <StyledFooterButtonLayout>
                                 <StyledPrimaryButton
-                                    fullWidth
                                     variant="raised"
                                     color="primary"
                                     onClick={() => this.handleLogin()}
@@ -127,7 +118,8 @@ class Login extends Component {
 const mapStateToProps = state => {
     return {
         open: state.auth.openSignIn,
-        loading: state.auth.loading
+        loading: state.auth.loading,
+        error: state.auth.error
     }
 }
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { space } from '../../../theme';
 
 export const StyledHeadLine = styled(Typography)`
     && {
@@ -74,6 +75,7 @@ export const StyledFooterItemTwo = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 4px;
+    margin-left: ${space[3]};
 `
 export const StyleA = styled.a`
     img {

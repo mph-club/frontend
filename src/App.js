@@ -4,34 +4,50 @@ import { connect } from 'react-redux';
 
 import './App.css';
 import Toolbar from './components/Navigation/Toolbar/Toolbar';
-import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
+import Login from './components/Login/Login';
 import Explore from './pages/ExplorePage/ExplorePage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import UserDetails from './components/UserDetails/UserDetails';
-import Checkout from './components/DetailPageComponents/Checkout/Checkout';
-import Dashboard from './pages/Dashboard/Dashboard';
 import TripDetailsPage from './pages/TripDetailsPage/TripDetailsPage';
-import HostDashboard from './pages/HostDashboard/HostDashboard';
 import DeclineForm from './components/TripsDetailsComponents/DeclineForm/DeclineForm';
 import ListingDetailsPage from './pages/ListingDetailsPage/ListingDetailsPage';
 import Photos from './components/ListingDetailsPageComponents/Photos/Photos';
 import DeliverAndAirport from './components/ListingDetailsPageComponents/DeliverAndAirport/DeliverAndAirport';
 import CarLocation from './components/ListingDetailsPageComponents/CarLocation/CarLocation';
 import TripPreference from './components/ListingDetailsPageComponents/TripPreference/TripPreference';
-import FilterPage from './pages/FilterPage/FilterPage';
 import TotalCost from './components/TripsDetailsComponents/TotalCost/TotalCost';
 import CancelTrip from './components/TripsDetailsComponents/CancelTrip/CancelTrip';
 import CancellationReview from './components/TripsDetailsComponents/CancellationReview/CancellationReview';
 import ChangeTrip from './components/TripsDetailsComponents/ChangeTrip/ChangeTrip';
 import RequestChange from './components/TripsDetailsComponents/RequestChange/RequestChange';
-import Account from './pages/Account/Account';
 import WelcomeDialog from './components/SignUp/WelcomeDialog/WelcomeDialog';
 import ValidationWrapper from './components/SignUp/ValidationWrapper/ValidationWrapper';
 import WelcomeEndedDialog from './components/SignUp/WelcomeEndedDialog/WelcomeEndedDialog';
 import ConfirmUser from './components/Login/ConfirmUser/ConfirmUser';
 
 import * as actions from './store/actions/index';
+import asyncComponent from './hoc/asyncComponent/asyncComponent';
+
+const asyncAccount = asyncComponent(() => {
+  return import('./pages/Account/Account')
+})
+
+const asyncDashboard = asyncComponent(() => {
+  return import('./pages/Dashboard/Dashboard')
+})
+
+const asyncHostDashboard = asyncComponent(() => {
+  return import('./pages/HostDashboard/HostDashboard')
+})
+
+const asyncCheckout = asyncComponent(() => {
+  return import('./components/DetailPageComponents/Checkout/Checkout')
+})
+
+const asyncFilterPage = asyncComponent(() => {
+  return import('./pages/FilterPage/FilterPage')
+})
 
 class App extends Component {
 
@@ -44,7 +60,7 @@ class App extends Component {
       <React.Fragment>
         <Toolbar />
         <main>
-          <Login />
+          <Login/>
           <ConfirmUser/>
           <SignUp />
           <WelcomeDialog />
@@ -52,12 +68,11 @@ class App extends Component {
           <WelcomeEndedDialog />
           <Switch>
             <Route exact path="/" component={Explore} />
-            <Route path="/explore" component={Explore} />
             <Route path="/car-details" component={DetailPage} />
             <Route path="/user-details" component={UserDetails} />
-            <Route path="/checkout" component={Checkout} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/host-dashboard" component={HostDashboard} />
+            <Route path="/checkout" component={asyncCheckout} />
+            <Route path="/dashboard" component={asyncDashboard} />
+            <Route path="/host-dashboard" component={asyncHostDashboard} />
             <Route path="/trip-details-page" component={TripDetailsPage} />
             <Route path="/decline-trip" component={DeclineForm} />
             <Route path="/listing-pending" component={ListingDetailsPage} />
@@ -65,13 +80,13 @@ class App extends Component {
             <Route path="/delivery-and-airport" component={DeliverAndAirport} />
             <Route path="/car-location" component={CarLocation} />
             <Route path="/trip-preference" component={TripPreference} />
-            <Route path="/filter" component={FilterPage} />
+            <Route path="/filter" component={asyncFilterPage} />
             <Route path="/total-cost" component={TotalCost} />
             <Route path="/cancel-trip" component={CancelTrip} />
             <Route path="/cancellation-review" component={CancellationReview} />
             <Route path="/change-trip" component={ChangeTrip} />
             <Route path="/request-change" component={RequestChange} />
-            <Route path="/account" component={Account} />
+            <Route path="/account" component={asyncAccount} />
           </Switch>
         </main>
       </React.Fragment>

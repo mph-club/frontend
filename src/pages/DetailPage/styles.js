@@ -70,6 +70,7 @@ export const StyledDescriptionIconsLayout = styled.div`
 `
 
 export const StyledDescriptionLayout = styled.div`
+    margin-top: ${space[3]};
     padding-bottom: ${space[4]};
 `
 

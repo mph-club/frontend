@@ -27,9 +27,6 @@ const Footer = () => {
                     <StyledFooterItemOne>
                         <Logo/>
                         <StyledFooterItemTwo>
-                            <Typography variant="subheading" style={{color: CustomTheme.palette.white}} gutterBottom>
-                                mph club
-                            </Typography>
                             <FooterNavigationItems />
                         </StyledFooterItemTwo>
                     </StyledFooterItemOne>

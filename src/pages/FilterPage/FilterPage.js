@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import {
     StyledHeaderContainer,
     StyledFilterContainer,
@@ -19,7 +21,6 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { space, palette } from '../../theme';
 import { carTypes, sortOptions, vehicleMakes } from '../../shared/constants';
-import tileData from '../CarsCollection/tileData';
 import GridList from '@material-ui/core/GridList';
 import CarCardSmall from '../../components/UI/CarCard/CarCardSmall';
 import LocationIcon from '@material-ui/icons/LocationCity';
@@ -29,6 +30,8 @@ import ReducedSearchComponents from './ReducedSearchComponents/ReducedSearchComp
 import Fade from '@material-ui/core/Fade';
 import SelectTextField from '../../components/UI/FormElements/SelectTextField/SelectTextField';
 import RangeSlider from '../../components/UI/FormElements/RangeSlider/RangeSlider';
+
+import * as actions from '../../store/actions/index';
 
 class FilterPage extends Component {
 
@@ -63,8 +66,14 @@ class FilterPage extends Component {
         this.props.history.push('/car-details');
     }
 
+    componentWillMount() {
+        this.props.handleGetVehicles();
+    }
+
 
     render() {
+
+        const { vehicles } = this.props
 
         return (
             <React.Fragment>
@@ -99,18 +108,16 @@ class FilterPage extends Component {
 
                     {this.state.reducedSearchBar ?
                         <React.Fragment>
-                            <Fade in={this.state.reducedSearchBar} timeout={{enter: 500, exit: 500}}>
+                            <Fade in={this.state.reducedSearchBar} timeout={{ enter: 500, exit: 500 }}>
                                 <StyledReducedSearchContainer>
-                                <ReducedSearchComponents
-
-                                />
-                                    </StyledReducedSearchContainer>
-                                </Fade>
-                        <StyledBackdrop
-                            open={this.state.reducedSearchBar}
-                            onClick={this.toggleDrawer} />
+                                    <ReducedSearchComponents />
+                                </StyledReducedSearchContainer>
+                            </Fade>
+                            <StyledBackdrop
+                                open={this.state.reducedSearchBar}
+                                onClick={this.toggleDrawer} />
                         </React.Fragment> :
-                    null}
+                        null}
 
                 </StyledHeaderContainer>
 
@@ -201,17 +208,19 @@ class FilterPage extends Component {
                         </form>
                     </StyledFilterContainer>
                     <StyledRightContainer>
-                        <GridList spacing={3}>
-                            {tileData.map(tile => (
-                                <CarCardSmall
-                                    key={tile.id}
-                                    image={tile.img}
-                                    title={tile.title}
-                                    price={tile.price}
-                                    rate={tile.rate}
-                                    handleCard={() => this.handleCard(tile.id)} />
-                            ))}
-                        </GridList>
+                        {
+                            vehicles ?
+                                <GridList spacing={3}>{
+                                    vehicles.map((vehicle, index) => {
+                                        return <CarCardSmall
+                                            key={index}
+                                            id={vehicle.id}
+                                            image={vehicle.thumbnails[2] ? vehicle.thumbnails[2] : vehicle.thumbnails[0] }
+                                            title={vehicle.make + ' ' + vehicle.model + ' ' + vehicle.year}
+                                        />
+                                    })
+                                }
+                                </GridList> : null}
                     </StyledRightContainer>
                 </StyledExternalContainer>
             </React.Fragment>
@@ -219,4 +228,19 @@ class FilterPage extends Component {
     }
 }
 
-export default FilterPage
+const mapStateToProps = state => {
+    return {
+        loading: state.filter.loading,
+        error: state.filter.error,
+        count: state.filter.count,
+        vehicles: state.filter.vehicles
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        handleGetVehicles: () => { dispatch(actions.onFilterGetVehicles()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterPage)

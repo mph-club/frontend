@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import GridListTile from '@material-ui/core/GridListTile';
 import Typography from '@material-ui/core/Typography';
@@ -15,40 +15,41 @@ import {
 	StyledCardMediaSmall
 } from './styles';
 
-const CarCardSmall = (props) => {
+class CarCardSmall extends PureComponent {
 
+	handleCardClicked = () => {
+		this.props.onCarSelected(this.props.id)
+		this.props.history.push('/car-details')
+	}
 
-	return (
-		<GridListTile key={props.key}>
-			<StyledCard>
-				<CardActionArea onClick={() => props.handleCard()}>
-					<StyledTitle>{props.title}</StyledTitle>
-					<StyledCardMediaSmall
-						image={props.image}
-						title={props.title}
-					/>
-				</CardActionArea>
-				<StyledCardActions>
-					<StyledPriceLayout>
-						<StyledDollarSign>$</StyledDollarSign><StyledPrice>{props.price}</StyledPrice><StyledPerDay>/per day</StyledPerDay>
-					</StyledPriceLayout>
-					<div>
+	render() {
+		return (
+			<GridListTile key={this.props.key}>
+				<StyledCard>
+					<CardActionArea onClick={this.handleCardClicked}>
+						<StyledTitle>{this.props.title}</StyledTitle>
+						<StyledCardMediaSmall
+							image={this.props.image}
+							title={this.props.title}
+						/>
+					</CardActionArea>
+					<StyledCardActions>
+						{
+							this.props.price ? <StyledPriceLayout>
+								<StyledDollarSign>$</StyledDollarSign><StyledPrice>{this.props.price}</StyledPrice><StyledPerDay>/per day</StyledPerDay>
+							</StyledPriceLayout> : null
+						}
 						<div>
-							<Typography variant="body2">4 trips</Typography>
+							<Typography variant="body2">{this.props.trips}</Typography>
+							{this.props.rate ? <RateStars rate={this.props.rate} /> : null}
+							<Typography variant="body1" style={{ color: `${CustomTheme.palette.grey02}` }}>{this.props.distance}</Typography>
 						</div>
-						<div>
-							<RateStars rate={props.rate}/>
-						</div>
-						<div>
-							<Typography variant="body1" style={{color: `${CustomTheme.palette.grey02}`}}>
-								8 mi
-							</Typography>
-						</div>
-					</div>
-				</StyledCardActions>
-			</StyledCard>
-		</GridListTile>
-	);
+					</StyledCardActions>
+				</StyledCard>
+			</GridListTile>
+		);
+	}
+
 }
 
 export default CarCardSmall;

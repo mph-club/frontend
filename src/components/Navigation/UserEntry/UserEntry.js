@@ -10,7 +10,6 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { StyledAvatar } from './styles';
-import avatar from '../../../assets/images/avatar.png';
 
 import * as actions from '../../../store/actions/index';
 

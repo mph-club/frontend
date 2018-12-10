@@ -27,6 +27,8 @@ export const StyledLeftContainer = styled.div`
 
 export const StyledAvatar = styled(Avatar)`
     && {
+        border: 1px solid ${palette.grey01};
+        background-color: white;
         width: 100px;
         height: 100px;
         margin: auto;

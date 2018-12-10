@@ -46,7 +46,7 @@ export const StyledDivTwo = styled.div`
 `
 
 export const StyledImg = styled.img`
-    heigth: 100%;
+    height: 100%;
 `
 
 export const StyledSocialUl = styled.ul`

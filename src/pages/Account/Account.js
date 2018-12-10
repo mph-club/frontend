@@ -5,7 +5,6 @@ import Footer from '../../components/Navigation/Footer/Footer';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { palette, space } from '../../theme';
-import avatar from '../../assets/images/avatar.png';
 import CameraIcon from '@material-ui/icons/CameraAlt';
 import TextButton from '../../components/UI/Buttons/TextButton/TextButton';
 import {
@@ -33,14 +32,15 @@ class Account extends Component {
 
     render() {
 
+        const { user } = this.props
         let content = null
 
-        const circularProgress = <div style={{ 
+        const circularProgress = <div style={{
             margin: '12px auto',
             justifyContent: 'space-between',
             display: 'flex',
             maxWidth: 'fit-content'
-         }}>
+        }}>
             <CircularProgress size={40} style={{ color: palette.green }} />
         </div>
 
@@ -67,8 +67,8 @@ class Account extends Component {
                                 <div>
                                     <StyledAvatarWrapper>
                                         <StyledAvatar
-                                            alt="Steve Jobs"
-                                            src={avatar}>
+                                            alt="user profile"
+                                            src={user.profilePhoto}>
                                         </StyledAvatar>
                                         <IconButton color='primary'>
                                             <CameraIcon fontSize='large' />

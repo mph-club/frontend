@@ -39,12 +39,7 @@ class ExplorePage extends Component {
             <React.Fragment>
                 <StyledHeader>
                     <StyledContainer>
-                        <StyledTitle 
-                            variant="display1"
-                            component="h1"
-                        > 
-                            Search and <span>book</span> from a variety of cars in all of Florida.
-                        </StyledTitle>
+                        <StyledTitle variant="display1" component="h1"> Search and <span>book</span> from a variety of cars in all of Florida.</StyledTitle>
                         <StyledSearchBarContainer>
                             <SearchBar />
                         </StyledSearchBarContainer>

@@ -32,6 +32,8 @@ class SearchBar extends Component {
                                 id="searchPage-search"
                                 type="search"
                                 placeholder="Enter a city in FL"
+                                value='Miami'
+                                contentEditable={false}
                                 InputProps={{
                                     disableUnderline: true
                                 }}

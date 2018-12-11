@@ -1,4 +1,7 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import CardActionArea from '@material-ui/core/CardActionArea';
 import GridListTile from '@material-ui/core/GridListTile';
 import Typography from '@material-ui/core/Typography';
@@ -14,6 +17,8 @@ import {
 	StyledPerDay,
 	StyledCardMediaSmall
 } from './styles';
+
+import * as actions from '../../../store/actions/index';
 
 class CarCardSmall extends PureComponent {
 
@@ -52,4 +57,10 @@ class CarCardSmall extends PureComponent {
 
 }
 
-export default CarCardSmall;
+const mapDispatchToProps = dispatch => {
+	return {
+		onCarSelected: (carId) => { dispatch(actions.onStoreCardIdSelected(carId)) }
+	}
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(CarCardSmall));

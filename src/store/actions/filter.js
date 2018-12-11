@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import * as CONSTANTS from '../../shared/constants';
 import * as actionTypes from './actionTypes';
 
 export const onFilterGetVehiclesStart = () => {
@@ -27,11 +28,34 @@ export const onFilterGetVehicles = () => {
 
         dispatch(onFilterGetVehiclesStart())
 
+        let properties = JSON.parse(localStorage.getItem(CONSTANTS.FILTER_PROPERTIES))
+        let type = null
+
+        if ( properties ) {
+            type = properties['type']
+        }
+
+
+        const url = (type && type !== 'all') ? 'vehicles/type/' + type : 'vehicles'
+
         axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
-        axios.get('vehicles').then(response => {
+        axios.get(url).then(response => {
             dispatch(onFilterGetVehiclesSucceed(response.data.data))
         }).catch(error => {
             dispatch(onFilterGetVehiclesFailed(error))
         })
+    }
+}
+
+export const onStoreFilterProperty = (key, value) => {
+    
+    let properties = JSON.parse(localStorage.getItem(CONSTANTS.FILTER_PROPERTIES)) || {}
+        properties[key] = value
+    
+    localStorage.setItem(CONSTANTS.FILTER_PROPERTIES, JSON.stringify(properties))
+
+    return {
+        type: actionTypes.FILTER_PROPERTIES_STORED,
+        filter: properties
     }
 }

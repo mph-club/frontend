@@ -5,17 +5,20 @@ const initialState = {
     loading: false,
     error: null,
     count: 0,
-    vehicles: null
+    vehicles: null,
+    filter: null
 }
 
 const reducer = (state = initialState, action) => {
-    switch (action.type) { 
+    switch (action.type) {
         case actionTypes.FILTER_FETCH_INFO_START:
             return updateObject(state, { loading: true, error: null, vehicles: null })
         case actionTypes.FILTER_FETCH_INFO_FAILED:
             return updateObject(state, { loading: false, error: action.error, vehicles: [] })
         case actionTypes.FILTER_FETCH_INFO_SUCCESS:
-            return updateObject(state, {loading: false, error: null, count: action.data.count, vehicles: action.data.vehicles })
+            return updateObject(state, { loading: false, error: null, count: action.data.count, vehicles: action.data.vehicles })
+        case actionTypes.FILTER_PROPERTIES_STORED:
+            return updateObject(state, updateObject(state, { filter: action.filter }))
         default:
             return state
     }

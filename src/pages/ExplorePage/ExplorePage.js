@@ -30,8 +30,8 @@ class ExplorePage extends Component {
             cars = Object.keys(collections).map( (collectionKey, index) => {
                 return <CarsCollection 
                             key={index} 
-                            title={collectionKey} 
-                            items={collections[collectionKey]}/>
+                            title={collections[collectionKey].display_name} 
+                            items={collections[collectionKey].vehicles}/>
             })
         }
 

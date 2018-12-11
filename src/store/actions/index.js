@@ -32,7 +32,8 @@ export {
 
 
 export {
-    onFilterGetVehicles
+    onFilterGetVehicles,
+    onStoreFilterProperty
 } from './filter';
 
 export {

@@ -5,8 +5,12 @@
   "dependencies": {
     "@material-ui/core": "^3.1.0",
     "@material-ui/icons": "^3.0.1",
+<<<<<<< HEAD
     "@material-ui/lab": "^3.0.0-alpha.20",
     "amazon-cognito-identity-js": "^3.0.3",
+=======
+    "@material-ui/lab": "^3.0.0-alpha.25",
+>>>>>>> 16b870a8092a813728b5c585f25d6eaacd3c50c2
     "axios": "^0.18.0",
     "fingerprintjs2": "^2.0.3",
     "jsonwebtoken": "^8.3.0",
@@ -16,8 +20,12 @@
     "react-redux": "^5.1.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
+<<<<<<< HEAD
     "react-swipeable-views": "^0.12.17",
     "react-text-mask": "^5.4.3",
+=======
+    "react-swipeable-views": "^0.12.18",
+>>>>>>> 16b870a8092a813728b5c585f25d6eaacd3c50c2
     "react-truncate": "^2.4.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",

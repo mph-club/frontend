@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Include these
+!nginx
+!public
+!src
+!package-lock.json
+!package.json

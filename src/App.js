@@ -58,7 +58,6 @@ class App extends Component {
   render() {
 
     let routes = <Switch>
-      <Route exact path="/" component={Explore} />
       <Route path="/car-details" component={DetailPage} />
       <Route path="/user-details" component={UserDetails} />
       <Route path="/car-location" component={CarLocation} />
@@ -93,7 +92,6 @@ class App extends Component {
         <Redirect to="/" />
       </Switch>
     }
-
 
     return (
       <React.Fragment>

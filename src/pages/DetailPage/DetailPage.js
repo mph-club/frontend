@@ -126,8 +126,8 @@ class DetailPage extends Component {
                         <Grid container spacing={40}>
                             <Grid item xs>
                                 <StyledTitleLayout>
-                                    <Typography variant="h4" color="primary" component="h2">{vehicle.make + ' ' + vehicle.model}</Typography>
-                                    <Typography variant="h4" color="primary" component="h2">{vehicle.year}</Typography>
+                                    <Typography variant="h4" color="primary">{vehicle.make + ' ' + vehicle.model}</Typography>
+                                    <Typography variant="h4" color="primary">{vehicle.year}</Typography>
                                     <StyledRateLayout>
                                         <div>{vehicle.trips}</div>
                                         {vehicle.rate ? <div><RateStars rate={vehicle.rate} /></div> : null}
@@ -139,26 +139,26 @@ class DetailPage extends Component {
                                     vehicle.structuraFeatures ? <StyledDescriptionIconsLayout>
                                         <StyledIcons>
                                             <SeatIcon style={{ fontSize: 64 }} />
-                                            <Typography variant="body2" component="p">2 Seats</Typography>
+                                            <Typography variant="body1" component="p">2 Seats</Typography>
                                         </StyledIcons>
                                         <StyledIcons>
                                             <DoorIcon style={{ fontSize: 64 }} />
-                                            <Typography variant="body2" component="p">2 Door</Typography>
+                                            <Typography variant="body1" component="p">2 Door</Typography>
                                         </StyledIcons>
                                         <StyledIcons>
                                             <GasIcon style={{ fontSize: 64 }} />
-                                            <Typography variant="body2" component="p">13 MPG</Typography>
+                                            <Typography variant="body1" component="p">13 MPG</Typography>
                                         </StyledIcons>
                                         <div>
                                             <GPSIcon style={{ fontSize: 64 }} />
-                                            <Typography variant="body2" component="p">2 Seats</Typography>
+                                            <Typography variant="body1" component="p">2 Seats</Typography>
                                         </div>
                                     </StyledDescriptionIconsLayout> : null
                                 }
                                 {
                                     vehicle.description ? <StyledDescriptionLayout>
-                                        <StyledCaption variant="body2" component="p">Description</StyledCaption>
-                                        <Typography variant="body2" component="div">
+                                        <StyledCaption variant="body1" component="p">Description</StyledCaption>
+                                        <Typography variant="body1" component="div">
                                             <ReadMore>
                                                 <p>{vehicle.description.charAt(0).toUpperCase() + vehicle.description.slice(1)}</p>
                                             </ReadMore>
@@ -169,7 +169,7 @@ class DetailPage extends Component {
                                     vehicle.features ? <React.Fragment>
                                         <Divider />
                                         <StyledCarFeatureContainer>
-                                            <StyledCaption variant="body2" component="p">Features</StyledCaption>
+                                            <StyledCaption variant="body1" component="p">Features</StyledCaption>
                                             {this.state.features.map((feature, index) => {
                                                 return (
                                                     <StyledCarFeatureWrapper key={index}>

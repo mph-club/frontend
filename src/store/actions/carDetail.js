@@ -41,7 +41,7 @@ export const onCarDetailFetchInfo = () => {
 
         axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/vehicles/';
         axios.get(carId).then( response => {
-            dispatch(onCarDetailFetchInfoSucceed(response.data.data.Vehicle))
+            dispatch(onCarDetailFetchInfoSucceed(response.data.data.vehicle))
         }).catch( error => {
             dispatch(onCarDetailFetchInfoFailed(error))
         })

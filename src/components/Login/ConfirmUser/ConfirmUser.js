@@ -35,7 +35,7 @@ class ConfirmUser extends Component {
             >
                 <Paper style={{ width: '460px', height: 'auto' }} elevation={1}>
                     <StyledExternalContainer>
-                        <Typography variant='title' component='h6'>This user isn't confirmed</Typography>
+                        <Typography variant='h6'>This user isn't confirmed</Typography>
                         <Typography variant='body1' component='p' style={{ margin: '16px 0' }}>Check your email. We have sent you a 6-digits code to help us verify your email</Typography>
 
                         <FormControl margin="normal" required fullWidth>
@@ -62,7 +62,7 @@ class ConfirmUser extends Component {
                         </div>
                         <Typography align='center'>Din't receive the email? <StyledSpan onClick={() => this.props.handleResendCode()}>Resend Code</StyledSpan></Typography>
                         <div style={{ display: 'flex', justifyContent: 'center', margin: '8px 20%' }}>
-                            <StyledDivider variant="body2">or</StyledDivider>
+                            <StyledDivider variant="body1">or</StyledDivider>
                         </div>
                         <Typography align='center'>You want to use another email? <StyledSpan onClick={() => this.props.handleChangeEmail()}>Sign Up</StyledSpan></Typography>
                     </StyledExternalContainer>

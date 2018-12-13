@@ -19,16 +19,33 @@ import IconButton from '@material-ui/core/IconButton';
 import ContactInfo from '../../components/AccountComponents/ContactInfo/ContactInfo';
 import TransactionHistory from '../../components/AccountComponents/TransactionHistory/TransactionHistory';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import UploadPhoto from '../../components/AccountComponents/UploadPhoto/UploadPhoto';
+
+import * as actions from '../../store/actions/index';
 
 class Account extends Component {
 
     state = {
-        value: 'contactInfo'
+        value: 'contactInfo',
+        uploadPhoto: false
     }
 
     handleListItemClick = (value) => {
         this.setState({ value: value });
     };
+
+    handleOpenUploadPhoto = (refreshData) => {
+        this.setState( prevState => {
+            return {
+                ...prevState,
+                uploadPhoto: !prevState.uploadPhoto
+            }
+         })
+
+         if ( refreshData ) {
+            this.props.onAccountFechtInfo(this.props.accessToken)
+         }
+    }
 
     render() {
 
@@ -49,7 +66,6 @@ class Account extends Component {
                 content = this.props.loading ? circularProgress : <ContactInfo />
                 break;
             case 'paymentInfo':
-
                 break;
             case 'transactionHistory':
                 content = <TransactionHistory />
@@ -60,6 +76,9 @@ class Account extends Component {
 
         return (
             <React.Fragment>
+                <UploadPhoto 
+                    open={this.state.uploadPhoto} 
+                    closeUploadPhoto={this.handleOpenUploadPhoto}/>
                 <StyledExternalContainer>
                     <Grid container spacing={16}>
                         <Grid item xs={12} sm={3} md={3}>
@@ -70,7 +89,7 @@ class Account extends Component {
                                             alt="user profile"
                                             src={user.profilePhoto}>
                                         </StyledAvatar>
-                                        <IconButton color='primary'>
+                                        <IconButton color='primary' onClick={this.handleOpenUploadPhoto}>
                                             <CameraIcon fontSize='large' />
                                         </IconButton>
                                     </StyledAvatarWrapper>
@@ -115,7 +134,7 @@ class Account extends Component {
                                         value='transactionHistory'
                                         onClick={() => this.handleListItemClick('transactionHistory')}>
                                         <Typography
-                                            variant="body2"
+                                            variant="body1"
                                             style={{
                                                 textTransform: 'uppercase',
                                                 color: (this.state.value === 'transactionHistory') ? palette.green : palette.grey02,
@@ -148,4 +167,11 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Account)
+const mapDispatchToProps = dispatch => {
+    return {
+        onAccountFechtInfo: (accessToken) => { dispatch(actions.onAccountFetchInfo(accessToken)) }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account)

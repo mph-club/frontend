@@ -39,7 +39,7 @@ class RequestChange extends Component {
                             paddingLeft: `${space[3]}`,
                             paddingRight: `${space[3]}`
                         }}>
-                        <Typography variant="display1" color="primary" component="h2">Request change</Typography>
+                        <Typography variant="h4" color="primary" component="h2">Request change</Typography>
                     </div>
                     <div
                         style={{
@@ -47,17 +47,17 @@ class RequestChange extends Component {
                             paddingLeft: `${space[3]}`,
                             paddingRight: `${space[3]}`
                         }}>
-                        <Typography variant="title" component="p" style={{ fontSize: 16, color: palette.grey02 }}>TRIP DATES</Typography>
+                        <Typography variant="h6" style={{ fontSize: 16, color: palette.grey02 }}>TRIP DATES</Typography>
                         <StyledDateWrapper>
                             <div>
                                 <Typography variant="body1" color="primary" component="h5" style={{ color: `${palette.grey02}`, fontWeight: 600, marginBottom: `${space[1]}` }}>Start date</Typography>
-                                <Typography variant="title" component="h2">Tue, Jul 6, 2018</Typography>
+                                <Typography variant="h6">Tue, Jul 6, 2018</Typography>
                                 <Typography variant="body2" component="h2" style={{ fontWeight: 600 }}>10 AM</Typography>
                             </div>
                             <StyledSlantedDivider />
                             <div>
                                 <Typography variant="body1" color="primary" component="h5" style={{ color: `${palette.grey02}`, fontWeight: 600, marginBottom: `${space[1]}` }}>End date</Typography>
-                                <Typography variant="title" component="h2">Fri, Jul 9, 2018</Typography>
+                                <Typography variant="h6">Fri, Jul 9, 2018</Typography>
                                 <Typography variant="body2" component="h2" style={{ fontWeight: 600 }}>12 PM</Typography>
                             </div>
                         </StyledDateWrapper>
@@ -91,8 +91,8 @@ class RequestChange extends Component {
                                     <Typography variant="body2" component="p">${this.state.totalPerDay * this.state.tripDays}.00/day</Typography>
                                 </StyledRowContainer>
                                 <StyledRowContainer>
-                                    <Typography variant="title" component="p">Trip Total</Typography>
-                                    <Typography variant="title" component="p">${this.state.totalPerDay * this.state.tripDays}.00/day</Typography>
+                                    <Typography variant="h6">Trip Total</Typography>
+                                    <Typography variant="h6">${this.state.totalPerDay * this.state.tripDays}.00/day</Typography>
                                 </StyledRowContainer>
                                 <StyledRowContainer>
                                     <div>

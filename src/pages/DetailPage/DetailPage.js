@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import Typography from '@material-ui/core/Typography';
 import { palette, space } from '../../theme';
 
 import Grid from '@material-ui/core/Grid';
-import { tutorialSteps } from '../CarsCollection/tileData';
 import RateStars from '../../components/UI/RateStars/RateStars';
 import Divider from '@material-ui/core/Divider';
 import CarFeature from '../../components/DetailPageComponents/CarFeature/CarFeature';
 import ReadMore from '../../components/UI/ReadMore/ReadMore';
 import RenterReviews from '../../components/DetailPageComponents/RenterReviews/RenterReview';
 import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
-import CarsCollection from '../CarsCollection/CarsCollection';
 import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
 import ReportListing from '../../components/DetailPageComponents/ReportListing/ReportListing';
 import SeatIcon from '../../assets/icons/SeatIcon';
@@ -39,26 +39,15 @@ import {
 } from './styles';
 import Footer from '../../components/Navigation/Footer/Footer';
 
+import * as actions from '../../store/actions/index';
 
 
 class DetailPage extends Component {
+
     state = {
         activeStep: 0,
         readMore: false,
-        reportListing: false,
-        features: [
-            {
-                label: 'Manual',
-                image: 'svg'
-            }, {
-                label: 'Bluetooth',
-                image: 'svg'
-            },
-            {
-                label: 'Sunroof',
-                image: 'svg'
-            }
-        ]
+        reportListing: false
     };
 
     expandedText = () => {
@@ -108,113 +97,153 @@ class DetailPage extends Component {
         })
     }
 
+    componentWillMount() {
+        this.props.onFetchCarDetails();
+    }
+
     render() {
         const { theme } = this.props;
+        const { vehicle } = this.props
 
-        return (
+        let content = this.props.loading ?
+            null :
             <React.Fragment>
                 <StyledImageContainer>
-                    <SwipeableViews
+                    {vehicle ? <SwipeableViews
                         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                         index={this.state.activeStep}
                         onChangeIndex={this.handleStepChange}
                         enableMouseEvents
                     >
-                        {tutorialSteps.map((step, index) => (
-                            <StyledImg key={index} src={step.imgPath} alt={step.label} />
+                        {vehicle.photos.map((path, index) => (
+                            <StyledImg key={index} src={path} alt={'vehicle_picture_' + index} />
                         ))}
-                    </SwipeableViews>
+                    </SwipeableViews> : null}
+
                 </StyledImageContainer>
-                <StyledGridContainer>
-                    <Grid container spacing={40}>
-                        <Grid item xs>
-                            <StyledTitleLayout>
-                                <Typography variant="display1" color="primary" component="h2">Porsche Panamera</Typography>
-                                <Typography variant="display1" color="primary" component="h2">2016</Typography>
-                                <StyledRateLayout>
-                                    <div>4 trips</div>
-                                    <div><RateStars rate='4' /></div>
-                                    <div><Typography variant="body1" style={{ color: `${palette.grey02}` }}> 8 mi</Typography></div>
-                                </StyledRateLayout>
-                            </StyledTitleLayout>
-                            <Divider />
-                            <StyledDescriptionIconsLayout>
-                                <StyledIcons>
-                                    <SeatIcon style={{ fontSize: 64 }} />
-                                    <Typography variant="body2" component="p">2 Seats</Typography>
-                                </StyledIcons>
-                                <StyledIcons>
-                                    <DoorIcon style={{ fontSize: 64 }} />
-                                    <Typography variant="body2" component="p">2 Door</Typography>
-                                </StyledIcons>
-                                <StyledIcons>
-                                    <GasIcon style={{ fontSize: 64 }} />
-                                    <Typography variant="body2" component="p">13 MPG</Typography>
-                                </StyledIcons>
-                                <div>
-                                    <GPSIcon style={{ fontSize: 64 }} />
-                                    <Typography variant="body2" component="p">2 Seats</Typography>
-                                </div>
-                            </StyledDescriptionIconsLayout>
-                            <StyledDescriptionLayout>
-                                <StyledCaption variant="body2" component="p">Description</StyledCaption>
-                                <Typography variant="body2" component="div">
-                                    <ReadMore>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </ReadMore>
-                                </Typography>
-                            </StyledDescriptionLayout>
-                            <Divider />
-                            <StyledCarFeatureContainer>
-                                <StyledCaption variant="body2" component="p">Features</StyledCaption>
-                                {this.state.features.map((feature, index) => {
-                                    return (
-                                        <StyledCarFeatureWrapper key={index}>
-                                            <CarFeature
-                                                label={feature.label}
-                                                image={feature.image} />
-                                        </StyledCarFeatureWrapper>
-                                    );
-                                })}
-                            </StyledCarFeatureContainer>
-                            <Divider />
-                            <StyledRenterReviewsWrapper>
-                                <RenterReviews />
-                            </StyledRenterReviewsWrapper>
-                            <Divider />
-                            <StyledOwnedByWrapper>
-                                <OwnedBy onwerClicked={this.goToOwnerDetails} />
-                            </StyledOwnedByWrapper>
-                            <Divider />
-                            <StyledGuideLinesWrapper>
-                                <UnorderedList
-                                    title="Guidelines"
-                                    itemOne="A desposit will be required"
-                                    itemTwo="A minimum of 1 day is required to rent this car"
-                                    itemThree="No smoking"
-                                />
-                            </StyledGuideLinesWrapper>
-                            <Divider />
+                {vehicle ?
+                    <StyledGridContainer>
+                        <Grid container spacing={40}>
+                            <Grid item xs>
+                                <StyledTitleLayout>
+                                    <Typography variant="h4" color="primary" component="h2">{vehicle.make + ' ' + vehicle.model}</Typography>
+                                    <Typography variant="h4" color="primary" component="h2">{vehicle.year}</Typography>
+                                    <StyledRateLayout>
+                                        <div>{vehicle.trips}</div>
+                                        {vehicle.rate ? <div><RateStars rate={vehicle.rate} /></div> : null}
+                                        <div><Typography variant="body1" style={{ color: `${palette.grey02}` }}>{vehicle.distance}</Typography></div>
+                                    </StyledRateLayout>
+                                </StyledTitleLayout>
+                                <Divider />
+                                {
+                                    vehicle.structuraFeatures ? <StyledDescriptionIconsLayout>
+                                        <StyledIcons>
+                                            <SeatIcon style={{ fontSize: 64 }} />
+                                            <Typography variant="body2" component="p">2 Seats</Typography>
+                                        </StyledIcons>
+                                        <StyledIcons>
+                                            <DoorIcon style={{ fontSize: 64 }} />
+                                            <Typography variant="body2" component="p">2 Door</Typography>
+                                        </StyledIcons>
+                                        <StyledIcons>
+                                            <GasIcon style={{ fontSize: 64 }} />
+                                            <Typography variant="body2" component="p">13 MPG</Typography>
+                                        </StyledIcons>
+                                        <div>
+                                            <GPSIcon style={{ fontSize: 64 }} />
+                                            <Typography variant="body2" component="p">2 Seats</Typography>
+                                        </div>
+                                    </StyledDescriptionIconsLayout> : null
+                                }
+                                {
+                                    vehicle.description ? <StyledDescriptionLayout>
+                                        <StyledCaption variant="body2" component="p">Description</StyledCaption>
+                                        <Typography variant="body2" component="div">
+                                            <ReadMore>
+                                                <p>{vehicle.description.charAt(0).toUpperCase() + vehicle.description.slice(1)}</p>
+                                            </ReadMore>
+                                        </Typography>
+                                    </StyledDescriptionLayout> : null
+                                }
+                                {
+                                    vehicle.features ? <React.Fragment>
+                                        <Divider />
+                                        <StyledCarFeatureContainer>
+                                            <StyledCaption variant="body2" component="p">Features</StyledCaption>
+                                            {this.state.features.map((feature, index) => {
+                                                return (
+                                                    <StyledCarFeatureWrapper key={index}>
+                                                        <CarFeature
+                                                            label={feature.label}
+                                                            image={feature.image} />
+                                                    </StyledCarFeatureWrapper>
+                                                );
+                                            })}
+                                        </StyledCarFeatureContainer>
+                                    </React.Fragment> : null
+                                }
+                                {
+                                    vehicle.reviews ? <React.Fragment>
+                                        <Divider />
+                                        <StyledRenterReviewsWrapper>
+                                            <RenterReviews />
+                                        </StyledRenterReviewsWrapper>
+                                    </React.Fragment> : null
+                                }
+                                {
+                                    vehicle.ownerId ? <React.Fragment>
+                                        <Divider />
+                                        <StyledOwnedByWrapper>
+                                            <OwnedBy onwerClicked={this.goToOwnerDetails} />
+                                        </StyledOwnedByWrapper>
+                                    </React.Fragment> : null
+                                }
+
+                                <Divider />
+                                <StyledGuideLinesWrapper>
+                                    <UnorderedList
+                                        title="Guidelines"
+                                        itemOne="A desposit will be required"
+                                        itemTwo="A minimum of 1 day is required to rent this car"
+                                        itemThree="No smoking"
+                                    />
+                                </StyledGuideLinesWrapper>
+                                <Divider />
+                            </Grid>
+                            <Grid item xs>
+                                <SummaryTrip
+                                    reportListingClicked={this.openFormToReportListing}
+                                    checkout={this.goToCheckout} />
+                            </Grid>
                         </Grid>
-                        <Grid item xs>
-                            <SummaryTrip
-                                reportListingClicked={this.openFormToReportListing}
-                                checkout={this.goToCheckout} />
-                        </Grid>
-                    </Grid>
-                </StyledGridContainer>
-                <div style={{marginBottom:space[4]}}>
-                    <CarsCollection title="You might also like" />
+                    </StyledGridContainer> : null}
+                <div style={{ marginBottom: space[4] }}>
+                    {/* <CarsCollection title="You might also like" /> */}
                 </div>
                 <ReportListing
                     openForm={this.state.reportListing}
                     closeForm={this.closeFormReportListing} />
                 <Footer />
             </React.Fragment >
-        );
+
+        return content
     }
 }
 
-export default withStyles(({}), { withTheme: true })(DetailPage);
+const mapStateToProps = state => {
+    return {
+        loading: state.carDetails.loading,
+        error: state.carDetails.error,
+        vehicle: state.carDetails.vehicle
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchCarDetails: () => { dispatch(actions.onCarDetailFetchInfo()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(null, { withTheme: true })(DetailPage));
 
 

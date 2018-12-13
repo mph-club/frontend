@@ -20,7 +20,7 @@ const OwnedBy = (props) => {
             <StyledUl>
                 <li>
                     <StyledNameWrapper>
-                        <Typography variant="headline" component="h5">Mike L.</Typography>
+                        <Typography variant="h5">Mike L.</Typography>
                         <RateStars rate='4' />
                     </StyledNameWrapper>
                     <Typography variant="body1" component="h6" style={{fontWeight: 600}}>Response Rate</Typography>

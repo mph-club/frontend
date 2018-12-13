@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
 import Logo from '../../UI/Logo/Logo';
 import UserEntry from '../UserEntry/UserEntry';
-import { withRouter, Link } from 'react-router-dom';
 import {
   StyledAppBar,
   StyledToolBar,
   StyledNav
 } from './styles';
 
+import * as actions from '../../../store/actions/index';
+
 class ToolBar extends Component {
 
   logoClicked = () => {
-    this.props.history.replace('/search-page')
+    this.props.history.replace('/')
   }
 
   render() {
@@ -25,14 +28,15 @@ class ToolBar extends Component {
       } else if (this.props.location.pathname === '/host-dashboard') {
         buttons = <Button color="inherit" component={Link} to="/dashboard">Dashboard</Button>
       }
+
       buttons = <React.Fragment>
         {buttons}
-        <UserEntry userName={this.props.userName}/>
+        <UserEntry/>
       </React.Fragment>
     } else {
       buttons = <React.Fragment>
-        <Button color="inherit" onClick={this.props.loginClicked}>Login</Button>
-        <Button color="inherit" onClick={this.props.signupClicked}>Sign Up</Button>
+        <Button color="inherit" onClick={this.props.openSignIn}>Login</Button>
+        <Button color="inherit" onClick={this.props.openSignUp}>Sign Up</Button>
       </React.Fragment>
     }
 
@@ -51,4 +55,17 @@ class ToolBar extends Component {
   }
 }
 
-export default withRouter(ToolBar);
+const mapStateToProps = state => {
+  return {
+    auth: state.auth.session.isValid
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    openSignUp: () => { dispatch(actions.openSignUp(true)) },
+    openSignIn: () => { dispatch(actions.openSignIn(true)) }
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ToolBar));

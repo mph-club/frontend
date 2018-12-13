@@ -101,8 +101,7 @@ class SummaryTripByUser extends Component {
                             PICKP UP AND RETURN
                         </Title>
                         <Typography
-                            variant="title"
-                            component="h5"
+                            variant="h6"
                             style={{ marginBottom: `${space[2]}` }}
                         >
                             Miami, FL
@@ -123,8 +122,7 @@ class SummaryTripByUser extends Component {
                             MILES INCLUDED
                         </Title>
                         <Typography
-                            variant="title"
-                            component="h5"
+                            variant="h6"
                             style={{ marginBottom: `${space[2]}` }}
                         >
                             200 mi

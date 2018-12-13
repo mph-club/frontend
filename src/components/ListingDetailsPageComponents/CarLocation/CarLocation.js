@@ -40,7 +40,7 @@ class CarLocation extends Component {
         return (
             <React.Fragment>
                 <StyledExternalContainer>
-                    <Typography variant="display1" color="primary" component="h2">Where is your car located?</Typography>
+                    <Typography variant="h4" color="primary" component="h2">Where is your car located?</Typography>
                     <div style={{
                         marginTop: '32px',
                         marginBottom: '32px'

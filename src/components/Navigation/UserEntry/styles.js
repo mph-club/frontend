@@ -1,8 +1,12 @@
 import styled from 'styled-components';
-import UserIcon from '@material-ui/icons/VerifiedUser';
+import Avatar from '@material-ui/core/Avatar';
 
-
-export const StyledIcon = styled(UserIcon)`
-    margin-left: 8px;
+export const StyledAvatar = styled(Avatar)`
+    && {
+        background-color: white;
+        margin-left: 12px;
+        width: 30px;
+        height: 30px;
+    }
 `
 

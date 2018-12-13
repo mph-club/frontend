@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import { palette } from '../../theme';
 
 export const StyledIconButton = styled(IconButton)`
     margin-left: -12px;
@@ -66,4 +67,9 @@ export const StyledFooterButtonLayout = styled.div`
 
 export const StyledDividerLayout = styled.div`
     margin-bottom: 2rem;
+`
+
+export const StyledSpan = styled.span`
+    color: ${palette.blue};
+    cursor: pointer;
 `

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import GridList from '@material-ui/core/GridList';
 import {space} from '../../theme';
 import { Typography } from '@material-ui/core';
@@ -8,6 +9,11 @@ export const StyledGridList = styled(GridList)`
     && {
         flex-wrap: nowrap;
     }
+`
+
+export const ExternalContainer = styled.div`
+    max-width: 1350px;
+    margin: 0 auto;
 `
 
 export const StyledTitle = styled(Typography)`

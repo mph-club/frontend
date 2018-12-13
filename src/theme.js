@@ -23,6 +23,7 @@ export const theme = createMuiTheme({
         type: 'light'
       },
       typography: {
+        useNextVariants: true,
         // Use the system font instead of the default Roboto font.
         fontFamily: [
           '-apple-system',
@@ -40,18 +41,6 @@ export const theme = createMuiTheme({
           fontWeight: 600,
           fontSize: "3rem" //48px
         },
-        display1: {
-          fontWeight: 600,
-          fontSize: "2.25rem" //36px
-        },
-        headline: {
-          fontWeight: 600,
-          fontSize: "1.5rem", //24px
-        },
-        title: {
-          fontWeight: 600,
-          fontSize: "1.25rem", //20px
-        },
         body2: {
           fontWeight: 400,
           fontSize: "1rem", //16px
@@ -59,8 +48,8 @@ export const theme = createMuiTheme({
         body1: {
           fontWeight: 400,
           fontSize: ".875rem", //14px
-        },
-      },
+        }
+      }
 });
 
 

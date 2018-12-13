@@ -18,8 +18,8 @@ const CarCard = (props) => {
     switch (props.status) {
         case 'approved':
             body = <React.Fragment>
-                <Typography variant="title" color="primary" component="h2">Maserati Granturismo</Typography>
-                <Typography variant="title" color="primary" component="h2">Convertible 2016</Typography>
+                <Typography variant="h6" color="primary" >Maserati Granturismo</Typography>
+                <Typography variant="h6" color="primary" >Convertible 2016</Typography>
                 <Typography variant="body2" color="primary" component="h3" style={{ marginTop: space[2]}}>10 trips</Typography>
                 <RateStars rate='4'/>
             </React.Fragment>
@@ -29,8 +29,8 @@ const CarCard = (props) => {
                 <Notice
                     color={palette.red}
                     label='Unlisted' />
-                <Typography variant="title" color="primary" component="h2">Maserati Granturismo</Typography>
-                <Typography variant="title" color="primary" component="h2">Convertible 2016</Typography>
+                <Typography variant="h6" color="primary" component="h2">Maserati Granturismo</Typography>
+                <Typography variant="h6" color="primary" component="h2">Convertible 2016</Typography>
                 <Typography variant="body2" color="primary" component="h3" style={{ marginTop: space[2]}}>10 trips</Typography>
                 <RateStars rate='4'/>
                 
@@ -41,7 +41,7 @@ const CarCard = (props) => {
                 <Notice
                     color={palette.black}
                     label='Pending approval' />
-                <Typography variant="title" color="primary" component="h2">Your listing is pending approval</Typography>
+                <Typography variant="h6" color="primary">Your listing is pending approval</Typography>
                 <Typography variant="body2" color="primary" component="h3">Maserati Granturismo Convertible 2016</Typography>
                 <span style={{ margin: space[4] }}></span>
                 <Typography variant="body1" component="p" style={{ color: `${palette.grey02}` }}>Approvals take up to 72 hours</Typography>

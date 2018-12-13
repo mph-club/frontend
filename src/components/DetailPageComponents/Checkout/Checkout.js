@@ -60,8 +60,8 @@ class Checkout extends Component {
                         <Grid item xs>
                             <StyledLeftFirstContainer>
                                 <div style={{ marginBottom: space[4] }}>
-                                    <Typography variant="headline" component="h2" style={{ maxWidth: 320 }}>Maserati Granturismo Convertible 2016</Typography>
-                                    <Typography variant="title" component="div" style={{ fontWeight: 400, marginTop: `${space[2]}` }}>$382/per day</Typography>
+                                    <Typography variant="h5" style={{ maxWidth: 320 }}>Maserati Granturismo Convertible 2016</Typography>
+                                    <Typography variant="h6" style={{ fontWeight: 400, marginTop: `${space[2]}` }}>$382/per day</Typography>
                                     <div style={{ marginTop: `${space[1]}` }}>
                                         <RateStars rate='4' />
                                     </div>
@@ -71,13 +71,13 @@ class Checkout extends Component {
                             <Divider />
                             <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
                                 <Title component="h2">PICKUP AND RETURN</Title>
-                                <Typography variant="title" component="p" style={{ marginTop: `${space[3]}` }}>Miami, Fl</Typography>
+                                <Typography variant="h6" style={{ marginTop: `${space[3]}` }}>Miami, Fl</Typography>
                                 <Typography variant="body1" component="p" style={{ color: `${palette.grey02}`, marginTop: `${space[2]}` }}>Exact address is provided after booking is confirmed</Typography>
                             </div>
                             <Divider />
                             <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
                                 <Title component="h2">MILES INCLUDED</Title>
-                                <Typography variant="title" component="p" style={{ marginTop: `${space[3]}` }}>200 mi</Typography>
+                                <Typography variant="h6" component="p" style={{ marginTop: `${space[3]}` }}>200 mi</Typography>
                                 <Typography variant="body1" component="p" style={{ color: `${palette.grey02}`, marginTop: `${space[2]}` }}>$0.45 fee fir each additional mile</Typography>
                             </div>
                             <Divider />
@@ -87,7 +87,7 @@ class Checkout extends Component {
                             <StyledStepsContainer>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <CheckIcon style={{ fontSize: 16, marginRight: `${space[2]}`, color: `${palette.blue}` }} />
-                                    <Typography variant="title" component="p" style={{ fontWeight: 400 }}>License information</Typography>
+                                    <Typography variant="h6" component="p" style={{ fontWeight: 400 }}>License information</Typography>
                                 </div>
                                 <div>
                                     <TextButton>Add</TextButton>
@@ -97,7 +97,7 @@ class Checkout extends Component {
                             <StyledStepsContainer>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <CheckIcon style={{ fontSize: 16, color: `${palette.blue}`, marginRight: `${space[2]}` }} />
-                                    <Typography variant="title" component="p" style={{ fontWeight: 400 }}>Insurance protection</Typography>
+                                    <Typography variant="h6" component="p" style={{ fontWeight: 400 }}>Insurance protection</Typography>
                                 </div>
                                 <div>
                                     <TextButton>Premium</TextButton>
@@ -107,7 +107,7 @@ class Checkout extends Component {
                             <StyledStepsContainer>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <CheckIcon style={{ fontSize: 16, marginRight: `${space[2]}`, color: `${palette.blue}` }} />
-                                    <Typography variant="title" component="p" style={{ fontWeight: 400 }}>Payment info</Typography>
+                                    <Typography variant="h6" component="p" style={{ fontWeight: 400 }}>Payment info</Typography>
                                 </div>
                                 <div>
                                     <TextButton>Visa</TextButton>
@@ -139,8 +139,8 @@ class Checkout extends Component {
                                         <Typography variant="body2" component="p">$2,372.00/day</Typography>
                                     </StyledRowContainer>
                                     <StyledRowContainer>
-                                        <Typography variant="title" component="p">Trip Total</Typography>
-                                        <Typography variant="title" component="p">$2,372.00/day</Typography>
+                                        <Typography variant="h6" component="p">Trip Total</Typography>
+                                        <Typography variant="h6" component="p">$2,372.00/day</Typography>
                                     </StyledRowContainer>
                                     <StyledRowContainer>
                                         <div>

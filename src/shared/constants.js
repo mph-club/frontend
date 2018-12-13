@@ -1,4 +1,8 @@
 
+/// Local Storage Keys
+export const FILTER_PROPERTIES = 'filterProperties';
+
+
 export const sortOptions = [
     {
         value: 'relevance',

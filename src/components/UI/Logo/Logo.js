@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyledDiv, StyledTitle } from './styles';
+import { StyledDiv } from './styles';
+import logoPNG from '../../../assets/icons/logo.png';
 
 const logo = (props) => (
     <StyledDiv style={{ height: props.height }} onClick={props.clicked}>
-        <StyledTitle variant="title">mph club</StyledTitle>
+        <img src={logoPNG} alt='logo' />
     </StyledDiv>
 );
 

@@ -72,7 +72,7 @@ class TripPreference extends Component {
         return (
             <React.Fragment>
                 <StyledExternalContainer>
-                    <Typography variant="display1" color="primary" component="h2">Trip Preference</Typography>
+                    <Typography variant="h4" color="primary" component="h2">Trip Preference</Typography>
                     <div style={{
                         margin: '16px 0'
                     }}>

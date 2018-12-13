@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import {
     StyledHeaderContainer,
     StyledFilterContainer,
@@ -18,8 +20,7 @@ import 'react-input-range/lib/css/index.css';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { space, palette } from '../../theme';
-import { carTypes, sortOptions, vehicleMakes } from '../../tools/constants';
-import tileData from '../CarsCollection/tileData';
+import { carTypes, sortOptions, vehicleMakes } from '../../shared/constants';
 import GridList from '@material-ui/core/GridList';
 import CarCardSmall from '../../components/UI/CarCard/CarCardSmall';
 import LocationIcon from '@material-ui/icons/LocationCity';
@@ -29,6 +30,8 @@ import ReducedSearchComponents from './ReducedSearchComponents/ReducedSearchComp
 import Fade from '@material-ui/core/Fade';
 import SelectTextField from '../../components/UI/FormElements/SelectTextField/SelectTextField';
 import RangeSlider from '../../components/UI/FormElements/RangeSlider/RangeSlider';
+
+import * as actions from '../../store/actions/index';
 
 class FilterPage extends Component {
 
@@ -52,9 +55,14 @@ class FilterPage extends Component {
 
     toggleDrawer = () => {
 
-        const open = this.state.reducedSearchBar
-        this.setState({
-            reducedSearchBar: !open
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                value5: {
+                    ...prevState.value5
+                },
+                reducedSearchBar: !prevState.reducedSearchBar
+            }
         });
     };
 
@@ -63,8 +71,12 @@ class FilterPage extends Component {
         this.props.history.push('/car-details');
     }
 
+    componentDidMount() {
+        this.props.handleGetVehicles();
+    }
 
     render() {
+        const { vehicles } = this.props
 
         return (
             <React.Fragment>
@@ -76,10 +88,10 @@ class FilterPage extends Component {
                         <Button style={{ display: 'block', width: '100%', height: '60px' }} onClick={this.toggleDrawer}>
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
                                 <LocationIcon style={{ marginRight: space[2] }} />
-                                <Typography variant="body2" color="primary" component="h3">Current location</Typography>
+                                <Typography variant="body1" color="primary">Current location</Typography>
                             </div>
                             <div style={{ textAlign: 'center', marginBottom: space[1] }}>
-                                <Typography variant="body1" color="primary" component="p">Oct 17, 2018 10:00 am - Oct 20, 2018 10:00 am</Typography>
+                                <Typography variant="body1" color="primary">Oct 17, 2018 10:00 am - Oct 20, 2018 10:00 am</Typography>
                             </div>
                         </Button>
                     </StyledMidComponents>
@@ -87,37 +99,35 @@ class FilterPage extends Component {
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <Button style={{ width: '50%', height: '60px' }} onClick={this.toggleDrawer}>
                                 <LocationIcon style={{ marginRight: space[2] }} />
-                                <Typography variant="body2" color="primary" component="h3">Current location</Typography>
+                                <Typography variant="body1" color="primary">Current location</Typography>
                             </Button>
                             <StyledSlantedDivider />
                             <Button style={{ width: '50%', height: '60px' }} >
                                 <FilterIcon style={{ marginRight: space[2] }} />
-                                <Typography variant="body2" color="primary" component="h3">Filters</Typography>
+                                <Typography variant="body1" color="primary">Filters</Typography>
                             </Button>
                         </div>
                     </StyledReducedComponents>
 
                     {this.state.reducedSearchBar ?
                         <React.Fragment>
-                            <Fade in={this.state.reducedSearchBar} timeout={{enter: 500, exit: 500}}>
+                            <Fade in={this.state.reducedSearchBar} timeout={{ enter: 500, exit: 500 }}>
                                 <StyledReducedSearchContainer>
-                                <ReducedSearchComponents
-
-                                />
-                                    </StyledReducedSearchContainer>
-                                </Fade>
-                        <StyledBackdrop
-                            open={this.state.reducedSearchBar}
-                            onClick={this.toggleDrawer} />
+                                    <ReducedSearchComponents />
+                                </StyledReducedSearchContainer>
+                            </Fade>
+                            <StyledBackdrop
+                                open={this.state.reducedSearchBar}
+                                onClick={this.toggleDrawer} />
                         </React.Fragment> :
-                    null}
+                        null}
 
                 </StyledHeaderContainer>
 
                 <StyledExternalContainer>
                     <StyledFilterContainer>
                         <div style={{ textAlign: 'center', marginBottom: space[3] }}>
-                            <Typography vairant="body1" component="p" style={{ fontWeight: 600 }}>{this.state.results > 100 ? '100+' : this.state.results} results</Typography>
+                            <Typography vairant="body1" style={{ fontWeight: 600 }}>{this.state.results > 100 ? '100+' : this.state.results} results</Typography>
                         </div>
                         <Divider />
                         <form onSubmit={this.handleSubmit}>
@@ -140,7 +150,7 @@ class FilterPage extends Component {
                                 </SelectTextField>
                             </div>
                             <div style={{ marginTop: space[4] }}>
-                                <Typography variant="body1" color="primary" component="p" style={{ marginBottom: space[4], fontWeight: 600 }}>Price</Typography>
+                                <Typography variant="body1" color="primary" style={{ marginBottom: space[4], fontWeight: 600 }}>Price</Typography>
                                 <RangeSlider
                                     color={palette.blue}
                                     label="Price"
@@ -153,7 +163,7 @@ class FilterPage extends Component {
                                 />
                             </div>
                             <div style={{ marginTop: space[5] }}>
-                                <Typography variant="body1" color="primary" component="p" style={{ marginBottom: space[1], fontWeight: 600 }}>Delivery</Typography>
+                                <Typography variant="body1" color="primary" style={{ marginBottom: space[1], fontWeight: 600 }}>Delivery</Typography>
                                 <FormControlLabel
                                     value="recommended"
                                     control={<Radio color="primary" />}
@@ -201,17 +211,19 @@ class FilterPage extends Component {
                         </form>
                     </StyledFilterContainer>
                     <StyledRightContainer>
-                        <GridList spacing={3}>
-                            {tileData.map(tile => (
-                                <CarCardSmall
-                                    key={tile.id}
-                                    image={tile.img}
-                                    title={tile.title}
-                                    price={tile.price}
-                                    rate={tile.rate}
-                                    handleCard={() => this.handleCard(tile.id)} />
-                            ))}
-                        </GridList>
+                        {
+                            vehicles ?
+                                <GridList spacing={3}>{
+                                    vehicles.map(vehicle => {
+                                        return <CarCardSmall
+                                            key={vehicle.id}
+                                            id={vehicle.id}
+                                            image={vehicle.thumbnails ? vehicle.thumbnails[0] : ''}
+                                            title={vehicle.make + ' ' + vehicle.model + ' ' + vehicle.year}
+                                        />
+                                    })
+                                }
+                                </GridList> : null}
                     </StyledRightContainer>
                 </StyledExternalContainer>
             </React.Fragment>
@@ -219,4 +231,19 @@ class FilterPage extends Component {
     }
 }
 
-export default FilterPage
+const mapStateToProps = state => {
+    return {
+        loading: state.filter.loading,
+        error: state.filter.error,
+        count: state.filter.count,
+        vehicles: state.filter.vehicles
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        handleGetVehicles: () => { dispatch(actions.onFilterGetVehicles()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterPage)

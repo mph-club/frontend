@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
+import { withRouter } from 'react-router-dom';
 
 import {
     StyleButton,
@@ -7,18 +8,16 @@ import {
     StyledSlantedDivider
 } from './styles';
 import Typography from '@material-ui/core/Typography';
-import { hours } from '../../../tools/constants';
+import { hours } from '../../../shared/constants';
 
 class SearchBar extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
 
-        if (this.props.location.pathname === '/search-page') { 
-            this.props.history.push('/filter');
-        } 
+        this.props.history.push('/filter');
     }
-    
+
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
@@ -33,6 +32,8 @@ class SearchBar extends Component {
                                 id="searchPage-search"
                                 type="search"
                                 placeholder="Enter a city in FL"
+                                value='Miami'
+                                contentEditable={false}
                                 InputProps={{
                                     disableUnderline: true
                                 }}
@@ -41,7 +42,7 @@ class SearchBar extends Component {
                         </div>
                         <StyledSlantedDivider />
                         <div style={{ display: 'block' }}>
-                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Pickup</Typography>
+                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip start</Typography>
                             <div style={{ display: 'flex' }}>
                                 <TextField
                                     id="searchPage-fromTextField"
@@ -69,14 +70,14 @@ class SearchBar extends Component {
                                     </option>
                                 ))}</TextField>
                             </div>
-    
+
                         </div>
                         <StyledSlantedDivider />
                         <div style={{ display: 'block' }}>
-                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Return</Typography>
+                            <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip end</Typography>
                             <div style={{ display: 'flex' }}>
                                 <TextField
-                                    id="searchPage-fromTextField"
+                                    id="searchPage-untilTextField"
                                     type="date"
                                     defaultValue="2017-05-24"
                                     InputLabelProps={{
@@ -102,16 +103,16 @@ class SearchBar extends Component {
                                 ))}</TextField>
                             </div>
                         </div>
-    
+
                     </StyledPaper>
-                    <div style={{display: 'flex', alignSelf:'center'}}>
+                    <div style={{ display: 'flex', alignSelf: 'center' }}>
                         <StyleButton type="submit">Search</StyleButton>
                     </div>
-    
+
                 </div>
             </form>
         );
     }
 }
 
-export default SearchBar
+export default withRouter(SearchBar)

@@ -8,7 +8,7 @@ const StepComponent = (props) => {
         <React.Fragment>
             <StyledStepsContainer>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <Typography variant="title" component="p" style={{ fontWeight: 400 }}>{props.label}</Typography>
+                    <Typography variant="h6" style={{ fontWeight: 400 }}>{props.label}</Typography>
                 </div>
                 <div>
                     <TextButton

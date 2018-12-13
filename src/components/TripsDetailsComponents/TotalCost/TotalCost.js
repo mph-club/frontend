@@ -40,7 +40,7 @@ class TotalCost extends Component {
                             paddingLeft: space[3],
                             paddingRight: space[3]
                         }}>
-                        <Typography variant="display1" color="primary" component="h2">Total Cost</Typography>
+                        <Typography variant="h4" color="primary" component="h2">Total Cost</Typography>
                         <Title component="h2" style={{ marginBottom: space[2], marginTop: space[3] }}>FEES AND PRICE DETAILS</Title>
                         <StyledContainer>
                             <StyledRowContainer style={{ marginLeft: space[3], marginRight: space[3] }}>
@@ -70,8 +70,8 @@ class TotalCost extends Component {
                                     <Typography variant="body2" component="p">${this.state.totalPerDay * this.state.tripDays}.00/day</Typography>
                                 </StyledRowContainer>
                                 <StyledRowContainer>
-                                    <Typography variant="title" component="p">Trip Total</Typography>
-                                    <Typography variant="title" component="p">${this.state.totalPerDay * this.state.tripDays}.00/day</Typography>
+                                    <Typography variant="h6">Trip Total</Typography>
+                                    <Typography variant="h6">${this.state.totalPerDay * this.state.tripDays}.00/day</Typography>
                                 </StyledRowContainer>
                                 <StyledRowContainer>
                                     <div>

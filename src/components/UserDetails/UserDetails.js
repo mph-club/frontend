@@ -1,23 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
-import CarsCollection from '../../pages/CarsCollection/CarsCollection';
 import UserSummary from './UserSummary/UserSummary';
 import Divider from '@material-ui/core/Divider';
-import RenterReviews from '../DetailPageComponents/RenterReviews/RenterReview';
-import { StyledRenterReviewsContainer } from './styles';
+
+import {
+    FooterContainer
+} from './styles';
+import Footer from '../Navigation/Footer/Footer';
 
 const UserDetails = () => {
     return (
         <React.Fragment>
             <UserSummary />
             <Divider />
-            <StyledRenterReviewsContainer>
-                <RenterReviews />
-            </StyledRenterReviewsContainer>
             <Divider />
-            <CarsCollection title="Mike's Cars"/>
+            <FooterContainer>
+                <Footer/>
+            </FooterContainer>
         </React.Fragment>
     );
 }
 
-export default UserDetails
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps)(UserDetails)

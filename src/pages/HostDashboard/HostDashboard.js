@@ -16,8 +16,11 @@ import CarCard from '../../components/HostDashboardComponents/CarCard/CarCard';
 import Tabs from '@material-ui/core/Tabs';
 
 const styles = theme => ({
-    indicator: {
-        color: palette.green,
+    root: {
+        color: palette.green
+    },
+    tabsIndicator: {
+        backgroundColor: palette.green
     }
 })
 
@@ -40,11 +43,12 @@ class HostDashboard extends Component {
 
     render() {
 
+        const { classes } = this.props
         const { value } = this.state
         let content = null
 
         const noVehicles = <StyleNoVehiclesContainer>
-            <Typography variant="display1" color="primary">No listings</Typography>
+            <Typography variant="h4" color="primary">No listings</Typography>
             <Typography
                 variant="body1"
                 color="primary"
@@ -74,15 +78,14 @@ class HostDashboard extends Component {
                 break;
         }        
 
-        const { classes } = this.props
 
         return (
             <StyledContainer>
                 <StyledAppBar position="fixed">
                     <Tabs
+                        classes={{ indicator: classes.tabsIndicator, root: classes.root }}
                         value={this.state.value}
                         onChange={this.handleChange}
-                        className={ [classes.indicator, classes.tabsIndicator].join(' ') }
                         centered
                     >
                         <Tab label="Vehicles" />

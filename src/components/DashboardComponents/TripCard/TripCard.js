@@ -62,18 +62,18 @@ const TripCard = (props) => {
                 {notice}
                 <StyledExtContainer>
                     <div>
-                        <Typography variant="title" color="primary" component="h2">{title}</Typography>
+                        <Typography variant="h6" color="primary">{title}</Typography>
                         <Typography variant="body2" style={styles} component="h3">Maserati Granturismo Convertible 2016</Typography>
                         <StyledDateWrapper>
                             <div>
                                 <Typography variant="body1" color="primary" component="h5" style={{ color: `${palette.grey02}`, fontWeight: 600, marginBottom: `${space[1]}` }}>Start date</Typography>
-                                <Typography variant="title" style={styles} component="h2">Tue, Jul 6, 2018</Typography>
+                                <Typography variant="h6" style={styles}>Tue, Jul 6, 2018</Typography>
                                 <Typography variant="body2" component="h2" style={{ ...styles, fontWeight: 600 }}>10 AM</Typography>
                             </div>
                             <StyledSlantedDivider />
                             <div>
                                 <Typography variant="body1" color="primary" component="h5" style={{ color: `${palette.grey02}`, fontWeight: 600, marginBottom: `${space[1]}` }}>End date</Typography>
-                                <Typography variant="title" style={styles} component="h2">Fri, Jul 9, 2018</Typography>
+                                <Typography variant="h6" style={styles}>Fri, Jul 9, 2018</Typography>
                                 <Typography variant="body2" component="h2" style={{ ...styles, fontWeight: 600 }}>12 PM</Typography>
                             </div>
                         </StyledDateWrapper>

@@ -37,7 +37,7 @@ class TransactionHistory extends Component {
                 content = <React.Fragment>
 
                     <div style={{ position: "fixed", marginTop: '48px', paddingTop: '40px', backgroundColor: palette.white, width: '100%' }}>
-                        <Typography variant="title" component="p" style={{ marginBottom: `${space[2]}` }}>Payout Account</Typography>
+                        <Typography variant="h6" style={{ marginBottom: `${space[2]}` }}>Payout Account</Typography>
                         <Typography variant="body2" component="p">****2345</Typography>
                         <TextButton color={palette.green} style={{ marginBottom: '16px' }}>Change your payout account</TextButton>
                     </div>
@@ -46,7 +46,7 @@ class TransactionHistory extends Component {
                         {payoutData.map((item, index) => {
                             return (
                                 <React.Fragment key={index}>
-                                    <Typography variant="headline" component="p" style={{ marginTop: space[4], marginBottom: `-${space[3]}` }}>{item.date}</Typography>
+                                    <Typography variant="h5" style={{ marginTop: space[4], marginBottom: `-${space[3]}` }}>{item.date}</Typography>
                                     {
                                         item.payouts.map((el, index) => {
                                             return (
@@ -73,7 +73,7 @@ class TransactionHistory extends Component {
                     {payoutData.map((item, index) => {
                         return (
                             <React.Fragment key={index}>
-                                <Typography variant="headline" component="p" style={{ marginTop: '16px' }}>{item.date}</Typography>
+                                <Typography variant="h5" component="p" style={{ marginTop: '16px' }}>{item.date}</Typography>
                                 {
                                     item.payouts.map((el, index) => {
                                         return (

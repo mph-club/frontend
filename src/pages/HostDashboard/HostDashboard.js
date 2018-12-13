@@ -48,7 +48,7 @@ class HostDashboard extends Component {
         let content = null
 
         const noVehicles = <StyleNoVehiclesContainer>
-            <Typography variant="display1" color="primary">No listings</Typography>
+            <Typography variant="h4" color="primary">No listings</Typography>
             <Typography
                 variant="body1"
                 color="primary"

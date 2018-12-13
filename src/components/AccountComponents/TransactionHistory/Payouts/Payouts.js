@@ -13,13 +13,13 @@ const Payout = (props) => {
         <React.Fragment>
             <StyledStepsWrapper>
                 <div>
-                    <Typography variant="title" component="p">{props.userName}</Typography>
+                    <Typography variant="h6" component="p">{props.userName}</Typography>
                     <Typography variant="body1" component="p" style={{ color: palette.grey02 }}>{props.carMake}</Typography>
                     <Typography variant="body1" component="p" style={{ color: palette.grey02 }}>{props.carYear}</Typography>
                 </div>
                 <StyledPaymentWrapper>
                     <div style={{ textAlign:'end'}}>
-                        <Typography variant="title" component="p">${props.amount}</Typography>
+                        <Typography variant="h6" component="p">${props.amount}</Typography>
                         <Typography 
                             variant="body1" 
                             component="p" 

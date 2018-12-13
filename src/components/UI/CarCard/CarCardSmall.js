@@ -28,6 +28,7 @@ class CarCardSmall extends PureComponent {
 	}
 
 	render() {
+
 		return (
 			<GridListTile key={this.props.key}>
 				<StyledCard>

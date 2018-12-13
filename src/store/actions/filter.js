@@ -35,8 +35,7 @@ export const onFilterGetVehicles = () => {
             type = properties['type']
         }
 
-
-        const url = (type && type !== 'all') ? 'vehicles/type/' + type : 'vehicles'
+        const url = (type && type !== 'all') ? 'vehicles?type=' + type : 'vehicles'
 
         axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
         axios.get(url).then(response => {

@@ -53,7 +53,7 @@ class DeliverAndAirport extends Component {
         return (
             <React.Fragment>
                 <StyledExternalContainer>
-                    <Typography variant="display1" color="primary" component="h2">Deliver & Airport</Typography>
+                    <Typography variant="h4" color="primary" component="h2">Deliver & Airport</Typography>
                     <div style={{
                         margin: '16px 0'
                     }}>
@@ -64,7 +64,7 @@ class DeliverAndAirport extends Component {
                             display: 'flex',
                             justifyContent: 'space-between'
                         }}>
-                            <Typography variant="headline" component="h5">MIA - Miami, FL</Typography>
+                            <Typography variant="h5">MIA - Miami, FL</Typography>
                             <Checkbox
                                 checked={this.state.checkbox === "checkedMiami" ? true : false}
                                 onChange={this.handleChange}
@@ -84,7 +84,7 @@ class DeliverAndAirport extends Component {
                             display: 'flex',
                             justifyContent: 'space-between'
                         }}>
-                            <Typography variant="headline" component="h5">FLL - Fort Lauderdale, FL</Typography>
+                            <Typography variant="h5">FLL - Fort Lauderdale, FL</Typography>
                             <Checkbox
                                 checked={this.state.checkbox === "checkedFLL" ? true : false}
                                 onChange={this.handleChange}
@@ -104,7 +104,7 @@ class DeliverAndAirport extends Component {
                             display: 'flex',
                             justifyContent: 'space-between'
                         }}>
-                            <Typography variant="headline" component="h5">Guest's chosen location</Typography>
+                            <Typography variant="h5">Guest's chosen location</Typography>
                             <Checkbox
                                 checked={this.state.checkbox === "chosenLocation" ? true : false}
                                 onChange={this.handleChange}

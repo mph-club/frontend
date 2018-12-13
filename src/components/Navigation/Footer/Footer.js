@@ -34,7 +34,7 @@ const Footer = () => {
                 <Grid item xs={12} sm={6}>
                     <StyledDiv>
                         <StyledDivTwo>
-                            <Typography variant="subheading" style={{color: CustomTheme.palette.white}} gutterBottom>
+                            <Typography variant="subtitle1" style={{color: CustomTheme.palette.white}} gutterBottom>
                                 Follow us
                             </Typography>
                             <StyledSocialUl>

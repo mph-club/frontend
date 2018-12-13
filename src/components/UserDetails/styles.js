@@ -5,3 +5,11 @@ export const StyledRenterReviewsContainer = styled.div`
     margin: auto;
     padding: 32px;
 `
+
+export const FooterContainer = styled.div`
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+`

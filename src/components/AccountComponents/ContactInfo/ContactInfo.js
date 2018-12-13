@@ -55,7 +55,7 @@ class ContactInfo extends Component {
                 <Title component="p" style={{ marginBottom: `${space[3]}` }}>EMAIL</Title>
                 <StyledStepsContainer>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <StyledEmailWrapper variant="title" component="p">{user.email.value} </StyledEmailWrapper>
+                        <StyledEmailWrapper variant="h6">{user.email.value} </StyledEmailWrapper>
                     </div>
                     <div>
                         <TextButton color={palette.green}>Change</TextButton>
@@ -82,7 +82,7 @@ class ContactInfo extends Component {
                 <Divider />
                 <StyledStepsContainer>
                     <div style={{ display: 'flex', alignItems: 'center', marginTop: `${space[3]}` }}>
-                        <Typography variant="title" component="p" style={{ fontWeight: 400 }}>Password</Typography>
+                        <Typography variant="h6" style={{ fontWeight: 400 }}>Password</Typography>
                     </div>
                     <div style={{ marginTop: `${space[3]}` }}>
                         <TextButton color={palette.green}>Change</TextButton>

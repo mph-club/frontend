@@ -361,7 +361,7 @@ export const onBoardingEnded = () => {
 }
 
 ///LOAGOUT AND SESSION VALIDATION ACTIONS
-export const authStateChecked = (session) => {
+const authStateChecked = (session) => {
     return {
         type: actionTypes.SIGNIN_AUTH_STATE_CHECKED,
         session: session
@@ -396,6 +396,8 @@ export const onAuthCheckState = () => {
                 
                 dispatch(authStateChecked(handleSession(session)))
             });
+        } else {
+            dispatch(authStateChecked(handleSession(null)))
         }
     };
 }

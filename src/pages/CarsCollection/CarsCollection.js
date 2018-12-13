@@ -18,13 +18,8 @@ import * as actions from '../../store/actions/index';
 
 class CarsCollection extends Component {
 
-    handleViewCarsByType = () => {
-        this.props.storeFilterProperty('type',this.props.title)
-        this.props.history.push('/filter');
-    }
-
-    handleViewAllCars = () => {
-        this.props.storeFilterProperty('type','all')
+    handleGoToFilterPage = (vehicleType) => {
+        this.props.storeFilterProperty('type',vehicleType)
         this.props.history.push('/filter');
     }
 
@@ -32,7 +27,7 @@ class CarsCollection extends Component {
         return (
             <StyledSection>
                 <ExternalContainer>
-                    <StyledTitle variant="display1" color="primary">{this.props.title}</StyledTitle>
+                    <StyledTitle variant="h4" color="primary">{this.props.title}</StyledTitle>
                     <StyledDivContainer>
                         <StyledGridList spacing={4}>
                             {this.props.items.map(item => (
@@ -46,9 +41,9 @@ class CarsCollection extends Component {
                         </StyledGridList>
                     </StyledDivContainer>
                     <div style={{ marginTop: space[3] }}>
-                        <TextButton onClick={this.handleViewCarsByType}>View all {this.props.title}</TextButton>
+                        <TextButton onClick={() => this.handleGoToFilterPage(this.props.key)}>View all {this.props.title}</TextButton>
                         <span style={{ color: palette.grey01, marginLeft: space[1], marginRight: space[1] }}>or</span>
-                        <TextButton onClick={this.handleViewAllCars}>View all Cars</TextButton>
+                        <TextButton onClick={() => this.handleGoToFilterPage('all')}>View all Cars</TextButton>
                     </div>
                 </ExternalContainer>
             </StyledSection>

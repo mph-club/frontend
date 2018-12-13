@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
@@ -56,48 +56,72 @@ class App extends Component {
   }
 
   render() {
+
+    let routes = <Switch>
+      <Route exact path="/" component={Explore} />
+      <Route path="/car-details" component={DetailPage} />
+      <Route path="/user-details" component={UserDetails} />
+      <Route path="/car-location" component={CarLocation} />
+      <Route path="/trip-preference" component={TripPreference} />
+      <Route path="/filter" component={asyncFilterPage} />
+      <Route exact path="/" component={Explore} />
+      <Redirect to="/" />
+    </Switch>
+
+    if (this.props.isAuthenticated) {
+      routes = <Switch>
+        <Route path="/car-details" component={DetailPage} />
+        <Route path="/user-details" component={UserDetails} />
+        <Route path="/checkout" component={asyncCheckout} />
+        <Route path="/dashboard" component={asyncDashboard} />
+        <Route path="/host-dashboard" component={asyncHostDashboard} />
+        <Route path="/trip-details-page" component={TripDetailsPage} />
+        <Route path="/decline-trip" component={DeclineForm} />
+        <Route path="/listing-pending" component={ListingDetailsPage} />
+        <Route path="/upload-pictures" component={Photos} />
+        <Route path="/delivery-and-airport" component={DeliverAndAirport} />
+        <Route path="/car-location" component={CarLocation} />
+        <Route path="/trip-preference" component={TripPreference} />
+        <Route path="/filter" component={asyncFilterPage} />
+        <Route path="/total-cost" component={TotalCost} />
+        <Route path="/cancel-trip" component={CancelTrip} />
+        <Route path="/cancellation-review" component={CancellationReview} />
+        <Route path="/change-trip" component={ChangeTrip} />
+        <Route path="/request-change" component={RequestChange} />
+        <Route path="/account" component={asyncAccount} />
+        <Route exact path="/" component={Explore} />
+        <Redirect to="/" />
+      </Switch>
+    }
+
+
     return (
       <React.Fragment>
         <Toolbar />
         <main>
-          <Login/>
-          <ConfirmUser/>
+          <Login />
+          <ConfirmUser />
           <SignUp />
           <WelcomeDialog />
           <ValidationWrapper />
           <WelcomeEndedDialog />
-          <Switch>
-            <Route exact path="/" component={Explore} />
-            <Route path="/car-details" component={DetailPage} />
-            <Route path="/user-details" component={UserDetails} />
-            <Route path="/checkout" component={asyncCheckout} />
-            <Route path="/dashboard" component={asyncDashboard} />
-            <Route path="/host-dashboard" component={asyncHostDashboard} />
-            <Route path="/trip-details-page" component={TripDetailsPage} />
-            <Route path="/decline-trip" component={DeclineForm} />
-            <Route path="/listing-pending" component={ListingDetailsPage} />
-            <Route path="/upload-pictures" component={Photos} />
-            <Route path="/delivery-and-airport" component={DeliverAndAirport} />
-            <Route path="/car-location" component={CarLocation} />
-            <Route path="/trip-preference" component={TripPreference} />
-            <Route path="/filter" component={asyncFilterPage} />
-            <Route path="/total-cost" component={TotalCost} />
-            <Route path="/cancel-trip" component={CancelTrip} />
-            <Route path="/cancellation-review" component={CancellationReview} />
-            <Route path="/change-trip" component={ChangeTrip} />
-            <Route path="/request-change" component={RequestChange} />
-            <Route path="/account" component={asyncAccount} />
-          </Switch>
+          {routes}
         </main>
       </React.Fragment>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    onChechAuthState: () => { dispatch(actions.onAuthCheckState())}
+    isAuthenticated: state.auth.session.isValid
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+const mapDispatchToProps = dispatch => {
+  return {
+    onChechAuthState: () => { dispatch(actions.onAuthCheckState()) }
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

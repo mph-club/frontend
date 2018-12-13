@@ -119,7 +119,7 @@ class TripDetailsPage extends Component {
                     <div style={{ marginBottom: space[3] }}>
                         <Title component="h4">{firstRowTitle}</Title>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: `${space[3]}`, marginTop: space[3] }}>
-                            <Typography variant="title" component="p" >${this.state.tripDetails.total}.00</Typography>
+                            <Typography variant="h6" >${this.state.tripDetails.total}.00</Typography>
                             <TextButton onClick={this.handleViewDetails}>View details</TextButton>
                         </div>
                         <Typography
@@ -129,35 +129,35 @@ class TripDetailsPage extends Component {
                     </div>
                     <Divider />
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                        <Typography variant="title" component="p" style={{ fontWeight: 400 }}>Trip photos</Typography>
+                        <Typography variant="h6"  style={{ fontWeight: 400 }}>Trip photos</Typography>
                         <TextButton onClick={this.handleAddPhotos}>Add</TextButton>
                     </div>
                     <Divider />
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
-                        <Typography variant="title" component="p" style={{ fontWeight: 400 }} >Insurance protection</Typography>
+                        <Typography variant="h6" style={{ fontWeight: 400 }} >Insurance protection</Typography>
                         <TextButton>Premium</TextButton>
                     </div>
                     <Divider />
                     <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
                         <Title component="h4"> Car Details</Title>
-                        <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>Maserati Granturismo Convertible 2016</Typography>
+                        <Typography variant="h6" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>Maserati Granturismo Convertible 2016</Typography>
                         <TextButton style={{ marginTop: `${space[3]}` }} onClick={this.handleCarDetails}>View Details</TextButton>
                     </div>
                     <Divider />
                     <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
                         <Title>LICENSE PLATE NUMBER</Title>
-                        <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>BAASD34</Typography>
+                        <Typography variant="h6" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>BAASD34</Typography>
                     </div>
                     <Divider />
                     <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
                         <Title>PRIMARY DRIVER</Title>
-                        <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>Jim Jones</Typography>
+                        <Typography variant="h6" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>Jim Jones</Typography>
                         <Typography variant="body1" component="p" style={{ marginTop: `${space[2]}`, color: `${palette.grey02}` }}>The primary driver must be present for pick up and drop off</Typography>
                     </div>
                     <Divider />
                     <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
                         <Title>RESERVATION NUMBER</Title>
-                        <Typography variant="title" component="p" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>32424467</Typography>
+                        <Typography variant="h6" style={{ fontWeight: 400, marginTop: `${space[3]}` }}>32424467</Typography>
                     </div>
                     <Divider />
                     <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}` }}>
@@ -203,8 +203,8 @@ class TripDetailsPage extends Component {
                                 status={this.state.status}
                             />
                             <Typography varaint="body2" component="h2" style={{ color: `${palette.grey02}`, marginBottom: `${space[2]}` }}>Hosted by <span style={{ color: `${palette.black}`, fontWeight: 600 }}>{this.state.host.userName}</span></Typography>
-                            <Typography variant="display1" color="primary" component="h2">{this.state.carDetails.make + ' ' + this.state.carDetails.model}</Typography>
-                            <Typography variant="display1" color="primary" component="h2">{this.state.carDetails.year}</Typography>
+                            <Typography variant="h4" color="primary">{this.state.carDetails.make + ' ' + this.state.carDetails.model}</Typography>
+                            <Typography variant="h4" color="primary">{this.state.carDetails.year}</Typography>
                             <StyledRateLayout>
                                 <div>{this.state.carDetails.trips} trips</div>
                                 <div><RateStars rate={this.state.carDetails.rate.toString()} /></div>

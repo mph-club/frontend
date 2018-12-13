@@ -39,7 +39,7 @@ class CancellationReview extends Component {
                             paddingLeft: `${space[3]}`,
                             paddingRight: `${space[3]}`
                         }}>
-                        <Typography variant="display1" color="primary" component="h2">Review our cancellation policy</Typography>
+                        <Typography variant="h4" color="primary" component="h2">Review our cancellation policy</Typography>
                     </div>
                     <div
                         style={{
@@ -97,8 +97,8 @@ class CancellationReview extends Component {
                                             <Typography variant="body2" component="p">-${this.state.cancellationFee}.00</Typography>
                                         </StyledRowContainer>
                                         <StyledRowContainer>
-                                            <Typography variant="title" component="p">Your trip refund</Typography>
-                                            <Typography variant="title" component="p">${this.state.totalRefund}.00/day</Typography>
+                                            <Typography variant="h6">Your trip refund</Typography>
+                                            <Typography variant="h6">${this.state.totalRefund}.00/day</Typography>
                                         </StyledRowContainer>
                                         <div style={{ marginTop: '-8px', width: '200px' }}>
                                             <Typography variant="body1" component="p" style={{ color: palette.grey02 }}>Your deposit of of $1500 will be also refunded</Typography>

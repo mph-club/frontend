@@ -56,7 +56,7 @@ class CancelTrip extends Component {
 
         return (
             <StyledContainer>
-                <Title component="h1" variant="title" color="primary">{title}</Title>
+                <Title variant="h6" color="primary">{title}</Title>
                 <FormControl style={{ width: '100%' }}>
                     <RadioGroup
                         aria-label="Reasons"

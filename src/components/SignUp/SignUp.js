@@ -128,7 +128,7 @@ class SignUp extends Component {
                         <ClearIcon />
                     </StyledIconButton>
                     <Typography style={{ marginLeft: '5%' }}
-                        variant="title"
+                        variant="h6"
                         id="modal-title">Sign Up</Typography>
                     <StyledForm autoComplete="on">
                         <FormControl margin="normal" required fullWidth>
@@ -181,7 +181,7 @@ class SignUp extends Component {
                             <StyledFooterButtonLayout>
                                 <StyledPrimaryButton
                                     fullWidth
-                                    variant="raised"
+                                    variant="contained"
                                     color="primary"
                                     onClick={() => this.handleSignUp()}
                                 >

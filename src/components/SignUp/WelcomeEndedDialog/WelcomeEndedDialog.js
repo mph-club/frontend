@@ -25,7 +25,7 @@ const WelcomeEndedDialog = (props) => {
                     <div>
                         <img src={logo} alt="logo" />
                     </div>
-                    <Typography variant="display1" style={{ color: palette.white, margin: '32px 0 16px' }}>You're ready to go!</Typography>
+                    <Typography variant="h4" style={{ color: palette.white, margin: '32px 0 16px' }}>You're ready to go!</Typography>
                     <Typography variant="body1" component="p" style={{ color: palette.white, maxWidth: '260px', marginBottom: '32px' }}>Continue exploring our host's cars or become a host yourself by listing your car.</Typography>
 
                     <div style={{ maxWidth: '220px'}}>

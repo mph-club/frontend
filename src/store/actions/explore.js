@@ -28,7 +28,6 @@ export const onExploreFetchInfo = () => {
         dispatch(onExploreFetchStart())
 
         axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
-
         axios.get('explore').then(response => {
             dispatch(onExploreFetchInfoSucceed(response.data.data))
         }).catch(error => {

@@ -70,8 +70,8 @@ class ListingDetailsPage extends Component {
                         <Notice
                             color={palette.black}
                             label='Pending Approval' />
-                        <Typography variant="display1" color="primary" component="h2">Porsche Panamera</Typography>
-                        <Typography variant="display1" color="primary" component="h2">2016</Typography>
+                        <Typography variant="h4" color="primary" component="h2">Porsche Panamera</Typography>
+                        <Typography variant="h4" color="primary" component="h2">2016</Typography>
                     </StyledTitleLayout>
                     <StyledGridContainerTwo container spacing={40}>
                         <Grid item xs>

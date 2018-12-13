@@ -13,7 +13,6 @@ import CarFeature from '../../components/DetailPageComponents/CarFeature/CarFeat
 import ReadMore from '../../components/UI/ReadMore/ReadMore';
 import RenterReviews from '../../components/DetailPageComponents/RenterReviews/RenterReview';
 import OwnedBy from '../../components/DetailPageComponents/OwnedBy/OwnedBy';
-import CarsCollection from '../CarsCollection/CarsCollection';
 import SummaryTrip from '../../components/DetailPageComponents/SummaryTrip/SummaryTrip';
 import ReportListing from '../../components/DetailPageComponents/ReportListing/ReportListing';
 import SeatIcon from '../../assets/icons/SeatIcon';
@@ -127,8 +126,8 @@ class DetailPage extends Component {
                         <Grid container spacing={40}>
                             <Grid item xs>
                                 <StyledTitleLayout>
-                                    <Typography variant="display1" color="primary" component="h2">{vehicle.make + ' ' + vehicle.model}</Typography>
-                                    <Typography variant="display1" color="primary" component="h2">{vehicle.year}</Typography>
+                                    <Typography variant="h4" color="primary" component="h2">{vehicle.make + ' ' + vehicle.model}</Typography>
+                                    <Typography variant="h4" color="primary" component="h2">{vehicle.year}</Typography>
                                     <StyledRateLayout>
                                         <div>{vehicle.trips}</div>
                                         {vehicle.rate ? <div><RateStars rate={vehicle.rate} /></div> : null}
@@ -199,7 +198,6 @@ class DetailPage extends Component {
                                         </StyledOwnedByWrapper>
                                     </React.Fragment> : null
                                 }
-
 
                                 <Divider />
                                 <StyledGuideLinesWrapper>

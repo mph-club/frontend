@@ -69,7 +69,7 @@ class Login extends Component {
                         <ClearIcon />
                     </StyledIconButton>
                     <Typography style={{ marginLeft: '5%' }}
-                        variant="title"
+                        variant="h6"
                         id="modal-title">Login</Typography>
                     <StyledForm>
                         <FormControl margin="normal" required fullWidth>
@@ -98,7 +98,7 @@ class Login extends Component {
                         <StyledFooter>
                             <StyledFooterButtonLayout>
                                 <StyledPrimaryButton
-                                    variant="raised"
+                                    variant="contained"
                                     color="primary"
                                     onClick={() => this.handleLogin()}
                                 >

@@ -9,7 +9,6 @@ import {
     StyledSearchBarContainer
 } from './styles';
 import CarsCollection from '../CarsCollection/CarsCollection';
-import ListVehicleBanner from '../../components/ListingDetailsPageComponents/ListVehicleBanner/ListVehicleBanner';
 import Footer from '../../components/Navigation/Footer/Footer';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
 
@@ -27,9 +26,9 @@ class ExplorePage extends Component {
         const collections = this.props.data
 
         if ( collections ) {
-            cars = Object.keys(collections).map( (collectionKey, index) => {
+            cars = Object.keys(collections).map(collectionKey => {
                 return <CarsCollection 
-                            key={index} 
+                            key={collectionKey} 
                             title={collections[collectionKey].display_name} 
                             items={collections[collectionKey].vehicles}/>
             })
@@ -39,14 +38,14 @@ class ExplorePage extends Component {
             <React.Fragment>
                 <StyledHeader>
                     <StyledContainer>
-                        <StyledTitle variant="display1" component="h1"> Search and <span>book</span> from a variety of cars in all of Florida.</StyledTitle>
+                        <StyledTitle variant="h4">Search and <span>book</span> from a variety of cars in all of Florida.</StyledTitle>
                         <StyledSearchBarContainer>
                             <SearchBar />
                         </StyledSearchBarContainer>
                     </StyledContainer>
                 </StyledHeader>
                 {cars}
-                <ListVehicleBanner />
+                {/* <ListVehicleBanner /> */}
                 <Footer/>
             </React.Fragment>
         );

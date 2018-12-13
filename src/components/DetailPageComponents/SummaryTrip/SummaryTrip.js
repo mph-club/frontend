@@ -62,8 +62,7 @@ const SummaryTrip = (props) => {
                     <Title component="h4" 
                            style={{ marginBottom: `${space[3]}`}}>PICKP UP AND RETURN</Title>
                     <Typography 
-                        variant="title" 
-                        component="h5" 
+                        variant="h6" 
                         style={{ marginBottom: `${space[2]}`}}
                     >
                         Miami, FL
@@ -80,8 +79,7 @@ const SummaryTrip = (props) => {
                 <div style={{ marginTop: `${space[4]}`, marginBottom: `${space[4]}`}}>
                     <Title component="h4" style={{ marginBottom: `${space[3]}` }}>MILES INCLUDED</Title>
                     <Typography 
-                        variant="title" 
-                        component="h5" 
+                        variant="h6"
                         style={{ 
                             marginBottom: `${space[2]}`
                         }}

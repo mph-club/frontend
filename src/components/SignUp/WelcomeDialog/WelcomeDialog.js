@@ -24,7 +24,7 @@ const WelcomeDialog = (props) => {
                     <div>
                         <img src={logo} alt="logo" />
                     </div>
-                    <Typography variant="display1" style={{ color: palette.white, margin: '32px 0 16px' }}>Welcome to the club</Typography>
+                    <Typography variant="h4" style={{ color: palette.white, margin: '32px 0 16px' }}>Welcome to the club</Typography>
                     <Typography variant="body1" component="p" style={{ color: palette.white, maxWidth: '300px', marginBottom: '32px' }}>Keeping our guests and hosts safe is our number one priority. That’s why we need you to confirm a few more details before we can activate your account.</Typography>
                     <StyledPrimaryButton
                         backgroundcolor={palette.green}

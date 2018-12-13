@@ -75,10 +75,10 @@ class Account extends Component {
                                         </IconButton>
                                     </StyledAvatarWrapper>
                                     <div style={{ marginTop: `${space[3]}` }}>
-                                        <Typography variant="title" component="p" align='center' >Mike L.</Typography>
+                                        <Typography variant="h6" align='center' >Mike L.</Typography>
                                         <Typography variant="body1" component="p" align='center' style={{ color: palette.grey02 }}>Member since Jan 2018</Typography>
                                         <div style={{ textAlign: 'center', marginTop: space[2], marginBottom: space[3] }}>
-                                            <TextButton style={{ color: palette.green, fontSize: 14 }}>View Profile</TextButton>
+                                            <TextButton style={{ color: palette.green, fontSize: 14 }} onClick={() => this.props.history.push('/user-details')}>View Profile</TextButton>
                                         </div>
                                     </div>
                                     <StyledListItem

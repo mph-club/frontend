@@ -55,9 +55,14 @@ class FilterPage extends Component {
 
     toggleDrawer = () => {
 
-        const open = this.state.reducedSearchBar
-        this.setState({
-            reducedSearchBar: !open
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                value5: {
+                    ...prevState.value5
+                },
+                reducedSearchBar: !prevState.reducedSearchBar
+            }
         });
     };
 
@@ -66,13 +71,11 @@ class FilterPage extends Component {
         this.props.history.push('/car-details');
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.handleGetVehicles();
     }
 
-
     render() {
-
         const { vehicles } = this.props
 
         return (
@@ -85,10 +88,10 @@ class FilterPage extends Component {
                         <Button style={{ display: 'block', width: '100%', height: '60px' }} onClick={this.toggleDrawer}>
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
                                 <LocationIcon style={{ marginRight: space[2] }} />
-                                <Typography variant="body2" color="primary" component="h3">Current location</Typography>
+                                <Typography variant="body1" color="primary">Current location</Typography>
                             </div>
                             <div style={{ textAlign: 'center', marginBottom: space[1] }}>
-                                <Typography variant="body1" color="primary" component="p">Oct 17, 2018 10:00 am - Oct 20, 2018 10:00 am</Typography>
+                                <Typography variant="body1" color="primary">Oct 17, 2018 10:00 am - Oct 20, 2018 10:00 am</Typography>
                             </div>
                         </Button>
                     </StyledMidComponents>
@@ -96,12 +99,12 @@ class FilterPage extends Component {
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <Button style={{ width: '50%', height: '60px' }} onClick={this.toggleDrawer}>
                                 <LocationIcon style={{ marginRight: space[2] }} />
-                                <Typography variant="body2" color="primary" component="h3">Current location</Typography>
+                                <Typography variant="body1" color="primary">Current location</Typography>
                             </Button>
                             <StyledSlantedDivider />
                             <Button style={{ width: '50%', height: '60px' }} >
                                 <FilterIcon style={{ marginRight: space[2] }} />
-                                <Typography variant="body2" color="primary" component="h3">Filters</Typography>
+                                <Typography variant="body1" color="primary">Filters</Typography>
                             </Button>
                         </div>
                     </StyledReducedComponents>
@@ -124,7 +127,7 @@ class FilterPage extends Component {
                 <StyledExternalContainer>
                     <StyledFilterContainer>
                         <div style={{ textAlign: 'center', marginBottom: space[3] }}>
-                            <Typography vairant="body1" component="p" style={{ fontWeight: 600 }}>{this.state.results > 100 ? '100+' : this.state.results} results</Typography>
+                            <Typography vairant="body1" style={{ fontWeight: 600 }}>{this.state.results > 100 ? '100+' : this.state.results} results</Typography>
                         </div>
                         <Divider />
                         <form onSubmit={this.handleSubmit}>
@@ -147,7 +150,7 @@ class FilterPage extends Component {
                                 </SelectTextField>
                             </div>
                             <div style={{ marginTop: space[4] }}>
-                                <Typography variant="body1" color="primary" component="p" style={{ marginBottom: space[4], fontWeight: 600 }}>Price</Typography>
+                                <Typography variant="body1" color="primary" style={{ marginBottom: space[4], fontWeight: 600 }}>Price</Typography>
                                 <RangeSlider
                                     color={palette.blue}
                                     label="Price"
@@ -160,7 +163,7 @@ class FilterPage extends Component {
                                 />
                             </div>
                             <div style={{ marginTop: space[5] }}>
-                                <Typography variant="body1" color="primary" component="p" style={{ marginBottom: space[1], fontWeight: 600 }}>Delivery</Typography>
+                                <Typography variant="body1" color="primary" style={{ marginBottom: space[1], fontWeight: 600 }}>Delivery</Typography>
                                 <FormControlLabel
                                     value="recommended"
                                     control={<Radio color="primary" />}
@@ -211,11 +214,11 @@ class FilterPage extends Component {
                         {
                             vehicles ?
                                 <GridList spacing={3}>{
-                                    vehicles.map((vehicle, index) => {
+                                    vehicles.map(vehicle => {
                                         return <CarCardSmall
-                                            key={index}
+                                            key={vehicle.id}
                                             id={vehicle.id}
-                                            image={vehicle.thumbnails[2] ? vehicle.thumbnails[2] : vehicle.thumbnails[0] }
+                                            image={vehicle.thumbnails ? vehicle.thumbnails[0] : ''}
                                             title={vehicle.make + ' ' + vehicle.model + ' ' + vehicle.year}
                                         />
                                     })

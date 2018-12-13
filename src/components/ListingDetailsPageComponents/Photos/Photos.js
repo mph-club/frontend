@@ -74,7 +74,7 @@ class Photos extends Component {
                             paddingLeft: `${space[3]}`,
                             paddingRight: `${space[3]}`
                         }}>
-                        <Typography variant="display1" color="primary" component="h2">Photos</Typography>
+                        <Typography variant="h4" color="primary">Photos</Typography>
                         <div style={{
                             margin: '16px 0',
                             maxWidth: '400px'
@@ -96,7 +96,7 @@ class Photos extends Component {
                                     <StyledCardContent>
                                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                             <Typography
-                                                variant="headline"
+                                                variant="h5"
                                                 style={{
                                                     color: `${palette.grey02}`
                                                 }}>

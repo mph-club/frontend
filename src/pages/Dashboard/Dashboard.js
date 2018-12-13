@@ -40,8 +40,6 @@ class Dashboard extends Component {
                 </React.Fragment>
                 break;
             case 1:
-                break;
-            case 2:
                 content = <React.Fragment>
                     <TripCard clicked={this.handleCardClick} status='tripPast' />
                 </React.Fragment>
@@ -61,7 +59,6 @@ class Dashboard extends Component {
                         centered
                     >
                         <Tab label="Trips" />
-                        <Tab label={this.props.activityItems > 0 ? <StyledBadge color="secondary" badgeContent={this.props.activityItems}> Activity</StyledBadge> : "Activity"} />
                         <Tab label={this.props.historyItems > 0 ? <StyledBadge color="secondary" badgeContent={this.props.historyItems}> History</StyledBadge> : "History"} />
                     </Tabs>
                 </StyledAppBar>

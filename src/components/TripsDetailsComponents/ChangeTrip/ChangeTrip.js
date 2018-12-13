@@ -40,7 +40,7 @@ class ChangeTrip extends Component {
                             paddingLeft: `${space[3]}`,
                             paddingRight: `${space[3]}`
                         }}>
-                        <Typography variant="display1" color="primary" component="h2">You can request to change your dates or time</Typography>
+                        <Typography variant="h4" color="primary" component="h2">You can request to change your dates or time</Typography>
                     </div>
                     <div
                         style={{
@@ -50,7 +50,7 @@ class ChangeTrip extends Component {
                         }}>
                         <StyledContainer>
                             <StyledGrayContainer>
-                                <Typography variant="title" component="p" style={{ fontSize: 16, color: palette.grey02 }}>CURRENT TRIP DATES</Typography>
+                                <Typography variant="h6" style={{ fontSize: 16, color: palette.grey02 }}>CURRENT TRIP DATES</Typography>
                                 <div style={{ display: 'block', marginTop: space[3] }}>
                                     <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Start date</Typography>
                                     <div style={{ display: 'flex' }}>
@@ -117,7 +117,7 @@ class ChangeTrip extends Component {
                                 </div>
                             </StyledGrayContainer>
                             <StyledWhiteContainer>
-                                <Typography variant="title" component="p" style={{ fontSize: 16, color: palette.grey02 }}>NEW TRIP DATES</Typography>
+                                <Typography variant="h6" style={{ fontSize: 16, color: palette.grey02 }}>NEW TRIP DATES</Typography>
                                 <div style={{ display: 'block', marginTop: space[3] }}>
                                     <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Start date</Typography>
                                     <div style={{ display: 'flex' }}>

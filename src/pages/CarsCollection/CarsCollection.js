@@ -41,7 +41,7 @@ class CarsCollection extends Component {
                         </StyledGridList>
                     </StyledDivContainer>
                     <div style={{ marginTop: space[3] }}>
-                        <TextButton onClick={() => this.handleGoToFilterPage(this.props.key)}>View all {this.props.title}</TextButton>
+                        <TextButton onClick={() => this.handleGoToFilterPage(this.props.id)}>View all {this.props.title}</TextButton>
                         <span style={{ color: palette.grey01, marginLeft: space[1], marginRight: space[1] }}>or</span>
                         <TextButton onClick={() => this.handleGoToFilterPage('all')}>View all Cars</TextButton>
                     </div>

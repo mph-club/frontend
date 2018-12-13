@@ -11,6 +11,7 @@ import {
 import CarsCollection from '../CarsCollection/CarsCollection';
 import Footer from '../../components/Navigation/Footer/Footer';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
+import ListVehicleBanner from '../../components/ListingDetailsPageComponents/ListVehicleBanner/ListVehicleBanner';
 
 import * as actions from '../../store/actions/index';
 
@@ -26,9 +27,11 @@ class ExplorePage extends Component {
         const collections = this.props.data
 
         if ( collections ) {
+
             cars = Object.keys(collections).map(collectionKey => {
                 return <CarsCollection 
                             key={collectionKey} 
+                            id= {collectionKey} 
                             title={collections[collectionKey].display_name} 
                             items={collections[collectionKey].vehicles}/>
             })
@@ -45,7 +48,7 @@ class ExplorePage extends Component {
                     </StyledContainer>
                 </StyledHeader>
                 {cars}
-                {/* <ListVehicleBanner /> */}
+                <ListVehicleBanner />
                 <Footer/>
             </React.Fragment>
         );

@@ -12,6 +12,7 @@ import Title from '../../UI/CustomTypography/Title/Title';
 import ValidatePhone from './ValidatePhone/ValidatePhone';
 
 import * as actions from '../../../store/actions/index';
+import DeleteAccount from './DeleteAccount/DeleteAccount';
 
 function TextMaskCustom(props) {
     const { inputRef, ...other } = props;
@@ -29,6 +30,10 @@ function TextMaskCustom(props) {
 }
 
 class ContactInfo extends Component {
+
+    state = {
+        openDeleteAccount: false
+    }
 
     handlePhoneActions = () => {
 
@@ -52,6 +57,9 @@ class ContactInfo extends Component {
         return (
             <React.Fragment>
                 <ValidatePhone />
+                <DeleteAccount 
+                    open={this.state.openDeleteAccount} 
+                    handleClose={() => this.setState({ openDeleteAccount: false})}/>
                 <Title component="p" style={{ marginBottom: `${space[3]}` }}>EMAIL</Title>
                 <StyledStepsContainer>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -94,7 +102,7 @@ class ContactInfo extends Component {
                         <Typography variant="h6" style={{ fontWeight: 400 }}>Close Account</Typography>
                     </div>
                     <div style={{ marginTop: `${space[3]}` }}>
-                        <TextButton color={palette.red} onClick={() => this.props.onDeleteAccount()}>Delete my account</TextButton>
+                        <TextButton color={palette.red} onClick={() => this.setState({ openDeleteAccount: true})}>Delete my account</TextButton>
                     </div>
                 </StyledStepsContainer>
                 <Divider />
@@ -112,8 +120,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        openValidationDialog: () => { dispatch(actions.openPhoneValidation()) },
-        onDeleteAccount: () => { dispatch(actions.onDeleteAccount())}
+        openValidationDialog: () => { dispatch(actions.openPhoneValidation()) }
     }
 }
 

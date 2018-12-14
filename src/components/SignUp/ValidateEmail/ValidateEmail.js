@@ -31,7 +31,7 @@ class ValidateEmail extends PureComponent {
     render() {
         return (
             <React.Fragment>
-                <Typography variant='title' component='h6'>Check your email</Typography>
+                <Typography variant='h6'>Check your email</Typography>
                 <Typography variant='body1' component='p' style={{ margin: '16px 0' }}>We have sent you a 6-digits code to help us verify that "{this.props.user.username}" is your email.</Typography>
 
                 <FormControl margin="normal" required fullWidth>

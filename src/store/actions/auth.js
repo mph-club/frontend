@@ -454,13 +454,12 @@ export const onDeleteAccount = () => {
         var userPool = new CognitoUserPool(poolData);
         var user = userPool.getCurrentUser();
 
-        user.getSession((err, session) => {
+        user.getSession((err, _) => {
             if (err) {
                 dispatch(authStateChecked(handleSession(null)))
             }
 
-
-            user.deleteUser(function (err, result) {
+            user.deleteUser( (err, _) => {
                 if (err) {
                     dispatch(authStateChecked(handleSession(null)))
                     return;

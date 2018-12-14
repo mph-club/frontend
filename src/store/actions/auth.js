@@ -25,7 +25,7 @@ export const signInFail = (user, password, error) => {
     return {
         type: actionTypes.SIGNIN_FAIL,
         error: error,
-        user: user, 
+        user: user,
         password: password
     };
 };
@@ -360,7 +360,7 @@ export const onBoardingEnded = () => {
     }
 }
 
-///LOAGOUT AND SESSION VALIDATION ACTIONS
+///LOAGOUT AND SESSION ACTIONS
 const authStateChecked = (session) => {
     return {
         type: actionTypes.SIGNIN_AUTH_STATE_CHECKED,
@@ -393,7 +393,7 @@ export const onAuthCheckState = () => {
                     dispatch(authStateChecked(handleSession(null)))
                     return;
                 }
-                
+
                 dispatch(authStateChecked(handleSession(session)))
             });
         } else {
@@ -426,12 +426,12 @@ export const onLogout = () => {
                     dispatch(authStateChecked(handleSession(null)))
                 }
 
-                if ( session.isValid() ) {
+                if (session.isValid()) {
                     cognitoUser.globalSignOut({
                         onSucces: (message) => {
                             dispatch(onAuthCheckState())
                             dispatch({ type: actionTypes.SIGNIN_LOGOUT })
-            
+
                         }, onFailure: (error) => {
                             dispatch(authStateChecked(handleSession(null)))
                             dispatch({ type: actionTypes.SIGNIN_LOGOUT })
@@ -444,4 +444,32 @@ export const onLogout = () => {
         }
     }
 }
+export const onDeleteAccount = () => {
+    return dispatch => {
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
 
+        var userPool = new CognitoUserPool(poolData);
+        var user = userPool.getCurrentUser();
+
+        user.getSession((err, session) => {
+            if (err) {
+                dispatch(authStateChecked(handleSession(null)))
+            }
+
+
+            user.deleteUser(function (err, result) {
+                if (err) {
+                    dispatch(authStateChecked(handleSession(null)))
+                    return;
+                }
+    
+                dispatch(onAuthCheckState())
+            });
+        })
+
+        dispatch({ type: actionTypes.ACCOUNT_DELETE })
+    }
+}

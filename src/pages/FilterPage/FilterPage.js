@@ -109,18 +109,20 @@ class FilterPage extends Component {
                         </div>
                     </StyledReducedComponents>
 
-                    {this.state.reducedSearchBar ?
-                        <React.Fragment>
-                            <Fade in={this.state.reducedSearchBar} timeout={{ enter: 500, exit: 500 }}>
-                                <StyledReducedSearchContainer>
-                                    <ReducedSearchComponents />
-                                </StyledReducedSearchContainer>
-                            </Fade>
-                            <StyledBackdrop
-                                open={this.state.reducedSearchBar}
-                                onClick={this.toggleDrawer} />
-                        </React.Fragment> :
-                        null}
+                    {
+                        this.state.reducedSearchBar ?
+                            <React.Fragment>
+                                <Fade in={this.state.reducedSearchBar} timeout={{ enter: 500, exit: 500 }}>
+                                    <StyledReducedSearchContainer>
+                                        <ReducedSearchComponents />
+                                    </StyledReducedSearchContainer>
+                                </Fade>
+                                <StyledBackdrop
+                                    open={this.state.reducedSearchBar}
+                                    onClick={this.toggleDrawer} />
+                            </React.Fragment> :
+                            null
+                    }
 
                 </StyledHeaderContainer>
 

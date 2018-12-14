@@ -51,7 +51,6 @@ export const onResendPhoneCodeFromAccount = () => {
         };
 
         var userPool = new CognitoUserPool(poolData);
-
         var user = userPool.getCurrentUser();
 
         user.getSession((err, session) => {
@@ -108,7 +107,7 @@ export const onValidatePhoneFromAccount = (code) => {
                 return;
             }
 
-            if (session.isValid()) { 
+            if (session.isValid()) {
                 user.verifyAttribute('phone_number', code, {
                     onSuccess: () => {
                         dispatch(validationPhoneFromAccountSucceed())
@@ -118,7 +117,7 @@ export const onValidatePhoneFromAccount = (code) => {
                         dispatch(validationPhoneFromAccountFailed(err))
                     }
                 });
-            } 
+            }
         });
     }
 }

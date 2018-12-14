@@ -16,7 +16,8 @@ export {
     onValidatePhone,
     onBoardingEnded,
     onCloseEndedDialog,
-    onAuthCheckState
+    onAuthCheckState,
+    onDeleteAccount
 } from './auth';
 
 export {

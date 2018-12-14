@@ -20,6 +20,7 @@ import ContactInfo from '../../components/AccountComponents/ContactInfo/ContactI
 import TransactionHistory from '../../components/AccountComponents/TransactionHistory/TransactionHistory';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import UploadPhoto from '../../components/AccountComponents/UploadPhoto/UploadPhoto';
+import ChangeEmail from '../../components/AccountComponents/ChangeEmail/ChangeEmail';
 
 import * as actions from '../../store/actions/index';
 
@@ -27,7 +28,8 @@ class Account extends Component {
 
     state = {
         value: 'contactInfo',
-        uploadPhoto: false
+        uploadPhoto: false,
+        changeEmail: false
     }
 
     handleListItemClick = (value) => {
@@ -35,16 +37,16 @@ class Account extends Component {
     };
 
     handleOpenUploadPhoto = (refreshData) => {
-        this.setState( prevState => {
+        this.setState(prevState => {
             return {
                 ...prevState,
                 uploadPhoto: !prevState.uploadPhoto
             }
-         })
+        })
 
-         if ( refreshData ) {
+        if (refreshData) {
             this.props.onAccountFechtInfo(this.props.accessToken)
-         }
+        }
     }
 
     render() {
@@ -76,9 +78,11 @@ class Account extends Component {
 
         return (
             <React.Fragment>
-                <UploadPhoto 
-                    open={this.state.uploadPhoto} 
-                    closeUploadPhoto={this.handleOpenUploadPhoto}/>
+                <UploadPhoto
+                    open={this.state.uploadPhoto}
+                    closeUploadPhoto={this.handleOpenUploadPhoto} />
+                <ChangeEmail
+                    open={this.state.changeEmail} />
                 <StyledExternalContainer>
                     <Grid container spacing={16}>
                         <Grid item xs={12} sm={3} md={3}>
@@ -94,7 +98,7 @@ class Account extends Component {
                                         </IconButton>
                                     </StyledAvatarWrapper>
                                     <div style={{ marginTop: `${space[3]}` }}>
-                                        <Typography variant="h6" align='center' >Mike L.</Typography>
+                                        <Typography variant="h6" align='center' >{this.props.user.userName}</Typography>
                                         <Typography variant="body1" component="p" align='center' style={{ color: palette.grey02 }}>Member since Jan 2018</Typography>
                                         <div style={{ textAlign: 'center', marginTop: space[2], marginBottom: space[3] }}>
                                             <TextButton style={{ color: palette.green, fontSize: 14 }} onClick={() => this.props.history.push('/user-details')}>View Profile</TextButton>
@@ -106,7 +110,7 @@ class Account extends Component {
                                         value='contactInfo'
                                         onClick={() => this.handleListItemClick('contactInfo')}>
                                         <Typography
-                                            variant="body2"
+                                            variant="body1"
                                             style={{
                                                 textTransform: 'uppercase',
                                                 color: (this.state.value === 'contactInfo') ? palette.green : palette.grey02,
@@ -120,7 +124,7 @@ class Account extends Component {
                                         value='paymentInfo'
                                         onClick={() => this.handleListItemClick('paymentInfo')}>
                                         <Typography
-                                            variant="body2"
+                                            variant="body1"
                                             style={{
                                                 textTransform: 'uppercase',
                                                 color: (this.state.value === 'paymentInfo') ? palette.green : palette.grey02,

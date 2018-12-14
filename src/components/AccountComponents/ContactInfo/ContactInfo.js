@@ -38,11 +38,11 @@ class ContactInfo extends Component {
 
         const { user } = this.props
         let phoneAction = ''
-        
-        if ( !user.phone.value ) {
+
+        if (!user.phone.value) {
             phoneAction = 'Add'
         } else {
-            if ( user.phone.verified ) {
+            if (user.phone.verified) {
                 phoneAction = 'Change'
             } else {
                 phoneAction = 'Validate'
@@ -89,6 +89,15 @@ class ContactInfo extends Component {
                     </div>
                 </StyledStepsContainer>
                 <Divider />
+                <StyledStepsContainer>
+                    <div style={{ display: 'flex', alignItems: 'center', marginTop: `${space[3]}` }}>
+                        <Typography variant="h6" style={{ fontWeight: 400 }}>Close Account</Typography>
+                    </div>
+                    <div style={{ marginTop: `${space[3]}` }}>
+                        <TextButton color={palette.red} onClick={() => this.props.onDeleteAccount()}>Delete my account</TextButton>
+                    </div>
+                </StyledStepsContainer>
+                <Divider />
             </React.Fragment>
         );
     }
@@ -104,6 +113,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         openValidationDialog: () => { dispatch(actions.openPhoneValidation()) },
+        onDeleteAccount: () => { dispatch(actions.onDeleteAccount())}
     }
 }
 

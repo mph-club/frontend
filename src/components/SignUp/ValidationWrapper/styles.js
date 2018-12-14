@@ -4,7 +4,6 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 export const StyledExternalContainer = styled.div`
     margin: ${space[5]} ${space[4]};
-
 `
 
 export const CustomLinearProgress = styled(LinearProgress)`

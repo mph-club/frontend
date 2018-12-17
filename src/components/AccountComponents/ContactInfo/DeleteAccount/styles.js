@@ -7,6 +7,13 @@ export const StyledIconButton = styled(IconButton)`
     margin-left: -12px;
     margin-top: 12px;
 `
+export const ExternalContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-left: 32px;
+    margin-right: 32px;
+    margin-bottom: 12px;
+`
 
 export const DeleteButton = styled(Button)`
     && {

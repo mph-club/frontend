@@ -20,7 +20,6 @@ import ContactInfo from '../../components/AccountComponents/ContactInfo/ContactI
 import TransactionHistory from '../../components/AccountComponents/TransactionHistory/TransactionHistory';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import UploadPhoto from '../../components/AccountComponents/UploadPhoto/UploadPhoto';
-import ChangeEmail from '../../components/AccountComponents/ChangeEmail/ChangeEmail';
 
 import * as actions from '../../store/actions/index';
 
@@ -28,8 +27,7 @@ class Account extends Component {
 
     state = {
         value: 'contactInfo',
-        uploadPhoto: false,
-        changeEmail: false
+        uploadPhoto: false
     }
 
     handleListItemClick = (value) => {
@@ -81,8 +79,6 @@ class Account extends Component {
                 <UploadPhoto
                     open={this.state.uploadPhoto}
                     closeUploadPhoto={this.handleOpenUploadPhoto} />
-                <ChangeEmail
-                    open={this.state.changeEmail} />
                 <StyledExternalContainer>
                     <Grid container spacing={16}>
                         <Grid item xs={12} sm={3} md={3}>
@@ -121,6 +117,7 @@ class Account extends Component {
                                     <StyledListItem
                                         disableGutters
                                         button
+                                        disabled
                                         value='paymentInfo'
                                         onClick={() => this.handleListItemClick('paymentInfo')}>
                                         <Typography
@@ -135,6 +132,7 @@ class Account extends Component {
                                     <StyledListItem
                                         disableGutters
                                         button
+                                        disabled
                                         value='transactionHistory'
                                         onClick={() => this.handleListItemClick('transactionHistory')}>
                                         <Typography

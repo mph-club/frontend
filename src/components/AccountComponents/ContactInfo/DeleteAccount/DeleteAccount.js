@@ -8,7 +8,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { space } from '../../../../theme';
 import {
     StyledIconButton,
-    DeleteButton
+    DeleteButton,
+    ExternalContainer
 } from './styles';
 import ClearIcon from '@material-ui/icons/Clear';
 import SecondaryButton from '../../../UI/Buttons/SecondayButton/SecondaryButton';
@@ -46,33 +47,25 @@ class DeleteAccount extends Component {
                         <ClearIcon />
                     </StyledIconButton>
                 </div>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    marginLeft: '32px',
-                    marginRight: '32px',
-                    marginBottom: '12px'
-                }}>
-                    <div>
-                        <DialogTitle id="dialog-delete-account" style={{ marginTop: '-24px' }}>Are you sure you want to close your account?</DialogTitle>
-                        <DialogContent>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={this.state.deleteAccount}
-                                        onChange={this.handleChange()}
-                                        value="deleteAccount"
-                                    />
-                                }
-                                label="This action is irreversible. You will no longer be able to list or book a vehicle on mph club."
-                            />
-                        </DialogContent>
-                        <DialogActions>
-                            <SecondaryButton onClick={this.handleCancel} style={{ marginLeft: space[2] }}>Cancel</SecondaryButton>
-                            <DeleteButton disabled={!this.state.deleteAccount} onClick={() => this.props.onDeleteAccount()}>Delete this account</DeleteButton>
-                        </DialogActions>
-                    </div>
-                </div>
+                <ExternalContainer>
+                    <DialogTitle id="dialog-delete-account" style={{ marginTop: '-24px' }}>Are you sure you want to close your account?</DialogTitle>
+                    <DialogContent>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={this.state.deleteAccount}
+                                    onChange={this.handleChange()}
+                                    value="deleteAccount"
+                                />
+                            }
+                            label="This action is irreversible. You will no longer be able to list or book a vehicle on mph club."
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <SecondaryButton onClick={this.handleCancel} style={{ marginLeft: space[2] }}>Cancel</SecondaryButton>
+                        <DeleteButton disabled={!this.state.deleteAccount} onClick={() => this.props.onDeleteAccount()}>Delete this account</DeleteButton>
+                    </DialogActions>
+                </ExternalContainer>
             </Dialog>
         );
     }

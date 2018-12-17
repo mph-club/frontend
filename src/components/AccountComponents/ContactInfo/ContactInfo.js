@@ -13,6 +13,7 @@ import ValidatePhone from './ValidatePhone/ValidatePhone';
 
 import * as actions from '../../../store/actions/index';
 import DeleteAccount from './DeleteAccount/DeleteAccount';
+import ChangePassword from './ChangePassword/ChangePassword';
 
 function TextMaskCustom(props) {
     const { inputRef, ...other } = props;
@@ -32,7 +33,8 @@ function TextMaskCustom(props) {
 class ContactInfo extends Component {
 
     state = {
-        openDeleteAccount: false
+        openDeleteAccount: false,
+        openChangePassword: false,
     }
 
     handlePhoneActions = () => {
@@ -57,9 +59,12 @@ class ContactInfo extends Component {
         return (
             <React.Fragment>
                 <ValidatePhone />
-                <DeleteAccount 
-                    open={this.state.openDeleteAccount} 
-                    handleClose={() => this.setState({ openDeleteAccount: false})}/>
+                <DeleteAccount
+                    open={this.state.openDeleteAccount}
+                    handleClose={() => this.setState({ openDeleteAccount: false })} />
+                <ChangePassword
+                    open={this.state.openChangePassword}
+                    handleClose={() => this.setState({ openChangePassword: false })} />
                 <Title component="p" style={{ marginBottom: `${space[3]}` }}>EMAIL</Title>
                 <StyledStepsContainer>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -92,9 +97,10 @@ class ContactInfo extends Component {
                     <div style={{ display: 'flex', alignItems: 'center', marginTop: `${space[3]}` }}>
                         <Typography variant="h6" style={{ fontWeight: 400 }}>Password</Typography>
                     </div>
-                    <div style={{ marginTop: `${space[3]}` }}>
-                        <TextButton color={palette.green}>Change</TextButton>
-                    </div>
+                    <TextButton
+                        color={palette.green}
+                        style={{ marginTop: `${space[3]}` }}
+                        onClick={() => this.setState({ openChangePassword: true })}>Change</TextButton>
                 </StyledStepsContainer>
                 <Divider />
                 <StyledStepsContainer>
@@ -102,7 +108,7 @@ class ContactInfo extends Component {
                         <Typography variant="h6" style={{ fontWeight: 400 }}>Close Account</Typography>
                     </div>
                     <div style={{ marginTop: `${space[3]}` }}>
-                        <TextButton color={palette.red} onClick={() => this.setState({ openDeleteAccount: true})}>Delete my account</TextButton>
+                        <TextButton color={palette.red} onClick={() => this.setState({ openDeleteAccount: true })}>Delete my account</TextButton>
                     </div>
                 </StyledStepsContainer>
                 <Divider />

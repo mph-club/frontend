@@ -99,10 +99,10 @@ class ChangePassword extends Component {
         return (
             <Dialog
                 open={this.props.open}
-                onClose={() => this.props.openChangePassword()}
+                onClose={() => this.props.closeForm()}
             >
                 <Paper style={{ width: '460px', height: 'auto' }} elevation={1}>
-                    <StyledIconButton color="inherit" aria-label="Clear" onClick={this.props.handleClose}>
+                    <StyledIconButton color="inherit" aria-label="Clear" onClick={() => this.props.closeForm()}>
                         <ClearIcon />
                     </StyledIconButton>
                     <ExternalContainer>

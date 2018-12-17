@@ -15,6 +15,8 @@ const initialState = {
         profilePhoto: null
     },
     openPhoneValidationForm: false,
+    openChangePasswordForm: false,
+    changingPasswordError: null,
     addingNumber: false,
     loading: false,
     error: null
@@ -52,6 +54,13 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { loading: false })
         case actionTypes.ACCOUNT_PHONE_VALIDATION_SUCCEED:
             return updateObject(state, { loading: false, openPhoneValidationForm: false })
+
+        case actionTypes.ACCOUNT_OPEN_CHANGE_PASSWORD:
+            return updateObject(state, { openChangePasswordForm: action.open })
+        case actionTypes.ACCOUNT_CHANGE_PASSWORD_FAILED:
+            return updateObject(state, { changingPasswordError: action.error })
+        case actionTypes.ACCOUNT_CHANGE_PASSWORD_SUCCEED:
+            return updateObject(state, { changingPasswordError: null, openChangePasswordForm: false })
         default:
             return state
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -11,12 +11,13 @@ import Input from '@material-ui/core/Input';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ClearIcon from '@material-ui/icons/Clear';
+import StyledPrimaryButton from '../../../UI/Buttons/PrimaryButton/PrimaryButton';
 
 import {
     StyledIconButton,
     ExternalContainer
 } from './styles';
-import StyledPrimaryButton from '../../../UI/Buttons/PrimaryButton/PrimaryButton';
+import * as actions from '../../../../store/actions/index';
 
 class ChangePassword extends Component {
 
@@ -24,7 +25,7 @@ class ChangePassword extends Component {
         oldPassword: {
             touched: false,
             value: ''
-        }, 
+        },
         password: {
             value: '',
             touched: false,
@@ -40,6 +41,7 @@ class ChangePassword extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
+        this.props.onChangePassword(this.state.oldPassword.value, this.state.password.value)
     }
 
     passwordOnBlur = (event) => {
@@ -48,39 +50,46 @@ class ChangePassword extends Component {
         const expUppercase = new RegExp("^(?=.*[0-9])")
 
         if ((expCounter.test(event.target.value)) || (this.state.password.value.trim() === "")) {
-            this.setState({ 
-                password: { ...this.state.password, error: false, message: "", touched: true } })
+            this.setState({
+                password: { ...this.state.password, error: false, message: "", touched: true }
+            })
         } else {
-            this.setState({ 
-                password: { ...this.state.password, error: true, message: "The password must be eight characters or longer" , touched: true}})
+            this.setState({
+                password: { ...this.state.password, error: true, message: "The password must be eight characters or longer", touched: true }
+            })
             return;
         }
 
         if (expLowercase.test(event.target.value)) {
-            this.setState({ 
-                password: { ...this.state.password, error: false, message: "" , touched: true} })
+            this.setState({
+                password: { ...this.state.password, error: false, message: "", touched: true }
+            })
         } else {
-            this.setState({ 
-                password: { ...this.state.password, error: true, message: "The password must contain at least 1 lowercase alphabetical character" , touched: true} })
+            this.setState({
+                password: { ...this.state.password, error: true, message: "The password must contain at least 1 lowercase alphabetical character", touched: true }
+            })
             return;
         }
 
         if (expUppercase.test(event.target.value)) {
-            this.setState({ 
-                password: { ...this.state.password, error: false, message: "" , touched: true} })
+            this.setState({
+                password: { ...this.state.password, error: false, message: "", touched: true }
+            })
         } else {
-            this.setState({ 
-                password: { ...this.state.password, error: true, message: "The password must contain at least 1 numeric character" , touched: true} })
+            this.setState({
+                password: { ...this.state.password, error: true, message: "The password must contain at least 1 numeric character", touched: true }
+            })
         }
     }
 
     confirmPasswordOnBlur = (event) => {
         if (this.state.password.value === event.target.value) {
-            this.setState({ 
-                passwordMatch: { error: false, message: "" , touched: true} })
+            this.setState({
+                passwordMatch: { error: false, message: "", touched: true }
+            })
         } else {
-            this.setState({ 
-                passwordMatch: { error: true, message: "The passwords don't match" , touched: true}
+            this.setState({
+                passwordMatch: { error: true, message: "The passwords don't match", touched: true }
             })
         }
     }
@@ -90,8 +99,7 @@ class ChangePassword extends Component {
         return (
             <Dialog
                 open={this.props.open}
-                aria-labelledby="responsive-dialog-title"
-                onClose={this.props.handleClose}
+                onClose={() => this.props.openChangePassword()}
             >
                 <Paper style={{ width: '460px', height: 'auto' }} elevation={1}>
                     <StyledIconButton color="inherit" aria-label="Clear" onClick={this.props.handleClose}>
@@ -107,6 +115,7 @@ class ChangePassword extends Component {
                                         name="oldPassword"
                                         type="password"
                                         id="oldPassword"
+                                        error={this.props.error !== null}
                                         onChange={(event) => this.setState({
                                             oldPassword: {
                                                 value: event.target.value,
@@ -114,6 +123,7 @@ class ChangePassword extends Component {
                                             }
                                         })}
                                     />
+                                     <Typography color='error'>{this.props.error ? this.props.error.message : null}</Typography>
                                 </FormControl>
                                 <FormControl margin="normal" required fullWidth>
                                     <InputLabel htmlFor="newPassword">Put your new password</InputLabel>
@@ -145,7 +155,16 @@ class ChangePassword extends Component {
                                     <Typography color='error'>{this.state.passwordMatch.message}</Typography>
                                 </FormControl>
                                 <DialogActions>
-                                    <StyledPrimaryButton disabled={ !this.state.password.touched || !this.state.passwordMatch.touched || !this.state.oldPassword.touched || this.state.password.error || this.state.passwordMatch.error } type='submit'>Submit</StyledPrimaryButton>
+                                    <StyledPrimaryButton
+                                        disabled={
+                                            !this.state.password.touched ||
+                                            !this.state.passwordMatch.touched ||
+                                            !this.state.oldPassword.touched ||
+                                            this.state.password.error ||
+                                            this.state.passwordMatch.error}
+                                        type='submit'>
+                                        Submit
+                                    </StyledPrimaryButton>
                                 </DialogActions>
                             </form>
                         </DialogContent>
@@ -156,4 +175,18 @@ class ChangePassword extends Component {
     }
 }
 
-export default ChangePassword
+const mapStateToProps = state => {
+    return {
+        open: state.account.openChangePasswordForm,
+        error: state.account.changingPasswordError
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        closeForm: () => { dispatch(actions.openChangePassword(false))},
+        onChangePassword: (oldPassword, newPassword) => { dispatch(actions.onAccountChangePassword(oldPassword, newPassword)) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword)

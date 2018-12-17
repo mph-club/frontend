@@ -33,8 +33,7 @@ function TextMaskCustom(props) {
 class ContactInfo extends Component {
 
     state = {
-        openDeleteAccount: false,
-        openChangePassword: false,
+        openDeleteAccount: false
     }
 
     handlePhoneActions = () => {
@@ -62,9 +61,7 @@ class ContactInfo extends Component {
                 <DeleteAccount
                     open={this.state.openDeleteAccount}
                     handleClose={() => this.setState({ openDeleteAccount: false })} />
-                <ChangePassword
-                    open={this.state.openChangePassword}
-                    handleClose={() => this.setState({ openChangePassword: false })} />
+                <ChangePassword />
                 <Title component="p" style={{ marginBottom: `${space[3]}` }}>EMAIL</Title>
                 <StyledStepsContainer>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -100,7 +97,7 @@ class ContactInfo extends Component {
                     <TextButton
                         color={palette.green}
                         style={{ marginTop: `${space[3]}` }}
-                        onClick={() => this.setState({ openChangePassword: true })}>Change</TextButton>
+                        onClick={() => this.props.openChangePassword()}>Change</TextButton>
                 </StyledStepsContainer>
                 <Divider />
                 <StyledStepsContainer>
@@ -126,6 +123,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        openChangePassword: () => { dispatch(actions.openChangePassword(true)) },
         openValidationDialog: () => { dispatch(actions.openPhoneValidation()) }
     }
 }

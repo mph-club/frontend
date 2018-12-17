@@ -24,7 +24,9 @@ export {
     onAccountFetchInfo,
     openPhoneValidation,
     onResendPhoneCodeFromAccount,
-    onValidatePhoneFromAccount
+    onValidatePhoneFromAccount,
+    onAccountChangePassword,
+    openChangePassword
 } from './account';
 
 export {

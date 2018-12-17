@@ -3,19 +3,19 @@ import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import axios from 'axios';
 import COGNITO from '../../config/cognitoConfigure';
 
-export const onAccountFechtInfoFailed = error => {
+const onAccountFechtInfoFailed = error => {
     return {
         type: actionTypes.ACCOUNT_FETCH_INFO_FAILED,
         error: error
     }
 }
-export const onAccountFechtInfoSucceed = user => {
+const onAccountFechtInfoSucceed = user => {
     return {
         type: actionTypes.ACCOUNT_FETCH_INFO_SUCCEED,
         user: user
     }
 }
-export const onAccountFechtInfoStart = () => {
+const onAccountFechtInfoStart = () => {
     return {
         type: actionTypes.ACCOUNT_FETCH_INFO_START
     }
@@ -73,18 +73,18 @@ export const onResendPhoneCodeFromAccount = () => {
         })
     }
 }
-export const validationPhoneFromAccountStart = () => {
+const validationPhoneFromAccountStart = () => {
     return {
         type: actionTypes.ACCOUNT_PHONE_VALIDATION_START
     }
 }
-export const validationPhoneFromAccountFailed = (error) => {
+const validationPhoneFromAccountFailed = (error) => {
     return {
         type: actionTypes.ACCOUNT_PHONE_VALIDATION_FAILED,
         error: error
     }
 }
-export const validationPhoneFromAccountSucceed = () => {
+const validationPhoneFromAccountSucceed = () => {
     return {
         type: actionTypes.ACCOUNT_PHONE_VALIDATION_SUCCEED
     }
@@ -92,6 +92,7 @@ export const validationPhoneFromAccountSucceed = () => {
 export const onValidatePhoneFromAccount = (code) => {
     return dispatch => {
 
+        dispatch(validationPhoneFromAccountStart())
         var poolData = {
             UserPoolId: COGNITO.CONFIG.USER_POOL,
             ClientId: COGNITO.CONFIG.CLIENT_ID
@@ -116,6 +117,64 @@ export const onValidatePhoneFromAccount = (code) => {
                         alert(err.message || JSON.stringify(err))
                         dispatch(validationPhoneFromAccountFailed(err))
                     }
+                });
+            }
+        });
+    }
+}
+
+
+export const openChangePassword = (open) => {
+    return {
+        type: actionTypes.ACCOUNT_OPEN_CHANGE_PASSWORD,
+        open: open
+    }
+}
+const onAccountChangePasswordStart = () => {
+    return {
+        type: actionTypes.ACCOUNT_CHANGE_PASSWORD_START,
+    }
+}
+const onAccountChangePasswordFailed = (error) => {
+    return {
+        type: actionTypes.ACCOUNT_CHANGE_PASSWORD_FAILED,
+        error: error
+    }
+}
+const onAccountChangePasswordSucceed = (result) => {
+    return {
+        type: actionTypes.ACCOUNT_CHANGE_PASSWORD_SUCCEED,
+        result: result
+    }
+}
+export const onAccountChangePassword = (oldPassword, newPassword) => {
+    return dispatch => {
+
+        dispatch(onAccountChangePasswordStart())
+
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var userPool = new CognitoUserPool(poolData);
+
+        var user = userPool.getCurrentUser();
+
+        user.getSession((err, session) => {
+            if (err) {
+                console.log(err)
+                return;
+            }
+
+            if (session.isValid()) {
+                user.changePassword(oldPassword, newPassword, (err, result) => {
+                    if (err) {
+                        dispatch(onAccountChangePasswordFailed(err))
+                        return;
+                    }
+                    dispatch(onAccountChangePasswordSucceed(result))
+                    console.log('call result: ' + result);
                 });
             }
         });

@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
-import { CognitoUserPool } from 'amazon-cognito-identity-js';
-import axios from 'axios';
+import { CognitoUserPool, CognitoUserAttribute } from 'amazon-cognito-identity-js';
+import axios from '../../shared/axios';
 import COGNITO from '../../config/cognitoConfigure';
 
 const onAccountFechtInfoFailed = error => {
@@ -26,19 +26,144 @@ export const onAccountFetchInfo = (accessToken) => {
         dispatch(onAccountFechtInfoStart())
 
         axios.defaults.headers.common['Authorization'] = accessToken;
-        axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
 
         axios.get('user').then(response => {
-            dispatch(onAccountFechtInfoSucceed(response.data.data.user))
+
+            let userInfo = {}
+
+            var poolData = {
+                UserPoolId: COGNITO.CONFIG.USER_POOL,
+                ClientId: COGNITO.CONFIG.CLIENT_ID
+            };
+
+            var userPool = new CognitoUserPool(poolData);
+
+            var user = userPool.getCurrentUser();
+
+            user.getSession((error, session) => {
+                if (error) {
+                    dispatch(onAccountFechtInfoFailed(error))
+                    return;
+                }
+
+                if (session.isValid()) {
+                    user.getUserAttributes((err, attributes) => {
+                        if (err) {
+                            return;
+                        }
+
+                        let result = {}
+
+                        attributes.forEach(attribute => {
+                            return result[attribute.getName()] = attribute.getValue()
+                        })
+
+                        userInfo = {
+                            ...response.data.data.user,
+                            email: {
+                                value: result.email,
+                                email_verified: result.email_verified
+                            },
+                            phone: {
+                                value: result.phone_number ? result.phone_number : null,
+                                phone_verified: result.phone_number_verified ? result.phone_number_verified : false
+                            }
+                        }
+
+                        dispatch(onAccountFechtInfoSucceed(userInfo))
+                    });
+
+                } else {
+                    dispatch(onAccountFechtInfoFailed(error))
+                }
+            })
+
         }).catch(error => {
             dispatch(onAccountFechtInfoFailed(error))
         })
     }
 }
 
-export const openPhoneValidation = () => {
+///Phone actions
+export const openPhoneValidation = (open, phoneAction) => {
     return {
-        type: actionTypes.ACCOUNT_OPEN_PHONE_VALIDATION
+        type: actionTypes.ACCOUNT_OPEN_PHONE_VALIDATION,
+        open: open,
+        addingNumber: phoneAction !== 'Validate'
+    }
+}
+export const onAccountChangePhoneNumber = () => {
+    return {
+        type: actionTypes.ACCOUNT_CHANGE_PHONE_NUMBER
+    }
+}
+const addPhoneFromAccountSucceed = () => {
+    return {
+        type: actionTypes.ACCOUNT_ADD_PHONE_SUCCEED
+    }
+}
+const addPhoneFromAccountFailed = (error) => {
+    return {
+        type: actionTypes.ACCOUNT_ADD_PHONE_FAILED,
+        error: error
+    }
+}
+const addPhoneFromAccountStarted = () => {
+    return {
+        type: actionTypes.ACCOUNT_PHONE_VALIDATION_START
+    }
+}
+export const onAddPhoneFromAccount = (phone) => {
+    return dispatch => {
+
+        dispatch(addPhoneFromAccountStarted())
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var userPool = new CognitoUserPool(poolData);
+
+        const phoneNumber = phone.replace(/\D/g, '');
+
+        var attributeItem = {
+            Name: 'phone_number',
+            Value: '+1' + phoneNumber
+        };
+
+        var attribute = new CognitoUserAttribute(attributeItem);
+
+        var attributeList = [];
+        attributeList.push(attribute);
+
+        var user = userPool.getCurrentUser();
+
+        user.getSession((err, session) => {
+            if (err) {
+                return;
+            }
+
+            if (session.isValid()) { 
+                user.updateAttributes(attributeList, (err, result) => {
+                    if (err) {
+                        dispatch(addPhoneFromAccountFailed(err))
+                        return;
+                    }
+        
+                    user.getAttributeVerificationCode('phone_number', {
+                        onSuccess: () => {
+                            dispatch(addPhoneFromAccountSucceed())
+                        },
+                        onFailure: (err) => {
+                            dispatch(addPhoneFromAccountFailed(err))
+                        },
+                        inputVerificationCode: null
+                    });
+                });
+            } else {
+                dispatch(addPhoneFromAccountFailed({message: 'User no found'}))
+            }
+        })
     }
 }
 export const onResendPhoneCodeFromAccount = () => {
@@ -104,7 +229,6 @@ export const onValidatePhoneFromAccount = (code) => {
 
         user.getSession((err, session) => {
             if (err) {
-                console.log(err)
                 return;
             }
 
@@ -122,7 +246,6 @@ export const onValidatePhoneFromAccount = (code) => {
         });
     }
 }
-
 
 export const openChangePassword = (open) => {
     return {
@@ -163,7 +286,6 @@ export const onAccountChangePassword = (oldPassword, newPassword) => {
 
         user.getSession((err, session) => {
             if (err) {
-                console.log(err)
                 return;
             }
 
@@ -174,7 +296,6 @@ export const onAccountChangePassword = (oldPassword, newPassword) => {
                         return;
                     }
                     dispatch(onAccountChangePasswordSucceed(result))
-                    console.log('call result: ' + result);
                 });
             }
         });

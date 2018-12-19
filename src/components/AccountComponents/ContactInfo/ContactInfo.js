@@ -36,28 +36,24 @@ class ContactInfo extends Component {
         openDeleteAccount: false
     }
 
-    handlePhoneActions = () => {
+    handlePhoneActions = (phoneAction) => {
+        this.props.openPhoneDialog(true, phoneAction)
+    }
 
+    handleClosePhoneDialog = () => {
+        this.props.openPhoneDialog(false, this.props.addingNumber === true ? 'Add' : 'Change')
+        this.props.onAccountFechtInfo(this.props.accessToken)
     }
 
     render() {
 
         const { user } = this.props
-        let phoneAction = ''
-
-        if (!user.phone.value) {
-            phoneAction = 'Add'
-        } else {
-            if (user.phone.verified) {
-                phoneAction = 'Change'
-            } else {
-                phoneAction = 'Validate'
-            }
-        }
+        const phoneAction = user.phone.value ? 'Change' : 'Add'
 
         return (
             <React.Fragment>
-                <ValidatePhone />
+                <ValidatePhone 
+                    handleClose={( ) => this.handleClosePhoneDialog()}/>
                 <DeleteAccount
                     open={this.state.openDeleteAccount}
                     handleClose={() => this.setState({ openDeleteAccount: false })} />
@@ -72,21 +68,24 @@ class ContactInfo extends Component {
                     </div>
                 </StyledStepsContainer>
                 <Divider />
-                <Title component="p" style={{ marginBottom: `${space[3]}`, marginTop: `${space[4]}` }}>PHONE NUMBER</Title>
+                {user.phone.value ? <Title component="p" style={{ marginBottom: `${space[3]}`, marginTop: `${space[4]}` }}>PHONE NUMBER</Title> : null}
                 <StyledStepsContainer>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <Input
-                            type="tel"
-                            readOnly
-                            disableUnderline
-                            value={user.phone.value ? user.phone.value.replace('+1', '') : null}
-                            id="phoneNumberValidate"
-                            style={{ fontWeight: 400, fontSize: 18 }}
-                            inputComponent={TextMaskCustom}
-                        />
-                    </div>
+                    {
+                        user.phone.value ?
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <Input
+                                    type="tel"
+                                    readOnly
+                                    disableUnderline
+                                    value={user.phone.value ? user.phone.value.replace('+1', '') : null}
+                                    id="phoneNumberValidate"
+                                    style={{ fontWeight: 400, fontSize: 18 }}
+                                    inputComponent={TextMaskCustom}
+                                />
+                            </div> : <Title component="p" style={{ marginBottom: `${space[3]}`, marginTop: `${space[4]}` }}>PHONE NUMBER</Title>
+                    }
                     <div>
-                        <TextButton color={palette.green} onClick={() => this.handlePhoneActions()}>{phoneAction}</TextButton>
+                        <TextButton color={palette.green} onClick={() => this.handlePhoneActions(phoneAction)}>{phoneAction}</TextButton>
                     </div>
                 </StyledStepsContainer>
                 <Divider />
@@ -117,14 +116,17 @@ class ContactInfo extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.account.user
+        user: state.account.user,
+        accessToken: state.auth.session.AccessToken,
+        addingNumber: state.account.phoneFeatures.addingNumber
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         openChangePassword: () => { dispatch(actions.openChangePassword(true)) },
-        openValidationDialog: () => { dispatch(actions.openPhoneValidation()) }
+        openPhoneDialog: (open, phoneAction) => { dispatch(actions.openPhoneValidation(open, phoneAction)) },
+        onAccountFechtInfo: (accessToken) => { dispatch(actions.onAccountFetchInfo(accessToken)) }
     }
 }
 

@@ -60,7 +60,7 @@ class UserEntry extends PureComponent {
                     onClick={this.handleToggle}>
                     { user.firstName ? user.firstName : 'Menu'}
                     <StyledAvatar 
-                        src={user.profilePhoto ? user.profilePhoto : null} 
+                        src={user.profile_photo ? user.profile_photo : null} 
                         alt='user profile'/>
                 </Button>
                 <Popper

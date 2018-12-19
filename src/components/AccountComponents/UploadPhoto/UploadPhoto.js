@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from '../../../shared/axios';
 import { connect } from 'react-redux';
 
 import Dialog from '@material-ui/core/Dialog';
@@ -38,7 +38,6 @@ class UploadPhoto extends Component {
         fd.append('photo', this.state.selectedPhoto, this.state.selectedPhoto.name.replace(/\s/g, ''))
 
         axios.defaults.headers.common['Authorization'] = this.props.accessToken;
-        axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
         axios.post('uploadUserPhoto', fd).then(response => {
             this.toogleLoading()
             this.props.closeUploadPhoto(true);

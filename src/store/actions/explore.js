@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../shared/axios';
 
 import * as actionTypes from './actionTypes';
 
@@ -27,7 +27,6 @@ export const onExploreFetchInfo = () => {
 
         dispatch(onExploreFetchStart())
 
-        axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
         axios.get('explore').then(response => {
             dispatch(onExploreFetchInfoSucceed(response.data.data))
         }).catch(error => {

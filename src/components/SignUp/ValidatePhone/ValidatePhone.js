@@ -60,10 +60,10 @@ class ValidatePhone extends Component {
             <React.Fragment>
                 {this.props.addingNumber ?
                     <div>
-                        <Typography variant='title' component='h6'>Confirm your phone number</Typography>
+                        <Typography variant='h6'>Confirm your phone number</Typography>
                         <Typography variant='body1' component='p' style={{ margin: '16px 0' }}>We’ll send you a text message with a code to verify your number. We’ll only share your number with your host or guest after a booking is confirmed.</Typography>
                     </div> : <div>
-                        <Typography variant='title' component='h6'>Validate your phone number</Typography>
+                        <Typography variant='h6'>Validate your phone number</Typography>
                         <Typography variant='body1' component='p' style={{ margin: '16px 0' }}>We sent you 6-digit code to help us verify your phone number. Code sent to +1 {this.state.phone.value}</Typography>
                     </div>}
 
@@ -128,7 +128,7 @@ class ValidatePhone extends Component {
                     <div style={{ display: 'flex', justifyContent: 'center', margin: '8px 20%' }}>
                         <StyledDivider variant="body2">or</StyledDivider>
                     </div>
-                    <Typography align='center'>Need to change your number? <StyledSpan onClick={this.handleChangeNumber}>Change my number</StyledSpan></Typography>
+                    <Typography align='center'>Need to change your number? <StyledSpan onClick={this.props.handleChangeNumber}>Change my number</StyledSpan></Typography>
                 </div> : null}
 
                 <Typography align='center' style={{ marginTop: '48px', cursor: 'pointer', color: palette.grey01 }} onClick={() => this.props.handleNext()}>I'll do this later</Typography>
@@ -149,6 +149,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         handleNext: () => { dispatch(actions.handleNext()) },
+        handleChangeNumber: () => { dispatch(actions.onChangePhoneNumber())},
         handleAddPhone: (phone) => { dispatch(actions.onAddPhone(phone)) },
         handleResendCode: (phone) => { dispatch(actions.onResendPhoneCode(phone)) },
         handleChangePhoneNumber: () => { dispatch(actions.onChangePhoneNumber()) },

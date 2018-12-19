@@ -108,7 +108,7 @@ class ChangePassword extends Component {
                     <ExternalContainer>
                         <DialogTitle id="dialog-change-password" style={{ marginTop: '-24px' }}>Change Password</DialogTitle>
                         <DialogContent>
-                            <form onSubmit={this.handleSubmit}>
+                            <form onSubmit={this.handleSubmit} method='POST'>
                                 <FormControl margin="normal" required fullWidth>
                                     <InputLabel htmlFor="oldPassword">Type your old password</InputLabel>
                                     <Input

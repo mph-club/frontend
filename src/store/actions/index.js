@@ -23,10 +23,12 @@ export {
 export {
     onAccountFetchInfo,
     openPhoneValidation,
+    onAddPhoneFromAccount,
     onResendPhoneCodeFromAccount,
     onValidatePhoneFromAccount,
     onAccountChangePassword,
-    openChangePassword
+    openChangePassword,
+    onAccountChangePhoneNumber
 } from './account';
 
 export {

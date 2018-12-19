@@ -11,11 +11,13 @@ import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import ClearIcon from '@material-ui/icons/Clear';
 
 import {
     StyledSpan,
     StyledDivider,
-    ExternalContainer
+    ExternalContainer,
+    StyledIconButton
 } from './styles';
 import { palette } from '../../../../theme';
 import * as actions from '../../../../store/actions/index';
@@ -55,14 +57,14 @@ class ValidatePhone extends Component {
     };
 
     handleConfirmNumber = () => {
-        this.props.handleAddPhone(this.state.phone.value)
+        this.props.handleAddPhone(this.state.phone.value )
     }
 
     handleVerifyPhone = () => {
-        if ( !this.state.firstCodeSent ) {
+        if (!this.state.firstCodeSent) {
             this.props.onResendCode(this.props.user.phone.value)
 
-            this.setState( prevState => { 
+            this.setState(prevState => {
                 return {
                     phone: {
                         ...prevState.phone
@@ -84,15 +86,19 @@ class ValidatePhone extends Component {
             <Dialog
                 open={this.props.open}
                 aria-labelledby="responsive-dialog-title"
+                onClose={this.props.handleClose}
             >
                 <Paper style={{ width: '460px', height: 'auto' }} elevation={1}>
+                    <StyledIconButton color="inherit" aria-label="Clear" onClick={this.props.handleClose}>
+                        <ClearIcon />
+                    </StyledIconButton>
                     <ExternalContainer>
                         {this.props.addingNumber ?
                             <div>
-                                <Typography variant='title' component='h6'>Confirm your phone number</Typography>
+                                <Typography variant='h6'>Confirm your phone number</Typography>
                                 <Typography variant='body1' component='p' style={{ margin: '16px 0' }}>We’ll send you a text message with a code to verify your number. We’ll only share your number with your host or guest after a booking is confirmed.</Typography>
                             </div> : <div>
-                                <Typography variant='title' component='h6'>Validate your phone number</Typography>
+                                <Typography variant='h6'>Validate your phone number</Typography>
                                 <Typography variant='body1' component='p' style={{ margin: '16px 0' }}>We will send you a 6-digit code to help us verify your phone number</Typography>
                             </div>}
 
@@ -104,7 +110,7 @@ class ValidatePhone extends Component {
                                 type="tel"
                                 disabled={!this.props.addingNumber}
                                 error={this.props.error !== null}
-                                value={this.props.user.phone.value ? this.props.user.phone.value.replace('+1','') : null}
+                                value={this.props.addingNumber ? this.state.phone.value : this.state.phone.value ? this.state.phone.value : this.props.user.phone.value.replace('+1', '') }
                                 id="phoneNumberValidate"
                                 prefix='+1'
                                 inputComponent={TextMaskCustom}
@@ -157,7 +163,7 @@ class ValidatePhone extends Component {
                             <div style={{ display: 'flex', justifyContent: 'center', margin: '8px 20%' }}>
                                 <StyledDivider variant="body2">or</StyledDivider>
                             </div>
-                            <Typography align='center'>Need to change your number? <StyledSpan onClick={this.handleChangeNumber}>Change my number</StyledSpan></Typography>
+                            <Typography align='center'>Need to change your number? <StyledSpan onClick={this.props.handleChangePhoneNumber}>Change my number</StyledSpan></Typography>
                         </div> : null}
                     </ExternalContainer>
                 </Paper>
@@ -169,18 +175,19 @@ class ValidatePhone extends Component {
 const mapStateToProps = state => {
     return {
         user: state.account.user,
-        loading: state.account.loading,
-        error: state.account.error,
-        open: state.account.openPhoneValidationForm,
-        addingNumber: state.account.addingNumber
+        loading: state.account.phoneFeatures.loading,
+        error: state.account.phoneFeatures.error,
+        open: state.account.phoneFeatures.open,
+        addingNumber: state.account.phoneFeatures.addingNumber
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleAddPhone: (phone) => { dispatch(actions.onAddPhone(phone)) },
+        handleAddPhone: (phone) => { dispatch(actions.onAddPhoneFromAccount(phone)) },
         onResendCode: () => { dispatch(actions.onResendPhoneCodeFromAccount()) },
-        handleChangePhoneNumber: () => { dispatch(actions.onChangePhoneNumber()) },
+        handleChangePhoneNumber: () => { dispatch(actions.onAccountChangePhoneNumber()) },
+        handleResendCode: (phone) => { dispatch(actions.onResendPhoneCode(phone)) },
         handleValidatePhone: (code) => { dispatch(actions.onValidatePhoneFromAccount(code)) }
     }
 }

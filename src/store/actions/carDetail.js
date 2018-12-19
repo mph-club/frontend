@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../shared/axios';
 
 import * as actionTypes from './actionTypes';
 
@@ -39,8 +39,7 @@ export const onCarDetailFetchInfo = () => {
 
         dispatch(onCarDetailFetchStart(carId))
 
-        axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/vehicles/';
-        axios.get(carId).then( response => {
+        axios.get('vehicles/' + carId).then( response => {
             dispatch(onCarDetailFetchInfoSucceed(response.data.data.vehicle))
         }).catch( error => {
             dispatch(onCarDetailFetchInfoFailed(error))

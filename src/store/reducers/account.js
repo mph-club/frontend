@@ -12,29 +12,18 @@ const initialState = {
             value: null,
             verified: false
         },
-        profilePhoto: null
+        profile_photo: null
     },
-    openPhoneValidationForm: false,
+    phoneFeatures: {
+        open: false,
+        error: null,
+        loading: false,
+        addingNumber: false
+    },
     openChangePasswordForm: false,
     changingPasswordError: null,
-    addingNumber: false,
     loading: false,
     error: null
-}
-
-const handleUser = user => {
-    return {
-        id: user.id,
-        email: {
-            value: user.email,
-            verified: true,
-        },
-        phone: {
-            value: '+17867693202',
-            verified: true
-        },
-        profilePhoto: user.profile_photo
-    }
 }
 
 const reducer = (state = initialState, action) => {
@@ -44,16 +33,25 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ACCOUNT_FETCH_INFO_FAILED:
             return updateObject(state, { loading: false, error: action.error })
         case actionTypes.ACCOUNT_FETCH_INFO_SUCCEED:
-            return updateObject(state, { user: handleUser(action.user), loading: false, error: null })
+            return updateObject(state, { user: action.user, loading: false, error: null })
 
         case actionTypes.ACCOUNT_OPEN_PHONE_VALIDATION:
-            return updateObject(state, { openPhoneValidationForm: true })
+            return updateObject(state, { phoneFeatures: { ...state.phoneFeatures, open: action.open, addingNumber: action.addingNumber } })
+        case actionTypes.ACCOUNT_CHANGE_PHONE_NUMBER: 
+            return updateObject(state, { phoneFeatures: { ...state.phoneFeatures, addingNumber: true}})
+        case actionTypes.ACCOUNT_ADD_PHONE_START:
+            return updateObject(state, { phoneFeatures: { ...state.phoneFeatures, loading: true } })
+        case actionTypes.ACCOUNT_ADD_PHONE_FAILED:
+            return updateObject(state, { phoneFeatures: { ...state.phoneFeatures, loading: false, error: action.error } })
+        case actionTypes.ACCOUNT_ADD_PHONE_SUCCEED:
+            return updateObject(state, { phoneFeatures: { ...state.phoneFeatures, loading: false, addingNumber: false } })
+
         case actionTypes.ACCOUNT_PHONE_VALIDATION_START:
-            return updateObject(state, { loading: true })
+            return updateObject(state, { phoneFeatures: { ...state.phoneFeatures, loading: true } })
         case actionTypes.ACCOUNT_PHONE_VALIDATION_FAILED:
-            return updateObject(state, { loading: false })
+            return updateObject(state, { phoneFeatures: { ...state.phoneFeatures, loading: false } })
         case actionTypes.ACCOUNT_PHONE_VALIDATION_SUCCEED:
-            return updateObject(state, { loading: false, openPhoneValidationForm: false })
+            return updateObject(state, { phoneFeatures: { ...state.phoneFeatures, open: false, loading: false } })
 
         case actionTypes.ACCOUNT_OPEN_CHANGE_PASSWORD:
             return updateObject(state, { openChangePasswordForm: action.open })

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import axios from '../../../shared/axios';
 
 
 import Typography from '@material-ui/core/Typography';
@@ -33,7 +33,6 @@ class ProfilePhoto extends Component {
         fd.append('photo', this.state.selectedPhoto, this.state.selectedPhoto.name.replace(/\s/g, ''))
 
         axios.defaults.headers.common['Authorization'] = this.props.accessToken;
-        axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
         axios.post('uploadUserPhoto', fd).then(response => {
             this.toogleLoading()
             this.props.handleOnBoardingEnded()
@@ -56,7 +55,7 @@ class ProfilePhoto extends Component {
 
         return (
             <div>
-                <Typography variant='title' component='h6' align='center'>Add a profile photo</Typography>
+                <Typography variant='h6' align='center'>Add a profile photo</Typography>
                 <Typography variant='body1' component='p' align='center' style={{ margin: '16px 0' }}>Adding a photo helps build trust among hosts and guests on our platform.</Typography>
                 <StyledAvatar
                     alt="user profile"

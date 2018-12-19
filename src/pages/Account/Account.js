@@ -87,7 +87,7 @@ class Account extends Component {
                                     <StyledAvatarWrapper>
                                         <StyledAvatar
                                             alt="user profile"
-                                            src={user.profilePhoto}>
+                                            src={user.profile_photo}>
                                         </StyledAvatar>
                                         <IconButton color='primary' onClick={this.handleOpenUploadPhoto}>
                                             <CameraIcon fontSize='large' />

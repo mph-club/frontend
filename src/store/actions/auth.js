@@ -89,13 +89,7 @@ export const onSignUp = (email, password) => {
             Value: email
         };
 
-        // var dataPhoneNumber = {
-        //     Name : 'phone_number',
-        //     Value : '+15555555555'
-        // }
-
         var attributeEmail = new CognitoUserAttribute(dataEmail);
-        //var attributePhoneNumber = new CognitoUserAttribute(dataPhoneNumber);
 
         var attributeList = [];
         attributeList.push(attributeEmail);
@@ -195,7 +189,6 @@ export const onConfirmEmail = (code) => {
                     dispatch(handleNext())
                 },
                 onFailure: (err) => {
-                    alert(err.message || JSON.stringify(err))
                     dispatch(signAuthenticationFailed())
                 }
             })
@@ -270,25 +263,42 @@ export const onResendPhoneCode = (phoneNumber) => {
 
     return (dispatch, getState) => {
 
-        const { user } = getState().auth
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
 
-        user.getAttributeVerificationCode('phone_number', {
-            onSuccess: () => {
-                alert('A 6-digits code was sent to + 1 ' + phoneNumber)
-                dispatch({ type: actionTypes.SIGNUP_RESEND_PHONE_CODE })
-            },
-            onFailure: (err) => {
-                dispatch(resendPhoneCodeFailed(err))
-            },
-            inputVerificationCode: null
-        });
+        var userPool = new CognitoUserPool(poolData);
+        var user = userPool.getCurrentUser();
+
+        user.getSession((err, session) => {
+            if (err) {
+                return
+            } 
+            user.getAttributeVerificationCode('phone_number', {
+                onSuccess: () => {
+                    alert('A 6-digits code was sent to + 1 ' + phoneNumber)
+                    dispatch({ type: actionTypes.SIGNUP_RESEND_PHONE_CODE })
+                },
+                onFailure: (err) => {
+                    dispatch(resendPhoneCodeFailed(err))
+                },
+                inputVerificationCode: null
+            });
+        })
     }
 }
 export const onAddPhone = (phone) => {
-    return (dispatch, getState) => {
+    return dispatch => {
 
         dispatch(addPhoneNumberStarted())
-        const { user } = getState().auth;
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var userPool = new CognitoUserPool(poolData);
+
         const phoneNumber = phone.replace(/\D/g, '');
 
         var attributeItem = {
@@ -301,22 +311,34 @@ export const onAddPhone = (phone) => {
         var attributeList = [];
         attributeList.push(attribute);
 
-        user.updateAttributes(attributeList, (err, result) => {
+        var user = userPool.getCurrentUser();
+
+        user.getSession((err, session) => {
             if (err) {
-                dispatch(addPhoneNumberFailed(err))
                 return;
             }
 
-            user.getAttributeVerificationCode('phone_number', {
-                onSuccess: () => {
-                    dispatch(addPhoneNumberSucceed())
-                },
-                onFailure: (err) => {
-                    dispatch(addPhoneNumberFailed(err))
-                },
-                inputVerificationCode: null
-            });
-        });
+            if (session.isValid()) { 
+                user.updateAttributes(attributeList, (err, result) => {
+                    if (err) {
+                        dispatch(addPhoneNumberFailed(err))
+                        return;
+                    }
+        
+                    user.getAttributeVerificationCode('phone_number', {
+                        onSuccess: () => {
+                            dispatch(addPhoneNumberSucceed())
+                        },
+                        onFailure: (err) => {
+                            dispatch(addPhoneNumberFailed(err))
+                        },
+                        inputVerificationCode: null
+                    });
+                });
+            } else {
+                dispatch(addPhoneNumberFailed({message: 'User no found'}))
+            }
+        })
     }
 }
 export const validatePhoneStart = () => {

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../shared/axios';
 
 import * as CONSTANTS from '../../shared/constants';
 import * as actionTypes from './actionTypes';
@@ -37,7 +37,6 @@ export const onFilterGetVehicles = () => {
 
         const url = (type && type !== 'all') ? 'vehicles?type=' + type : 'vehicles'
 
-        axios.defaults.baseURL = 'http://mphclub.ngrok.io/api/v1/';
         axios.get(url).then(response => {
             dispatch(onFilterGetVehiclesSucceed(response.data.data))
         }).catch(error => {

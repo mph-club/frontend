@@ -51,7 +51,6 @@ export const onSendForgotPasswordCode = (email) => {
 
     }
 }
-
 export const onForgotPassword = (email, verificationCode, newPassword) => {
     return dispatch => {
 
@@ -142,7 +141,7 @@ export const openSignUp = (open) => {
 }
 export const onSignUp = (email, password) => {
     return dispatch => {
-        dispatch(signUpStart())
+        dispatch({ type: actionTypes.SIGNUP_START })
 
         var poolData = {
             UserPoolId: COGNITO.CONFIG.USER_POOL,
@@ -161,38 +160,24 @@ export const onSignUp = (email, password) => {
 
 
         var userPool = new CognitoUserPool(poolData);
-        userPool.signUp(email, password, attributeList, null, (err, result) => {
+        userPool.signUp(email, password, attributeList, null, (error, result) => {
 
-            if (err) {
-                dispatch(signUpFail(err));
+            if (error) {
+                dispatch({
+                    type: actionTypes.SIGNUP_FAIL,
+                    error: error
+                });
                 return;
             }
 
-            dispatch(signUpSuccess(result.user, password));
+            dispatch({ 
+                type: actionTypes.SIGNUP_SUCCESS,
+                user: result.user,
+                password: password
+            });
         })
     }
 }
-export const signUpStart = () => {
-    return {
-        type: actionTypes.SIGNUP_START
-    };
-};
-export const signUpSuccess = (user, password) => {
-    return {
-        type: actionTypes.SIGNUP_SUCCESS,
-        user: user,
-        password: password
-    };
-};
-export const signUpFail = (error) => {
-
-    alert(error.message || JSON.stringify(error))
-
-    return {
-        type: actionTypes.SIGNUP_FAIL,
-        error: error
-    };
-};
 
 ///SIGN UP ONBOARDING USERS
 export const onBoardingGetStarted = () => {
@@ -200,7 +185,6 @@ export const onBoardingGetStarted = () => {
         type: actionTypes.SIGNUP_ON_BOARDING_GET_STARTED
     }
 }
-
 ///VALIDATING EMAIL ACTIONS
 export const onChangeEmail = () => {
     return {

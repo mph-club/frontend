@@ -10,7 +10,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import StyledPrimaryButton from '../../components/UI/Buttons/PrimaryButton/PrimaryButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {
-    StyledDiv,
+    ExternalContainer,
     StyledIconButton,
     StyledForm,
     StyledDivider,
@@ -32,7 +32,8 @@ class Login extends Component {
         password: ""
     }
 
-    handleLogin = () => {
+    handleLogin = event => {
+        event.preventDefault();
         this.props.handleSignIn(this.state.email, this.state.password)
     }
 
@@ -45,11 +46,9 @@ class Login extends Component {
         }
     }
 
-    handleForgotPassword = event => {
-        event.preventDefault();
+    handleForgotPassword = () => {
         this.props.openForgotPassword();
     }
-    
 
     render() {
 
@@ -61,7 +60,7 @@ class Login extends Component {
                 disableAutoFocus
                 disableBackdropClick
             >
-                <StyledDiv>
+                <ExternalContainer>
                     <StyledIconButton
                         color="inherit"
                         aria-label="Clear"
@@ -72,7 +71,7 @@ class Login extends Component {
                     <Typography style={{ marginLeft: '5%' }}
                         variant="h6"
                         id="modal-title">Login</Typography>
-                    <StyledForm>
+                    <StyledForm onSubmit={this.handleLogin} method='POST'>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="email">Email Address</InputLabel>
                             <Input
@@ -96,26 +95,26 @@ class Login extends Component {
                                 onChange={(event) => this.onChange(event)}
                             />
                         </FormControl>
-                        <StyledFooter>
-                            <StyledFooterButtonLayout>
-                                <StyledPrimaryButton
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={() => this.handleLogin()}
-                                >
-                                    {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Log in'}
-                                </StyledPrimaryButton>
-                            </StyledFooterButtonLayout>
-                            <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '16px'}}>
-                                <TextButton onClick={event => this.handleForgotPassword(event)}>Forgot password?</TextButton>
-                            </div>
-                            <StyledDividerLayout>
-                                <StyledDivider variant="body2">or</StyledDivider>
-                            </StyledDividerLayout>
-                            <Typography align="center" variant="body1">Don't have an account? <StyledSpan onClick={() => this.props.openSignUp()}>Sign up</StyledSpan> </Typography>
-                        </StyledFooter>
+                        <StyledFooterButtonLayout>
+                            <StyledPrimaryButton
+                                variant="contained"
+                                color="primary"
+                                type="submit"
+                            >
+                                {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Log in'}
+                            </StyledPrimaryButton>
+                        </StyledFooterButtonLayout>
                     </StyledForm>
-                </StyledDiv>
+                    <StyledFooter>
+                        <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '16px' }}>
+                            <TextButton onClick={this.handleForgotPassword}>Forgot password?</TextButton>
+                        </div>
+                        <StyledDividerLayout>
+                            <StyledDivider variant="body2">or</StyledDivider>
+                        </StyledDividerLayout>
+                        <Typography align="center" variant="body1">Don't have an account? <StyledSpan onClick={() => this.props.openSignUp()}>Sign up</StyledSpan> </Typography>
+                    </StyledFooter>
+                </ExternalContainer>
             </Modal>
         );
     }

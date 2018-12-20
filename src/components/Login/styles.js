@@ -36,7 +36,7 @@ export const StyledForm = styled.form`
     margin-right: 5%;
 `
 
-export const StyledDiv = styled.div`
+export const ExternalContainer = styled.div`
     height: 468px;
     position: fixed;
     padding: 16px;
@@ -61,12 +61,14 @@ export const StyledFooter = styled.div`
     flex-direction: column;
 `
 export const StyledFooterButtonLayout = styled.div`
-    align-self: flex-end;
+    display: flex;
+    margin-top: 2rem;
+    justify-content: flex-end;
     margin-bottom: 2.5rem;
 `
 
 export const StyledDividerLayout = styled.div`
-    margin-bottom: 2rem;
+    margin: 8px 8px 16px 8px;
 `
 
 export const StyledSpan = styled.span`

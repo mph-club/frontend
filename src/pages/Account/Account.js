@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Footer from '../../components/Navigation/Footer/Footer';
 import Grid from '@material-ui/core/Grid';
@@ -176,4 +177,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Account)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Account))

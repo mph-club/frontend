@@ -110,7 +110,7 @@ class ValidatePhone extends Component {
                                 type="tel"
                                 disabled={!this.props.addingNumber}
                                 error={this.props.error !== null}
-                                value={this.props.addingNumber ? this.state.phone.value : this.state.phone.value ? this.state.phone.value : this.props.user.phone.value.replace('+1', '') }
+                                value={this.props.addingNumber ? this.state.phone.value : this.state.phone.value ? this.state.phone.value : this.props.user.phone ?  this.props.user.phone.value.replace('+1', '') : null }
                                 id="phoneNumberValidate"
                                 prefix='+1'
                                 inputComponent={TextMaskCustom}

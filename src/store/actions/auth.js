@@ -4,7 +4,7 @@ import { CognitoUserPool, CognitoUser, CognitoUserAttribute, AuthenticationDetai
 import * as actionTypes from './actionTypes';
 
 ///SIGN IN ACTION CREATORS
-export const signInStart = () => {
+const signInStart = () => {
     return {
         type: actionTypes.SIGNIN_START
     };
@@ -15,13 +15,78 @@ export const openSignIn = (open) => {
         open: open
     };
 };
-export const signInSuccess = (token) => {
+export const openForgotPassword = (open) => {
+    return {
+        type: actionTypes.SIGNIN_OPEN_FORGOT_PASSWORD,
+        open: open
+    }
+}
+export const onSendForgotPasswordCode = (email) => {
+    return dispatch => {
+
+        dispatch({ type: actionTypes.SIGNIN_FORGOT_PASSWORD_SEND_CODE_START })
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var userPool = new CognitoUserPool(poolData);
+
+        var userData = {
+            Username: email,
+            Pool: userPool
+        };
+
+        var user = new CognitoUser(userData);
+
+        user.forgotPassword({
+            onSuccess: data => {
+                dispatch({ type: actionTypes.SIGNIN_FORGOT_PASSWORD_SEND_CODE_SUCCESS, data: data })
+            },
+            onFailure: error => {
+                dispatch({ type: actionTypes.SIGNIN_FORGOT_PASSWORD_SEND_CODE_FAILED, error: error })
+            }
+        })
+
+
+    }
+}
+
+export const onForgotPassword = (email, verificationCode, newPassword) => {
+    return dispatch => {
+
+        dispatch({ type: actionTypes.SIGNIN_ON_FORGOT_PASSWORD_START })
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var userPool = new CognitoUserPool(poolData);
+
+        var userData = {
+            Username: email,
+            Pool: userPool
+        };
+
+        var user = new CognitoUser(userData);
+
+        user.confirmPassword(verificationCode, newPassword, {
+            onSuccess() {
+                dispatch({ type: actionTypes.SIGNIN_ON_FORGOT_PASSWORD_SUCCESS })
+            },
+            onFailure(error) {
+                dispatch({ type: actionTypes.SIGNIN_ON_FORGOT_PASSWORD_FAILED, error: error })
+            }
+        });
+    }
+}
+const signInSuccess = (token) => {
     return {
         type: actionTypes.SIGNIN_SUCCESS,
         idToken: token
     };
 };
-export const signInFail = (user, password, error) => {
+const signInFail = (user, password, error) => {
     return {
         type: actionTypes.SIGNIN_FAIL,
         error: error,
@@ -142,18 +207,18 @@ export const onChangeEmail = () => {
         type: actionTypes.SIGNUP_CHANGE_EMAIL
     }
 }
-export const confirmEmailStart = () => {
+const confirmEmailStart = () => {
     return {
         type: actionTypes.SIGNUP_CONFIRM_EMAIL_START
     }
 }
-export const confirmEmailFailed = (error) => {
+const confirmEmailFailed = (error) => {
     return {
         type: actionTypes.SIGNUP_CONFIRM_EMAIL_FAILED,
         error: error
     }
 }
-export const confirmEmailSucceed = (session) => {
+const confirmEmailSucceed = (session) => {
     return {
         type: actionTypes.SIGNUP_CONFIRM_EMAIL_SUCCEED,
         session: session
@@ -232,17 +297,17 @@ export const onResendEmailCode = () => {
 }
 
 ///ADDING PHONE NUMBER ACTIONS
-export const addPhoneNumberStarted = () => {
+const addPhoneNumberStarted = () => {
     return {
         type: actionTypes.SIGNUP_ADD_PHONE_START
     }
 }
-export const addPhoneNumberSucceed = () => {
+const addPhoneNumberSucceed = () => {
     return {
         type: actionTypes.SIGNUP_ADD_PHONE_SUCCEED
     }
 }
-export const addPhoneNumberFailed = (error) => {
+const addPhoneNumberFailed = (error) => {
     return {
         type: actionTypes.SIGNUP_ADD_PHONE_FAILED,
         error: error
@@ -274,7 +339,7 @@ export const onResendPhoneCode = (phoneNumber) => {
         user.getSession((err, session) => {
             if (err) {
                 return
-            } 
+            }
             user.getAttributeVerificationCode('phone_number', {
                 onSuccess: () => {
                     alert('A 6-digits code was sent to + 1 ' + phoneNumber)
@@ -318,13 +383,13 @@ export const onAddPhone = (phone) => {
                 return;
             }
 
-            if (session.isValid()) { 
+            if (session.isValid()) {
                 user.updateAttributes(attributeList, (err, result) => {
                     if (err) {
                         dispatch(addPhoneNumberFailed(err))
                         return;
                     }
-        
+
                     user.getAttributeVerificationCode('phone_number', {
                         onSuccess: () => {
                             dispatch(addPhoneNumberSucceed())
@@ -336,7 +401,7 @@ export const onAddPhone = (phone) => {
                     });
                 });
             } else {
-                dispatch(addPhoneNumberFailed({message: 'User no found'}))
+                dispatch(addPhoneNumberFailed({ message: 'User no found' }))
             }
         })
     }
@@ -481,12 +546,12 @@ export const onDeleteAccount = () => {
                 dispatch(authStateChecked(handleSession(null)))
             }
 
-            user.deleteUser( (err, _) => {
+            user.deleteUser((err, _) => {
                 if (err) {
                     dispatch(authStateChecked(handleSession(null)))
                     return;
                 }
-    
+
                 dispatch(onAuthCheckState())
             });
         })

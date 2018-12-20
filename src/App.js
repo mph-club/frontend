@@ -25,6 +25,7 @@ import WelcomeDialog from './components/SignUp/WelcomeDialog/WelcomeDialog';
 import ValidationWrapper from './components/SignUp/ValidationWrapper/ValidationWrapper';
 import WelcomeEndedDialog from './components/SignUp/WelcomeEndedDialog/WelcomeEndedDialog';
 import ConfirmUser from './components/Login/ConfirmUser/ConfirmUser';
+import ForgotPassword from './components/Login/ForgotPassword/ForgotPassword';
 
 import * as actions from './store/actions/index';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
@@ -98,6 +99,7 @@ class App extends Component {
         <Toolbar />
         <main>
           <Login />
+          <ForgotPassword/>
           <ConfirmUser />
           <SignUp />
           <WelcomeDialog />

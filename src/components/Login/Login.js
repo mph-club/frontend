@@ -22,6 +22,7 @@ import {
 import { palette } from '../../theme';
 
 import * as actions from '../../store/actions/index';
+import TextButton from '../UI/Buttons/TextButton/TextButton';
 
 
 class Login extends Component {
@@ -44,10 +45,10 @@ class Login extends Component {
         }
     }
 
-    handleConfirm = () => {
-
+    handleForgotPassword = event => {
+        event.preventDefault();
+        this.props.openForgotPassword();
     }
-
     
 
     render() {
@@ -105,6 +106,9 @@ class Login extends Component {
                                     {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Log in'}
                                 </StyledPrimaryButton>
                             </StyledFooterButtonLayout>
+                            <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '16px'}}>
+                                <TextButton onClick={event => this.handleForgotPassword(event)}>Forgot password?</TextButton>
+                            </div>
                             <StyledDividerLayout>
                                 <StyledDivider variant="body2">or</StyledDivider>
                             </StyledDividerLayout>
@@ -128,6 +132,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         closeSignIn: () => { dispatch(actions.openSignIn(false)) },
+        openForgotPassword: () => {
+            dispatch(actions.openSignIn(false));
+            dispatch(actions.openForgotPassword(true));
+        },
         handleSignIn: (email, password) => { dispatch(actions.onSignIn(email, password)) },
         openSignUp: () => {
             dispatch(actions.openSignIn(false));

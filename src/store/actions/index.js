@@ -3,6 +3,7 @@ export {
     onSignIn,
     onLogout,
     openSignIn,
+    openForgotPassword,
     onSignUp,
     openSignUp,
     onBoardingGetStarted,
@@ -17,7 +18,9 @@ export {
     onBoardingEnded,
     onCloseEndedDialog,
     onAuthCheckState,
-    onDeleteAccount
+    onDeleteAccount,
+    onForgotPassword,
+    onSendForgotPasswordCode
 } from './auth';
 
 export {

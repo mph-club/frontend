@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MaskedInput from 'react-text-mask'
 
-import { StyledStepsContainer, StyledEmailWrapper } from './styles';
+import {
+    StyledStepsContainer,
+    StyledEmailWrapper,
+    StyledSpan
+} from './styles';
 import Typography from '@material-ui/core/Typography';
 import TextButton from '../../UI/Buttons/TextButton/TextButton';
 import { palette, space } from '../../../theme';
@@ -52,8 +56,8 @@ class ContactInfo extends Component {
 
         return (
             <React.Fragment>
-                <ValidatePhone 
-                    handleClose={( ) => this.handleClosePhoneDialog()}/>
+                <ValidatePhone
+                    handleClose={() => this.handleClosePhoneDialog()} />
                 <DeleteAccount
                     open={this.state.openDeleteAccount}
                     handleClose={() => this.setState({ openDeleteAccount: false })} />
@@ -82,6 +86,7 @@ class ContactInfo extends Component {
                                     style={{ fontWeight: 400, fontSize: 18 }}
                                     inputComponent={TextMaskCustom}
                                 />
+                                {user.phone.phone_verified ? null : <StyledSpan>unverified</StyledSpan>}
                             </div> : <Title component="p" style={{ marginBottom: `${space[3]}`, marginTop: `${space[4]}` }}>PHONE NUMBER</Title>
                     }
                     <div>

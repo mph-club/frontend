@@ -5,6 +5,8 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
     openSignUp: false,
     openSignIn: false,
+    openForgotPassword: false,
+    enteringEmail: true,
     openWelcomeDialog: false,
     openValidationWrapper: false,
     openWelcomeEndedDialog: false,
@@ -12,6 +14,7 @@ const initialState = {
     user: null,
     password: '',
     error: null,
+    data: null,
     loading: false,
     completed: 25,
     activeStep: 0,
@@ -38,6 +41,20 @@ const reducer = (state = initialState, action) => {
         ///SIGN IN REDUCERS
         case actionTypes.SIGNIN_OPEN:
             return updateObject(state, { openSignIn: action.open, error: null })
+        case actionTypes.SIGNIN_OPEN_FORGOT_PASSWORD:
+            return updateObject(state, { openForgotPassword: action.open, data: null, enteringEmail: true })
+        case actionTypes.SIGNIN_FORGOT_PASSWORD_SEND_CODE_START:
+            return updateObject(state, { loading: true, error: null })
+        case actionTypes.SIGNIN_FORGOT_PASSWORD_SEND_CODE_FAILED:
+            return updateObject(state, { loading: false, error: action.error })
+        case actionTypes.SIGNIN_FORGOT_PASSWORD_SEND_CODE_SUCCESS:
+            return updateObject(state, { loading: false, data: action.data, enteringEmail: false })
+        case actionTypes.SIGNIN_ON_FORGOT_PASSWORD_START:
+            return updateObject(state, { loading: true, error: null })
+        case actionTypes.SIGNIN_ON_FORGOT_PASSWORD_SUCCESS:
+            return updateObject(state, { loading: false, openForgotPassword: false, openSignIn: true })
+        case actionTypes.SIGNIN_ON_FORGOT_PASSWORD_FAILED:
+            return updateObject(state, { loading: false, error: action.error })
         case actionTypes.SIGNIN_START:
             return updateObject(state, { loading: true, error: null })
         case actionTypes.SIGNIN_FAIL:
@@ -56,7 +73,7 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { error: null, loading: true })
         case actionTypes.SIGNUP_SUCCESS:
             return updateObject(state, { user: action.user, password: action.password, error: null, loading: false, openSignUp: false, openWelcomeDialog: true })
-        case actionTypes.SIGNUP_FAIL: 
+        case actionTypes.SIGNUP_FAIL:
             return updateObject(state, { error: action.error, loading: false })
         case actionTypes.SIGNUP_OPEN:
             return updateObject(state, { openSignUp: action.open, error: null })

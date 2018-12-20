@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space } from '../../../theme';
+import { space, palette } from '../../../theme';
 import Typography from '@material-ui/core/Typography';
 
 export const StyledStepsContainer = styled.div`
@@ -22,4 +22,11 @@ export const StyledEmailWrapper = styled(Typography)`
             max-width: 300px;
         } 
     }
+`
+
+export const StyledSpan = styled.span`
+    background-color: ${palette.green};
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
 `

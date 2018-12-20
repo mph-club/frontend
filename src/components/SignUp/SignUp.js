@@ -11,9 +11,8 @@ import StyledPrimaryButton from '../../components/UI/Buttons/PrimaryButton/Prima
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
-    StyledDiv,
+    ExternalContainer,
     StyledIconButton,
-    StyledForm,
     StyledDivider,
     StyledFooter,
     StyledFooterButtonLayout,
@@ -21,8 +20,6 @@ import {
     StyledSpan
 } from './styles';
 import { palette, space } from '../../theme';
-
-import FormHelper from '../../helpers/SignUp/formValidator';
 import * as actions from '../../store/actions/index';
 
 class SignUp extends Component {
@@ -44,25 +41,9 @@ class SignUp extends Component {
         }
     }
 
-    handleSignUp = () => {
-        this.setState({
-            email: {
-                ...this.state.email,
-                error: false,
-                message: "",
-            },
-            password: {
-                ...this.state.password,
-                error: false,
-                message: "",
-            }
-        })
-
-        if (FormHelper.ValidateForm(this)) {
-            this.props.onSignUp(this.state.email.value, this.state.password.value)
-        } else {
-            alert('Ops! Looks like something was wrong');
-        }
+    handleSignUp = event => {
+        event.preventDefault();
+        this.props.onSignUp(this.state.email.value, this.state.password.value)
     }
 
     emailOnBlur = (event) => {
@@ -119,7 +100,7 @@ class SignUp extends Component {
                 disableAutoFocus
                 disableBackdropClick
             >
-                <StyledDiv>
+                <ExternalContainer>
                     <StyledIconButton
                         color="inherit"
                         aria-label="Clear"
@@ -127,10 +108,8 @@ class SignUp extends Component {
                     >
                         <ClearIcon />
                     </StyledIconButton>
-                    <Typography style={{ marginLeft: '5%' }}
-                        variant="h6"
-                        id="modal-title">Sign Up</Typography>
-                    <StyledForm autoComplete="on">
+                    <Typography variant="h6" id="modal-title">Sign Up</Typography>
+                    <form onSubmit={event => this.handleSignUp(event)} method="POST">
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="email">Email Address</InputLabel>
                             <Input
@@ -146,6 +125,7 @@ class SignUp extends Component {
                                 }
                                 )} />
                             <Typography color='error'>{this.state.email.message}</Typography>
+                            <Typography color='error'>{this.props.error ? this.props.error.message : null}</Typography>
                         </FormControl>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="password">Password</InputLabel>
@@ -176,26 +156,20 @@ class SignUp extends Component {
                             />
                             <Typography color='error'>{this.state.passwordMatch.message}</Typography>
                         </FormControl>
-                        <Typography style={{ marginTop: space[3] }} color='primary'>By signing up or logging in, you agree to our <StyledSpan>terms of service</StyledSpan> and <StyledSpan>privacy policy</StyledSpan></Typography>
-                        <StyledFooter>
-                            <StyledFooterButtonLayout>
-                                <StyledPrimaryButton
-                                    fullWidth
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={() => this.handleSignUp()}
-                                >
-                                    {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Sign Up'}
-                                </StyledPrimaryButton>
-                            </StyledFooterButtonLayout>
-                            <StyledDividerLayout>
-                                <StyledDivider variant="body2">or</StyledDivider>
-                            </StyledDividerLayout>
-                            <Typography variant="body1">Already have an account? <StyledSpan onClick={() => this.props.openSignIn()}>Log in</StyledSpan>
-                            </Typography>
-                        </StyledFooter>
-                    </StyledForm>
-                </StyledDiv>
+                        <StyledFooterButtonLayout>
+                            <StyledPrimaryButton variant="contained" color="primary" type="submit">
+                                {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Sign Up'}
+                            </StyledPrimaryButton>
+                        </StyledFooterButtonLayout>
+                    </form>
+                    <Typography style={{ marginTop: space[3] }} color='primary'>By signing up or logging in, you agree to our <StyledSpan>terms of service</StyledSpan> and <StyledSpan>privacy policy</StyledSpan></Typography>
+                    <StyledFooter>
+                        <StyledDividerLayout>
+                            <StyledDivider variant="body2">or</StyledDivider>
+                        </StyledDividerLayout>
+                        <Typography align='center' variant="body1">Already have an account? <StyledSpan onClick={() => this.props.openSignIn()}>Log in</StyledSpan> </Typography>
+                    </StyledFooter>
+                </ExternalContainer>
             </Modal>
         );
     }
@@ -213,7 +187,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onSignUp: (email, password) => dispatch(actions.onSignUp(email, password)),
         openSignUp: (open) => dispatch(actions.openSignUp(open)),
-        openSignIn: () => { 
+        openSignIn: () => {
             dispatch(actions.openSignUp(false));
             dispatch(actions.openSignIn(true));
         }

@@ -29,17 +29,10 @@ export const StyledDivider = styled(Typography)`
     }
 `
 
-export const StyledForm = styled.form`
-    width: '90%'; // Fix IE11 issue.
-    margin-top: 8px;
-    margin-left: 5%;
-    margin-right: 5%;
-`
-
-export const StyledDiv = styled.div`
-    height: 574px;
+export const ExternalContainer = styled.div`
+    height: auto;
     position: fixed;
-    padding: 16px;
+    padding: 32px;
     width: 70%;
     border-radius: 8px;
     left: 15%;
@@ -50,7 +43,7 @@ export const StyledDiv = styled.div`
     }
 
     @media (min-width: 600px) {
-        width: 500px;
+        width: 460px;
         left: calc(50% - 250px);
     }
 `
@@ -61,12 +54,14 @@ export const StyledFooter = styled.div`
     flex-direction: column;
 `
 export const StyledFooterButtonLayout = styled.div`
-    align-self: flex-end;
+    margin-top: ${space[3]};
+    display: flex;
+    justify-content: flex-end;
     margin-bottom: ${space[3]};
 `
 
 export const StyledDividerLayout = styled.div`
-    margin-bottom: ${space[3]};
+    margin: 0 10% ${space[3]} 10%;
 `
 export const StyledSpan = styled.span`
     color: ${palette.blue};

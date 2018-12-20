@@ -96,11 +96,7 @@ class Login extends Component {
                             />
                         </FormControl>
                         <StyledFooterButtonLayout>
-                            <StyledPrimaryButton
-                                variant="contained"
-                                color="primary"
-                                type="submit"
-                            >
+                            <StyledPrimaryButton variant="contained" color="primary" type="submit">
                                 {this.props.loading ? <CircularProgress size={20} style={{ color: palette.white }} /> : 'Log in'}
                             </StyledPrimaryButton>
                         </StyledFooterButtonLayout>

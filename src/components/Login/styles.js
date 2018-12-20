@@ -68,7 +68,7 @@ export const StyledFooterButtonLayout = styled.div`
 `
 
 export const StyledDividerLayout = styled.div`
-    margin: 8px 8px 16px 8px;
+    margin: 8px 10% 16px 10%;
 `
 
 export const StyledSpan = styled.span`

@@ -26,6 +26,7 @@ import ValidationWrapper from './components/SignUp/ValidationWrapper/ValidationW
 import WelcomeEndedDialog from './components/SignUp/WelcomeEndedDialog/WelcomeEndedDialog';
 import ConfirmUser from './components/Login/ConfirmUser/ConfirmUser';
 import ForgotPassword from './components/Login/ForgotPassword/ForgotPassword';
+import HomePage from './pages/HomePage/HomePage';
 
 import * as actions from './store/actions/index';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
@@ -64,7 +65,7 @@ class App extends Component {
       <Route path="/car-location" component={CarLocation} />
       <Route path="/trip-preference" component={TripPreference} />
       <Route path="/filter" component={asyncFilterPage} />
-      <Route exact path="/" component={Explore} />
+      <Route exact path="/" component={HomePage} />
       <Redirect to="/" />
     </Switch>
 

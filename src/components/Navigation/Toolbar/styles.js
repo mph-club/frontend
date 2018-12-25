@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 
 export const StyledAppBar = styled(AppBar)`
     && {
@@ -23,4 +24,11 @@ export const StyledToolBar = styled(Toolbar)`
 
 export const StyledNav = styled.nav`
     display: flex;
+`
+
+export const ListVehicleButton = styled(Button)`
+   && {
+    border: 2px solid white;
+    margin-right: 32px;
+   }
 `

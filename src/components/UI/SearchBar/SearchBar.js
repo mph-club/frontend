@@ -19,6 +19,7 @@ class SearchBar extends Component {
     }
 
     render() {
+
         return (
             <form onSubmit={this.handleSubmit}>
                 <div style={{
@@ -106,7 +107,7 @@ class SearchBar extends Component {
 
                     </StyledPaper>
                     <div style={{ display: 'flex', alignSelf: 'center' }}>
-                        <StyleButton type="submit">Search</StyleButton>
+                        <StyleButton type="submit" backgroundcolor={this.props.searchcolor}>Search</StyleButton>
                     </div>
 
                 </div>

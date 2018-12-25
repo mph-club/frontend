@@ -8,7 +8,8 @@ import UserEntry from '../UserEntry/UserEntry';
 import {
   StyledAppBar,
   StyledToolBar,
-  StyledNav
+  StyledNav,
+  ListVehicleButton
 } from './styles';
 
 import * as actions from '../../../store/actions/index';
@@ -30,11 +31,13 @@ class ToolBar extends Component {
       }
 
       buttons = <React.Fragment>
+        <ListVehicleButton color="inherit" >List your vehicle</ListVehicleButton>
         {buttons}
         <UserEntry/>
       </React.Fragment>
     } else {
       buttons = <React.Fragment>
+        <ListVehicleButton color="inherit" >List your vehicle</ListVehicleButton>
         <Button color="inherit" onClick={this.props.openSignIn}>Login</Button>
         <Button color="inherit" onClick={this.props.openSignUp}>Sign Up</Button>
       </React.Fragment>

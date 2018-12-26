@@ -23,7 +23,7 @@ export const Banner = styled.section`
 export const BannerSectionContent = styled.div`
     position: absolute;
     display: block;
-    top: 12vh;
+    top: 16vh;
     width: 100%; 
 
     @media (max-width: 1150px) {

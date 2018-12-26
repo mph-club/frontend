@@ -45,7 +45,7 @@ import {
     StyledSocialUl
 
 } from './styles';
-import { palette } from '../../theme';
+import { palette, space } from '../../theme';
 
 
 class HomePage extends Component {
@@ -55,7 +55,7 @@ class HomePage extends Component {
             <Fragment>
                 <Banner>
                     <BannerSectionContent>
-                        <PrimarySentence align='center' variant="h4">Drive what you <span>reserve</span>  "not something similar"</PrimarySentence>
+                        <Typography align='center' variant="h4" style={{ fontSize: '40px', color: palette.white, marginBottom: space[3] }}>Drive what you <span style={{ color: palette.green}}>reserve</span>  "not something similar"</Typography>
                         <SecondarySentence align='center' variant='h6'>No lines, no shuttles, the vehicle <span>you rented</span> delivered to you</SecondarySentence>
                         <SearchBarContainer>
                             <SearchBar searchcolor={palette.green} />

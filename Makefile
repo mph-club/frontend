@@ -5,15 +5,6 @@ REGISTRY_URL = ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com
 KUBE_DEPLOYMENT = deployments/frontend-deployment
 KUBE_CONTAINER_NAME = frontend
 
-run-server:
-	@go run api.go
-
-run-client:
-	@cd client && go run client.go
-
-new-binary:
-	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflags="-w -s" -o ./bin/mphclub-server
-
 #Use this after code push only
 docker-build:
 	@docker build --force-rm \
@@ -21,7 +12,7 @@ docker-build:
 	              --file ./Dockerfile .
 
 docker-tag:
-	@docker tag ${IMAGE_NAME}:${CURRENT_HEAD} ${IMAGE_NAME}:latest 
+	@docker tag ${IMAGE_NAME}:${CURRENT_HEAD} ${IMAGE_NAME}:latest
 	@docker tag ${IMAGE_NAME}:latest ${REGISTRY_URL}/${IMAGE_NAME}:latest
 	@docker tag ${IMAGE_NAME}:latest ${REGISTRY_URL}/${IMAGE_NAME}:${CURRENT_HEAD}
 
@@ -53,7 +44,3 @@ account-id:
 
 registry-url:
 	@echo ${REGISTRY_URL}
-
-swagger-html:
-	@cd ./swagger && \
-	redoc-cli bundle mph-swagger.yaml

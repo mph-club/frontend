@@ -242,6 +242,9 @@ export const FooterTwoColumnsContainer = styled.div`
 export const FooterAnchor = styled.a`
     color: #fff;
     font-size: 14px;
+    :hover {
+        cursor: pointer;
+    }
 `
 
 export const FooterTopContainer = styled.div`

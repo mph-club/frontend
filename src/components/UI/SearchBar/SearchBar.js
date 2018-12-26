@@ -12,9 +12,12 @@ import { hours } from '../../../shared/constants';
 
 class SearchBar extends Component {
 
+    state = {
+
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
-
         this.props.history.push('/filter');
     }
 
@@ -33,8 +36,6 @@ class SearchBar extends Component {
                                 id="searchPage-search"
                                 type="search"
                                 placeholder="Enter a city in FL"
-                                value='Miami'
-                                contentEditable={false}
                                 InputProps={{
                                     disableUnderline: true
                                 }}

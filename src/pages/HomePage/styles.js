@@ -23,7 +23,7 @@ export const Banner = styled.section`
 export const BannerSectionContent = styled.div`
     position: absolute;
     display: block;
-    top: 200px;
+    top: 12vh;
     width: 100%; 
 
     @media (max-width: 1150px) {
@@ -132,7 +132,7 @@ export const CenterSectionContainer = styled.div`
     justify-content: space-around;
     width: 400px;
     margin: 0 auto;
-    padding-top: 64px;
+    padding-top: 48px;
 `
 
 export const SectionButtonContainer = styled.div`
@@ -193,11 +193,19 @@ export const FooterContainer = styled.footer`
 
 export const FooterSidesContainer = styled.div`
     display: flex;
+
+    @media (max-width: 600px) {
+       flex-direction: column;
+    }
 `
 
 export const FooterSide = styled.div`
     width: 50%;
     display: block;
+
+    @media (max-width: 600px) {
+       width: 100%;
+    }
 `
 
 export const FooterSideTitle = styled(Typography)`
@@ -234,4 +242,52 @@ export const FooterTwoColumnsContainer = styled.div`
 export const FooterAnchor = styled.a`
     color: #fff;
     font-size: 14px;
+`
+
+export const FooterTopContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+export const FooterLeftTopContainer = styled.div`
+    display: flex;
+
+    @media (max-width: 600px) {
+       flex-direction: column;
+    }
+`
+
+export const StyleA = styled.a`
+
+    img {
+        height: 20px;
+
+        &:hover {
+            text-decoration: none;
+            border: 0;
+            color: #fff !important;
+            -webkit-transition: color 0.2s;
+            transition: color 0.2s;
+        }
+    }
+`
+
+
+export const StyledSocialUl = styled.ul`
+    && {
+        display: flex;
+        padding-left: 0;
+        margin-left: 0;
+
+        li {
+            margin-right: 24px;
+            list-style: none;
+        }
+    }
+`
+
+export const StyledDivTwo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 `

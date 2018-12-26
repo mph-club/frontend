@@ -7,6 +7,10 @@ import secondtMovilImage from '../../assets/images/2nd-phone.png';
 import logo from '../../assets/images/logo.png';
 import StyledSecondaryButton from '../../components/UI/Buttons/SecondayButton/SecondaryButton';
 import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+import fbIcon from '../../assets/icons/fb.svg';
+import instagramIcon from '../../assets/icons/instagram.svg';
+import twitterIcon from '../../assets/icons/twitter.svg';
 import {
     Banner,
     BannerSectionContent,
@@ -33,7 +37,12 @@ import {
     FooterAnchor,
     FooterList,
     FooterItem,
-    FooterCopyRight
+    FooterTopContainer,
+    FooterLeftTopContainer,
+    FooterCopyRight,
+    StyleA,
+    StyledDivTwo,
+    StyledSocialUl
 
 } from './styles';
 import { palette } from '../../theme';
@@ -94,10 +103,20 @@ class HomePage extends Component {
                     </SecondRightContainer>
                 </SecondMovilSection>
                 <FooterContainer>
-                    <div style={{ display: 'flex' }}>
-                        <img src={logo} alt='logo' style={{ height: '40px', marginRight: '16px' }} />
-                        <SecondarySentence align='center' variant='h6' style={{ color: palette.green, marginTop: '8px' }}>List your car. Rent a car. Earn money, simple.</SecondarySentence>
-                    </div>
+                    <FooterTopContainer>
+                        <FooterLeftTopContainer>
+                            <img src={logo} alt='logo' style={{ height: '40px', width: '100px', marginRight: '16px' }} />
+                            <SecondarySentence align='left' variant='h6' style={{ color: palette.grey02, marginTop: '8px' }}>List your car. Rent a car. Earn money, simple.</SecondarySentence>
+                        </FooterLeftTopContainer>
+                        <StyledDivTwo>
+                            <Typography variant="subtitle1" style={{ color: palette.white }}>Follow us </Typography>
+                            <StyledSocialUl>
+                                <li><StyleA href="https://www.facebook.com/mphclub"><img src={fbIcon} alt="Facebook"></img></StyleA></li>
+                                <li><StyleA href="https://www.instagram.com/mphclub"><img src={instagramIcon} alt="Instagram"></img></StyleA></li>
+                                <li><StyleA href="https://twitter.com/mphclub"><img src={twitterIcon} alt="twitter"></img></StyleA></li>
+                            </StyledSocialUl>
+                        </StyledDivTwo>
+                    </FooterTopContainer>
                     <Divider style={{ backgroundColor: '#FEFFFE', marginBottom: '16px' }} />
                     <FooterSidesContainer>
                         <FooterSide>
@@ -184,7 +203,6 @@ class HomePage extends Component {
                         </FooterSide>
                     </FooterSidesContainer>
                     <FooterCopyRight align='center' variant='p'>&copy; mphclub All rights reserved 2018</FooterCopyRight>
-
                 </FooterContainer>
             </Fragment>
         );

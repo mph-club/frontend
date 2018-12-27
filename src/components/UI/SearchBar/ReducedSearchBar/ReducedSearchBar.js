@@ -25,38 +25,40 @@ const ReduceSearchBar = () => {
                     InputProps={{
                         disableUnderline: true
                     }}
-                    style={{ width: '200px' }}
                 />
                 <Divider />
-                <div style={{ display: 'flex' }}>
-                    <TextField
-                        id="searchPage-fromTextField"
-                        type="date"
-                        defaultValue="2017-05-24"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        InputProps={{
-                            disableUnderline: true
-                        }}
-                    />
-                    <TextField
-                        id="searchPage-pickupTime"
-                        select
-                        SelectProps={{
-                            native: true
-                        }}
-                        InputProps={{
-                            disableUnderline: true
-                        }}
-                    >{hours.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}</TextField>
-                </div>
+                <RowContainer>
+                    <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip start</Typography>
+                    <div style={{ display: 'flex' }}>
+                        <TextField
+                            id="searchPage-fromTextField"
+                            type="date"
+                            defaultValue="2017-05-24"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            InputProps={{
+                                disableUnderline: true
+                            }}
+                        />
+                        <TextField
+                            id="searchPage-pickupTime"
+                            select
+                            SelectProps={{
+                                native: true
+                            }}
+                            InputProps={{
+                                disableUnderline: true
+                            }}
+                        >{hours.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}</TextField>
+                    </div>
+                </RowContainer>
                 <Divider />
-                <div style={{ display: 'block' }}>
+                <RowContainer>
                     <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip end</Typography>
                     <div style={{ display: 'flex' }}>
                         <TextField
@@ -85,7 +87,7 @@ const ReduceSearchBar = () => {
                             </option>
                         ))}</TextField>
                     </div>
-                </div>
+                </RowContainer>
                 <StyleButton backgroundcolor={palette.green}>Search</StyleButton>
             </StyledPaper>
 

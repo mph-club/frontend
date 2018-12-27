@@ -5,6 +5,7 @@ import StylePrimaryButton from '../../../../components/UI/Buttons/PrimaryButton/
 export const StyledPaper = styled(Paper)`
     width: 100%;
     height: auto;
+    box-sizing: border-box;
     padding: 16px;
 `
 

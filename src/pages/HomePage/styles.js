@@ -17,6 +17,10 @@ export const BannerSectionContent = styled.div`
     display: block;
     width: 100%; 
     padding-top: 24vh;
+
+    @media (max-width: 450px) {
+        padding-top: 12vh;
+    }
 `
 
 export const PrimarySentence = styled(Typography)`

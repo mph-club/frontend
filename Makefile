@@ -5,15 +5,6 @@ REGISTRY_URL = ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com
 KUBE_DEPLOYMENT = deployments/frontend-deployment
 KUBE_CONTAINER_NAME = frontend
 
-run-server:
-	@go run api.go
-
-run-client:
-	@cd client && go run client.go
-
-new-binary:
-	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflags="-w -s" -o ./bin/mphclub-server
-
 #Use this after code push only
 docker-build:
 	@docker build --force-rm \
@@ -21,16 +12,16 @@ docker-build:
 	              --file ./Dockerfile .
 
 docker-tag:
-	@docker tag ${IMAGE_NAME}:${CURRENT_HEAD} ${IMAGE_NAME}:latest 
+	@docker tag ${IMAGE_NAME}:${CURRENT_HEAD} ${IMAGE_NAME}:latest
 	@docker tag ${IMAGE_NAME}:latest ${REGISTRY_URL}/${IMAGE_NAME}:latest
 	@docker tag ${IMAGE_NAME}:latest ${REGISTRY_URL}/${IMAGE_NAME}:${CURRENT_HEAD}
 
 docker-push:
 	# only have to login (the below command) once per 12 hours
-	@eval `aws ecr get-login --no-include-email`
+	# @eval `aws ecr get-login --no-include-email`
 	@docker push ${REGISTRY_URL}/${IMAGE_NAME}:latest
 	@docker push ${REGISTRY_URL}/${IMAGE_NAME}:${CURRENT_HEAD}
-	@docker logout ${REGISTRY_URL}
+	# @docker logout ${REGISTRY_URL}
 
 docker-clean:
 	@docker rmi --force \
@@ -38,7 +29,7 @@ docker-clean:
 	            ${IMAGE_NAME}:latest \
 				${REGISTRY_URL}/${IMAGE_NAME}:${CURRENT_HEAD} \
 				${REGISTRY_URL}/${IMAGE_NAME}:latest
-	@docker image prune --force
+	# @docker image prune --force
 
 docker-deploy:
 	#only have to apply if the configs change
@@ -53,7 +44,3 @@ account-id:
 
 registry-url:
 	@echo ${REGISTRY_URL}
-
-swagger-html:
-	@cd ./swagger && \
-	redoc-cli bundle mph-swagger.yaml

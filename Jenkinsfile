@@ -1,22 +1,31 @@
-pipeline { 
-    agent any 
+pipeline {
+    agent any
     stages {
-        stage('Build') { 
-            steps { 
+        stage('Build') {
+            steps {
                 sh 'make docker-build'
             }
         }
         stage('Tag') {
+            when {
+                branch 'prod'
+            }
             steps {
                 sh 'make docker-tag'
             }
         }
         stage('Push') {
+            when {
+                branch 'prod'
+            }
             steps {
                 sh 'make docker-push'
             }
         }
         stage('Deploy') {
+            when {
+                branch 'prod'
+            }
             steps {
                 sh 'make docker-deploy'
             }

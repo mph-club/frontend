@@ -1,5 +1,6 @@
 
 export {
+    openNavDrawer,
     onSignIn,
     onLogout,
     openSignIn,

@@ -12,9 +12,6 @@ import { hours } from '../../../shared/constants';
 
 class SearchBar extends Component {
 
-    state = {
-
-    }
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -33,7 +30,8 @@ class SearchBar extends Component {
                         <div style={{ display: 'block' }}>
                             <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Where</Typography>
                             <TextField
-                                id="searchPage-search"
+                                id={this.props.id}
+                                value={this.props.value}
                                 type="search"
                                 placeholder="Enter a city in FL"
                                 InputProps={{
@@ -110,7 +108,6 @@ class SearchBar extends Component {
                     <div style={{ display: 'flex', alignSelf: 'center' }}>
                         <StyleButton type="submit" backgroundcolor={this.props.searchcolor}>Search</StyleButton>
                     </div>
-
                 </div>
             </form>
         );

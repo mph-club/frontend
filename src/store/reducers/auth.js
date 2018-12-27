@@ -3,6 +3,7 @@ import { updateObject } from '../../shared/utility';
 
 
 const initialState = {
+    openDrawer: false,
     openSignUp: false,
     openSignIn: false,
     openForgotPassword: false,
@@ -37,6 +38,10 @@ const handleNext = state => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+
+        ///GLOBAL IN REDUCERS
+        case actionTypes.OPEN_NAV_DRAWER:
+            return updateObject(state, { openDrawer: action.open })
 
         ///SIGN IN REDUCERS
         case actionTypes.SIGNIN_OPEN:

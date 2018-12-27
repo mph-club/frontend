@@ -75,7 +75,7 @@ export const AppLinkContainer = styled.div`
 `
 
 //Second Section
-export const FirstMovilSection = styled.div`
+export const FirstMovilSection = styled.section`
     background-color: #FEFFFE;
     display: flex;
 
@@ -90,11 +90,19 @@ export const FirstLeftContainer = styled.div`
     padding: 64px 64px 64px;
     width: 50%;
 
+    img {
+        padding-right: 64px;
+    }
+
     @media (max-width: 600px) {
         width: 100%;
         padding: 64px 0 0;
         justify-content: space-around;
         margin: 0 auto;
+
+        img {
+        padding-right: 0;
+    }
     }
 `
 
@@ -116,6 +124,8 @@ export const FirstContent = styled.div`
     @media (max-width: 600px) {
         margin: 0 auto;
         margin-bottom: 64px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 `
 
@@ -126,13 +136,22 @@ export const CenterSection = styled.section`
     height: 34vh;
     background-position: center;
     background-repeat: no-repeat;
+
+    @media (max-width: 600px) {
+        height: 48vh;
+    }
 `
 
 export const CenterSectionContainer = styled.div`
     justify-content: space-around;
-    width: 400px;
+    max-width: 400px;
     margin: 0 auto;
     padding-top: 48px;
+
+    @media (max-width: 600px) { 
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 `
 
 export const SectionButtonContainer = styled.div`
@@ -152,11 +171,14 @@ export const SecondMovilSection = styled.section`
 export const SecondLeftContainer = styled.div`
     width: 50%;
     display: flex;
+    box-sizing: border-box;
     justify-content: flex-end;
     padding-top: 150px;
 
     @media (max-width: 600px) {
         width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
         justify-content: space-around;
     }
 `
@@ -178,11 +200,20 @@ export const SecondRightContainer = styled.div`
     padding: 64px 0 64px 64px;
     width: 50%;
 
+    img {
+        padding-left: 64px;
+    }
+
     @media (max-width: 600px) {
         width: 100%;
         padding: 64px 0 0;
         justify-content: space-around;
         margin: 0 auto;
+
+        img {
+            padding-left: 0;
+            padding-bottom: 32px;
+        }
     }
 `
 

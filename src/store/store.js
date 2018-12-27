@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
     carDetails: carDetailReducer
 })
 
-const store = createStore(rootReducer, composeEnhancers(
+const store = createStore(rootReducer, compose(
     applyMiddleware(thunk))
 );
 

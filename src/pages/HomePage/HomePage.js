@@ -50,15 +50,24 @@ import { palette, space } from '../../theme';
 
 class HomePage extends Component {
 
+    state = {
+        city: '',
+        query: '',
+    }
+
     render() {
+
         return (
             <Fragment>
                 <Banner>
                     <BannerSectionContent>
-                        <Typography align='center' variant="h4" style={{ fontSize: '40px', color: palette.white, marginBottom: space[3] }}>Drive what you <span style={{ color: palette.green}}>reserve</span>  "not something similar"</Typography>
+                        <Typography align='center' variant="h4" style={{ fontSize: '40px', color: palette.white, marginBottom: space[3] }}>Drive what you <span style={{ color: palette.green }}>reserve</span>  "not something similar"</Typography>
                         <SecondarySentence align='center' variant='h6'>No lines, no shuttles, the vehicle <span>you rented</span> delivered to you</SecondarySentence>
                         <SearchBarContainer>
-                            <SearchBar searchcolor={palette.green} />
+                            <SearchBar 
+                                searchcolor={palette.green} 
+                                id='autocomplete'/>
+                           
                         </SearchBarContainer>
                         <AppLinkContainer>
                             <a href='https://itunes.apple.com/us/app/mph-club/id1411572568'><img src={appStoreImage} alt='app store link' /></a>
@@ -67,7 +76,7 @@ class HomePage extends Component {
                 </Banner>
                 <FirstMovilSection>
                     <FirstLeftContainer>
-                        <img style={{ height: '460px', paddingRight: '64px' }} src={firstMovilImage} alt='first homepage movil' />
+                        <img style={{ height: '460px' }} src={firstMovilImage} alt='first homepage movil' />
                     </FirstLeftContainer>
                     <FirstRightContainer>
                         <FirstContent>
@@ -99,7 +108,7 @@ class HomePage extends Component {
                         </SecondContent>
                     </SecondLeftContainer>
                     <SecondRightContainer>
-                        <img style={{ height: '460px', paddingLeft: '64px' }} src={secondtMovilImage} alt='second homepage movil' />
+                        <img style={{ height: '460px' }} src={secondtMovilImage} alt='second homepage movil' />
                     </SecondRightContainer>
                 </SecondMovilSection>
                 <FooterContainer>
@@ -202,7 +211,7 @@ class HomePage extends Component {
                             </FooterTwoColumnsContainer>
                         </FooterSide>
                     </FooterSidesContainer>
-                    <FooterCopyRight align='center' variant='p'>&copy; mphclub All rights reserved 2018</FooterCopyRight>
+                    <FooterCopyRight align='center' variant='body1'>&copy; mphclub All rights reserved 2018</FooterCopyRight>
                 </FooterContainer>
             </Fragment>
         );

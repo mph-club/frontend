@@ -30,6 +30,7 @@ import HomePage from './pages/HomePage/HomePage';
 
 import * as actions from './store/actions/index';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
+import RightDrawer from './components/Navigation/Drawer/Drawer';
 
 const asyncAccount = asyncComponent(() => {
   return import('./pages/Account/Account')
@@ -98,14 +99,15 @@ class App extends Component {
     return (
       <React.Fragment>
         <Toolbar />
+        <Login />
+        <ForgotPassword />
+        <ConfirmUser />
+        <SignUp />
+        <WelcomeDialog />
+        <ValidationWrapper />
+        <WelcomeEndedDialog />
+        <RightDrawer/>
         <main>
-          <Login />
-          <ForgotPassword/>
-          <ConfirmUser />
-          <SignUp />
-          <WelcomeDialog />
-          <ValidationWrapper />
-          <WelcomeEndedDialog />
           {routes}
         </main>
       </React.Fragment>
@@ -115,13 +117,13 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.session.isValid
+    isAuthenticated: state.auth.session.isValid,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onChechAuthState: () => { dispatch(actions.onAuthCheckState()) }
+    onChechAuthState: () => { dispatch(actions.onAuthCheckState()) },
   }
 }
 

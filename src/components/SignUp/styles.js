@@ -44,7 +44,7 @@ export const ExternalContainer = styled.div`
 
     @media (min-width: 600px) {
         width: 460px;
-        left: calc(50% - 250px);
+        left: calc(50% - 230px);
     }
 `
 

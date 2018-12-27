@@ -3,6 +3,14 @@ import { CognitoUserPool, CognitoUser, CognitoUserAttribute, AuthenticationDetai
 
 import * as actionTypes from './actionTypes';
 
+//GLOBAL ACTION CREATORS
+export const openNavDrawer = (open) => {
+    return {
+        type: actionTypes.OPEN_NAV_DRAWER,
+        open: open
+    }
+}
+
 ///SIGN IN ACTION CREATORS
 export const openSignIn = (open) => {
     return {
@@ -119,7 +127,6 @@ export const onForgotPassword = (email, verificationCode, newPassword) => {
         });
     }
 }
-
 
 ///SIGN UP ACTION CREATORS
 export const openSignUp = (open) => {

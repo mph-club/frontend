@@ -15,10 +15,17 @@ export const StyledPaper = styled(Paper)`
     }
 `
 
+export const ExternalContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+
 export const StyleButton = styled(StylePrimaryButton)`
     margin-left: 16px !important;
     height: 50px;
 `
+
 
 export const StyledSlantedDivider = styled.div`
     width: 1px;

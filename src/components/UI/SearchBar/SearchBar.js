@@ -5,16 +5,14 @@ import { withRouter } from 'react-router-dom';
 import {
     StyleButton,
     StyledPaper,
-    StyledSlantedDivider
+    StyledSlantedDivider,
+    ExternalContainer
 } from './styles';
 import Typography from '@material-ui/core/Typography';
 import { hours } from '../../../shared/constants';
 
 class SearchBar extends Component {
 
-    state = {
-
-    }
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -25,15 +23,13 @@ class SearchBar extends Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between'
-                }}>
+                <ExternalContainer>
                     <StyledPaper>
                         <div style={{ display: 'block' }}>
                             <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Where</Typography>
                             <TextField
-                                id="searchPage-search"
+                                id={this.props.id}
+                                value={this.props.value}
                                 type="search"
                                 placeholder="Enter a city in FL"
                                 InputProps={{
@@ -110,8 +106,7 @@ class SearchBar extends Component {
                     <div style={{ display: 'flex', alignSelf: 'center' }}>
                         <StyleButton type="submit" backgroundcolor={this.props.searchcolor}>Search</StyleButton>
                     </div>
-
-                </div>
+                    </ExternalContainer>
             </form>
         );
     }

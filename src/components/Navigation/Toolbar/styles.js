@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 
 export const StyledAppBar = styled(AppBar)`
     && {
@@ -13,7 +14,21 @@ export const StyledAppBar = styled(AppBar)`
         z-index: 1200;
     } 
 `
+
+export const MenuButtonContainer = styled.div`
+    display: none;
+
+    @media (max-width: 600px) {
+        display: flex;
+    }
+`
+export const MenuButton = styled(IconButton)`
+    margin-left: -12px;
+    margin-top: 12px;
+`
+
 export const StyledToolBar = styled(Toolbar)`
+    display: flex;
     justify-content: space-between;
     background-color: black;
 
@@ -22,7 +37,15 @@ export const StyledToolBar = styled(Toolbar)`
     }
 `
 
-export const StyledNav = styled.nav`
+export const UnAuthNav = styled.nav`
+    display: flex;
+
+    @media all and (max-width: 601px) {
+        display: none;
+    }
+`
+
+export const AuthNav = styled.nav`
     display: flex;
 `
 

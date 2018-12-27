@@ -1,23 +1,94 @@
 import React from 'react';
 
-import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Divider from '@material-ui/core/Divider';
 
 import {
     StyledContainer,
     StyleButton,
     StyledPaper,
-    StyledGrid
+    RowContainer
 } from './styles';
+import { hours } from '../../../../shared/constants';
+import { palette } from '../../../../theme';
 
 const ReduceSearchBar = () => {
     return (
         <StyledContainer>
-            <Grid container spacing={24}>
-                <StyledGrid item xs={12}>
-                    <StyledPaper></StyledPaper>
-                    <StyleButton>Search</StyleButton>
-                </StyledGrid>
-            </Grid>
+            <StyledPaper>
+                <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Where</Typography>
+                <TextField
+                    id='reduced-searchbar-txt-id'
+                    type="search"
+                    placeholder="Enter a city in FL"
+                    InputProps={{
+                        disableUnderline: true
+                    }}
+                    style={{ width: '200px' }}
+                />
+                <Divider />
+                <div style={{ display: 'flex' }}>
+                    <TextField
+                        id="searchPage-fromTextField"
+                        type="date"
+                        defaultValue="2017-05-24"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        InputProps={{
+                            disableUnderline: true
+                        }}
+                    />
+                    <TextField
+                        id="searchPage-pickupTime"
+                        select
+                        SelectProps={{
+                            native: true
+                        }}
+                        InputProps={{
+                            disableUnderline: true
+                        }}
+                    >{hours.map(option => (
+                        <option key={option.value} value={option.value}>
+                            {option.label}
+                        </option>
+                    ))}</TextField>
+                </div>
+                <Divider />
+                <div style={{ display: 'block' }}>
+                    <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip end</Typography>
+                    <div style={{ display: 'flex' }}>
+                        <TextField
+                            id="searchPage-untilTextField"
+                            type="date"
+                            defaultValue="2017-05-24"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            InputProps={{
+                                disableUnderline: true
+                            }}
+                        />
+                        <TextField
+                            id="searchPage-returnTime"
+                            select
+                            SelectProps={{
+                                native: true
+                            }}
+                            InputProps={{
+                                disableUnderline: true
+                            }}
+                        >{hours.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}</TextField>
+                    </div>
+                </div>
+                <StyleButton backgroundcolor={palette.green}>Search</StyleButton>
+            </StyledPaper>
+
         </StyledContainer>
     );
 }

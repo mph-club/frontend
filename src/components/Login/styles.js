@@ -37,7 +37,7 @@ export const StyledForm = styled.form`
 `
 
 export const ExternalContainer = styled.div`
-    height: 468px;
+    height: auto;
     position: fixed;
     padding: 16px;
     width: 70%;

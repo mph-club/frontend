@@ -45,7 +45,7 @@ const reducer = (state = initialState, action) => {
 
         ///SIGN IN REDUCERS
         case actionTypes.SIGNIN_OPEN:
-            return updateObject(state, { openSignIn: action.open, error: null })
+            return updateObject(state, { openDrawer: false, openSignIn: action.open, error: null })
         case actionTypes.SIGNIN_OPEN_FORGOT_PASSWORD:
             return updateObject(state, { openForgotPassword: action.open, data: null, enteringEmail: true })
         case actionTypes.SIGNIN_FORGOT_PASSWORD_SEND_CODE_START:
@@ -74,14 +74,15 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { session: action.session })
 
         ///SIGN UP REDUCERS
+        case actionTypes.SIGNUP_OPEN:
+            return updateObject(state, { openDrawer: false, openSignUp: action.open, error: null })
         case actionTypes.SIGNUP_START:
             return updateObject(state, { error: null, loading: true })
         case actionTypes.SIGNUP_SUCCESS:
             return updateObject(state, { user: action.user, password: action.password, error: null, loading: false, openSignUp: false, openWelcomeDialog: true })
         case actionTypes.SIGNUP_FAIL:
             return updateObject(state, { error: action.error, loading: false })
-        case actionTypes.SIGNUP_OPEN:
-            return updateObject(state, { openSignUp: action.open, error: null })
+
 
         ///SIGN UP ONBOARDING REDUCERS
         case actionTypes.SIGNUP_ON_BOARDING_GET_STARTED:

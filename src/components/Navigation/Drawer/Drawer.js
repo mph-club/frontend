@@ -10,21 +10,21 @@ import Divider from '@material-ui/core/Divider';
 
 const RightDrawer = (props) => {
     return (
-        <Drawer 
-            anchor="right" 
-            open={props.openDrawer} 
+        <Drawer
+            anchor="right"
+            open={props.openDrawer}
             onClose={() => props.onOpenDrawer(false)}
         >
             <List>
                 <ListItem button key='listYourVehicle'>
                     <ListItemText primary='List Your Vehicle' />
                 </ListItem>
-                <Divider/>
-                <ListItem button key='signIn'>
+                <Divider />
+                <ListItem button key='signIn' onClick={() => props.openSignIn()}>
                     <ListItemText primary='Sign In' />
                 </ListItem>
-                <Divider/>
-                <ListItem button key='createAccout'>
+                <Divider />
+                <ListItem button key='createAccout' onClick={() => props.openSignUp()}>
                     <ListItemText primary='Create Account' />
                 </ListItem>
             </List>
@@ -40,6 +40,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        openSignUp: () => { dispatch(actions.openSignUp(true)) },
+        openSignIn: () => { dispatch(actions.openSignIn(true)) },
         onOpenDrawer: (open) => { dispatch(actions.openNavDrawer(open)) }
     }
 }

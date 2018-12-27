@@ -17,6 +17,7 @@ import {
     PrimarySentence,
     SecondarySentence,
     SearchBarContainer,
+    SmallSearchBarContainer,
     AppLinkContainer,
     FirstMovilSection,
     FirstLeftContainer,
@@ -46,6 +47,7 @@ import {
 
 } from './styles';
 import { palette, space } from '../../theme';
+import ReduceSearchBar from '../../components/UI/SearchBar/ReducedSearchBar/ReducedSearchBar';
 
 
 class HomePage extends Component {
@@ -56,7 +58,6 @@ class HomePage extends Component {
     }
 
     render() {
-
         return (
             <Fragment>
                 <Banner>
@@ -64,11 +65,11 @@ class HomePage extends Component {
                         <Typography align='center' variant="h4" style={{ fontSize: '40px', color: palette.white, marginBottom: space[3] }}>Drive what you <span style={{ color: palette.green }}>reserve</span>  "not something similar"</Typography>
                         <SecondarySentence align='center' variant='h6'>No lines, no shuttles, the vehicle <span>you rented</span> delivered to you</SecondarySentence>
                         <SearchBarContainer>
-                            <SearchBar 
-                                searchcolor={palette.green} 
-                                id='autocomplete'/>
-                           
+                            <SearchBar searchcolor={palette.green} />
                         </SearchBarContainer>
+                        <SmallSearchBarContainer>
+                            <ReduceSearchBar />
+                        </SmallSearchBarContainer>
                         <AppLinkContainer>
                             <a href='https://itunes.apple.com/us/app/mph-club/id1411572568'><img src={appStoreImage} alt='app store link' /></a>
                         </AppLinkContainer>

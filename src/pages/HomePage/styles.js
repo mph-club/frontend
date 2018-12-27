@@ -9,26 +9,14 @@ export const Banner = styled.section`
     background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.41)), (${bgImage});
     background-image: linear-gradient(rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.41)), url(${bgImage});
     background-size: cover;
-    height: 64vh;
     background-position: center;
     background-repeat: no-repeat;
-
-    @media(max-width: 600px) {
-        && {
-            margin-top: 56px;
-        }
-    }
 `
 
 export const BannerSectionContent = styled.div`
-    position: absolute;
     display: block;
-    top: 16vh;
     width: 100%; 
-
-    @media (max-width: 1150px) {
-        top: 120px;
-    }
+    padding-top: 24vh;
 `
 
 export const PrimarySentence = styled(Typography)`
@@ -68,10 +56,21 @@ export const SearchBarContainer = styled.div`
     }
 `
 
+export const SmallSearchBarContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+
+    @media (min-width: 981px) {
+        display: none
+    }
+`
+
 export const AppLinkContainer = styled.div`
     display: flex; 
     justify-content: space-around;
     margin: 64px auto;
+    padding-bottom: 12vh;
 `
 
 //Second Section
@@ -133,13 +132,9 @@ export const CenterSection = styled.section`
     background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.41)), (${centerImage});
     background-image: linear-gradient(rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.41)), url(${centerImage});
     background-size: cover;
-    height: 34vh;
+
     background-position: center;
     background-repeat: no-repeat;
-
-    @media (max-width: 600px) {
-        height: 48vh;
-    }
 `
 
 export const CenterSectionContainer = styled.div`
@@ -157,6 +152,7 @@ export const CenterSectionContainer = styled.div`
 export const SectionButtonContainer = styled.div`
     display: flex;
     justify-content: space-around;
+    padding-bottom: 32px;
 `
 
 export const SecondMovilSection = styled.section`

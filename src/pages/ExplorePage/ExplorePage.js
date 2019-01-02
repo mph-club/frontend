@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import {
     StyledHeader,
     StyledTitle,
-    StyledContainer,
-    StyledSearchBarContainer
+    ExternalContainer,
+    SearchBarContainer,
+    SmallSearchBarContainer
 } from './styles';
 import CarsCollection from '../CarsCollection/CarsCollection';
 import Footer from '../../components/Navigation/Footer/Footer';
@@ -14,6 +15,7 @@ import SearchBar from '../../components/UI/SearchBar/SearchBar';
 import ListVehicleBanner from '../../components/ListingDetailsPageComponents/ListVehicleBanner/ListVehicleBanner';
 
 import * as actions from '../../store/actions/index';
+import ReduceSearchBar from '../../components/UI/SearchBar/ReducedSearchBar/ReducedSearchBar';
 
 class ExplorePage extends Component {
 
@@ -40,12 +42,15 @@ class ExplorePage extends Component {
         return (
             <React.Fragment>
                 <StyledHeader>
-                    <StyledContainer>
-                        <StyledTitle variant="h4">Search and <span>book</span> from a variety of cars in all of Florida.</StyledTitle>
-                        <StyledSearchBarContainer>
+                    <ExternalContainer>
+                        <StyledTitle align='center' variant="h4">Search and <span>book</span> from a variety of cars in all of Florida.</StyledTitle>
+                        <SearchBarContainer>
                             <SearchBar />
-                        </StyledSearchBarContainer>
-                    </StyledContainer>
+                        </SearchBarContainer>
+                        <SmallSearchBarContainer>
+                            <ReduceSearchBar />
+                        </SmallSearchBarContainer>
+                    </ExternalContainer>
                 </StyledHeader>
                 {cars}
                 <ListVehicleBanner />

@@ -9,20 +9,21 @@ import { palette, space } from '../../theme';
 import CameraIcon from '@material-ui/icons/CameraAlt';
 import TextButton from '../../components/UI/Buttons/TextButton/TextButton';
 import {
-    StyledExternalContainer,
-    StyledLeftContainer,
-    StyledFooterContainer,
+    ExternalContainer,
+    LeftGrid,
     StyledAvatar,
-    StyledAvatarWrapper,
-    StyledListItem
+    StyledListItem,
+    AvatarContainer,
+    CameraButton,
 } from './styles';
-import IconButton from '@material-ui/core/IconButton';
 import ContactInfo from '../../components/AccountComponents/ContactInfo/ContactInfo';
 import TransactionHistory from '../../components/AccountComponents/TransactionHistory/TransactionHistory';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import UploadPhoto from '../../components/AccountComponents/UploadPhoto/UploadPhoto';
 
 import * as actions from '../../store/actions/index';
+import List from '@material-ui/core/List';
+import ListItemText from '@material-ui/core/ListItemText';
 
 class Account extends Component {
 
@@ -80,83 +81,55 @@ class Account extends Component {
                 <UploadPhoto
                     open={this.state.uploadPhoto}
                     closeUploadPhoto={this.handleOpenUploadPhoto} />
-                <StyledExternalContainer>
+                <ExternalContainer>
                     <Grid container spacing={16}>
-                        <Grid item xs={12} sm={3} md={3}>
-                            <StyledLeftContainer>
-                                <div>
-                                    <StyledAvatarWrapper>
-                                        <StyledAvatar
-                                            alt="user profile"
-                                            src={user.profile_photo}>
-                                        </StyledAvatar>
-                                        <IconButton color='primary' onClick={this.handleOpenUploadPhoto}>
-                                            <CameraIcon fontSize='large' />
-                                        </IconButton>
-                                    </StyledAvatarWrapper>
-                                    <div style={{ marginTop: `${space[3]}` }}>
-                                        <Typography variant="h6" align='center' >{this.props.user.userName}</Typography>
-                                        <Typography variant="body1" component="p" align='center' style={{ color: palette.grey02 }}>Member since Jan 2018</Typography>
-                                        <div style={{ textAlign: 'center', marginTop: space[2], marginBottom: space[3] }}>
-                                            <TextButton style={{ color: palette.green, fontSize: 14 }} onClick={() => this.props.history.push('/user-details')}>View Profile</TextButton>
-                                        </div>
-                                    </div>
-                                    <StyledListItem
-                                        disableGutters
-                                        button
-                                        value='contactInfo'
-                                        onClick={() => this.handleListItemClick('contactInfo')}>
-                                        <Typography
-                                            variant="body1"
-                                            style={{
-                                                textTransform: 'uppercase',
-                                                color: (this.state.value === 'contactInfo') ? palette.green : palette.grey02,
-                                                fontWeight: (this.state.value === 'contactInfo') ? 900 : 600,
-                                            }}
-                                            component="p">Contact Info</Typography>
-                                    </StyledListItem>
-                                    <StyledListItem
-                                        disableGutters
-                                        button
-                                        disabled
-                                        value='paymentInfo'
-                                        onClick={() => this.handleListItemClick('paymentInfo')}>
-                                        <Typography
-                                            variant="body1"
-                                            style={{
-                                                textTransform: 'uppercase',
-                                                color: (this.state.value === 'paymentInfo') ? palette.green : palette.grey02,
-                                                fontWeight: (this.state.value === 'paymentInfo') ? 900 : 600
-                                            }}
-                                            component="p">Payment Info</Typography>
-                                    </StyledListItem>
-                                    <StyledListItem
-                                        disableGutters
-                                        button
-                                        disabled
-                                        value='transactionHistory'
-                                        onClick={() => this.handleListItemClick('transactionHistory')}>
-                                        <Typography
-                                            variant="body1"
-                                            style={{
-                                                textTransform: 'uppercase',
-                                                color: (this.state.value === 'transactionHistory') ? palette.green : palette.grey02,
-                                                fontWeight: (this.state.value === 'transactionHistory') ? 900 : 600
-                                            }}
-                                            component="p">Transactions</Typography>
-                                    </StyledListItem>
+                        <LeftGrid item xs={12} sm={3} md={3}>
+                            <AvatarContainer>
+                                <CameraButton color='primary' onClick={this.handleOpenUploadPhoto}>
+                                    <CameraIcon fontSize='large' />
+                                </CameraButton>
+                                <StyledAvatar alt="user profile" src={user.profile_photo} />
+                                <Typography variant="h6" align='center' >{this.props.user.userName}</Typography>
+                                <Typography variant="body1" component="p" align='center' style={{ color: palette.grey02 }}>Member since Jan 2018</Typography>
+                                <div style={{ textAlign: 'center', marginTop: space[2], marginBottom: space[3] }}>
+                                    <TextButton style={{ color: palette.green, fontSize: 14 }} onClick={() => this.props.history.push('/user-details')}>View Profile</TextButton>
                                 </div>
-
-                            </StyledLeftContainer>
-                        </Grid>
+                            </AvatarContainer>
+                            <List>
+                                <StyledListItem
+                                    disableGutters
+                                    button
+                                    selected={this.state.value === 'contactInfo'}
+                                    value='contactInfo'
+                                    onClick={() => this.handleListItemClick('contactInfo')}>
+                                    <ListItemText>CONTACT INFO</ListItemText>
+                                </StyledListItem>
+                                <StyledListItem
+                                    disableGutters
+                                    button
+                                    disabled
+                                    selected={this.state.value === 'paymentInfo'}
+                                    value='paymentInfo'
+                                    onClick={() => this.handleListItemClick('paymentInfo')}>
+                                    <ListItemText>PAYMENT INFO</ListItemText>
+                                </StyledListItem>
+                                <StyledListItem
+                                    disableGutters
+                                    button
+                                    selected={this.state.value === 'transactionHistory'}
+                                    disabled
+                                    value='transactionHistory'
+                                    onClick={() => this.handleListItemClick('transactionHistory')}>
+                                    <ListItemText>TRANSACTIONS</ListItemText>
+                                </StyledListItem>
+                            </List>
+                        </LeftGrid>
                         <Grid item xs={12} sm={8} md={8}>
                             {content}
                         </Grid>
                     </Grid>
-                </StyledExternalContainer>
-                <StyledFooterContainer>
-                    <Footer />
-                </StyledFooterContainer>
+                </ExternalContainer>
+                <Footer />
             </React.Fragment>
         );
     }

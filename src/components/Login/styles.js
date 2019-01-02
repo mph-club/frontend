@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { palette } from '../../theme';
+import DialogContent from '@material-ui/core/DialogContent';
+import { palette, space } from '../../theme';
 
 export const StyledIconButton = styled(IconButton)`
-    margin-left: -12px;
-    margin-top: 12px;
+    margin-left: -20px;
+    margin-top: 20px;
+    width: 48px;
+    height: 48px;
 `
 
 export const StyledDivider = styled(Typography)`
@@ -29,42 +32,28 @@ export const StyledDivider = styled(Typography)`
     }
 `
 
-export const StyledForm = styled.form`
-    width: '90%'; // Fix IE11 issue.
-    margin-top: 8px;
-    margin-left: 5%;
-    margin-right: 5%;
-`
+export const StyledDialogContent = styled(DialogContent)`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 450px; 
 
-export const ExternalContainer = styled.div`
-    height: auto;
-    position: fixed;
-    padding: 16px;
-    width: 70%;
-    border-radius: 8px;
-    left: 15%;
-    top: 10%;
-    background-color: #ffffff;
-    &:focus {
-        outline: none;
-    }
-
-    @media (min-width: 600px) {
-        width: 500px;
-        left: calc(50% - 250px);
+    @media (max-width: 600px) {
+        width: auto;
     }
 `
 
 export const StyledFooter = styled.div`
-    margin-top: 2rem;
+    margin-top: ${space[3]};;
     display: flex;
     flex-direction: column;
 `
 export const StyledFooterButtonLayout = styled.div`
     display: flex;
-    margin-top: 2rem;
+    margin-top: ${space[3]};
     justify-content: flex-end;
-    margin-bottom: 2.5rem;
+    margin-bottom: ${space[3]};
 `
 
 export const StyledDividerLayout = styled.div`

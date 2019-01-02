@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Typography from '@material-ui/core/Typography';
-import Modal from '@material-ui/core/Modal';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import ClearIcon from '@material-ui/icons/Clear';
 import StyledPrimaryButton from '../../components/UI/Buttons/PrimaryButton/PrimaryButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
 
 import {
-    ExternalContainer,
     StyledIconButton,
     StyledDivider,
+    StyledDialogContent,
     StyledFooter,
     StyledFooterButtonLayout,
     StyledDividerLayout,
@@ -93,22 +96,18 @@ class SignUp extends Component {
 
     render() {
         return (
-            <Modal
-                aria-labelledby="sign-up-modal"
+            <Dialog
+                aria-labelledby="sign-up-dialog"
                 aria-describedby="This is the sign up form"
                 open={this.props.open}
-                disableAutoFocus
-                disableBackdropClick
+                onClose={() => this.props.openSignUp(false)}
+                fullScreen={this.props.fullScreen}
             >
-                <ExternalContainer>
-                    <StyledIconButton
-                        color="inherit"
-                        aria-label="Clear"
-                        onClick={() => this.props.openSignUp(false)}
-                    >
-                        <ClearIcon />
-                    </StyledIconButton>
-                    <Typography variant="h6" id="modal-title">Sign Up</Typography>
+                <StyledIconButton color="inherit" aria-label="Clear" onClick={() => this.props.openSignUp(false)}>
+                    <ClearIcon />
+                </StyledIconButton>
+                <DialogTitle id="modal-title">Sign Up</DialogTitle>
+                <StyledDialogContent>
                     <form onSubmit={event => this.handleSignUp(event)} method="POST">
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="email">Email Address</InputLabel>
@@ -162,15 +161,15 @@ class SignUp extends Component {
                             </StyledPrimaryButton>
                         </StyledFooterButtonLayout>
                     </form>
-                    <Typography style={{ marginTop: space[3] }} color='primary'>By signing up or logging in, you agree to our <StyledSpan>terms of service</StyledSpan> and <StyledSpan>privacy policy</StyledSpan></Typography>
+                    <Typography style={{ marginTop: space[3] }} align='center' color='primary'>By signing up or logging in, you agree to our <StyledSpan>terms of service</StyledSpan> and <StyledSpan>privacy policy</StyledSpan></Typography>
                     <StyledFooter>
                         <StyledDividerLayout>
                             <StyledDivider variant="body2">or</StyledDivider>
                         </StyledDividerLayout>
                         <Typography align='center' variant="body1">Already have an account? <StyledSpan onClick={() => this.props.openSignIn()}>Log in</StyledSpan> </Typography>
                     </StyledFooter>
-                </ExternalContainer>
-            </Modal>
+                </StyledDialogContent>
+            </Dialog>
         );
     }
 }
@@ -194,4 +193,8 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+SignUp.propTypes = {
+    fullScreen: PropTypes.bool.isRequired,
+};
+
+export default withMobileDialog()(connect(mapStateToProps, mapDispatchToProps)(SignUp))

@@ -14,7 +14,8 @@ import {
   UnAuthNav,
   ListVehicleButton,
   MenuButton,
-  MenuButtonContainer
+  MenuButtonContainer,
+  ListButtonContainer
 } from './styles';
 
 import * as actions from '../../../store/actions/index';
@@ -35,12 +36,6 @@ class ToolBar extends Component {
       authItems = <Button color="inherit" component={Link} to="/dashboard">Dashboard</Button>
     }
 
-    authItems = <React.Fragment>
-      <ListVehicleButton color="inherit" >List your vehicle</ListVehicleButton>
-      {authItems}
-      <UserEntry />
-    </React.Fragment>
-
     const unAuthItems = <Fragment>
       <ListVehicleButton color="inherit" >List your vehicle</ListVehicleButton>
       <Button color="inherit" onClick={this.props.openSignIn}>Login</Button>
@@ -54,7 +49,11 @@ class ToolBar extends Component {
           {
             this.props.auth ?
               <AuthNav>
+                <ListButtonContainer>
+                  <ListVehicleButton color="inherit" >List your vehicle</ListVehicleButton>
+                </ListButtonContainer>
                 {authItems}
+                <UserEntry />
               </AuthNav> :
               <Fragment>
                 <UnAuthNav>

@@ -16,7 +16,10 @@ export const Banner = styled.section`
 export const BannerSectionContent = styled.div`
     display: block;
     width: 100%; 
+    box-sizing: border-box;
     padding-top: 24vh;
+    padding-left: 20px;
+    padding-right: 20px;
 
     @media (max-width: 450px) {
         padding-top: 12vh;
@@ -215,113 +218,4 @@ export const SecondRightContainer = styled.div`
             padding-bottom: 32px;
         }
     }
-`
-
-export const FooterContainer = styled.footer`
-    background-color: #000;
-    padding: 32px 64px;
-`
-
-export const FooterSidesContainer = styled.div`
-    display: flex;
-
-    @media (max-width: 600px) {
-       flex-direction: column;
-    }
-`
-
-export const FooterSide = styled.div`
-    width: 50%;
-    display: block;
-
-    @media (max-width: 600px) {
-       width: 100%;
-    }
-`
-
-export const FooterSideTitle = styled(Typography)`
-    && {
-        color: ${palette.white};
-        font-size: 17px;
-    }
-`
-
-export const FooterCopyRight = styled(Typography)`
-    && {
-        color: ${palette.white};
-        font-size: 12px;
-    }
-`
-
-export const FooterList = styled.ul`
-    && {
-        padding-left: 0;
-        width: 50%;
-    }
-`
-
-export const FooterItem = styled.li`
-    && {
-        margin-bottom: 16px;
-    }
-`
-
-export const FooterTwoColumnsContainer = styled.div`
-    display: flex;
-`
-
-export const FooterAnchor = styled.a`
-    color: #fff;
-    font-size: 14px;
-    :hover {
-        cursor: pointer;
-    }
-`
-
-export const FooterTopContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-`
-
-export const FooterLeftTopContainer = styled.div`
-    display: flex;
-
-    @media (max-width: 600px) {
-       flex-direction: column;
-    }
-`
-
-export const StyleA = styled.a`
-
-    img {
-        height: 20px;
-
-        &:hover {
-            text-decoration: none;
-            border: 0;
-            color: #fff !important;
-            -webkit-transition: color 0.2s;
-            transition: color 0.2s;
-        }
-    }
-`
-
-
-export const StyledSocialUl = styled.ul`
-    && {
-        display: flex;
-        padding-left: 0;
-        margin-left: 0;
-
-        li {
-            margin-right: 24px;
-            list-style: none;
-        }
-    }
-`
-
-export const StyledDivTwo = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 `

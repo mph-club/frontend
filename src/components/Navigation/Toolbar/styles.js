@@ -27,6 +27,12 @@ export const MenuButton = styled(IconButton)`
     margin-top: 12px;
 `
 
+export const ListButtonContainer = styled.div`
+    @media  (max-width: 601px) {
+        display: none;
+    }
+`
+
 export const StyledToolBar = styled(Toolbar)`
     display: flex;
     justify-content: space-between;
@@ -40,7 +46,7 @@ export const StyledToolBar = styled(Toolbar)`
 export const UnAuthNav = styled.nav`
     display: flex;
 
-    @media all and (max-width: 601px) {
+    @media  (max-width: 601px) {
         display: none;
     }
 `

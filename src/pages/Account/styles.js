@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { palette, space } from '../../theme';
 import Avatar from '@material-ui/core/Avatar';
 import ListItem from '@material-ui/core/ListItem';
+import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 
-export const StyledExternalContainer = styled.div`
+export const ExternalContainer = styled.div`
     max-width: 1060px;
     display: block;
     box-sizing: border-box;
@@ -13,15 +15,12 @@ export const StyledExternalContainer = styled.div`
     height: 100vh;
 `
 
-export const StyledLeftContainer = styled.div`
-
-    position: fixed;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: ${space[3]};
-
-    @media (min-width: 768px) {
-        margin-bottom: ${space[0]};
+export const LeftGrid = styled(Grid)`
+    && {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: ${space[3]};
     }
 `
 
@@ -31,25 +30,26 @@ export const StyledAvatar = styled(Avatar)`
         background-color: white;
         width: 100px;
         height: 100px;
-        margin: auto;
+        margin: 32px auto;
     }
 `
 
-export const StyledFooterContainer = styled.div`
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-`
-
-export const StyledAvatarWrapper = styled.div`
-    position: relative;
+export const AvatarContainer = styled.div`
+    display: grid;
     
-    button {
+`
+
+export const CameraButton = styled(IconButton)`
+    && {
         position: absolute;
+        top: 32px;
         right: 20px;
-        bottom: -32px;
     }
+`
+
+export const StyledListItem = styled(ListItem)`
+    /* color: (this.state.value === 'transactionHistory') ? palette.green : palette.grey02, */
+                                        /* fontWeight: (this.state.value === 'transactionHistory') ? 900 : 600 */
 `
 
 export const StyledContainer = styled.div`
@@ -68,10 +68,4 @@ export const StyledWhiteContainer = styled.div`
     background-color: white;
     padding: ${space[3]};
     margin: ${space[4]} 0;
-`
-
-export const StyledListItem = styled(ListItem)`
-    && {
-        padding-bottom: ${space[0]};
-    }
 `

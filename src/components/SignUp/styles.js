@@ -2,10 +2,13 @@ import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { palette, space } from '../../theme';
+import DialogContent from '@material-ui/core/DialogContent';
 
 export const StyledIconButton = styled(IconButton)`
-    margin-left: -12px;
-    margin-top: 12px;
+    margin-left: -20px;
+    margin-top: 20px;
+    width: 48px;
+    height: 48px;
 `
 
 export const StyledDivider = styled(Typography)`
@@ -29,22 +32,15 @@ export const StyledDivider = styled(Typography)`
     }
 `
 
-export const ExternalContainer = styled.div`
-    height: auto;
-    position: fixed;
-    padding: 32px;
-    width: 70%;
-    border-radius: 8px;
-    left: 15%;
-    top: 10%;
-    background-color: #ffffff;
-    &:focus {
-        outline: none;
-    }
+export const StyledDialogContent = styled(DialogContent)`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 450px; 
 
-    @media (min-width: 600px) {
-        width: 460px;
-        left: calc(50% - 230px);
+    @media (max-width: 600px) {
+        width: auto;
     }
 `
 

@@ -5,7 +5,19 @@ import { space, palette } from '../../../theme';
 
 export const FooterContainer = styled.footer`
     background-color: #000;
-    padding: 32px 64px;
+`
+
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding: 32px 0;
+    max-width: 1260px;
+
+    @media (max-width: 1259px) {
+        margin: 0 32px;
+    }
 `
 
 export const FooterSidesContainer = styled.div`

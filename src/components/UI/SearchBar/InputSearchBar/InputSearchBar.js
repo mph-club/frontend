@@ -92,22 +92,22 @@ class InputSearchBar extends React.Component {
                                 </InternalContainer>
 
                                 {suggestions.length > 0 ?
-                                    <SuggestionsContainer>
-                                        {suggestions.map(suggestion => {
-                                            return (
-                                                /* eslint-disable react/jsx-key */
-                                                <div {...getSuggestionItemProps(suggestion)}>
-                                                    <strong>
-                                                        {suggestion.formattedSuggestion.mainText}
-                                                    </strong>{' '}
-                                                    <small>
-                                                        {suggestion.formattedSuggestion.secondaryText}
-                                                    </small>
-                                                </div>
-                                            );
-                                            /* eslint-enable react/jsx-key */
-                                        })}
-                                    </SuggestionsContainer>
+                                        <SuggestionsContainer>
+                                            {suggestions.map(suggestion => {
+                                                return (
+                                                    /* eslint-disable react/jsx-key */
+                                                    <div {...getSuggestionItemProps(suggestion)}>
+                                                        <strong>
+                                                            {suggestion.formattedSuggestion.mainText}
+                                                        </strong>{' '}
+                                                        <small>
+                                                            {suggestion.formattedSuggestion.secondaryText}
+                                                        </small>
+                                                    </div>
+                                                );
+                                                /* eslint-enable react/jsx-key */
+                                            })}
+                                        </SuggestionsContainer>
                                     : null}
                             </Fragment>
                         );

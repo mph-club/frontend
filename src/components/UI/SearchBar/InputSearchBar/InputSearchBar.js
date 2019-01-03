@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import {
     StyledIconButton,
-    InternalContainer
-
+    InternalContainer,
+    SuggestionsContainer
 } from './styles';
 import ClearIcon from '@material-ui/icons/Clear';
 import TextField from '@material-ui/core/TextField';
@@ -92,7 +92,7 @@ class InputSearchBar extends React.Component {
                                 </InternalContainer>
 
                                 {suggestions.length > 0 ?
-                                    <div>
+                                    <SuggestionsContainer>
                                         {suggestions.map(suggestion => {
                                             return (
                                                 /* eslint-disable react/jsx-key */
@@ -107,7 +107,7 @@ class InputSearchBar extends React.Component {
                                             );
                                             /* eslint-enable react/jsx-key */
                                         })}
-                                    </div>
+                                    </SuggestionsContainer>
                                     : null}
                             </Fragment>
                         );

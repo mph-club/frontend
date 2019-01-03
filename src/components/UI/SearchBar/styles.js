@@ -8,6 +8,7 @@ export const StyledPaper = styled(Paper)`
         display: flex;
         flex-grow: 1;
         padding: ${space[2]} ${space[3]};
+        max-height: 50px;
         box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
     }
 `

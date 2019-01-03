@@ -15,3 +15,11 @@ export const StyledIconButton = styled(IconButton)`
     height: 24px;
     width: 24px;
 `
+
+export const SuggestionsContainer = styled.div`
+    background-color: #fff;
+    padding: 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    border-radius: 4px;
+`

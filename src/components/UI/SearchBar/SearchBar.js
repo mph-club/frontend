@@ -6,13 +6,14 @@ import {
     StyleButton,
     StyledPaper,
     StyledSlantedDivider,
-    ExternalContainer
+    ExternalContainer,
+    SearchContainer
 } from './styles';
 import Typography from '@material-ui/core/Typography';
 import { hours } from '../../../shared/constants';
+import InputSearchBar from './InputSearchBar/InputSearchBar';
 
 class SearchBar extends Component {
-
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -25,21 +26,12 @@ class SearchBar extends Component {
             <form onSubmit={this.handleSubmit}>
                 <ExternalContainer>
                     <StyledPaper>
-                        <div style={{ display: 'block' }}>
+                        <SearchContainer>
                             <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Where</Typography>
-                            <TextField
-                                id={this.props.id}
-                                value={this.props.value}
-                                type="search"
-                                placeholder="Enter a city in FL"
-                                InputProps={{
-                                    disableUnderline: true
-                                }}
-                                style={{ width: '200px' }}
-                            />
-                        </div>
+                            <InputSearchBar/>
+                        </SearchContainer>
                         <StyledSlantedDivider />
-                        <div style={{ display: 'block' }}>
+                        <div>
                             <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip start</Typography>
                             <div style={{ display: 'flex' }}>
                                 <TextField
@@ -71,7 +63,7 @@ class SearchBar extends Component {
 
                         </div>
                         <StyledSlantedDivider />
-                        <div style={{ display: 'block' }}>
+                        <div>
                             <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip end</Typography>
                             <div style={{ display: 'flex' }}>
                                 <TextField
@@ -106,7 +98,7 @@ class SearchBar extends Component {
                     <div style={{ display: 'flex', alignSelf: 'center' }}>
                         <StyleButton type="submit" backgroundcolor={this.props.searchcolor}>Search</StyleButton>
                     </div>
-                    </ExternalContainer>
+                </ExternalContainer>
             </form>
         );
     }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import MaskedInput from 'react-text-mask'
 
@@ -10,7 +10,7 @@ import {
 import Typography from '@material-ui/core/Typography';
 import TextButton from '../../UI/Buttons/TextButton/TextButton';
 import { palette, space } from '../../../theme';
-import { Divider } from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
 import Input from '@material-ui/core/Input';
 import Title from '../../UI/CustomTypography/Title/Title';
 import ValidatePhone from './ValidatePhone/ValidatePhone';
@@ -55,7 +55,7 @@ class ContactInfo extends Component {
         const phoneAction = user.phone.value ? 'Change' : 'Add'
 
         return (
-            <React.Fragment>
+            <Fragment>
                 <ValidatePhone
                     handleClose={() => this.handleClosePhoneDialog()} />
                 <DeleteAccount
@@ -67,9 +67,7 @@ class ContactInfo extends Component {
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <StyledEmailWrapper variant="h6">{user.email.value} </StyledEmailWrapper>
                     </div>
-                    <div>
-                        <TextButton color={palette.green}>Change</TextButton>
-                    </div>
+                    <TextButton color={palette.green}>Change</TextButton>
                 </StyledStepsContainer>
                 <Divider />
                 {user.phone.value ? <Title component="p" style={{ marginBottom: `${space[3]}`, marginTop: `${space[4]}` }}>PHONE NUMBER</Title> : null}
@@ -89,9 +87,7 @@ class ContactInfo extends Component {
                                 {user.phone.phone_verified ? null : <StyledSpan>unverified</StyledSpan>}
                             </div> : <Title component="p" style={{ marginBottom: `${space[3]}`, marginTop: `${space[4]}` }}>PHONE NUMBER</Title>
                     }
-                    <div>
-                        <TextButton color={palette.green} onClick={() => this.handlePhoneActions(phoneAction)}>{phoneAction}</TextButton>
-                    </div>
+                    <TextButton color={palette.green} onClick={() => this.handlePhoneActions(phoneAction)}>{phoneAction}</TextButton>
                 </StyledStepsContainer>
                 <Divider />
                 <StyledStepsContainer>
@@ -113,7 +109,7 @@ class ContactInfo extends Component {
                     </div>
                 </StyledStepsContainer>
                 <Divider />
-            </React.Fragment>
+            </Fragment>
         );
     }
 

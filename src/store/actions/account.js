@@ -3,27 +3,12 @@ import { CognitoUserPool, CognitoUserAttribute } from 'amazon-cognito-identity-j
 import axios from '../../shared/axios';
 import COGNITO from '../../config/cognitoConfigure';
 
-const onAccountFechtInfoFailed = error => {
-    return {
-        type: actionTypes.ACCOUNT_FETCH_INFO_FAILED,
-        error: error
-    }
-}
-const onAccountFechtInfoSucceed = user => {
-    return {
-        type: actionTypes.ACCOUNT_FETCH_INFO_SUCCEED,
-        user: user
-    }
-}
-const onAccountFechtInfoStart = () => {
-    return {
-        type: actionTypes.ACCOUNT_FETCH_INFO_START
-    }
-}
 export const onAccountFetchInfo = (accessToken) => {
     return dispatch => {
 
-        dispatch(onAccountFechtInfoStart())
+        dispatch({
+            type: actionTypes.ACCOUNT_FETCH_INFO_START
+        })
 
         axios.defaults.headers.common['Authorization'] = accessToken;
 
@@ -42,7 +27,10 @@ export const onAccountFetchInfo = (accessToken) => {
 
             user.getSession((error, session) => {
                 if (error) {
-                    dispatch(onAccountFechtInfoFailed(error))
+                    dispatch({
+                        type: actionTypes.ACCOUNT_FETCH_INFO_FAILED,
+                        error: error
+                    })
                     return;
                 }
 
@@ -70,16 +58,25 @@ export const onAccountFetchInfo = (accessToken) => {
                             }
                         }
 
-                        dispatch(onAccountFechtInfoSucceed(userInfo))
+                        dispatch({
+                            type: actionTypes.ACCOUNT_FETCH_INFO_SUCCEED,
+                            user: userInfo
+                        })
                     });
 
                 } else {
-                    dispatch(onAccountFechtInfoFailed(error))
+                    dispatch({
+                        type: actionTypes.ACCOUNT_FETCH_INFO_FAILED,
+                        error: error
+                    })
                 }
             })
 
         }).catch(error => {
-            dispatch(onAccountFechtInfoFailed(error))
+            dispatch({
+                type: actionTypes.ACCOUNT_FETCH_INFO_FAILED,
+                error: error
+            })
         })
     }
 }
@@ -97,26 +94,13 @@ export const onAccountChangePhoneNumber = () => {
         type: actionTypes.ACCOUNT_CHANGE_PHONE_NUMBER
     }
 }
-const addPhoneFromAccountSucceed = () => {
-    return {
-        type: actionTypes.ACCOUNT_ADD_PHONE_SUCCEED
-    }
-}
-const addPhoneFromAccountFailed = (error) => {
-    return {
-        type: actionTypes.ACCOUNT_ADD_PHONE_FAILED,
-        error: error
-    }
-}
-const addPhoneFromAccountStarted = () => {
-    return {
-        type: actionTypes.ACCOUNT_PHONE_VALIDATION_START
-    }
-}
+
 export const onAddPhoneFromAccount = (phone) => {
     return dispatch => {
 
-        dispatch(addPhoneFromAccountStarted())
+        dispatch({
+            type: actionTypes.ACCOUNT_PHONE_VALIDATION_START
+        })
         var poolData = {
             UserPoolId: COGNITO.CONFIG.USER_POOL,
             ClientId: COGNITO.CONFIG.CLIENT_ID
@@ -146,22 +130,33 @@ export const onAddPhoneFromAccount = (phone) => {
             if (session.isValid()) { 
                 user.updateAttributes(attributeList, (err, result) => {
                     if (err) {
-                        dispatch(addPhoneFromAccountFailed(err))
+                        dispatch({
+                            type: actionTypes.ACCOUNT_ADD_PHONE_FAILED,
+                            error: err
+                        })
                         return;
                     }
         
                     user.getAttributeVerificationCode('phone_number', {
                         onSuccess: () => {
-                            dispatch(addPhoneFromAccountSucceed())
+                            dispatch({
+                                type: actionTypes.ACCOUNT_ADD_PHONE_SUCCEED
+                            })
                         },
                         onFailure: (err) => {
-                            dispatch(addPhoneFromAccountFailed(err))
+                            dispatch({
+                                type: actionTypes.ACCOUNT_ADD_PHONE_FAILED,
+                                error: err
+                            })
                         },
                         inputVerificationCode: null
                     });
                 });
             } else {
-                dispatch(addPhoneFromAccountFailed({message: 'User no found'}))
+                dispatch({
+                    type: actionTypes.ACCOUNT_ADD_PHONE_FAILED,
+                    error: {message: 'User no found'}
+                })
             }
         })
     }
@@ -198,26 +193,12 @@ export const onResendPhoneCodeFromAccount = () => {
         })
     }
 }
-const validationPhoneFromAccountStart = () => {
-    return {
-        type: actionTypes.ACCOUNT_PHONE_VALIDATION_START
-    }
-}
-const validationPhoneFromAccountFailed = (error) => {
-    return {
-        type: actionTypes.ACCOUNT_PHONE_VALIDATION_FAILED,
-        error: error
-    }
-}
-const validationPhoneFromAccountSucceed = () => {
-    return {
-        type: actionTypes.ACCOUNT_PHONE_VALIDATION_SUCCEED
-    }
-}
 export const onValidatePhoneFromAccount = (code) => {
     return dispatch => {
 
-        dispatch(validationPhoneFromAccountStart())
+        dispatch({
+            type: actionTypes.ACCOUNT_PHONE_VALIDATION_START
+        })
         var poolData = {
             UserPoolId: COGNITO.CONFIG.USER_POOL,
             ClientId: COGNITO.CONFIG.CLIENT_ID
@@ -235,45 +216,35 @@ export const onValidatePhoneFromAccount = (code) => {
             if (session.isValid()) {
                 user.verifyAttribute('phone_number', code, {
                     onSuccess: () => {
-                        dispatch(validationPhoneFromAccountSucceed())
+                        dispatch({
+                            type: actionTypes.ACCOUNT_PHONE_VALIDATION_SUCCEED
+                        })
                     },
                     onFailure: (err) => {
                         alert(err.message || JSON.stringify(err))
-                        dispatch(validationPhoneFromAccountFailed(err))
+                        dispatch({
+                            type: actionTypes.ACCOUNT_PHONE_VALIDATION_FAILED,
+                            error: err
+                        })
                     }
                 });
             }
         });
     }
 }
-
 export const openChangePassword = (open) => {
     return {
         type: actionTypes.ACCOUNT_OPEN_CHANGE_PASSWORD,
         open: open
     }
 }
-const onAccountChangePasswordStart = () => {
-    return {
-        type: actionTypes.ACCOUNT_CHANGE_PASSWORD_START,
-    }
-}
-const onAccountChangePasswordFailed = (error) => {
-    return {
-        type: actionTypes.ACCOUNT_CHANGE_PASSWORD_FAILED,
-        error: error
-    }
-}
-const onAccountChangePasswordSucceed = (result) => {
-    return {
-        type: actionTypes.ACCOUNT_CHANGE_PASSWORD_SUCCEED,
-        result: result
-    }
-}
+
 export const onAccountChangePassword = (oldPassword, newPassword) => {
     return dispatch => {
 
-        dispatch(onAccountChangePasswordStart())
+        dispatch({
+            type: actionTypes.ACCOUNT_CHANGE_PASSWORD_START,
+        })
 
         var poolData = {
             UserPoolId: COGNITO.CONFIG.USER_POOL,
@@ -292,10 +263,16 @@ export const onAccountChangePassword = (oldPassword, newPassword) => {
             if (session.isValid()) {
                 user.changePassword(oldPassword, newPassword, (err, result) => {
                     if (err) {
-                        dispatch(onAccountChangePasswordFailed(err))
+                        dispatch({
+                            type: actionTypes.ACCOUNT_CHANGE_PASSWORD_FAILED,
+                            error: err
+                        })
                         return;
                     }
-                    dispatch(onAccountChangePasswordSucceed(result))
+                    dispatch({
+                        type: actionTypes.ACCOUNT_CHANGE_PASSWORD_SUCCEED,
+                        result: result
+                    })
                 });
             }
         });

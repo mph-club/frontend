@@ -12,20 +12,14 @@ import {
 } from './styles';
 import { hours } from '../../../../shared/constants';
 import { palette } from '../../../../theme';
+import InputSearchBar from '../InputSearchBar/InputSearchBar';
 
 const ReduceSearchBar = () => {
     return (
         <StyledContainer>
             <StyledPaper>
                 <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Where</Typography>
-                <TextField
-                    id='reduced-searchbar-txt-id'
-                    type="search"
-                    placeholder="Enter a city in FL"
-                    InputProps={{
-                        disableUnderline: true
-                    }}
-                />
+                <InputSearchBar/>
                 <Divider />
                 <RowContainer>
                     <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Trip start</Typography>

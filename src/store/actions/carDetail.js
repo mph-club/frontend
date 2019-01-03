@@ -2,27 +2,6 @@ import axios from '../../shared/axios';
 
 import * as actionTypes from './actionTypes';
 
-export const onCarDetailFetchStart = (carId) => {
-    return {
-        type: actionTypes.CAR_DETAIL_FETCH_INFO_START,
-        carSelectedId: carId
-    }
-}
-
-export const onCarDetailFetchInfoFailed = (error) => {
-    return {
-        type: actionTypes.CAR_DETAIL_FETCH_INFO_FAILED,
-        error: error
-    }
-}
-
-export const onCarDetailFetchInfoSucceed = (data) => {
-    return {
-        type: actionTypes.CAR_DETAIL_FETCH_INFO_SUCCESS,
-        data: data
-    }
-}
-
 export const onStoreCardIdSelected = (carSelectedId) => {
     localStorage.setItem('carSelectedId',carSelectedId)
 
@@ -37,12 +16,21 @@ export const onCarDetailFetchInfo = () => {
 
         const carId = localStorage.getItem('carSelectedId')
 
-        dispatch(onCarDetailFetchStart(carId))
+        dispatch({
+            type: actionTypes.CAR_DETAIL_FETCH_INFO_START,
+            carSelectedId: carId
+        })
 
         axios.get('vehicles/' + carId).then( response => {
-            dispatch(onCarDetailFetchInfoSucceed(response.data.data.vehicle))
+            dispatch({
+                type: actionTypes.CAR_DETAIL_FETCH_INFO_SUCCESS,
+                data: response.data.data.vehicle
+            })
         }).catch( error => {
-            dispatch(onCarDetailFetchInfoFailed(error))
+            dispatch({
+                type: actionTypes.CAR_DETAIL_FETCH_INFO_FAILED,
+                error: error
+            })
         })
     }
 }

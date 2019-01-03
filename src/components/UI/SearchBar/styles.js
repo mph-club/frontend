@@ -5,12 +5,9 @@ import { space, palette } from '../../../theme';
 
 export const StyledPaper = styled(Paper)`
     && {
-        width: 100%;
         display: flex;
-        padding-top: ${space[2]};
-        padding-bottom: ${space[2]};
-        padding-right: ${space[3]};
-        padding-left: ${space[3]};
+        flex-grow: 1;
+        padding: ${space[2]} ${space[3]};
         box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
     }
 `
@@ -20,6 +17,10 @@ export const ExternalContainer = styled.div`
     justify-content: space-between;
 `
 
+export const SearchContainer = styled.div`
+    flex-basis: 220px;
+    flex-shrink: 2;
+`
 
 export const StyleButton = styled(StylePrimaryButton)`
     margin-left: 16px !important;
@@ -29,9 +30,6 @@ export const StyleButton = styled(StylePrimaryButton)`
 
 export const StyledSlantedDivider = styled.div`
     width: 1px;
-    height: 32px;
     background-color: ${palette.grey03};
-    margin-top: ${space[2]};
-    margin-right: ${space[3]};
-    margin-left: ${space[3]};
+    margin: ${space[1]} ${space[3]}
 `

@@ -278,7 +278,7 @@ export const onChangePhoneNumber = () => {
 }
 export const onResendPhoneCode = (phoneNumber) => {
 
-    return (dispatch, getState) => {
+    return dispatch => {
 
         var poolData = {
             UserPoolId: COGNITO.CONFIG.USER_POOL,
@@ -368,7 +368,7 @@ export const onAddPhone = (phone) => {
             } else {
                 dispatch({
                     type: actionTypes.SIGNUP_ADD_PHONE_FAILED,
-                    error: { message: 'User no found'}
+                    error: { message: 'User no found' }
                 })
             }
         })
@@ -380,7 +380,7 @@ export const onValidatePhone = (code) => {
         dispatch({
             type: actionTypes.SIGNUP_VALIDATE_PHONE_START
         })
-        
+
         var poolData = {
             UserPoolId: COGNITO.CONFIG.USER_POOL,
             ClientId: COGNITO.CONFIG.CLIENT_ID
@@ -392,7 +392,7 @@ export const onValidatePhone = (code) => {
         user.getSession((err, session) => {
             if (err) {
                 return
-            } 
+            }
             user.verifyAttribute('phone_number', code, {
                 onSuccess: () => {
                     dispatch({
@@ -452,13 +452,50 @@ export const onAuthCheckState = () => {
                     return;
                 }
 
-                dispatch(authStateChecked(handleSession(session)))
+                if (new Date() < new Date(session.accessToken.payload.exp * 1000)) {
+                    dispatch(authStateChecked(handleSession(session)))
+                } else {
+                    dispatch(onRefreshToken())
+                }
             });
         } else {
             dispatch(authStateChecked(handleSession(null)))
         }
     };
 }
+
+export const onRefreshToken = () => {
+
+    return dispatch => {
+        var poolData = {
+            UserPoolId: COGNITO.CONFIG.USER_POOL,
+            ClientId: COGNITO.CONFIG.CLIENT_ID
+        };
+
+        var userPool = new CognitoUserPool(poolData);
+        var cognitoUser = userPool.getCurrentUser();
+
+        cognitoUser.getSession((err, session) => {
+            if (err) {
+                dispatch(authStateChecked(handleSession(null)))
+                return;
+            }
+
+            const token = session.getRefreshToken();
+
+            cognitoUser.refreshSession(token, (err, session) => {
+                if (err) {
+                    dispatch(authStateChecked(handleSession(null)))
+                    return;
+                }
+
+                dispatch(authStateChecked(handleSession(session)))
+                dispatch({ type: actionTypes.SESSION_REFRESHED })
+            });
+        })
+    }
+}
+
 export const onCloseEndedDialog = () => {
     return {
         type: actionTypes.SIGNUP_CLOSE_ON_ENDED_DIALOG

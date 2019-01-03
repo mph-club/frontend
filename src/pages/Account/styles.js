@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { palette, space } from '../../theme';
 import Avatar from '@material-ui/core/Avatar';
-import ListItem from '@material-ui/core/ListItem';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -9,10 +8,16 @@ export const ExternalContainer = styled.div`
     max-width: 1060px;
     display: block;
     box-sizing: border-box;
-    margin: 120px auto 0px;
+    margin: 140px auto;
     padding-left: ${space[3]};
     padding-right: ${space[3]};
-    height: 100vh;
+`
+
+export const ProgressContainer = styled.div`
+    margin: 12px auto;
+    justify-content: space-between;
+    display: flex;
+    max-width: fit-content;
 `
 
 export const LeftGrid = styled(Grid)`
@@ -36,7 +41,6 @@ export const StyledAvatar = styled(Avatar)`
 
 export const AvatarContainer = styled.div`
     display: grid;
-    
 `
 
 export const CameraButton = styled(IconButton)`
@@ -45,11 +49,6 @@ export const CameraButton = styled(IconButton)`
         top: 32px;
         right: 20px;
     }
-`
-
-export const StyledListItem = styled(ListItem)`
-    /* color: (this.state.value === 'transactionHistory') ? palette.green : palette.grey02, */
-                                        /* fontWeight: (this.state.value === 'transactionHistory') ? 900 : 600 */
 `
 
 export const StyledContainer = styled.div`
@@ -61,7 +60,6 @@ export const StyledContainer = styled.div`
 
 export const StyledRowContainer = styled.div`
     justify-content: space-between;
-    margin: 16px 0;
     display: flex;
 `
 export const StyledWhiteContainer = styled.div`

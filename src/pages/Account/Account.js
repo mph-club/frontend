@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -12,9 +12,9 @@ import {
     ExternalContainer,
     LeftGrid,
     StyledAvatar,
-    StyledListItem,
     AvatarContainer,
     CameraButton,
+    ProgressContainer
 } from './styles';
 import ContactInfo from '../../components/AccountComponents/ContactInfo/ContactInfo';
 import TransactionHistory from '../../components/AccountComponents/TransactionHistory/TransactionHistory';
@@ -23,7 +23,8 @@ import UploadPhoto from '../../components/AccountComponents/UploadPhoto/UploadPh
 
 import * as actions from '../../store/actions/index';
 import List from '@material-ui/core/List';
-import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@material-ui/core/ListItem';
+
 
 class Account extends Component {
 
@@ -54,14 +55,10 @@ class Account extends Component {
         const { user } = this.props
         let content = null
 
-        const circularProgress = <div style={{
-            margin: '12px auto',
-            justifyContent: 'space-between',
-            display: 'flex',
-            maxWidth: 'fit-content'
-        }}>
+        const circularProgress = < ProgressContainer >
             <CircularProgress size={40} style={{ color: palette.green }} />
-        </div>
+        </ProgressContainer >
+
 
         switch (this.state.value) {
             case 'contactInfo':
@@ -77,7 +74,7 @@ class Account extends Component {
         }
 
         return (
-            <React.Fragment>
+            <Fragment>
                 <UploadPhoto
                     open={this.state.uploadPhoto}
                     closeUploadPhoto={this.handleOpenUploadPhoto} />
@@ -96,32 +93,50 @@ class Account extends Component {
                                 </div>
                             </AvatarContainer>
                             <List>
-                                <StyledListItem
+                                <ListItem
                                     disableGutters
                                     button
                                     selected={this.state.value === 'contactInfo'}
                                     value='contactInfo'
                                     onClick={() => this.handleListItemClick('contactInfo')}>
-                                    <ListItemText>CONTACT INFO</ListItemText>
-                                </StyledListItem>
-                                <StyledListItem
+                                    <Typography
+                                        variant="body1"
+                                        style={{
+                                            color: (this.state.value === 'contactInfo') ? palette.green : palette.grey02,
+                                            fontWeight: (this.state.value === 'contactInfo') ? 900 : 600,
+                                        }}
+                                        component="p">CONTACT INFO</Typography>
+                                </ListItem>
+                                <ListItem
                                     disableGutters
                                     button
                                     disabled
                                     selected={this.state.value === 'paymentInfo'}
                                     value='paymentInfo'
                                     onClick={() => this.handleListItemClick('paymentInfo')}>
-                                    <ListItemText>PAYMENT INFO</ListItemText>
-                                </StyledListItem>
-                                <StyledListItem
+                                    <Typography
+                                        variant="body1"
+                                        style={{
+                                            color: (this.state.value === 'paymentInfo') ? palette.green : palette.grey02,
+                                            fontWeight: (this.state.value === 'paymentInfo') ? 900 : 600,
+                                        }}
+                                        component="p">PAYMENT INFO</Typography>
+                                </ListItem>
+                                <ListItem
                                     disableGutters
                                     button
                                     selected={this.state.value === 'transactionHistory'}
                                     disabled
                                     value='transactionHistory'
                                     onClick={() => this.handleListItemClick('transactionHistory')}>
-                                    <ListItemText>TRANSACTIONS</ListItemText>
-                                </StyledListItem>
+                                    <Typography
+                                        variant="body1"
+                                        style={{
+                                            color: (this.state.value === 'transactionHistory') ? palette.green : palette.grey02,
+                                            fontWeight: (this.state.value === 'transactionHistory') ? 900 : 600,
+                                        }}
+                                        component="p">TRANSACTION HISTORY</Typography>
+                                </ListItem>
                             </List>
                         </LeftGrid>
                         <Grid item xs={12} sm={8} md={8}>
@@ -130,7 +145,7 @@ class Account extends Component {
                     </Grid>
                 </ExternalContainer>
                 <Footer />
-            </React.Fragment>
+            </Fragment>
         );
     }
 }

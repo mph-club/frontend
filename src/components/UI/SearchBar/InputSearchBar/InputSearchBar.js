@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import PlacesAutocomplete from 'react-places-autocomplete';
 import {
     StyledIconButton,
     InternalContainer,
@@ -11,64 +11,26 @@ import TextField from '@material-ui/core/TextField';
 class InputSearchBar extends React.Component {
 
     state = {
-        address: '',
         errorMessage: '',
-        latitude: null,
-        longitude: null,
     }
 
-    handleChange = address => {
-        this.setState({
-            address,
-            latitude: null,
-            longitude: null,
-            errorMessage: '',
-        });
-    };
-
-    handleSelect = selected => {
-        this.setState({ isGeocoding: true, address: selected });
-        geocodeByAddress(selected)
-            .then(res => getLatLng(res[0]))
-            .then(({ lat, lng }) => {
-                this.setState({
-                    latitude: lat,
-                    longitude: lng,
-                    isGeocoding: false,
-                });
-            })
-            .catch(error => {
-                this.setState({ isGeocoding: false });
-                console.log('error', error); // eslint-disable-line no-console
-            });
-    };
-
-    handleCloseClick = () => {
-        this.setState({
-            address: '',
-            latitude: null,
-            longitude: null,
-        });
-    };
-
     handleError = (status, clearSuggestions) => {
-        console.log('Error from Google Maps API', status); // eslint-disable-line no-console
         this.setState({ errorMessage: status }, () => {
             clearSuggestions();
         });
     };
 
     render() {
-        const { address, errorMessage } = this.state;
+        const { errorMessage } = this.state;
 
         return (
             <div>
                 <PlacesAutocomplete
-                    onChange={this.handleChange}
-                    value={address}
-                    onSelect={this.handleSelect}
+                    onChange={this.props.handleChange}
+                    value={this.props.address}
+                    onSelect={this.props.handleSelect}
                     onError={this.handleError}
-                    shouldFetchSuggestions={address.length > 2}
+                    shouldFetchSuggestions={this.props.address.length > 2}
                 >
                     {({ getInputProps, suggestions, getSuggestionItemProps }) => {
                         return (
@@ -84,8 +46,8 @@ class InputSearchBar extends React.Component {
                                         }}
                                         {...getInputProps()}
                                     />
-                                    {this.state.address.length > 0 ?
-                                        <StyledIconButton color="inherit" aria-label="Clear" onClick={this.handleCloseClick}>
+                                    {this.props.address.length > 0 ?
+                                        <StyledIconButton color="inherit" aria-label="Clear" onClick={this.props.handleCloseClick}>
                                             <ClearIcon />
                                         </StyledIconButton> :
                                         null}
@@ -97,7 +59,7 @@ class InputSearchBar extends React.Component {
                                                 return (
                                                     /* eslint-disable react/jsx-key */
                                                     <div {...getSuggestionItemProps(suggestion)}>
-                                                        <strong>
+                                                        <strong style={{ backgroundColor: '#fff'}}>
                                                             {suggestion.formattedSuggestion.mainText}
                                                         </strong>{' '}
                                                         <small>

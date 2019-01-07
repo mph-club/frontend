@@ -28,6 +28,10 @@ export const StyleButton = styled(StylePrimaryButton)`
     height: 50px;
 `
 
+export const ButtonContainer = styled.div`
+    display: flex;
+    align-self: center;
+`
 
 export const StyledSlantedDivider = styled.div`
     width: 1px;

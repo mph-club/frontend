@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -18,13 +17,10 @@ import {
 	StyledPerDay
 } from './styles';
 
-import * as actions from '../../../store/actions/index';
-
 class CarCard extends PureComponent {
 
 	handleCardClicked = () => {
-		this.props.onCarSelected(this.props.id)
-		this.props.history.push('/car-details')
+		this.props.history.push('/car-details/' + this.props.id)
 	}
 
 	render() {
@@ -57,10 +53,4 @@ class CarCard extends PureComponent {
 	}
 }
 
-const mapDispatchToProps = dispatch => {
-	return {
-		onCarSelected: (carId) => { dispatch(actions.onStoreCardIdSelected(carId)) }
-	}
-}
-
-export default withRouter(connect(null, mapDispatchToProps)(CarCard));
+export default withRouter(CarCard);

@@ -42,7 +42,8 @@ export {
 
 export {
     onFilterGetVehicles,
-    onStoreFilterProperty
+    onStoreFilterProperty,
+    onFilterBySearchBar
 } from './filter';
 
 export {

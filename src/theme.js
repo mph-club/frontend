@@ -52,30 +52,18 @@ export const theme = createMuiTheme({
       }
 });
 
-
-//Color
-const black = '#000000';
-const green = '#31DA62';
-const blue = '#077DF8';
-const white = '#ffffff';
-const grey01 = '#777777';
-const grey02 = '#999999';
-const grey03 = '#CCCCCC';
-const grey04 = '#DDDDDD';
-const grey05 = '#FAFAFA';
-const red = '#ff4400';
-
 export const palette = {
-  black,
-  green,
-  blue,
-  white,
-  grey01,
-  grey02,
-  grey03,
-  grey04,
-  grey05,
-  red
+  black: '#000000',
+  green: '#31DA62',
+  greenSecondary: '#00a733',
+  blue: '#077DF8',
+  white: '#ffffff',
+  grey01: '#777777',
+  grey02: '#999999',
+  grey03: '#CCCCCC',
+  grey04: '#DDDDDD',
+  grey05: '#FAFAFA',
+  red: '#ff4400'
 }
 
 //Space 0 (0px), 1 (4px), 2 (8px), 3 (16px), 4 (32px) , 5 (64px), 6 (128px), 7 (256px)

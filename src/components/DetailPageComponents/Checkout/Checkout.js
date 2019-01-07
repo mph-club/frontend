@@ -119,24 +119,24 @@ class Checkout extends Component {
                             <Title component="h2" style={{ marginBottom: `${space[3]}` }}>FEES AND PRICE DETAILS</Title>
                             <StyledRightContainer>
                                 <StyledRowContainer style={{ marginLeft: `${space[3]}`, marginRight: `${space[3]}` }}>
-                                    <Typography variant="body2" component="p">Trip Price</Typography>
-                                    <Typography variant="body2" component="p">$382.00/day</Typography>
+                                    <Typography variant="body1" component="p">Trip Price</Typography>
+                                    <Typography variant="body1" component="p">$382.00/day</Typography>
                                 </StyledRowContainer>
                                 <StyledRowContainer style={{ marginLeft: `${space[3]}`, marginRight: `${space[3]}` }}>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <Typography variant="body2" component="p" style={{ marginRight: `${space[1]}` }}>Trip Fee</Typography>
+                                        <Typography variant="body1" component="p" style={{ marginRight: `${space[1]}` }}>Trip Fee</Typography>
                                         <InfoIcon style={{ fontSize: 16, color: `${palette.grey02}` }} />
                                     </div>
-                                    <Typography variant="body2" component="p">$9.00/day</Typography>
+                                    <Typography variant="body1" component="p">$9.00/day</Typography>
                                 </StyledRowContainer>
                                 <StyledRowContainer style={{ marginLeft: `${space[3]}`, marginRight: `${space[3]}` }}>
-                                    <Typography variant="body2" component="p">Total per day</Typography>
-                                    <Typography variant="body2" component="p">$382.00/day</Typography>
+                                    <Typography variant="body1" component="p">Total per day</Typography>
+                                    <Typography variant="body1" component="p">$382.00/day</Typography>
                                 </StyledRowContainer>
                                 <StyledWhiteContainer>
                                     <StyledRowContainer>
-                                        <Typography variant="body2" component="p">$391.00 x 7 day trip</Typography>
-                                        <Typography variant="body2" component="p">$2,372.00/day</Typography>
+                                        <Typography variant="body1" component="p">$391.00 x 7 day trip</Typography>
+                                        <Typography variant="body1" component="p">$2,372.00/day</Typography>
                                     </StyledRowContainer>
                                     <StyledRowContainer>
                                         <Typography variant="h6" component="p">Trip Total</Typography>
@@ -145,7 +145,7 @@ class Checkout extends Component {
                                     <StyledRowContainer>
                                         <div>
                                             <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                <Typography variant="body2" component="p" style={{ marginRight: `${space[1]}` }}>
+                                                <Typography variant="body1" component="p" style={{ marginRight: `${space[1]}` }}>
                                                     Refundable deposit
                                                 </Typography>
                                                 <InfoIcon style={{ fontSize: 16, color: `${palette.grey02}` }} />

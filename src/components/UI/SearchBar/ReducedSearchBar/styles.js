@@ -9,17 +9,24 @@ export const StyledPaper = styled(Paper)`
     padding: 16px;
 `
 
+export const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
 export const StyleButton = styled(StylePrimaryButton)`
     margin: 12px;
     align-self: flex-end;
 `
 
-export const RowContainer = styled.div`
-    padding-top: 12px;
-    padding-bottom: 12px;
-`
-
-export const StyledContainer = styled.div`
+export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
+    max-width: 280px;
+`
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin: 8px;
 `

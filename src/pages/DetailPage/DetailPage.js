@@ -97,8 +97,9 @@ class DetailPage extends Component {
         })
     }
 
-    componentWillMount() {
-        this.props.onFetchCarDetails();
+    componentDidMount() {
+        console.log(this.props)
+        this.props.onFetchCarDetails(this.props.match.params.id)
     }
 
     render() {
@@ -240,7 +241,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchCarDetails: () => { dispatch(actions.onCarDetailFetchInfo()) }
+        onFetchCarDetails: (carId) => { dispatch(actions.onCarDetailFetchInfo(carId)) }
     }
 }
 

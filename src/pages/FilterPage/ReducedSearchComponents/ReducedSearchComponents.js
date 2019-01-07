@@ -7,6 +7,7 @@ import { space } from '../../../theme';
 import {
     StyledForm
 } from './styles';
+import InputSearchBar from '../../../components/UI/SearchBar/InputSearchBar/InputSearchBar';
 
 const ReducedSearchComponents = (props) => {
 
@@ -62,15 +63,7 @@ const ReducedSearchComponents = (props) => {
             <StyledForm>
                 <div style={{ display: 'block' }}>
                     <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Where</Typography>
-                    <TextField
-                        id="searchPage-search"
-                        type="search"
-                        placeholder="Enter a city in FL"
-                        InputProps={{
-                            disableUnderline: true
-                        }}
-                        style={{ width: '200px' }}
-                    />
+                    <InputSearchBar/>
                 </div>
                 <div style={{ display: 'block', marginTop: space[3] }}>
                     <Typography variant="body1" component="p" style={{ fontWeight: 600 }}>Pickup</Typography>

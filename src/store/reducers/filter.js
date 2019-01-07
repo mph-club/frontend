@@ -6,7 +6,13 @@ const initialState = {
     error: null,
     count: 0,
     vehicles: null,
-    filter: null
+    filter: null,
+    location: {
+        lat: '',
+        lon: ''
+    },
+    startDate: '',
+    endDate: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,7 +24,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FILTER_FETCH_INFO_SUCCESS:
             return updateObject(state, { loading: false, error: null, count: action.data.count, vehicles: action.data.vehicles })
         case actionTypes.FILTER_PROPERTIES_STORED:
-            return updateObject(state, updateObject(state, { filter: action.filter }))
+            return updateObject(state, { filter: action.filter })
+        case actionTypes.FILTER_SEARCH_TOUCHED:
+            return updateObject(state, { location: action.location, startDate: action.startDate, endDate: action.endDate })
         default:
             return state
     }

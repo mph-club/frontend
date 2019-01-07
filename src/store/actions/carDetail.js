@@ -11,10 +11,8 @@ export const onStoreCardIdSelected = (carSelectedId) => {
     }
 }
 
-export const onCarDetailFetchInfo = () => {
+export const onCarDetailFetchInfo = (carId) => {
     return dispatch => {
-
-        const carId = localStorage.getItem('carSelectedId')
 
         dispatch({
             type: actionTypes.CAR_DETAIL_FETCH_INFO_START,

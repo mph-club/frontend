@@ -48,7 +48,7 @@ class HomePage extends Component {
                         <Typography align='center' variant="h4" style={{ fontSize: '40px', color: palette.white, marginBottom: space[3] }}>Drive what you <span style={{ color: palette.green }}>reserve</span>  "not something similar"</Typography>
                         <SecondarySentence align='center' variant='h6'>No lines, no shuttles, the vehicle <span>you rented</span> delivered to you</SecondarySentence>
                         <SearchBarContainer>
-                            <SearchBar searchcolor={palette.green} />
+                            <SearchBar/>
                         </SearchBarContainer>
                         <SmallSearchBarContainer>
                             <ReduceSearchBar />
@@ -74,10 +74,10 @@ class HomePage extends Component {
                 </FirstMovilSection>
                 <CenterSection>
                     <CenterSectionContainer>
-                        <PrimarySentence align='center' variant="h4">Worry free<span>driving</span></PrimarySentence>
-                        <SecondarySentence align='center' variant='h6'>Drivers renting mph club will be screened, verified, and fully insured. This will give hosts piece if mind while renting cars on mph club.</SecondarySentence>
+                        <PrimarySentence align='center' variant="h4">Worry-free <span>driving</span></PrimarySentence>
+                        <SecondarySentence align='center' variant='h6'>Drivers using mph club will be screened, verified, and fully insured. This will give hosts piece of mind while renting out their car using mph club.</SecondarySentence>
                         <SectionButtonContainer>
-                            <StyledSecondaryButton>HOW IT WORKS</StyledSecondaryButton>
+                            <StyledSecondaryButton>Learn More</StyledSecondaryButton>
                         </SectionButtonContainer>
                     </CenterSectionContainer>
                 </CenterSection>

@@ -28,12 +28,12 @@ export const StyledHeaderContainer = styled.div`
     height: 60px;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
 
-    @media (min-width: 900px) {
+    @media (min-width: 991px) {
         top: 30px;
         height: 90px;
     }
 
-    @media (min-width: 500px), (max-width: 900px){
+    @media (min-width: 500px), (max-width: 991px){
         top: 56px;
         padding-top: ${space[3]};
         padding-bottom: ${space[3]};
@@ -45,7 +45,7 @@ export const StyledSearchBarContainer = styled.div`
     height: 70px; 
     margin: 12px auto;
 
-    @media (max-width: 900px) {
+    @media (max-width: 991px) {
         display: none;
     }
 `
@@ -54,7 +54,7 @@ export const StyledMidComponents = styled.div`
 
     margin: 0;
 
-    @media (max-width: 499px), (min-width: 900px) {
+    @media (max-width: 499px), (min-width: 991px) {
         display: none;
     }
 `

@@ -26,6 +26,7 @@ import ValidationWrapper from './components/SignUp/ValidationWrapper/ValidationW
 import WelcomeEndedDialog from './components/SignUp/WelcomeEndedDialog/WelcomeEndedDialog';
 import ConfirmUser from './components/Login/ConfirmUser/ConfirmUser';
 import ForgotPassword from './components/Login/ForgotPassword/ForgotPassword';
+import FilterPage from './pages/FilterPage/FilterPage';
 import HomePage from './pages/HomePage/HomePage';
 
 import * as actions from './store/actions/index';
@@ -48,10 +49,6 @@ const asyncCheckout = asyncComponent(() => {
   return import('./components/DetailPageComponents/Checkout/Checkout')
 })
 
-const asyncFilterPage = asyncComponent(() => {
-  return import('./pages/FilterPage/FilterPage')
-})
-
 class App extends Component {
 
   componentWillMount() {
@@ -61,18 +58,18 @@ class App extends Component {
   render() {
 
     let routes = <Switch>
-      <Route path="/car-details" component={DetailPage} />
+      <Route path="/car-details/:id" exact component={DetailPage} />
       <Route path="/user-details" component={UserDetails} />
       <Route path="/car-location" component={CarLocation} />
       <Route path="/trip-preference" component={TripPreference} />
-      <Route path="/filter" component={asyncFilterPage} />
+      <Route path="/filter" component={FilterPage} />
       <Route exact path="/" component={HomePage} />
       <Redirect to="/" />
     </Switch>
 
     if (this.props.isAuthenticated) {
       routes = <Switch>
-        <Route path="/car-details" component={DetailPage} />
+        <Route path="/car-details/:id" exact component={DetailPage} />
         <Route path="/user-details" component={UserDetails} />
         <Route path="/checkout" component={asyncCheckout} />
         <Route path="/dashboard" component={asyncDashboard} />
@@ -84,7 +81,7 @@ class App extends Component {
         <Route path="/delivery-and-airport" component={DeliverAndAirport} />
         <Route path="/car-location" component={CarLocation} />
         <Route path="/trip-preference" component={TripPreference} />
-        <Route path="/filter" component={asyncFilterPage} />
+        <Route path="/filter" component={FilterPage} />
         <Route path="/total-cost" component={TotalCost} />
         <Route path="/cancel-trip" component={CancelTrip} />
         <Route path="/cancellation-review" component={CancellationReview} />

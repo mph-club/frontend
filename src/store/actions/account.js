@@ -94,7 +94,6 @@ export const onAccountChangePhoneNumber = () => {
         type: actionTypes.ACCOUNT_CHANGE_PHONE_NUMBER
     }
 }
-
 export const onAddPhoneFromAccount = (phone) => {
     return dispatch => {
 
@@ -175,7 +174,6 @@ export const onResendPhoneCodeFromAccount = () => {
 
         user.getSession((err, session) => {
             if (err) {
-                console.log(err)
                 return;
             }
 
@@ -238,7 +236,6 @@ export const openChangePassword = (open) => {
         open: open
     }
 }
-
 export const onAccountChangePassword = (oldPassword, newPassword) => {
     return dispatch => {
 

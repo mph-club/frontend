@@ -6,12 +6,12 @@ import * as actionTypes from './actionTypes';
 export const onFilterGetVehicles = () => {
     return dispatch => {
 
-        dispatch({type: actionTypes.FILTER_FETCH_INFO_START})
+        dispatch({ type: actionTypes.FILTER_FETCH_INFO_START })
 
         let properties = JSON.parse(localStorage.getItem(CONSTANTS.FILTER_PROPERTIES))
         let type = null
 
-        if ( properties ) {
+        if (properties) {
             type = properties['type']
         }
 
@@ -30,16 +30,25 @@ export const onFilterGetVehicles = () => {
         })
     }
 }
-
 export const onStoreFilterProperty = (key, value) => {
-    
+
     let properties = JSON.parse(localStorage.getItem(CONSTANTS.FILTER_PROPERTIES)) || {}
-        properties[key] = value
-    
+    properties[key] = value
+
     localStorage.setItem(CONSTANTS.FILTER_PROPERTIES, JSON.stringify(properties))
 
     return {
         type: actionTypes.FILTER_PROPERTIES_STORED,
         filter: properties
+    }
+}
+export const onFilterBySearchBar = (location, startDate, endDate) => {
+
+
+    return {
+        type: actionTypes.FILTER_SEARCH_TOUCHED,
+        location: location,
+        startDate: startDate,
+        endDate: endDate
     }
 }

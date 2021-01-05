@@ -7,7 +7,7 @@
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^3.0.0-alpha.26",
     "amazon-cognito-identity-js": "^3.0.6",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "react": "^16.7.0",
     "react-dates": "^18.3.1",
     "react-dom": "^16.7.0",

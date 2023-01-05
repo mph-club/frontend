@@ -15,7 +15,7 @@
     "react-places-autocomplete": "^7.2.0",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
+    "react-scripts": "5.0.1",
     "react-swipeable-views": "^0.12.18",
     "react-text-mask": "^5.4.3",
     "react-truncate": "^2.4.0",
